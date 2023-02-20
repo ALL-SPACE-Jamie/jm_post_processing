@@ -5,7 +5,7 @@ import os
 plt.close('all')
 
 # load
-fileName = '20230109_Rx-CRcal_ppk_data'
+fileName = 'ppk_data_CCG24_PCG48'
 dirScript = os.getcwd()
 os.chdir(dirScript)
 dfFull = pd.read_excel(fileName + ".xlsx")
@@ -26,6 +26,7 @@ def thetaphi_to_azel(theta, phi):
     return az
 
 def plot__gainVstheta(lensSet, phiAng, activeCal, beamNo, freqMeas, RFICFreq, fileName, varPlot, ylims, makeFig, col1, col2, adLabel):
+    global dfPlot
     if makeFig == True:
         plt.figure(figsize=(9,7))
 
@@ -123,29 +124,30 @@ def plot__devVsTheta(lensSet, phiAng, activeCal, beamNo, freqMeas, RFICFreq, fil
     
 ## Run
 # Params
-calSet = 'S2000_Rx_TLM_QR00003_CalRig_v1.tar'
+calSet = 'S2000_Rx_TLM_QR00038_MCR_1_45deg_Mfreq_v8.tar'
 fileName = fileName
-RFICFreq = 19.2
-# run
+RFICFreq = 19.95
 freqLog = [19.2]
+phiAng = 244.8
+# run
 for i in range(len(freqLog)):
     freqMeas = freqLog[i]    
     # Gain
-    plot__gainVstheta('l1e_l2e_l3e', 0, calSet, 1, freqMeas, RFICFreq, fileName, 'Gain_dB', [20,80], True, 'k', 'b', '')
+    plot__gainVstheta('l1e_l2e_l3e', phiAng, calSet, 1, freqMeas, RFICFreq, fileName, 'Gain_dB', [20,80], True, 'k', 'b', '')
     plt.savefig('./figures/gainVstheta' + '_freqMeas=' + str(freqMeas) + 'GHz' + '_freqRFIC=' + str(RFICFreq) + 'GHz' + '.png')
     # XPD
-    plot__gainVstheta('l1e_l2e_l3e', 0, calSet, 1, freqMeas, RFICFreq, fileName, 'xpd_dB', [0,30], True, 'k', 'b', '')
+    plot__gainVstheta('l1e_l2e_l3e', phiAng, calSet, 1, freqMeas, RFICFreq, fileName, 'xpd_dB', [0,30], True, 'k', 'b', '')
     plt.savefig('./figures/xpdVstheta' + '_freqMeas=' + str(freqMeas) + 'GHz' + '_freqRFIC=' + str(RFICFreq) + 'GHz' + '.png')
     
     # Angle deviation
-    plot__devVsTheta('l1e_l2e_l3e', 0, calSet, 1, freqMeas, RFICFreq, fileName)
+    plot__devVsTheta('l1e_l2e_l3e', phiAng, calSet, 1, freqMeas, RFICFreq, fileName)
     plt.savefig('./figures/devVstheta' + '_freqMeas=' + str(freqMeas) + 'GHz' + '_freqRFIC=' + str(RFICFreq) + 'GHz' + '.png')
     
     # Gain for all lenses
     plt.figure(figsize=(9,7))
-    plot__gainVstheta('l1e_l2d_l3d', 0, calSet, 1, freqMeas, RFICFreq, fileName, 'Gain_dB', [20,80], False, 'r', 'r', 'l1 ')
-    plot__gainVstheta('l1d_l2e_l3d', 0, calSet, 1, freqMeas, RFICFreq, fileName, 'Gain_dB', [20,80], False, 'g', 'g', 'l2 ')
-    plot__gainVstheta('l1d_l2d_l3e', 0, calSet, 1, freqMeas, RFICFreq, fileName, 'Gain_dB', [20,80], False, 'b', 'b', 'l3 ')
-    plot__gainVstheta('l1e_l2e_l3e', 0, calSet, 1, freqMeas, RFICFreq, fileName, 'Gain_dB', [20,80], False, 'm', 'm', 'TLM ')
+    plot__gainVstheta('l1e_l2d_l3d', phiAng, calSet, 1, freqMeas, RFICFreq, fileName, 'Gain_dB', [20,80], False, 'r', 'r', 'l1 ')
+    plot__gainVstheta('l1d_l2e_l3d', phiAng, calSet, 1, freqMeas, RFICFreq, fileName, 'Gain_dB', [20,80], False, 'g', 'g', 'l2 ')
+    plot__gainVstheta('l1d_l2d_l3e', phiAng, calSet, 1, freqMeas, RFICFreq, fileName, 'Gain_dB', [20,80], False, 'b', 'b', 'l3 ')
+    plot__gainVstheta('l1e_l2e_l3e', phiAng, calSet, 1, freqMeas, RFICFreq, fileName, 'Gain_dB', [20,80], False, 'm', 'm', 'TLM ')
     plt.legend(ncol=2, fontsize=10)
     plt.savefig('./figures/gainVsthetaAllLenses' + '_freqMeas=' + str(freqMeas) + 'GHz' + '_freqRFIC=' + str(RFICFreq) + 'GHz' + '.png')
