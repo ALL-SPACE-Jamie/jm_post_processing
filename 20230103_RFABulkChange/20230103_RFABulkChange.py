@@ -1,17 +1,20 @@
-import pandas as pd
-import numpy as np
 import os
 import glob
 import csv
 
-freqIns = 'Y'
-phaseFlip = 'N'
+# params
+manualDirctory = True
+manualDirectory = r'C:\Users\JamieMitchell\Downloads\E4_Thermal_RFA (1)'
+freqIns = True
+phaseFlip = True
 
 # directory
 dirScript = os.getcwd()
 
 # files in
-os.chdir(os.path.join(dirScript, 'TxIN'))
+#os.chdir(os.path.join(dirScript, 'IN'))
+if manualDirctory == True:
+    os.chdir(manualDirectory)
 fileLog = glob.glob('*RFA*.csv')
 
 for i in range(len(fileLog)):
@@ -23,12 +26,12 @@ for i in range(len(fileLog)):
           csvFile.append(row)
           
     # append new info
-    if freqIns == 'Y':
+    if freqIns == True:
         freq = fileLog[i].split('_')[-3]
         csvFile.insert(1, ['cal_frequency:', freq])
     
     # phase reverse
-    if phaseFlip == 'Y':
+    if phaseFlip == True:
         for j in range(len(csvFile)-23):
             if (j % 2) == 1:
                 row = csvFile[j+23]
@@ -40,14 +43,21 @@ for i in range(len(fileLog)):
                         row[k] = str(newPhase)
     
     # files out
-    os.chdir(os.path.join(dirScript, 'TxOUT'))
+    #os.chdir(os.path.join(dirScript, 'OUT'))
+    if manualDirctory == True:
+        os.chdir(manualDirectory)
     
     # write new file
-    file = open(fileLog[i][0:-4] + '_freqIns' + freqIns + '_ph180' + phaseFlip + '.csv', 'w+', newline ='') 
+    file = open(fileLog[i][0:-4] + '_freqIns' + str(freqIns) + '_ph180' + str(phaseFlip) + '.csv', 'w+', newline ='')
     with file:     
         write = csv.writer(file) 
-        write.writerows(csvFile) 
+        write.writerows(csvFile)
         
     # files in
-    os.chdir(os.path.join(dirScript, 'TxIN'))
+    #os.chdir(os.path.join(dirScript, 'IN'))
+    if manualDirctory == True:
+        os.chdir(manualDirectory)
+
+# finish
+print('Finished.')
     

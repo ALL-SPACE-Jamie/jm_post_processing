@@ -9,6 +9,7 @@ plt.close('all')
 
 # file path
 dirScript = os.getcwd()
+# example file path with sync to SharePoint: 'C:\Users\JamieMitchell\OneDrive - ALL.SPACE\Desktop\sort\_readyGH\Rx Comparisons\20230116_Evaluations'
 filePath = 'C:\Users\JamieMitchell\OneDrive - ALL.SPACE\Desktop\sort\_readyGH\Rx Comparisons\20230116_Evaluations'
 
 # definitions
@@ -79,6 +80,7 @@ def plot__evals(freqLog, beam, boardType):
         plt.savefig(filePath[0:-5] + "\\figures\\" + title + '.png')
         
 ## RUN
+# params
 freqLog = [17.7, 17.8, 17.9, 18. , 18.1, 18.2, 18.3, 18.4, 18.5, 18.6, 18.7,
        18.8, 18.9, 19. , 19.1, 19.2, 19.3, 19.4, 19.5, 19.6, 19.7, 19.8,
        19.9, 20. , 20.1, 20.2, 20.3, 20.4, 20.5, 20.6, 20.7, 20.8, 20.9,
@@ -87,15 +89,16 @@ freqLog = [17.7,18.7,19.2,19.7,20.7]
 #freqLog = [27.5,28.5,29.5,30,30.5]
 beam = 1
 boardType = 'Rx'
+
+# run
 plot__evals(freqLog, beam, boardType)
 
-# Overview plot
+# overview plot
 for i in range(len(folders)):
     if boardType == 'Rx':
         folders[i] = folders[i].split(' ')[2]
     if boardType == 'Tx':
         folders[i] = folders[i].split('_')[5]
-#folders = np.array(folders).astype(float)
 
 plt.figure(figsize=(7,6))
 for i in range(len(avLogFreqs)):
