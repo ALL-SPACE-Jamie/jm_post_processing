@@ -140,6 +140,5 @@ for beamNo in range(2):
             f_c = meas_info[[index for index in range(len(meas_info)) if '# f_c' in meas_info[index]][0]][1]
             qr = meas_info[[index for index in range(len(meas_info)) if 'barcodes' in meas_info[index]][0]][1]
             power = meas_info[[index for index in range(len(meas_info)) if 'Source power [dBm]' in meas_info[index]][0]][1]
-            temperature
             fig.suptitle('Board ' + qr + ', Lens ' + str(lens) + ', Beam' + str(beam) + ', f$_{set}$=' + str(f_c) + ' GHz' + ', P=' + power + ' dBm', fontsize=25)
             plt.tight_layout()
