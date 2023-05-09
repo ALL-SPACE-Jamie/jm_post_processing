@@ -53,8 +53,8 @@ def load__measFiles(filePath):
         meas_powers = np.genfromtxt(filePath, delimiter=',', skip_header=index_start)[:,0]
 
 ## run
-lens = 1
-find_measFiles(filePath, 'P_SWEEP', lens, 1)
+lens = 2
+find_measFiles(filePath, 'P_SWEEP', lens, 2)
 
 with open('S2000_TX_RFIC_CHANNEL_MAP.json') as json_file:
     S2000_TX_RFIC_CHANNEL_MAP = json.load(json_file)

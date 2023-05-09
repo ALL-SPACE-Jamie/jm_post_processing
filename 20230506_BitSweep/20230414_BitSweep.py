@@ -35,7 +35,7 @@ def find_measFiles(path, fileString):
 
 
 def load__measFiles(filePath):
-    global meas_info, meas_array, meas_frequencies, meas_params, rfic_common_gain, attenuation_bits, phase_bits, meas_gain, meas_phase, fileName, f_s, beam
+    global meas_info, meas_array, meas_frequencies, meas_params, rfic_common_gain, attenuation_bits, phase_bits, meas_gain, meas_phase, fileName, f_c, beam
     meas_params = {}
     meas_info = []
 
@@ -50,7 +50,7 @@ def load__measFiles(filePath):
         index_start = [index for index in range(len(meas_info)) if 'barcodes' in meas_info[index]][0] + 2
         meas_info = meas_info[0:index_start]
         beam = meas_info[[index for index in range(len(meas_info)) if 'Beam' in meas_info[index]][0]][1]
-        f_s = meas_info[[index for index in range(len(meas_info)) if 'f_s' in meas_info[index]][0]][1]
+        f_c = meas_info[[index for index in range(len(meas_info)) if '# f_c' in meas_info[index]][0]][1]
 
         # arrays
         rfic_common_gain = np.genfromtxt(filePath, delimiter=',', skip_header=index_start)[:, 0]
@@ -65,7 +65,7 @@ def load__measFiles(filePath):
         fileName = filePath.split('\\')[-1]
 
 
-def plot__2D(meas_array, f_s, GainOrPhase, common_gain, freqCol, beam):
+def plot__2D(meas_array, f_c, GainOrPhase, common_gain, freqCol, beam):
     global common_gain_indexes, teamp, gain
 
     # hard-coded parameters
@@ -130,7 +130,7 @@ def plot__2D(meas_array, f_s, GainOrPhase, common_gain, freqCol, beam):
     # title
     portInfoLoc = np.where(np.array(fileName.split('_')) == 'PORT')[0][0]
     lensInfoLoc = np.where(np.array(fileName.split('_')) == 'LENS')[0][0]
-    plt.title(GainOrPhase + ' [' + unit + ']\nFrequency set = ' + f_s + 'GHz\nFrequency meas = ' + str(
+    plt.title(GainOrPhase + ' [' + unit + ']\nFrequency set = ' + f_c + 'GHz\nFrequency meas = ' + str(
         meas_frequencies[freqCol]) + 'GHz\nBeam ' + str(beam) + ', Lens ' + fileName.split('_')[
                   lensInfoLoc + 1] + ', Port ' + fileName.split('_')[portInfoLoc + 1] + ', PaCG = ' + str(
         common_gain) + ' bits\n')
@@ -234,12 +234,12 @@ count = 0
 for measFile in measFiles:
     load__measFiles(measFile)
     freqCols = []
-    freqCols.append(list(meas_frequencies).index(float(f_s)))
-    freqCols.append(np.argmin((meas_frequencies - float(f_s) - 0.5) ** 2))
-    freqCols.append(np.argmin((meas_frequencies - float(f_s) + 0.5) ** 2))
+    freqCols.append(list(meas_frequencies).index(float(f_c)))
+    #freqCols.append(np.argmin((meas_frequencies - float(f_c) - 0.5) ** 2))
+    #freqCols.append(np.argmin((meas_frequencies - float(f_c) + 0.5) ** 2))
     for freqCol in freqCols:
-        plot__2D(meas_array, f_s, 'Gain', 36, freqCol, beam)
-        plot__2D(meas_array, f_s, 'Phase', 36, freqCol, beam)
+        plot__2D(meas_array, f_c, 'Gain', 36, freqCol, beam)
+        plot__2D(meas_array, f_c, 'Phase', 36, freqCol, beam)
         plt.close('all')
         count = count + 1
         print('Progress: ' + str(count) + '/' + str(len(measFiles) * len(freqCols)))
