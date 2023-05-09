@@ -15,8 +15,8 @@ plt.close('all')
 dirScript = os.getcwd()
 
 # parmas
-filePath = r'C:\codeRun\_EvalCheck3D\_results'
-temperature = 45
+filePath = r'C:\codeRun\OneDrive_1_09-05-2023 (1)'
+#temperature = 45
 
 # definitions
 def find_measFiles(path, fileString, beam):
@@ -131,8 +131,8 @@ for beamNo in range(2):
                 for i in range(len(rfics)):
                     axs[axsRows[j],axsCols[j]].plot(meas_frequencies, meas_array_plot[i,:], label=rfics[i])
                 axs[axsRows[j],axsCols[j]].set_xlabel('Frequency [GHz]'); axs[axsRows[j],axsCols[j]].set_ylabel('S$_{21}$ [dB]')
-                axs[axsRows[j],axsCols[j]].set_ylim([-60,40]); axs[axsRows[j],axsCols[j]].set_xlim([27.5, 31.0])
-                axs[axsRows[j],axsCols[j]].set_yticks(np.linspace(-60, 40, num=int(100/20)+1))
+                axs[axsRows[j],axsCols[j]].set_ylim([-20,30]); axs[axsRows[j],axsCols[j]].set_xlim([27.5, 31.0])
+                axs[axsRows[j],axsCols[j]].set_yticks(np.linspace(-20, 30, num=int(50/5)+1))
                 axs[axsRows[j],axsCols[j]].grid('on')   
                 axs[axsRows[j],axsCols[j]].legend(fontsize=8, ncol=5, loc='lower right')
                 axs[axsRows[j],axsCols[j]].set_title('C'+str(chanCycle[j])+'-'+linCycle[j])
@@ -140,5 +140,8 @@ for beamNo in range(2):
             f_c = meas_info[[index for index in range(len(meas_info)) if '# f_c' in meas_info[index]][0]][1]
             qr = meas_info[[index for index in range(len(meas_info)) if 'barcodes' in meas_info[index]][0]][1]
             power = meas_info[[index for index in range(len(meas_info)) if 'Source power [dBm]' in meas_info[index]][0]][1]
-            fig.suptitle('Board ' + qr + ', Lens ' + str(lens) + ', Beam' + str(beam) + ', f$_{set}$=' + str(f_c) + ' GHz' + ', P=' + power + ' dBm', fontsize=25)
+            title = 'Board ' + qr + ', Lens ' + str(lens) + ', Beam' + str(beam) + ', f$_{set}$=' + str(f_c) + ' GHz' + ', P=' + power + ' dBm'
+            fig.suptitle(title, fontsize=25)
             plt.tight_layout()
+            plt.savefig('C:\\codeRun\\evaluationFigures\\'+title+'.png',dpi=400)
+print('-----Finished-----')
