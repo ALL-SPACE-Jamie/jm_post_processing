@@ -15,8 +15,7 @@ plt.close('all')
 dirScript = os.getcwd()
 
 # parmas
-filePath = r'C:\codeRun\OneDrive_1_09-05-2023 (1)'
-#temperature = 45
+filePath = r'C:\codeRun\2023-03-22_12-48-22_Minicalrig_boardscore_0_QR420-0074-B-00147\2023-03-22_12-48-22_Minicalrig_boardscore_0_QR420-0074-B-00147'
 
 # definitions
 def find_measFiles(path, fileString, beam):
