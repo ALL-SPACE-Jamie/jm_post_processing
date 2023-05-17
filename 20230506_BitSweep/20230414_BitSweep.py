@@ -66,10 +66,10 @@ def load__measFiles(filePath):
 
 
 def plot__2D(meas_array, f_c, GainOrPhase, common_gain, freqCol, beam):
-    global common_gain_indexes, teamp, gain
+    global common_gain_indexes, teamp, gain, devMax
 
     # hard-coded parameters
-    bitList = [0, 16, 32, 48, 64, 80, 96, 112, 128]
+    bitList = [0, 8, 16, 32, 64, 96]
 
     # set up figure
     fig = plt.subplots(figsize=(7, 20))
@@ -120,7 +120,7 @@ def plot__2D(meas_array, f_c, GainOrPhase, common_gain, freqCol, beam):
     plt.ylim([0, 128])
 
     # secondary axes
-    ax2 = ax.twiny();
+    ax2 = ax.twiny()
     ax3 = ax.twinx()
     ax2.set_xticks(np.linspace(0, 360, num=9))
     ax3.set_yticks(np.linspace(0, 0.25 * 128, num=9))
@@ -136,6 +136,7 @@ def plot__2D(meas_array, f_c, GainOrPhase, common_gain, freqCol, beam):
         common_gain) + ' bits\n')
 
     # 1D plots
+    devMax = 0.0
     for i in range(len(bitList)):
 
         # orthoganality
@@ -146,6 +147,8 @@ def plot__2D(meas_array, f_c, GainOrPhase, common_gain, freqCol, beam):
         plt.subplot(3, 1, 2)
         if GainOrPhase == 'Gain':
             plt.plot(x[gain_bits_indexes], array - np.mean(array), 'o-', label='Att bits = ' + str(bitList[i]))
+            if (max(array - np.mean(array))-min(array - np.mean(array))) > devMax:
+                devMax= (max(array - np.mean(array))-min(array - np.mean(array)))*1.0
         if GainOrPhase == 'Phase':
             # wrap phase
             forPlot = array
@@ -221,25 +224,29 @@ def plot__2D(meas_array, f_c, GainOrPhase, common_gain, freqCol, beam):
         if GainOrPhase == 'Phase':
             plt.xticks(np.linspace(0, 128, num=int(128 / 16) + 1))
             plt.xlim([0, 128])
-            plt.yticks(np.linspace(-360, 360, num=int(720 / 45) + 1))
-            plt.ylim([-360, 360])
+            plt.yticks(np.linspace(-90, 90, num=int(180 / 10) + 1))
+            plt.ylim([-90, 90])
             plt.xlabel('Att [bits]');
             plt.ylabel(r'$\Delta$ Phase [deg]')
             plt.savefig('C:\\codeRun\\bitSweepFigures\\' + fileName + str(str(meas_frequencies[freqCol])) + '_Phase.png', dpi=400)
 
 
 # run
-find_measFiles(r'C:\codeRun\2023-05-04_18-44-59_Minicalrig_bitsweep_1_QR00001-es2bu_45C', 'SWEEP')
+find_measFiles(r'C:\codeRun\2023-05-12_19-51-58_Minicalrig_bitsweep_1_QR00001-es2bu_Bias_0_LUT_MM_45C\2023-05-12_19-51-58_Minicalrig_bitsweep_1_QR00001-es2bu_Bias_0_LUT_MM_45C', 'SWEEP')
 count = 0
+portLog = []
+devLog = []
 for measFile in measFiles:
     load__measFiles(measFile)
     freqCols = []
     freqCols.append(list(meas_frequencies).index(float(f_c)))
-    #freqCols.append(np.argmin((meas_frequencies - float(f_c) - 0.5) ** 2))
-    #freqCols.append(np.argmin((meas_frequencies - float(f_c) + 0.5) ** 2))
+    freqCols.append(np.argmin((meas_frequencies - float(f_c) - 0.25) ** 2))
+    freqCols.append(np.argmin((meas_frequencies - float(f_c) + 0.25) ** 2))
     for freqCol in freqCols:
         plot__2D(meas_array, f_c, 'Gain', 36, freqCol, beam)
+        devLog.append(devMax); print(devMax)
         plot__2D(meas_array, f_c, 'Phase', 36, freqCol, beam)
         plt.close('all')
         count = count + 1
         print('Progress: ' + str(count) + '/' + str(len(measFiles) * len(freqCols)))
+print(devLog)
