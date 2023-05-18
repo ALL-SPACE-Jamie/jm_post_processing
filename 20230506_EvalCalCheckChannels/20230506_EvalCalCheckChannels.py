@@ -15,7 +15,7 @@ plt.close('all')
 dirScript = os.getcwd()
 
 # parmas
-filePath = r'C:\codeRun\OneDrive_2_16-05-2023\2023-05-15_14-14-35_Minicalrig_boardscore_1_QRQR00003-es2bu_Bias_0_No_LUT'
+filePath = r'C:\codeRun\eval_freqs'
 
 # definitions
 def find_measFiles(path, fileString, beam):
