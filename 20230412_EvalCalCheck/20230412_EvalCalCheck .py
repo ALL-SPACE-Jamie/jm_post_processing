@@ -16,9 +16,9 @@ dirScript = os.getcwd()
 # parmas
 
 temperature = '45'
-tlmType = 'Rx'
+tlmType = 'Tx'
 measType = 'Evaluation' # 'Calibration' or 'Evaluation'
-filePath = r'C:\Users\RyanFairclough\Downloads\Chosen_Rx_Boards'
+filePath = r'C:\codeRun\comparison_ES2'
 SaveFileName = '\Analysis'
 
 # definitions
@@ -63,11 +63,8 @@ def load__measFiles(filePath):
 
 def plot__gainVport(f_set, measType):
     global y, stat_TLM_median, loaded
-    print(measType)
     fig.suptitle(measType + ': ' + str(f_set) + ' GHz, Beam ' + str(beam) + ', ' + str(temperature) + ' degC', fontsize=25)
-    print(meas_params['f_c'])
     if float(meas_params['f_c']) == f_set and len(meas_array) > 2:
-        print('blah2')
         # array
         col = int(np.where(meas_frequencies == f_set)[0][0]*2)
         y = meas_array[:, col]
@@ -96,6 +93,7 @@ def plot__gainVport(f_set, measType):
         axs[0, 1].plot(meas_params['lens type (rx/tx)'] + meas_params['barcodes'], stat_l2_median, 'g^')
         axs[0, 1].plot(meas_params['lens type (rx/tx)'] + meas_params['barcodes'], stat_l3_median, 'bP')
         axs[0, 1].plot(meas_params['lens type (rx/tx)'] + meas_params['barcodes'], stat_TLM_median, 'kX', markersize=10)
+        print(stat_TLM_median)
         axs[0, 1].set_xlabel('board'); axs[0, 1].set_ylabel('Median [dB]'); axs[0, 1].tick_params(axis = 'x', labelrotation = 90)
         axs[0, 1].set_ylim([minY,maxY])
         axs[0, 1].grid('on')
@@ -132,10 +130,6 @@ def plot__gainVport(f_set, measType):
         loaded = False
         
 ## RUN ##
-
-
-# filePath = r'C:\Users\JamieMitchell\Downloads\tx2'
-# filePath = r'C:\Users\JamieMitchell\Downloads\Eval_Somacis_multi_frequency'
 if measType =='Evaluation' and tlmType == 'Tx':
     f_set_list = [29.5]
 elif measType =='Calibration' and tlmType == 'Tx':

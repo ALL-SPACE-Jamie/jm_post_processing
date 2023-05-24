@@ -15,7 +15,7 @@ plt.close('all')
 dirScript = os.getcwd()
 
 # parmas
-filePath = r'C:\codeRun\eval_freqs'
+filePath = r'C:\codeRun\ES2_LUT_CT'
 
 # definitions
 def find_measFiles(path, fileString, beam):
