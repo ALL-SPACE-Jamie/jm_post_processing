@@ -15,7 +15,7 @@ plt.close('all')
 dirScript = os.getcwd()
 
 # parmas
-filePath = r'C:\codeRun\OneDrive_2_16-05-2023\2023-05-15_16-56-20_Minicalrig_powersweep_1_QRQR00001-es2bu_Bias_0_45C\2023-05-15_16-56-20_Minicalrig_powersweep_1_QRQR00001-es2bu_Bias_0_45C'
+filePath = r'C:\codeRun\_data\Rx\ES2c_powerSweep'
 
 beamTab = [1,2]
 lensTab = [1,2,3]
@@ -90,8 +90,8 @@ for beam in beamTab:
         for row in range(4):
             for col in range(2):
                 axs[row,col].legend(); axs[row,col].set_xlabel('Power [dBm]'); axs[row,col].set_ylabel('S$_{21}$ [dB]')
-                axs[row,col].set_ylim([-10,30]); axs[row,col].set_xlim([-35, 0.0])
-                axs[row,col].set_yticks(np.linspace(-10, 30, num=int(40/5)+1))
+                axs[row,col].set_ylim([0,40]); axs[row,col].set_xlim([-50, 0.0])
+                axs[row,col].set_yticks(np.linspace(-0, 40, num=int(40/5)+1))
                 axs[row,col].grid('on')
                 axs[row,col].legend(fontsize=8, ncol=5, loc='lower right')
                 axs[row,col].set_title('C'+str(chanCycle[row])+'-'+linCycle[col])

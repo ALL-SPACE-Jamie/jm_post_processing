@@ -66,10 +66,11 @@ def load__measFiles(filePath):
 
 
 def plot__2D(meas_array, f_c, GainOrPhase, common_gain, freqCol, beam):
-    global common_gain_indexes, teamp, gain, devMax
+    global common_gain_indexes, teamp, gain, devMax, portNo
 
     # hard-coded parameters
     bitList = [0, 8, 16, 32, 64, 96]
+    bitList = [32]
 
     # set up figure
     fig = plt.subplots(figsize=(7, 20))
@@ -135,6 +136,8 @@ def plot__2D(meas_array, f_c, GainOrPhase, common_gain, freqCol, beam):
                   lensInfoLoc + 1] + ', Port ' + fileName.split('_')[portInfoLoc + 1] + ', PaCG = ' + str(
         common_gain) + ' bits\n')
 
+    portNo = fileName.split('_')[portInfoLoc + 1]
+
     # 1D plots
     devMax = 0.0
     for i in range(len(bitList)):
@@ -147,7 +150,7 @@ def plot__2D(meas_array, f_c, GainOrPhase, common_gain, freqCol, beam):
         plt.subplot(3, 1, 2)
         if GainOrPhase == 'Gain':
             plt.plot(x[gain_bits_indexes], array - np.mean(array), 'o-', label='Att bits = ' + str(bitList[i]))
-            if (max(array - np.mean(array))-min(array - np.mean(array))) > devMax:
+            if bitList[i] == 32:
                 devMax= (max(array - np.mean(array))-min(array - np.mean(array)))*1.0
         if GainOrPhase == 'Phase':
             # wrap phase
@@ -218,9 +221,9 @@ def plot__2D(meas_array, f_c, GainOrPhase, common_gain, freqCol, beam):
             plt.xlim([0, 128])
             plt.yticks(np.linspace(-50, 50, num=int(100 / 5) + 1))
             plt.ylim([-30, 30])
-            plt.xlabel('Att [bits]');
+            plt.xlabel('Att [bits]')
             plt.ylabel('Gain [dB]')
-            plt.savefig('C:\\codeRun\\bitSweepFigures\\' + fileName + str(str(meas_frequencies[freqCol])) + '_Gain.png', dpi=400)
+            #plt.savefig('C:\\codeRun\\_data\\Rx\\ES2c_bitSweeps\\2023-05-26_20-08-05_Minicalrig_bitsweep_0_QR00007-ES2c_CCG48_PCG24_LUT_45C\\figures\\' + fileName + str(str(meas_frequencies[freqCol])) + '_Gain.png', dpi=400)
         if GainOrPhase == 'Phase':
             plt.xticks(np.linspace(0, 128, num=int(128 / 16) + 1))
             plt.xlim([0, 128])
@@ -228,11 +231,11 @@ def plot__2D(meas_array, f_c, GainOrPhase, common_gain, freqCol, beam):
             plt.ylim([-90, 90])
             plt.xlabel('Att [bits]');
             plt.ylabel(r'$\Delta$ Phase [deg]')
-            plt.savefig('C:\\codeRun\\bitSweepFigures\\' + fileName + str(str(meas_frequencies[freqCol])) + '_Phase.png', dpi=400)
+            #plt.savefig('C:\\codeRun\\_data\\Rx\\ES2c_bitSweeps\\2023-05-26_20-08-05_Minicalrig_bitsweep_0_QR00007-ES2c_CCG48_PCG24_LUT_45C\\figures\\' + fileName + str(str(meas_frequencies[freqCol])) + '_Phase.png', dpi=400)
 
 
 # run
-find_measFiles(r'C:\codeRun\2023-05-12_19-51-58_Minicalrig_bitsweep_1_QR00001-es2bu_Bias_0_LUT_MM_45C\2023-05-12_19-51-58_Minicalrig_bitsweep_1_QR00001-es2bu_Bias_0_LUT_MM_45C', 'SWEEP')
+find_measFiles(r'C:\codeRun\_data\Tx\ES2c_bitSweeps', 'SWEEP')
 count = 0
 portLog = []
 devLog = []
@@ -244,9 +247,10 @@ for measFile in measFiles:
     freqCols.append(np.argmin((meas_frequencies - float(f_c) + 0.25) ** 2))
     for freqCol in freqCols:
         plot__2D(meas_array, f_c, 'Gain', 36, freqCol, beam)
-        devLog.append(devMax); print(devMax)
+        devLog.append(devMax); print(devMax); portLog.append(float(portNo))
         plot__2D(meas_array, f_c, 'Phase', 36, freqCol, beam)
         plt.close('all')
         count = count + 1
         print('Progress: ' + str(count) + '/' + str(len(measFiles) * len(freqCols)))
+print(portLog)
 print(devLog)
