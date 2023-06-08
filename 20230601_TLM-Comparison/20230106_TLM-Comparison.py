@@ -18,7 +18,8 @@ dirScript = os.getcwd()
 filePath = r'C:\codeRun\_data\Rx\_comparison_Rx'
 filePath = r'C:\codeRun\_data\Rx\_comparison_Rx_v7'
 filePath = r'C:\codeRun\_data\Rx\ES2c_noLUT'
-filePath = r'C:\Scratch\Rx_CGStudy\20230530\New folder'
+filePath = r'C:\Scratch'
+beamChoice = 1
 
 # definitions
 def find_measFiles(path, fileString, beam):
@@ -118,24 +119,26 @@ with open('rx_s2000_channel_map.json') as json_file:
 with open('rx_s2000_rfic_map.json') as json_file:
     S2000_TX_RFIC_PORT_MAP = json.load(json_file)
     
-# with open('S2000_TX_RFIC_CHANNEL_MAP.json') as json_file:
-#     S2000_TX_RFIC_CHANNEL_MAP = json.load(json_file)
-# with open('S2000_TX_RFIC_PORT_MAP.json') as json_file:
-#     S2000_TX_RFIC_PORT_MAP = json.load(json_file)
+with open('S2000_TX_RFIC_CHANNEL_MAP.json') as json_file:
+    S2000_TX_RFIC_CHANNEL_MAP = json.load(json_file)
+with open('S2000_TX_RFIC_PORT_MAP.json') as json_file:
+    S2000_TX_RFIC_PORT_MAP = json.load(json_file)
 
 plt.figure(figsize=(7,4))
 label = ['']
-labelMap = ['ES1 (no LUT)', 'ES1 (LUT)', 'ES2 (no LUT)']
+labelMap = ['ES1 (no LUT)', 'ES1 (LUT)', 'ES2 (no LUT)','a','b',]
 # labelMap = ['ES1 (no LUT)', 'ES2 board 4 {48, 24} (no LUT)', 'ES2 board 2 {48, 48} (no LUT)']
 labelMap = ['ES1 (LUT) {48, 24}', 'ES2c board 5 (ES2c LUT) {48, 24}','kk']
 labelMap = ['ES2 (ES2c LUT) {60, 60}', 'ES2c board 5 (ES2c LUT) {48, 24}','kk']
 labelMap = ['Board 5 (no LUT)', 'Board 6 (no LUT)', 'Board 7 (no LUT)']
-labelMap = ['{48,12}','{48,6}','{36,24}','{36,12}','{36,6}']
-colMap = ['#ff7f0e','#1f77b4','green','r','b','b']#'#1f77b4',
+labelMap = ['{48,12}','{48,6}','{36,24}','{36,12}','{36,6}','{36,6}','{36,6}','{36,6}','{36,6}','{36,6}','{36,6}','{36,6}']
+labelMap = ['17.7','18.2','18.7','19.2','19.7','20.2','20.7','21.2']
+#labelMap = ['27.5','28.0','28.5','29.0','29.5','30.0','30.5','31.0']
+colMap = ['#ff7f0e','#1f77b4','green','r','b','b','b','b','b','b','b','b','b','b','b']#'#1f77b4',
+colMap = ['r','g','b','m','c','k','orange','yellow', 'pink']
 
 count = 0
 log = []
-beamChoice = 2
 for beamNo in range(1):
     find_measFiles(filePath, 'OP_', beamNo+beamChoice)
     for measFile in measFiles:
@@ -178,7 +181,7 @@ for beamNo in range(1):
         stdTracesMin = avTraces-stdTraces/2.
         stdTracesMax = avTraces+stdTraces/2.
         # plt.plot(meas_frequencies, avTraces, linewidth=3, label=labelMap[count])
-        plt.plot(meas_frequencies, 10*np.log10(avTraces), colMap[count], linewidth=3, label=labelMap[count])
+        plt.plot(meas_frequencies, 10*np.log10(avTraces), colMap[count], linewidth=1, label=labelMap[count])
         # plt.plot(meas_frequencies, avTraces, linewidth=3, label=qr)
         
         # plt.plot(meas_frequencies, stdTracesMin)
@@ -186,7 +189,7 @@ for beamNo in range(1):
         # plt.fill_between(meas_frequencies, stdTracesMin, stdTracesMax, alpha=0.2)
         # plt.plot(meas_frequencies, 10*np.log10(minTraces),'--')
         # plt.plot(meas_frequencies, 10*np.log10(maxTraces),'--')
-        plt.fill_between(meas_frequencies, 10*np.log10(minTraces), 10*np.log10(maxTraces), color=colMap[count], alpha=0.2)
+        # plt.fill_between(meas_frequencies, 10*np.log10(minTraces), 10*np.log10(maxTraces), color=colMap[count], alpha=0.2)
         count = count+1
         
         plt.xlabel('Frequency [GHz]'); plt.ylabel('S$_{21}$ (arb.) [dB]')

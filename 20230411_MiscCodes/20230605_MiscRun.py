@@ -18,9 +18,10 @@ plt.close('all')
 dirScript = os.getcwd()
 
 # parmas
-filePath = r'C:\Users\JamieMitchell\OneDrive - ALL.SPACE\S-Type\Tx_TLM\ES2\Preliminary_Data\Calibration\20230518'
+filePath = r'C:\Users\JamieMitchell\OneDrive - ALL.SPACE\S-Type\Tx_TLM\ES2c-Laser_Cut\Preliminary_Data\Calibration\20230605'
 #filePath = r'C:\Users\JamieMitchell\OneDrive - ALL.SPACE\S-Type\Tx_TLM\ES2c-Laser_Cut\Preliminary_Data\Calibration\20230526\2023-05-26_16-25-39_Minicalrig_calibration_1_QR00005_ES2c_LC_LUT-CT_27.5_25C\iteration_1'
 txrx = 'tx'
+
 
 # definitions
 def find_measFiles(path, fileString, beam):
@@ -157,10 +158,10 @@ for beamNo in range(2):
                     axs[axsRows[j], axsCols[j]].plot(meas_frequencies, meas_array_plot[i, :], label=rfics[i])
                 axs[axsRows[j], axsCols[j]].set_xlabel('Frequency [GHz]');
                 axs[axsRows[j], axsCols[j]].set_ylabel('S$_{21}$ [dB]')
-                axs[axsRows[j], axsCols[j]].set_ylim([10, 60]);
+                axs[axsRows[j], axsCols[j]].set_ylim([0, 50]);
                 axs[axsRows[j], axsCols[j]].set_xlim([17.7, 21.2]);
                 axs[axsRows[j], axsCols[j]].set_xlim([27.5, 31.0])
-                axs[axsRows[j], axsCols[j]].set_yticks(np.linspace(10, 60, num=int(50 / 5) + 1))
+                axs[axsRows[j], axsCols[j]].set_yticks(np.linspace(0, 50, num=int(50 / 5) + 1))
                 axs[axsRows[j], axsCols[j]].grid('on')
                 axs[axsRows[j], axsCols[j]].legend(fontsize=8, ncol=5, loc='lower right')
                 axs[axsRows[j], axsCols[j]].set_title('C' + str(chanCycle[j]) + '-' + linCycle[j])
