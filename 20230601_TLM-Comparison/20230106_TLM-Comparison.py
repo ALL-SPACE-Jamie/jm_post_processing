@@ -20,6 +20,7 @@ filePath = r'C:\codeRun\_data\Rx\_comparison_Rx_v7'
 filePath = r'C:\codeRun\_data\Rx\ES2c_noLUT'
 filePath = r'C:\Scratch'
 beamChoice = 1
+txrx = 'tx'
 
 # definitions
 def find_measFiles(path, fileString, beam):
@@ -113,16 +114,21 @@ def archive__2DPlot():
     ax.set_xticklabels(rfics, fontsize=7, rotation=45)
     plt.close('all')
 
+def dict__maps(txrx):
+    global S2000_TX_RFIC_CHANNEL_MAP, S2000_TX_RFIC_PORT_MAP
+    if txrx == 'rx':
+        with open('rx_s2000_channel_map.json') as json_file:
+            S2000_TX_RFIC_CHANNEL_MAP = json.load(json_file)
+        with open('rx_s2000_rfic_map.json') as json_file:
+            S2000_TX_RFIC_PORT_MAP = json.load(json_file)
+    if txrx == 'tx':
+        with open('S2000_TX_RFIC_CHANNEL_MAP.json') as json_file:
+            S2000_TX_RFIC_CHANNEL_MAP = json.load(json_file)
+        with open('S2000_TX_RFIC_PORT_MAP.json') as json_file:
+            S2000_TX_RFIC_PORT_MAP = json.load(json_file)
+
 ## run
-with open('rx_s2000_channel_map.json') as json_file:
-    S2000_TX_RFIC_CHANNEL_MAP = json.load(json_file)
-with open('rx_s2000_rfic_map.json') as json_file:
-    S2000_TX_RFIC_PORT_MAP = json.load(json_file)
-    
-with open('S2000_TX_RFIC_CHANNEL_MAP.json') as json_file:
-    S2000_TX_RFIC_CHANNEL_MAP = json.load(json_file)
-with open('S2000_TX_RFIC_PORT_MAP.json') as json_file:
-    S2000_TX_RFIC_PORT_MAP = json.load(json_file)
+dict__maps(txrx)
 
 plt.figure(figsize=(7,4))
 label = ['']
@@ -193,7 +199,7 @@ for beamNo in range(1):
         count = count+1
         
         plt.xlabel('Frequency [GHz]'); plt.ylabel('S$_{21}$ (arb.) [dB]')
-        plt.ylim([-10,50]); plt.xlim([17.7, 21.2])#; plt.xlim([27.5, 31.0])
+        plt.ylim([-10,50]); plt.xlim([17.7, 21.2]); plt.xlim([27.5, 31.0])
         plt.yticks(np.linspace(-10, 50, num=int(60/5)+1))
         plt.grid('on')   
         plt.legend(ncol=5, loc='lower right', fontsize=7)

@@ -18,9 +18,9 @@ plt.close('all')
 dirScript = os.getcwd()
 
 # parmas
-filePath = r'C:\Users\JamieMitchell\OneDrive - ALL.SPACE\S-Type\Tx_TLM\ES2\Preliminary_Data\Calibration\20230518'
-#filePath = r'C:\Users\JamieMitchell\OneDrive - ALL.SPACE\S-Type\Tx_TLM\ES2c-Laser_Cut\Preliminary_Data\Calibration\20230526\2023-05-26_16-25-39_Minicalrig_calibration_1_QR00005_ES2c_LC_LUT-CT_27.5_25C\iteration_1'
+filePath = r'C:\Users\JamieMitchell\OneDrive - ALL.SPACE\S-Type\Tx_TLM\ES2\Preliminary_Data\Evaluation\20230516\ES2_LUT_Freq_Eval_MM'
 txrx = 'tx'
+ymin=-20; ymax=30
 
 # definitions
 def find_measFiles(path, fileString, beam):
@@ -157,18 +157,19 @@ for beamNo in range(2):
                     axs[axsRows[j], axsCols[j]].plot(meas_frequencies, meas_array_plot[i, :], label=rfics[i])
                 axs[axsRows[j], axsCols[j]].set_xlabel('Frequency [GHz]');
                 axs[axsRows[j], axsCols[j]].set_ylabel('S$_{21}$ [dB]')
-                axs[axsRows[j], axsCols[j]].set_ylim([10, 60]);
-                axs[axsRows[j], axsCols[j]].set_xlim([17.7, 21.2]);
-                axs[axsRows[j], axsCols[j]].set_xlim([27.5, 31.0])
-                axs[axsRows[j], axsCols[j]].set_yticks(np.linspace(10, 60, num=int(50 / 5) + 1))
+                axs[axsRows[j], axsCols[j]].set_ylim([ymin, ymax])
+                if txrx == 'rx':
+                    axs[axsRows[j], axsCols[j]].set_xlim([17.7, 21.2])
+                else:
+                    axs[axsRows[j], axsCols[j]].set_xlim([27.5, 31.0])
+                axs[axsRows[j], axsCols[j]].set_yticks(np.linspace(ymin,ymax, num=int(50 / 5) + 1))
                 axs[axsRows[j], axsCols[j]].grid('on')
                 axs[axsRows[j], axsCols[j]].legend(fontsize=8, ncol=5, loc='lower right')
                 axs[axsRows[j], axsCols[j]].set_title('C' + str(chanCycle[j]) + '-' + linCycle[j])
             beam = meas_info[[index for index in range(len(meas_info)) if 'Beam' in meas_info[index]][0]][1]
             f_c = meas_info[[index for index in range(len(meas_info)) if '# f_c' in meas_info[index]][0]][1]
             qr = meas_info[[index for index in range(len(meas_info)) if 'barcodes' in meas_info[index]][0]][1]
-            power = \
-            meas_info[[index for index in range(len(meas_info)) if 'Source power [dBm]' in meas_info[index]][0]][1]
+            power = meas_info[[index for index in range(len(meas_info)) if 'Source power [dBm]' in meas_info[index]][0]][1]
             title = 'Board ' + qr + ', Lens ' + str(lens) + ', Beam' + str(beam) + ', f$_{set}$=' + str(
                 f_c) + ' GHz' + ', P=' + power + ' dBm'
             fig.suptitle(title, fontsize=25)
