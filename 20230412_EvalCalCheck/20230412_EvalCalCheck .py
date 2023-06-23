@@ -24,12 +24,15 @@ dirScript = os.getcwd()
 
 temperature = '45'
 tlmType = 'Tx'
-measType = 'Calibration'  # 'Calibration' or 'Evaluation'
-filePath = r'C:\Users\JamieMitchell\OneDrive - ALL.SPACE\S-Type\Tx_TLM\ES2\TLM_Evaluation_Measurements\All_TLMs'
+measType = 'Calibration' #'Calibration'  # 'Calibration' or 'Evaluation'
+filePath = r'C:\Users\JamieMitchell\OneDrive - ALL.SPACE\S-Type\Rx_TLM\ES2c-Laser_Cut\TLM_Evaluation_Measurements\All_Boards'
+filePath = r'C:\Users\JamieMitchell\OneDrive - ALL.SPACE\S-Type\Tx_TLM\ES2\TLM_Calibration_Measurements\Tx_Batch_1'
 SaveFileName = '\Post_Processed_Data'
 BoardFont = '10'
 counter = 0
 external_folder_name = "Figures"
+measFileShift = 0
+droppedThresh = -5
 
 
 # definitions
@@ -75,52 +78,35 @@ def load_measFiles(filePath):
 
 def plot__gainVport(f_set, measType):
     global y, stat_TLM_median, loaded
-    print(measType)
     fig.suptitle(measType + ': ' + str(f_set) + ' GHz, Beam ' + str(beam) + ', ' + str(temperature) + ' degC',
                  fontsize=25)
-    print(meas_params['f_c'])
     if float(meas_params['f_c']) == f_set and len(meas_array) > 2:
         print('Plotting')
         # array
         col = int(np.where(meas_frequencies == f_set)[0][0] * 2)
         y = meas_array[:, col]
-        #print(y)
+        
         # stats
         stat_TLM_median = np.median(y)
         stat_TLM_median_log.append(stat_TLM_median)
         stat_l1_median = np.median(y[0:int(len(y) / 3)])
         stat_l2_median = np.median(y[int(len(y) / 3):2 * int(len(y) / 3)])
         stat_l3_median = np.median(y[2 * int(len(y) / 3):3 * int(len(y) / 3)])
+        stat_l1_dropped = ((y[0:int(len(y) / 3)]) < droppedThresh).sum()
+        stat_l2_dropped = ((y[int(len(y) / 3):2 * int(len(y) / 3)]) < -20).sum()
+        stat_l3_dropped = ((y[2 * int(len(y) / 3):3 * int(len(y) / 3)]) < -20).sum()
         stat_TLM_std = np.std(y, dtype=np.float64) ##
         print(stat_l1_median)
         print(stat_l2_median)
         print(stat_l3_median)
-        #yq = 10 ** (y / 10)
-        #print(yq)
-        #stat_TLM_std_lin = np.std(yq, dtype=np.float64)
-        #print(stat_TLM_std)
-        #print(stat_TLM_std_lin)
-
-        #stat_TLM_std = 10 * np.log10(stat_TLM_std_lin)
-        #print(stat_TLM_std)
-
-        belowLog = []
-        total = []
-        for check in range(len(y)):
-            if y[check] < -20:
-                belowLog.append(y[check])
-
-        print('***')
-        print(len(belowLog))
-        print('***')
 
         stat_l1_std = np.std(y[0:int(len(y) / 3)])
         stat_l2_std = np.std(y[int(len(y) / 3):2 * int(len(y) / 3)])
         stat_l3_std = np.std(y[2 * int(len(y) / 3):3 * int(len(y) / 3)])
 
         # plot 1
-        minY = -40
-        maxY = 40
+        minY = -30
+        maxY = 50
         axs[0, 0].vlines(int(len(y) / 3), minY, maxY, 'k', alpha=0.2)
         axs[0, 0].vlines(2 * int(len(y) / 3), minY, maxY, 'k', alpha=0.2)
         axs[0, 0].text(0.8 * int(len(y) / 6), minY + 5, 'Lens 1', backgroundcolor='r', fontsize=20)
@@ -147,25 +133,26 @@ def plot__gainVport(f_set, measType):
         axs[1, 1].plot(meas_params['lens type (rx/tx)'] + meas_params['barcodes'], stat_l2_std, 'g^')
         axs[1, 1].plot(meas_params['lens type (rx/tx)'] + meas_params['barcodes'], stat_l3_std, 'bP')
         axs[1, 1].plot(meas_params['lens type (rx/tx)'] + meas_params['barcodes'], stat_TLM_std, 'kX', markersize=10)
-        #print(meas_params['lens type (rx/tx)'] +
-        print(meas_params['barcodes'])
-        #print(str(stat_TLM_median))
         axs[1, 1].set_xlabel('board')
         axs[1, 1].set_ylabel('$\sigma$ [dB]')
         axs[1, 1].tick_params(axis='x', labelrotation=90, labelsize=BoardFont)
         axs[1, 1].set_ylim([0, 20])
         axs[1, 1].grid('on')
         # plot 4
-        axs[2, 1].plot(meas_params['lens type (rx/tx)'] + meas_params['barcodes'], stat_l1_median - stat_TLM_median,
+        if stat_l1_dropped + stat_l2_dropped + stat_l3_dropped > 50:
+            axs[2, 1].plot(meas_params['lens type (rx/tx)'] + meas_params['barcodes'], 50.0,
+                           'r*', markersize=15)
+            
+        axs[2, 1].plot(meas_params['lens type (rx/tx)'] + meas_params['barcodes'], stat_l1_dropped,
                        'rs')
-        axs[2, 1].plot(meas_params['lens type (rx/tx)'] + meas_params['barcodes'], stat_l2_median - stat_TLM_median,
+        axs[2, 1].plot(meas_params['lens type (rx/tx)'] + meas_params['barcodes'], stat_l2_dropped,
                        'g^')
-        axs[2, 1].plot(meas_params['lens type (rx/tx)'] + meas_params['barcodes'], stat_l3_median - stat_TLM_median,
+        axs[2, 1].plot(meas_params['lens type (rx/tx)'] + meas_params['barcodes'], stat_l3_dropped,
                        'bP')
         axs[2, 1].set_xlabel('board')
-        axs[2, 1].set_ylabel('Difference from TLM [dB]')
+        axs[2, 1].set_ylabel('Number of dropped ports (gain < ' + str(droppedThresh) + ' dB)')
         axs[2, 1].tick_params(axis='x', labelrotation=90, labelsize=BoardFont)
-        axs[2, 1].set_ylim([-10, 10])
+        axs[2, 1].set_ylim([0, 50])
         axs[2, 1].grid('on')
 
         # plot 5
@@ -193,13 +180,10 @@ def plot__gainVport(f_set, measType):
 
 ## RUN ##
 
-
-# filePath = r'C:\Users\JamieMitchell\Downloads\tx2'
-# filePath = r'C:\Users\JamieMitchell\Downloads\Eval_Somacis_multi_frequency'
 if measType == 'Evaluation' and tlmType == 'Tx':
     f_set_list = [29.5]
 elif measType == 'Calibration' and tlmType == 'Tx':
-    f_set_list = [29.5] #, 28.0, 28.5, 29.0, 29.5, 30.0, 30.5, 31.0]
+    f_set_list = [29.5, 28.0, 28.5, 29.0, 29.5, 30.0, 30.5, 31.0]
 elif measType == 'Evaluation' and tlmType == 'Rx':
     f_set_list = [19.2]
 elif measType == 'Calibration' and tlmType == 'Rx':
@@ -216,29 +200,26 @@ for p in range(2):
 
         fig, axs = plt.subplots(3, 2, figsize=(25, 15))
         stat_TLM_median_log = []
-        for k in range(len(measFiles)):
+        for k in range(len(measFiles)-measFileShift):
 
             # load meas file
             if '_' + temperature + 'C' in measFiles[
                 k]:  # str(temperature) + 'C' in measFiles[k]:# and 'teration_1' in measFiles[k]:
                 load_measFiles(measFiles[k])
+                print(meas_params['barcodes'])
 
-                # print(load__measFiles(measFiles[k]))
                 # plot
                 plot__gainVport(f_set, measType)
-                # print('k=', k)
-                # print(measFiles[k])
-                # print(beam)
-                # print(loaded)
                 # colate
                 if loaded == True:
                     stat_TLM_median_log.append(stat_TLM_median)
-                    #print(stat_TLM_median)
+                    print(stat_TLM_median)
                     print('Added to plot')
         # plot histogram
         ymax1 = 25.0
 
         mean = np.mean(np.array(stat_TLM_median_log))
+        print(stat_TLM_median_log)
 
         # print(measFiles)
         axs[2, 0].hist(np.array(stat_TLM_median_log), bins=11)
@@ -253,8 +234,6 @@ for p in range(2):
         sigma = np.sqrt(variance)
         x = np.linspace(-50, 50, 1001)
         axs[2, 0].plot(x, ymax1 * norm.pdf(x, mean, sigma) / (max(norm.pdf(x, mean, sigma))), 'r')
-
-
 
         # format
         plt.tight_layout()

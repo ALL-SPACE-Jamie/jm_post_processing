@@ -6,6 +6,8 @@ import pandas as pd
 import matplotlib.pyplot as plt; plt.close('all')
 import pickle
 
+filePath = r'C:\Scratch\misc'
+
 def find__RFAfiles(path, f_set, beam):
     global filesRFA
     files = []
@@ -59,7 +61,6 @@ f_set_Log = [17.7,18.2,18.7,19.2,19.7,20.2,20.7,21.2]
 for f_set in f_set_Log:
     ## RUN
     # f_set = 29.0
-    filePath = r'C:\codeRun\_____run\E5_RFAs\E2_Terminal_Mod_Rx\E2_Terminal_Mod_Rx'
     # filePath = r'C:\codeRun\rx-processed'
     find__RFAfiles(filePath, f_set, 1)
     analyse__RFAparams(filesRFA)
@@ -189,7 +190,10 @@ for f_set in f_set_Log:
         axs[1].set_xlabel('port'); axs[1].set_ylabel('dB')
         axs[2].set_xlabel('port'); axs[2].set_ylabel('dB')
         plt.tight_layout()
-        plt.savefig(r'C:\\codeRun\\_____run\\E5_RFAs\\E2_Terminal_Mod_Rx\\E2_Terminal_Mod_Rx_HFSSOffset\\' + str(j) + '____' + filesRFA[j].split('\\')[-1] + '.png', dpi=200)
+        savePath = filePath + '\\figures'
+        if not os.path.exists(savePath):
+            os.makedirs(savePath)
+        plt.savefig(savePath + '\\' + str(j) + '____' + filesRFA[j].split('\\')[-1] + '.png', dpi=200)
     
     ## Open and edit RFA files
     for j in range(len(filesRFA)):
@@ -214,11 +218,11 @@ for f_set in f_set_Log:
         for o in range(len(meas_array_corrected)):
             meas_info_list.append(list(meas_array_corrected[o,:]))
             
-        # write new file
-        file = open(r'C:\\codeRun\\_____run\\E5_RFAs\\E2_Terminal_Mod_Rx\\E2_Terminal_Mod_Rx_HFSSOffset\\' + filesRFA[j].split('\\')[-1] + '_HFSS-f-offset.csv', 'w+', newline ='') 
-        with file:     
-            write = csv.writer(file) 
-            write.writerows(meas_info_list)
+        # # write new file
+        # file = open(r'C:\\codeRun\\_____run\\E5_RFAs\\E2_Terminal_Mod_Rx\\E2_Terminal_Mod_Rx_HFSSOffset\\' + filesRFA[j].split('\\')[-1] + '_HFSS-f-offset.csv', 'w+', newline ='') 
+        # with file:     
+        #     write = csv.writer(file) 
+        #     write.writerows(meas_info_list)
                       
 
 

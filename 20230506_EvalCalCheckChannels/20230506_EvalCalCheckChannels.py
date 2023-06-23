@@ -18,7 +18,7 @@ plt.close('all')
 dirScript = os.getcwd()
 
 # parmas
-filePath = r'C:\Users\JamieMitchell\OneDrive - ALL.SPACE\S-Type\Tx_TLM\ES2\Preliminary_Data\Evaluation\20230516\ES2_LUT_Freq_Eval_MM'
+filePath = r'C:\\Scratch\\misc'
 txrx = 'tx'
 ymin=-20; ymax=30
 

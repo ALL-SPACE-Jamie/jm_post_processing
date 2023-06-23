@@ -3,10 +3,12 @@ import numpy as np
 import matplotlib.pyplot as plt
 import os
 import csv
+import pickle
 
 # set-up
 setUp = {}
-setUp['filePath'] = r'C:\Scratch\20230610_TLM-TemperatureInterpolation\SES_Terminal_Tx'
+setUp['filePath'] = r'C:\Users\JamieMitchell\OneDrive - ALL.SPACE\S-Type\Tx_TLM\ES2\TLM_Calibration_Measurements\Tx_Batch_1'
+setUp['filePath'] = r'C:\Scratch\results__TX_Batch_1'
 
 # definitions
 def find__measFiles(filePath, fileString):
@@ -51,13 +53,15 @@ def find__fileDetails(filePath):
 ## run ##
 
 # find all of the measurements
-find__measFiles(setUp['filePath'], 'RFA')
-measFiles = measFiles[0:200] ##### DelMe
+outFileType = 'OP'
+find__measFiles(setUp['filePath'], 'OP')
+# measFiles = measFiles[0:200] ##### DelMe
 
 # find all of the boards tested and make a dictionary
 globalDict = {}; globalDict['barcodes'] = []
 boardTestTemperatures = {}
 for filePath in measFiles:
+    print(filePath.split('\\')[-1])
     find__fileDetails(filePath)
     if meas_params['barcodes'] not in globalDict['barcodes']:
         globalDict['barcodes'].append(meas_params['barcodes'])
@@ -99,7 +103,7 @@ for filePath in measFiles:
         calcArrays['beam'+str(meas_params['Beam'])]['f_c='+str(meas_params['f_c'])][meas_params['barcodes']]['T'+meas_params['Temp. [°C]']]['gain'] = meas_array_gain
         calcArrays['beam'+str(meas_params['Beam'])]['f_c='+str(meas_params['f_c'])][meas_params['barcodes']]['T'+meas_params['Temp. [°C]']]['phase'] = meas_array_phase
 
-# calculation
+# calculate differences
 for beam in calcArrays:
     for f_c in calcArrays[beam]:
         for barcode in globalDict['barcodes_threeTemps']:
@@ -107,7 +111,8 @@ for beam in calcArrays:
             calcArrays[beam][f_c][barcode]['TdiffMax']['gain'] = calcArrays[beam][f_c][barcode]['T65']['gain']-calcArrays[beam][f_c][barcode]['T45']['gain']
             calcArrays[beam][f_c][barcode]['TdiffMin']['phase'] = calcArrays[beam][f_c][barcode]['T25']['phase']-calcArrays[beam][f_c][barcode]['T45']['phase']
             calcArrays[beam][f_c][barcode]['TdiffMax']['phase'] = calcArrays[beam][f_c][barcode]['T65']['phase']-calcArrays[beam][f_c][barcode]['T45']['phase']
-            
+
+# average gain    
 for beam in calcArrays:
     for f_c in calcArrays[beam]:
         avArrayMin_gain = np.zeros_like(meas_array_gain)
@@ -122,96 +127,186 @@ for beam in calcArrays:
         calcArrays[beam][f_c]['Averages']['T'+'diffMax'] = {}
         calcArrays[beam][f_c]['Averages']['T'+'diffMin']['gain'] = avArrayMin_gain
         calcArrays[beam][f_c]['Averages']['T'+'diffMax']['gain'] = avArrayMax_gain
-        
-# for beam in calcArrays:
-#     for f_c in calcArrays[beam]:
-#         avArrayMin_phase = np.zeros_like(meas_array_phase)
-#         avArrayMax_phase = np.zeros_like(meas_array_phase)
-#         for barcode in globalDict['barcodes_threeTemps']:
-#             avArrayMin_phase = avArrayMin_phase + calcArrays[beam][f_c][barcode]['TdiffMin']['phase']
-#             avArrayMax_phase = avArrayMax_phase + calcArrays[beam][f_c][barcode]['TdiffMax']['phase']
-#         avArrayMin_phase = avArrayMin_phase/float(len(globalDict['barcodes_threeTemps'])) 
-#         avArrayMax_phase = avArrayMax_phase/float(len(globalDict['barcodes_threeTemps']))
-#         calcArrays[beam][f_c]['Averages']['T'+'diffMin']['phase'] = avArrayMin_phase
-#         calcArrays[beam][f_c]['Averages']['T'+'diffMax']['phase'] = avArrayMax_phase
 
+# average phase (and unwrap)
 for beam in calcArrays:
     for f_c in calcArrays[beam]:
         diffList = ['TdiffMin', 'TdiffMax']
-        for barcode in globalDict['barcodes_threeTemps']:
-            phase_arrays = []
-            for diff in diffList:
-                phase_arrays.append(calcArrays[beam][f_c][barcode][diff]['phase'])
-            phase_arrays.append(np.zeros_like(calcArrays[beam][f_c][barcode][diff]['phase']))
-            phase_arrays_av = np.median(phase_arrays, axis=0)
-            phase_arrays_std= np.std(phase_arrays, axis=0)
-            phase_arrays_unwrap = []
-            for diff in diffList:
-                phaseArray = calcArrays[beam][f_c][barcode][diff]['phase'].copy()
-                for j in range(phase_arrays_av.shape[0]):
-                    for k in range(phase_arrays_av.shape[1]):
-                        if phaseArray[j,k] - phase_arrays_av[j,k] > 45.0:
+        for diff in diffList:
+            for barcode in globalDict['barcodes_threeTemps']:
+                phase_arrays = []
+                phaseArray = calcArrays[beam][f_c][barcode][diff]['phase']
+                phaseArrayDiff = phaseArray - 0.0
+                for j in range(phaseArray.shape[0]):
+                    for k in range(phaseArray.shape[1]):
+                        if phaseArrayDiff[j,k] > 90.0:
                             phaseArray[j,k] = phaseArray[j,k] - 360.0
-                        if phaseArray[j,k] - phase_arrays_av[j,k] < -45.0:
+                        if phaseArrayDiff[j,k] < -90.0:
                             phaseArray[j,k] = phaseArray[j,k] + 360.0
-                phase_arrays_unwrap.append(phaseArray)
-                phase_arrays_av_unwrap = np.average(phase_arrays_unwrap, axis=0)
-                phase_arrays_std_unwrap= np.std(phase_arrays_unwrap, axis=0)
-                calcArrays[beam][f_c]['Averages'][diff]['phase'] = phase_arrays_av_unwrap
+                calcArrays[beam][f_c][barcode][diff]['phase'] = phaseArray
+                phase_arrays.append(phaseArray)
+                phase_arrays_av = np.zeros_like(phase_arrays[0])
+                for l in range(len(phase_arrays)):
+                    phase_arrays_av = phase_arrays_av + phase_arrays[l]
+                phase_arrays_av = phase_arrays_av/float(len(phase_arrays))
+            phase_arrays_std = np.std(phase_arrays, axis=0)
+            calcArrays[beam][f_c]['Averages'][diff]['phase'] = phase_arrays_av
+
+# save dictionary as pickle
+with open('C:\\Scratch\\pickles\\test_pickle.pickle', 'wb') as file:
+    pickle.dump(calcArrays, file, protocol=pickle.HIGHEST_PROTOCOL)
+# import pickle as dictionary
+with open("C:\\Scratch\\pickles\\test_pickle.pickle", "rb") as file:
+    loaded_dict = pickle.load(file)
 
 # plot check
-port = 10
 plt.close('all')
-
-
-for beam in calcArrays:
-    for f_c in calcArrays[beam]:
-        # plt.figure(figsize=(7,4))
-        frequency = float(f_c.split('=')[1])
-        freqCol = np.argmin((meas_frequencies-frequency)**2)
-        # for barcode in globalDict['barcodes_threeTemps']:
-        #     y = [calcArrays[beam][f_c][barcode]['TdiffMin']['gain'][port,freqCol], 0.0, calcArrays[beam][f_c][barcode]['TdiffMax']['gain'][port,freqCol]]
-        #     x = [65,45,25]
-        #     plt.plot(x,y,'ko-',alpha=0.2)
-        # y = [calcArrays[beam][f_c]['Averages']['TdiffMin']['gain'][port,freqCol], 0.0, calcArrays[beam][f_c]['Averages']['TdiffMax']['gain'][port,freqCol]]
-        # plt.plot(x,y,'ro-')
-        # plt.title('Frequency = ' + str(frequency) + ' GHz, Port = ' + str(port) + ', Beam' + str(beam)[-1])
-        # plt.xlabel('Temperature [degC]'); plt.ylabel('S$_{21}$ (normalised to 45 degC) [dB]')
-        # plt.xlim([20,70]); plt.ylim([-10,10])
-        # plt.xticks(np.linspace(25.0, 65.0, num=9)); plt.yticks(np.linspace(-10.0, 10.0, num=21))
-        # plt.grid('on')
-        # plt.tight_layout()
-        # plt.savefig('C:\\Scratch\\figures\\Frequency = ' + str(frequency) + ' GHz, Port = ' + str(port) + '_gain.png', dpi=400)
-        
-        plt.figure(figsize=(7,4))
-        for barcode in globalDict['barcodes_threeTemps']:
-            y = [calcArrays[beam][f_c][barcode]['TdiffMin']['phase'][port,freqCol], 0.0, calcArrays[beam][f_c][barcode]['TdiffMax']['phase'][port,freqCol]]
-            x = [65,45,25]
-            plt.plot(x,y,'ko-',alpha=0.2)
-        y = [calcArrays[beam][f_c]['Averages']['TdiffMin']['phase'][port,freqCol], 0.0, calcArrays[beam][f_c]['Averages']['TdiffMax']['phase'][port,freqCol]]
-        plt.plot(x,y,'ro-')
-        plt.title('Frequency = ' + str(frequency) + ' GHz, Port = ' + str(port) + ', Beam' + str(beam)[-1])
-        plt.xlabel('Temperature [degC]'); plt.ylabel('Phase (normalised to 45 degC) [deg]')
-        plt.xlim([20,70]); plt.ylim([-45,45])
-        plt.xticks(np.linspace(25.0, 65.0, num=9)); plt.yticks(np.linspace(-45.0, 45.0, num=19))
-        plt.grid('on')
-        plt.tight_layout()
-        plt.savefig('C:\\Scratch\\figures\\Frequency = ' + str(frequency) + ' GHz, Port = ' + str(port) + ', Beam' + str(beam)[-1] + '_phase.png', dpi=400)
-
-# # open all files and create new files if multi-temperature not available
-# for filePath in measFiles:
-#     find__fileDetails(filePath)
-#     if meas_params['barcodes'] in globalDict['barcodes_threeTemps']:
-
-
-
-
-
-
-
-
-
-
-
-
+temperatureGrads = {}
+count = 0
+for port in range(phaseArray.shape[0]):
+# for port in range(22):
+    temperatureGrads[str(port)] = {}
+    for beam in calcArrays:
+        temperatureGrads[str(port)][beam] = {}
+        for f_c in calcArrays[beam]:
+            temperatureGrads[str(port)][beam][f_c] = {}
+            plt.figure(figsize=(7,4))
+            frequency = float(f_c.split('=')[1])
+            freqCol = np.argmin((meas_frequencies-frequency)**2)
+            for barcode in globalDict['barcodes_threeTemps']:
+                y = [calcArrays[beam][f_c][barcode]['TdiffMin']['gain'][port,freqCol], 0.0, calcArrays[beam][f_c][barcode]['TdiffMax']['gain'][port,freqCol]]
+                x = [25,45,65]
+                plt.plot(x,y,'ks-', markersize=10, alpha=0.2)
+            y = [calcArrays[beam][f_c]['Averages']['TdiffMin']['gain'][port,freqCol], 0.0, calcArrays[beam][f_c]['Averages']['TdiffMax']['gain'][port,freqCol]]
+            plt.plot(x,y,'bo-')
+            temperatureGrads[str(port)][beam][f_c]['gain'] = np.mean([(-calcArrays[beam][f_c]['Averages']['TdiffMin']['gain'][port,freqCol]/20.0),(calcArrays[beam][f_c]['Averages']['TdiffMax']['gain'][port,freqCol]/20.0)])
+            print(-calcArrays[beam][f_c]['Averages']['TdiffMin']['gain'][0,0]/20.0)
+            print(calcArrays[beam][f_c]['Averages']['TdiffMax']['gain'][0,0]/20.0)
+            plt.title('Frequency = ' + str(frequency) + ' GHz, Port = ' + str(port) + ', Beam' + str(beam)[-1])
+            plt.xlabel('Temperature [degC]'); plt.ylabel(outFileType+ ' (normalised to 45 degC) [dB]')
+            plt.xlim([20,70]); plt.ylim([-10,10])
+            plt.xticks(np.linspace(25.0, 65.0, num=9)); plt.yticks(np.linspace(-10.0, 10.0, num=21))
+            plt.grid('on')
+            plt.tight_layout()
+            plt.savefig('C:\\Scratch\\figures\\Frequency = ' + str(frequency) + ' GHz, Port = ' + str(port) + ', Beam' + str(beam)[-1] + '_gain.png', dpi=400)
+            plt.close('all')
             
+            plt.figure(figsize=(7,4))
+            for barcode in globalDict['barcodes_threeTemps']:
+                y = [calcArrays[beam][f_c][barcode]['TdiffMin']['phase'][port,freqCol], 0.0, calcArrays[beam][f_c][barcode]['TdiffMax']['phase'][port,freqCol]]
+                x = [25,45,65]
+                plt.plot(x,y,'ks-', markersize=10, alpha=0.2)
+            y = [calcArrays[beam][f_c]['Averages']['TdiffMin']['phase'][port,freqCol], 0.0, calcArrays[beam][f_c]['Averages']['TdiffMax']['phase'][port,freqCol]]
+            plt.plot(x,y,'ro-')
+            temperatureGrads[str(port)][beam][f_c]['phase'] = np.mean([(-calcArrays[beam][f_c]['Averages']['TdiffMin']['phase'][port,freqCol]/20.0),(calcArrays[beam][f_c]['Averages']['TdiffMax']['phase'][port,freqCol]/20.0)])
+            print(-calcArrays[beam][f_c]['Averages']['TdiffMin']['phase'][0,0]/20.0)
+            print(calcArrays[beam][f_c]['Averages']['TdiffMax']['phase'][0,0]/20.0)
+            plt.title('Frequency = ' + str(frequency) + ' GHz, Port = ' + str(port) + ', Beam' + str(beam)[-1])
+            plt.xlabel('Temperature [degC]'); plt.ylabel('Phase (normalised to 45 degC) [deg]')
+            plt.xlim([20,70]); plt.ylim([-90,90])
+            plt.xticks(np.linspace(25.0, 65.0, num=9)); plt.yticks(np.linspace(-90, 90, num=19))
+            plt.grid('on')
+            plt.tight_layout()
+            plt.savefig('C:\\Scratch\\figures\\Frequency = ' + str(frequency) + ' GHz, Port = ' + str(port) + ', Beam' + str(beam)[-1] + '_phase.png', dpi=400)
+            if y[0] < y[1] or max(y)-min(y) > 180 or y[1] < y[2]:
+                plt.savefig('C:\\Scratch\\figuresBAD\\Frequency = ' + str(frequency) + ' GHz, Port = ' + str(port) + ', Beam' + str(beam)[-1] + '_phase.png', dpi=400)
+            plt.close('all')
+            
+            count = count + 1
+            print('Fig ' + str(count) + ' / ' + str(int(phaseArray.shape[0])*2*len(calcArrays[beam])))
+
+# plot grads
+plt.close('all')
+for f_c in temperatureGrads[str(0)][beam]:
+    plt.figure(figsize=(7,4))
+    gainList_b1 = []; gainList_b2 = []
+    for port in temperatureGrads:
+        gainList_b1.append(temperatureGrads[port]['beam1'][f_c]['gain'])
+        gainList_b2.append(temperatureGrads[port]['beam2'][f_c]['gain'])
+    plt.plot(np.linspace(1,len(gainList_b1),num=len(gainList_b1)), np.array(gainList_b1), 'ro', alpha = 0.5, label = 'Beam 1')
+    plt.plot(np.linspace(1,len(gainList_b2),num=len(gainList_b2)), np.array(gainList_b2), 'bo', alpha = 0.5, label = 'Beam 2')
+    plt.axhline(np.median(np.array(gainList_b1)), xmin=-10, xmax=len(gainList_b1), color='r')
+    plt.axhline(np.median(np.array(gainList_b2)), xmin=-10, xmax=len(gainList_b2), color='b')
+    plt.text(0.0, 0.15, str(round(np.median(np.array(gainList_b1)), 2)), color='red', bbox=dict(facecolor='white', edgecolor='red', pad=10.0))
+    plt.text(0.0, 0.05, str(round(np.median(np.array(gainList_b2)), 2)), color='blue', bbox=dict(facecolor='white', edgecolor='blue', pad=10.0))
+    plt.title('Frequency = ' + str(float(f_c.split('=')[1])) + ' GHz')
+    plt.xlabel('Port'); plt.ylabel('dB/degC')
+    plt.ylim([-0.3,0.3])
+    plt.grid('on')
+    plt.legend()
+    plt.tight_layout()
+    plt.savefig('C:\\Scratch\\' + 'Frequency = ' + str(float(f_c.split('=')[1])) + ' GHz_gain.png', dpi = 400)
+
+for f_c in temperatureGrads[str(0)][beam]:
+    plt.figure(figsize=(7,4))
+    phaseList_b1 = []; phaseList_b2 = []
+    for port in temperatureGrads:
+        phaseList_b1.append(temperatureGrads[port]['beam1'][f_c]['phase'])
+        phaseList_b2.append(temperatureGrads[port]['beam2'][f_c]['phase'])
+    plt.plot(np.linspace(1,len(phaseList_b1),num=len(phaseList_b1)), np.array(phaseList_b1), 'ro', alpha = 0.5, label = 'Beam 1')
+    plt.plot(np.linspace(1,len(phaseList_b2),num=len(phaseList_b2)), np.array(phaseList_b2), 'bo', alpha = 0.5, label = 'Beam 2')
+    plt.axhline(np.median(np.array(phaseList_b1)), xmin=-10, xmax=len(phaseList_b1), color='r')
+    plt.axhline(np.median(np.array(phaseList_b2)), xmin=-10, xmax=len(phaseList_b2), color='b')
+    plt.text(0.0, -0.25, str(round(np.median(np.array(phaseList_b1)), 2)), color='red', bbox=dict(facecolor='white', edgecolor='red', pad=10.0))
+    plt.text(0.0, -0.65, str(round(np.median(np.array(phaseList_b2)), 2)), color='blue', bbox=dict(facecolor='white', edgecolor='blue', pad=10.0))
+    plt.title('Frequency = ' + str(float(f_c.split('=')[1])) + ' GHz')
+    plt.xlabel('Port'); plt.ylabel('deg/degC')
+    plt.ylim([-1.0,1.0])
+    plt.grid('on')
+    plt.legend()
+    plt.tight_layout()
+    plt.savefig('C:\\Scratch\\' + 'Frequency = ' + str(float(f_c.split('=')[1])) + ' GHz_phase.png', dpi = 400)
+    
+# open all files and create new files if multi-temperature not available
+find__measFiles(setUp['filePath'], 'RFA')
+for filePath in measFiles:
+    find__fileDetails(filePath)
+    if meas_params['Temp. [°C]'] == '45':
+        meas_array_25 = np.zeros_like(meas_array)
+        meas_array_gain_25 = meas_array_gain + calcArrays[beam][f_c]['Averages']['TdiffMin']['gain']
+        meas_array_phase_25 = meas_array_phase + calcArrays[beam][f_c]['Averages']['TdiffMin']['phase']
+        for j in range(meas_array_phase_25.shape[0]):
+            for k in range(meas_array_phase_25.shape[1]):
+                if meas_array_phase_25[j,k] > 359.9999999999:
+                    meas_array_phase_25[j,k] = meas_array_phase_25[j,k] - 360.0
+                if meas_array_phase_25[j,k] < 0.0:
+                    meas_array_phase_25[j,k] = meas_array_phase_25[j,k] + 360.0
+        for j in range(meas_array_gain_25.shape[1]):
+            meas_array_25[:,2*j] = meas_array_gain_25[:,j]
+            meas_array_25[:,2*j+1] = meas_array_phase_25[:,j]
+        meas_array_25_list = meas_info.copy()
+        for k in range(len(meas_array_25)):
+            meas_array_25_list.append(list(meas_array_25[k,:]))
+        temperature_index = [index for index in range(len(meas_info)) if 'Temp. [°C]' in meas_info[index]][0]
+        meas_array_25_list[temperature_index][1] = str(25)
+        # write new file
+        file = open('C:\\Scratch\\files\\' + filePath.split('\\')[-1][0:-4] + '_interp25C.csv', 'w+', newline ='') 
+        with file:
+            write = csv.writer(file) 
+            write.writerows(meas_array_25_list)
+            
+for filePath in measFiles:
+    find__fileDetails(filePath)
+    if meas_params['Temp. [°C]'] == '45':
+        meas_array_65 = np.zeros_like(meas_array)
+        meas_array_gain_65 = meas_array_gain + calcArrays[beam][f_c]['Averages']['TdiffMax']['gain']
+        meas_array_phase_65 = meas_array_phase + calcArrays[beam][f_c]['Averages']['TdiffMax']['phase']
+        for j in range(meas_array_phase_65.shape[0]):
+            for k in range(meas_array_phase_65.shape[1]):
+                if meas_array_phase_65[j,k] > 359.9999999999:
+                    meas_array_phase_65[j,k] = meas_array_phase_65[j,k] - 360.0
+                if meas_array_phase_65[j,k] < 0.0:
+                    meas_array_phase_65[j,k] = meas_array_phase_65[j,k] + 360.0
+        for j in range(meas_array_gain_65.shape[1]):
+            meas_array_65[:,2*j] = meas_array_gain_65[:,j]
+            meas_array_65[:,2*j+1] = meas_array_phase_65[:,j]
+        meas_array_65_list = meas_info.copy()
+        for k in range(len(meas_array_65)):
+            meas_array_65_list.append(list(meas_array_65[k,:]))
+        temperature_index = [index for index in range(len(meas_info)) if 'Temp. [°C]' in meas_info[index]][0]
+        meas_array_65_list[temperature_index][1] = str(65)
+        # write new file
+        file = open('C:\\Scratch\\files\\' + filePath.split('\\')[-1][0:-4] + '_interp65C.csv', 'w+', newline ='') 
+        with file:
+            write = csv.writer(file) 
+            write.writerows(meas_array_65_list)
