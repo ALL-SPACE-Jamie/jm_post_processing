@@ -5,6 +5,11 @@ import os
 import csv
 import pickle
 
+# inputs
+filePath = r'C:\Scratch\20'
+bc1_Replace = '440'
+bc2_Replace = '0255'
+
 # definitions
 def find__measFiles(filePath, fileString):
     global measFiles
@@ -49,24 +54,24 @@ def find__fileDetails(filePath):
 ## run ##
 
 # check barcode
-fileTypes = ['OP', 'RFA']
+fileTypes = ['RFA']
 for fileType in fileTypes:
-    find__measFiles(r'C:\Scratch\misc', 'RFA')
+    find__measFiles(filePath, fileType)
     for measFile in measFiles:
         find__fileDetails(measFile)
         barcodeOLD = meas_params['barcodes']
         bc1 = meas_params['barcodes'].split('-')[0]
         bc2 = meas_params['barcodes'].split('-')[1]
         bc3 = meas_params['barcodes'].split('-')[2]
-        bc1 = '440'
-        bc2 = '0254'
+        bc1 = bc1_Replace
+        bc2 = bc2_Replace
         bc3 = '0' + bc3[-4:]
         barcodeNEW = bc1 + '-' + bc2 + '-' + bc3
         
         # change barcode
         if barcodeNEW != barcodeOLD:
             meas_infoNEW = meas_info
-            meas_infoNEW[23][1] = barcodeNEW
+            meas_infoNEW[25][1] = barcodeNEW
             
             meas_array_list = meas_infoNEW.copy()
             for k in range(len(meas_array)):
