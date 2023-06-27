@@ -1,14 +1,9 @@
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-import os
+import numpy
 import csv
-import pickle
+import os
+import numpy as np
 
-# inputs
-filePath = r'C:\Users\JamieMitchell\OneDrive - ALL.SPACE\S-Type\Tx_TLM\ES2\TLM_Calibration_RFA_Files\Tx_Batch_2\Post-processed_RFA_Temp_45deg'
-bc1_Replace = '440'
-bc2_Replace = '0255'
+filePath = r'C:\Scratch\20230627_offsetFiles'
 
 # definitions
 def find__measFiles(filePath, fileString):
@@ -22,6 +17,8 @@ def find__measFiles(filePath, fileString):
     for i in range(len(files)):
         if fileString in files[i] in files[i]:
             measFiles.append(files[i])
+            
+            
             
 def find__fileDetails(filePath):
     global meas_info, meas_params, meas_array, meas_frequencies, meas_array_gain, meas_array_phase
@@ -50,41 +47,28 @@ def find__fileDetails(filePath):
             if meas_params[paramName][0] == ' ':
                 meas_params[paramName] = meas_params[paramName][1:]
             
+hfss_offs = np.genfromtxt('Rx_hfss_offset_13mm_Cal.csv', delimiter=',', skip_header=1)
             
-## run ##
-
-# check barcode
-fileTypes = ['RFA']
-for fileType in fileTypes:
-    find__measFiles(filePath, fileType)
-    for measFile in measFiles:
-        find__fileDetails(measFile)
-        barcodeOLD = meas_params['barcodes']
-        bc1 = meas_params['barcodes'].split('-')[0]
-        bc2 = meas_params['barcodes'].split('-')[1]
-        bc3 = meas_params['barcodes'].split('-')[2]
-        bc1 = bc1_Replace
-        bc2 = bc2_Replace
-        bc3 = '0' + bc3[-4:]
-        barcodeNEW = bc1 + '-' + bc2 + '-' + bc3
+find__measFiles(filePath, 'RFA')
+for measFile in measFiles:
+    find__fileDetails(measFile)
+    newGain = meas_array_gain.copy()
+    for i in range(len(meas_frequencies)):
+        f_c = float(meas_params['f_c'])
+        row = np.argmin((hfss_offs[:,0]-f_c)**2)
+        col = int(meas_params['Beam']); print(col)
+        newGain[:,i] = newGain[:,i] - hfss_offs[row, col]
         
-        # change barcode
-        if barcodeNEW != barcodeOLD:
-            meas_infoNEW = meas_info
-            meas_infoNEW[25][1] = barcodeNEW
-            
-            meas_array_list = meas_infoNEW.copy()
-            for k in range(len(meas_array)):
-                meas_array_list.append(list(meas_array[k,:]))
-                
-            # new fileName
-            measFileNEW = measFile[0:measFile.find('None_QR')+len('None_QR')] + barcodeNEW + measFile[measFile.find('-CG'):]
-            
-            # write new file
-            file = open(measFileNEW, 'w+', newline ='') 
-            with file:
-                write = csv.writer(file) 
-                write.writerows(meas_array_list)
-                
-            # delete old file
-            os.remove(measFile)
+    meas_array_new = np.zeros_like(meas_array)
+    for j in range(meas_array_gain.shape[1]):
+        meas_array_new[:,2*j] = newGain[:,j]
+        meas_array_new[:,2*j+1] = meas_array_phase[:,j]
+    meas_array_new_list = meas_info.copy()
+    for k in range(len(meas_array_new)):
+        meas_array_new_list.append(list(meas_array_new[k,:]))
+    # write new file
+    file = open(measFile[0:-4] + '-HFSSmaskOff.csv', 'w+', newline ='') 
+    with file:
+        write = csv.writer(file) 
+        write.writerows(meas_array_new_list)
+    

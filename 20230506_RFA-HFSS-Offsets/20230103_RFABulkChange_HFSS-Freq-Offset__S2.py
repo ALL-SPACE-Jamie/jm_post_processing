@@ -6,7 +6,7 @@ import pandas as pd
 import matplotlib.pyplot as plt; plt.close('all')
 import pickle
 
-filePath = r'C:\Users\JamieMitchell\OneDrive - ALL.SPACE\S-Type\Rx_TLM\ES2c-Laser_Cut\TLM_Calibration_RFA_Files\RX_Batch_2\Post-processed_RFA_Temp_45deg_6dBshift'
+filePath = r'C:\Scratch\20230627\Fixed_QR'
 
 def find__RFAfiles(path, f_set, beam):
     global filesRFA
@@ -33,8 +33,8 @@ def analyse__RFAparams(filesRFA):
         fileName = filesRFA[i].split('\\')[-1]
         log_fileName.append(fileName)
         log_temperature.append(fileName.split('_')[-1][0:-5])
-        log_f_set.append(fileName.split('_')[16])
-        log_beam.append(fileName.split('_')[10][-1])
+        log_f_set.append(fileName.split('_')[-3])
+        log_beam.append(fileName.split('_')[9][-1])
         log_board.append(fileName.split('_')[4])
     RFAparamDict['fileNames'] = log_fileName
     RFAparamDict['temperatures'] = log_temperature
@@ -81,7 +81,7 @@ for f_set in f_set_Log:
         medianVal = np.median(gain); medianLog.append(medianVal)
         stdVal = np.std(gain); stdLog.append(stdVal)
         axs[0].set_title('RFA file')
-        boardName = filesRFA[j].split('\\')[-1].split('_')[4]
+        boardName = filesRFA[j].split('\\')[-1].split('_')[4]; print(boardName); print(medianVal)
         boardLog.append(boardName)
         axs[0].plot(gain, label = boardName)
         axs[0].fill_between(np.linspace(0, len(gain), num=101), medianVal-stdVal*2, medianVal+stdVal*2, color='red', alpha=0.2, label='$\pm$ 2$\sigma$')
@@ -90,7 +90,7 @@ for f_set in f_set_Log:
         for k in range(len(gain)):
             if gain[k] <  medianVal-stdVal*2:
                 axs[0].plot(k,gain[k],'rX')
-                gain[k] = gain[k]*1.0
+                gain[k] = gain[k]*0.0
         axs[1].set_title('RFA file (filtered)')
         axs[1].plot(gain, label = filesRFA[j].split('\\')[-1].split('_')[4])
         newGain = gain[gain != 0]
@@ -100,7 +100,6 @@ for f_set in f_set_Log:
         axs[1].hlines(minVal, 0, len(gain), 'g', label = 'Min val') 
         axs[1].plot(minVal_loc, minVal,'g^', markersize=10)     
         axs[1].legend(loc='lower right')
-        minVal = 6.0
         correctedGain = gain-minVal
         for m in range(len(correctedGain)):
             if correctedGain[m] < 0:
@@ -136,14 +135,22 @@ for f_set in f_set_Log:
     plt.figure()
     plt.plot(medianLog)
     plt.xlabel('board'); plt.ylabel('medianVal')
-    global_median = np.mean(medianLog)
+    global_median = np.average(medianLog) ####################was mean
     plt.hlines(global_median, 0, 18)
     
     global_minVal = global_median-global_std*2.0
     print(global_minVal)
     
+    
+    
+    
+    
+    
+    
+    
+    
     ## Apply global offsets
-    plt.close('all')
+    # plt.close('all')
     minValLog = []
     stdLog = []
     medianLog = []
@@ -163,17 +170,17 @@ for f_set in f_set_Log:
         axs[0].hlines(medianVal, 0, len(gain), 'r', label='Median')
         axs[0].hlines(global_minVal, 0, len(gain), 'k', label='Global Min Val')
         axs[0].legend(loc='lower right')
+
         for k in range(len(gain)):
             if gain[k] <  global_minVal:
                 axs[0].plot(k,gain[k],'rX')
-                gain[k] = gain[k]*1.0
+                gain[k] = gain[k]*0.0
         axs[1].set_title('RFA file (filtered)')
         axs[1].plot(gain, label = filesRFA[j].split('\\')[-1].split('_')[4])
         newGain = gain[gain != 0]
         minVal = np.min(newGain); minValLog.append(minVal)
         minVal_loc = np.argmin(newGain)
         minVal = global_minVal
-        minVal = 6.0
         axs[1].hlines(minVal, 0, len(gain), 'k', label = 'Global Min Val')    
         axs[1].legend(loc='lower right')
         correctedGain = gain-minVal
@@ -196,7 +203,7 @@ for f_set in f_set_Log:
         if not os.path.exists(savePath):
             os.makedirs(savePath)
         plt.savefig(savePath + '\\' + str(j) + '____' + filesRFA[j].split('\\')[-1] + '.png', dpi=200)
-    
+
     ## Open and edit RFA files
     for j in range(len(filesRFA)):
     # for j in range(1):
@@ -205,7 +212,6 @@ for f_set in f_set_Log:
         gain = meas_array[:, ::2]
         phase = meas_array[:,1:][:, ::2]
         gain = gain - global_minVal
-        gain = gain - 6.0
         for k in range(gain.shape[0]):
             for l in range(gain.shape[1]):
                 if gain[k,l] < 0:
@@ -220,7 +226,7 @@ for f_set in f_set_Log:
             meas_array_corrected[:,2*m+1] = phase[:,m]
         for o in range(len(meas_array_corrected)):
             meas_info_list.append(list(meas_array_corrected[o,:]))
-            
+
         savePath = filePath + '\\files'
         if not os.path.exists(savePath):
             os.makedirs(savePath) 

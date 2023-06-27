@@ -6,7 +6,7 @@ import pandas as pd
 import matplotlib.pyplot as plt; plt.close('all')
 import pickle
 
-filePath = r'C:\Scratch\misc'
+filePath = r'C:\Users\JamieMitchell\OneDrive - ALL.SPACE\S-Type\Rx_TLM\ES2c-Laser_Cut\TLM_Calibration_RFA_Files\RX_Batch_2\Post-processed_RFA_Temp_45deg_6dBshift'
 
 def find__RFAfiles(path, f_set, beam):
     global filesRFA
@@ -50,7 +50,7 @@ def load__RFA(filePath):
         filecontent = csv.reader(file, delimiter=',')
         for row in filecontent:
             meas_info.append(row)
-            header_offset = 25
+            header_offset = 27
         meas_info = meas_info[0:header_offset]
         meas_array = np.genfromtxt(filePath, delimiter=',', skip_header=header_offset)
         f_measPoints = np.array(meas_info[header_offset-1])[::2].astype(float)          
@@ -217,12 +217,15 @@ for f_set in f_set_Log:
             meas_array_corrected[:,2*m+1] = phase[:,m]
         for o in range(len(meas_array_corrected)):
             meas_info_list.append(list(meas_array_corrected[o,:]))
-            
-        # # write new file
-        # file = open(r'C:\\codeRun\\_____run\\E5_RFAs\\E2_Terminal_Mod_Rx\\E2_Terminal_Mod_Rx_HFSSOffset\\' + filesRFA[j].split('\\')[-1] + '_HFSS-f-offset.csv', 'w+', newline ='') 
-        # with file:     
-        #     write = csv.writer(file) 
-        #     write.writerows(meas_info_list)
+
+        savePath = filePath + '\\files'
+        if not os.path.exists(savePath):
+            os.makedirs(savePath) 
+        # write new file
+        file = open(savePath + '\\' + filesRFA[j].split('\\')[-1] + '_HFSS-f-offset.csv', 'w+', newline ='') 
+        with file:     
+            write = csv.writer(file) 
+            write.writerows(meas_info_list)
                       
 
 
