@@ -6,7 +6,7 @@ import pandas as pd
 import matplotlib.pyplot as plt; plt.close('all')
 import pickle
 
-filePath = r'C:\Scratch\20230627\Fixed_QR'
+filePath = r'C:\Users\JamieMitchell\OneDrive - ALL.SPACE\S-Type\Tx_TLM\ES2\TLM_Calibration_RFA_Files\Tx_Batch_2\Post-processed_RFA_Temp_45deg_HFSSOffset'
 
 def find__RFAfiles(path, f_set, beam):
     global filesRFA
@@ -56,13 +56,13 @@ def load__RFA(filePath):
         f_measPoints = np.array(meas_info[header_offset-1])[::2].astype(float)          
 
 portFailDict = {}
-# f_set_Log = [27.5,28.0,28.5,29.0,29.5,30.0,30.5,31.0]
-f_set_Log = [17.7,18.2,18.7,19.2,19.7,20.2,20.7,21.2]
+f_set_Log = [27.5,28.0,28.5,29.0,29.5,30.0,30.5,31.0]
+# f_set_Log = [17.7,18.2,18.7,19.2,19.7,20.2,20.7,21.2]
 for f_set in f_set_Log:
     ## RUN
     # f_set = 29.0
     # filePath = r'C:\codeRun\rx-processed'
-    find__RFAfiles(filePath, f_set, 1)
+    find__RFAfiles(filePath, f_set, 2)
     analyse__RFAparams(filesRFA)
     
     ## Collate values and find global offsets
@@ -183,10 +183,10 @@ for f_set in f_set_Log:
         minVal = global_minVal
         axs[1].hlines(minVal, 0, len(gain), 'k', label = 'Global Min Val')    
         axs[1].legend(loc='lower right')
-        correctedGain = gain-minVal
+        correctedGain = gain-minVal+6.00
         for m in range(len(correctedGain)):
             if correctedGain[m] < 0:
-                correctedGain[m] = correctedGain[m]*0.0
+                correctedGain[m] = correctedGain[m]*0.0+6.00
         axs[2].set_title('New RFA file')
         axs[2].plot(correctedGain, label='Shifted:' + str(round(abs(minVal),2)) + ' dB')
         axs[2].legend(loc='lower right')
@@ -211,11 +211,11 @@ for f_set in f_set_Log:
         load__RFA(filesRFA[j])
         gain = meas_array[:, ::2]
         phase = meas_array[:,1:][:, ::2]
-        gain = gain - global_minVal
+        gain = gain - global_minVal+6.00
         for k in range(gain.shape[0]):
             for l in range(gain.shape[1]):
                 if gain[k,l] < 0:
-                    gain[k,l] = gain[k,l]*0.0
+                    gain[k,l] = gain[k,l]*0.0+6.00
         plt.plot(gain[:,int(col/2)])
         
         # merge back

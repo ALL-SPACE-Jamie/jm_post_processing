@@ -3,7 +3,7 @@ import csv
 import os
 import numpy as np
 
-filePath = r'C:\Scratch\20230627_offsetFiles'
+filePath = r'C:\Scratch\Fixed_QR_BadHFSSOffsets\Fixed_QR_BadHFSSOffsets'
 
 # definitions
 def find__measFiles(filePath, fileString):
