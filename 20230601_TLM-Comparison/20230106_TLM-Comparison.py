@@ -19,7 +19,7 @@ filePath = r'C:\codeRun\_data\Rx\_comparison_Rx'
 filePath = r'C:\codeRun\_data\Rx\_comparison_Rx_v7'
 filePath = r'C:\codeRun\_data\Rx\ES2c_noLUT'
 filePath = r'C:\Scratch'
-beamChoice = 1
+beamChoice = 2
 txrx = 'tx'
 
 # definitions
@@ -138,7 +138,7 @@ labelMap = ['ES1 (LUT) {48, 24}', 'ES2c board 5 (ES2c LUT) {48, 24}','kk']
 labelMap = ['ES2 (ES2c LUT) {60, 60}', 'ES2c board 5 (ES2c LUT) {48, 24}','kk']
 labelMap = ['Board 5 (no LUT)', 'Board 6 (no LUT)', 'Board 7 (no LUT)']
 labelMap = ['{48,12}','{48,6}','{36,24}','{36,12}','{36,6}','{36,6}','{36,6}','{36,6}','{36,6}','{36,6}','{36,6}','{36,6}']
-labelMap = ['17.7','18.2','18.7','19.2','19.7','20.2','20.7','21.2']
+labelMap = ['29.5']
 #labelMap = ['27.5','28.0','28.5','29.0','29.5','30.0','30.5','31.0']
 colMap = ['#ff7f0e','#1f77b4','green','r','b','b','b','b','b','b','b','b','b','b','b']#'#1f77b4',
 colMap = ['r','g','b','m','c','k','orange','yellow', 'pink']
@@ -195,7 +195,7 @@ for beamNo in range(1):
         # plt.fill_between(meas_frequencies, stdTracesMin, stdTracesMax, alpha=0.2)
         # plt.plot(meas_frequencies, 10*np.log10(minTraces),'--')
         # plt.plot(meas_frequencies, 10*np.log10(maxTraces),'--')
-        # plt.fill_between(meas_frequencies, 10*np.log10(minTraces), 10*np.log10(maxTraces), color=colMap[count], alpha=0.2)
+        plt.fill_between(meas_frequencies, 10*np.log10(minTraces), 10*np.log10(maxTraces), color=colMap[count], alpha=0.2)
         count = count+1
         
         plt.xlabel('Frequency [GHz]'); plt.ylabel('S$_{21}$ (arb.) [dB]')

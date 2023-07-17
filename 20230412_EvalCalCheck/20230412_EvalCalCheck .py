@@ -22,17 +22,17 @@ dirScript = os.getcwd()
 
 # parmas
 
-temperature = '45'
-tlmType = 'Tx'
+temperature = '45' ##
+tlmType = 'Rx'
 measType = 'Calibration' #'Calibration'  # 'Calibration' or 'Evaluation'
-filePath = r'C:\Users\JamieMitchell\OneDrive - ALL.SPACE\S-Type\Rx_TLM\ES2c-Laser_Cut\TLM_Evaluation_Measurements\All_Boards'
-filePath = r'C:\Users\JamieMitchell\OneDrive - ALL.SPACE\S-Type\Tx_TLM\ES2\TLM_Calibration_Measurements\Tx_Batch_1'
+# filePath = r'C:\Users\JamieMitchell\OneDrive - ALL.SPACE\S-Type\Tx_TLM\ES2\TLM_Calibration_Measurements\Tx_Batch_1\Tx_Batch1_Recal'
+filePath = r'C:\Users\JamieMitchell\OneDrive - ALL.SPACE\S-Type\Rx_TLM\ES2c-Laser_Cut\TLM_Calibration_Measurements\RX_Batch_1\Rx_Batch1_Recal'
 SaveFileName = '\Post_Processed_Data'
 BoardFont = '10'
 counter = 0
-external_folder_name = "Figures"
+external_folder_name = "Figures\\TLM_0036\\45C" ##
 measFileShift = 0
-droppedThresh = -5
+droppedThresh = -19
 
 
 # definitions
@@ -45,7 +45,7 @@ def find_measFiles(path, fileString, beam):
                 files.append(os.path.join(root, file))
     measFiles = []
     for i in range(len(files)):
-        if fileString in files[i] and 'eam' + str(beam) in files[i]:
+        if fileString in files[i] and 'eam' + str(beam) in files[i] and '0036' in files[i]:# and 'v2' not in files[i]:
             measFiles.append(files[i])
     # print(measFiles)
 
@@ -93,6 +93,14 @@ def plot__gainVport(f_set, measType):
         stat_l2_median = np.median(y[int(len(y) / 3):2 * int(len(y) / 3)])
         stat_l3_median = np.median(y[2 * int(len(y) / 3):3 * int(len(y) / 3)])
         stat_l1_dropped = ((y[0:int(len(y) / 3)]) < droppedThresh).sum()
+        stat_l1_dropped_list = ((y[0:int(len(y) / 3)]) < droppedThresh)
+        log = []
+        for p in range(len(stat_l1_dropped_list)):
+            if stat_l1_dropped_list[p] == True:
+                log.append(p+1)
+        if len(log) > 12:
+            log = [str(len(log)) + ' ports dropped']
+        print(log)
         stat_l2_dropped = ((y[int(len(y) / 3):2 * int(len(y) / 3)]) < -20).sum()
         stat_l3_dropped = ((y[2 * int(len(y) / 3):3 * int(len(y) / 3)]) < -20).sum()
         stat_TLM_std = np.std(y, dtype=np.float64) ##
@@ -140,19 +148,20 @@ def plot__gainVport(f_set, measType):
         axs[1, 1].grid('on')
         # plot 4
         if stat_l1_dropped + stat_l2_dropped + stat_l3_dropped > 50:
-            axs[2, 1].plot(meas_params['lens type (rx/tx)'] + meas_params['barcodes'], 50.0,
-                           'r*', markersize=15)
+            axs[2, 1].plot(meas_params['date time'] + '\n' + meas_params['lens type (rx/tx)'] + meas_params['barcodes'], 10.0,
+                           'r*', markersize=30)
             
-        axs[2, 1].plot(meas_params['lens type (rx/tx)'] + meas_params['barcodes'], stat_l1_dropped,
+        axs[2, 1].plot(meas_params['date time'] + '\n' + meas_params['lens type (rx/tx)'] + meas_params['barcodes'], stat_l1_dropped,
                        'rs')
-        axs[2, 1].plot(meas_params['lens type (rx/tx)'] + meas_params['barcodes'], stat_l2_dropped,
+        axs[2, 1].plot(meas_params['date time'] + '\n' + meas_params['lens type (rx/tx)'] + meas_params['barcodes'], stat_l2_dropped,
                        'g^')
-        axs[2, 1].plot(meas_params['lens type (rx/tx)'] + meas_params['barcodes'], stat_l3_dropped,
+        axs[2, 1].plot(meas_params['date time'] + '\n' + meas_params['lens type (rx/tx)'] + meas_params['barcodes'], stat_l3_dropped,
                        'bP')
         axs[2, 1].set_xlabel('board')
         axs[2, 1].set_ylabel('Number of dropped ports (gain < ' + str(droppedThresh) + ' dB)')
+        axs[2, 1].text(meas_params['date time'] + '\n' + meas_params['lens type (rx/tx)'] + meas_params['barcodes'], stat_l3_dropped+2, log)
         axs[2, 1].tick_params(axis='x', labelrotation=90, labelsize=BoardFont)
-        axs[2, 1].set_ylim([0, 50])
+        axs[2, 1].set_ylim([0, 10])
         axs[2, 1].grid('on')
 
         # plot 5
@@ -183,7 +192,7 @@ def plot__gainVport(f_set, measType):
 if measType == 'Evaluation' and tlmType == 'Tx':
     f_set_list = [29.5]
 elif measType == 'Calibration' and tlmType == 'Tx':
-    f_set_list = [29.5, 28.0, 28.5, 29.0, 29.5, 30.0, 30.5, 31.0]
+    f_set_list = [27.5, 28.0, 28.5, 29.0, 29.5, 30.0, 30.5, 31.0]
 elif measType == 'Evaluation' and tlmType == 'Rx':
     f_set_list = [19.2]
 elif measType == 'Calibration' and tlmType == 'Rx':

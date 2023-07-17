@@ -1,8 +1,13 @@
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt;
+def test_def(b_in):
+    a=5*4
+    output = a*b_in
+    out2 = b_in*7.6
+    return output, out2
+    
+x = test_def(5.0)
 
-plt.rcParams['font.size'] = 12
+import numpy as np
+import matplotlib.pyplot as plt; plt.rcParams['font.size'] = 12
 from scipy.stats import norm
 import os
 import glob
@@ -11,6 +16,7 @@ import csv
 import json
 import time
 from pylab import *
+from typing import List
 
 plt.close('all')
 
@@ -18,12 +24,24 @@ plt.close('all')
 dirScript = os.getcwd()
 
 # parmas
-filePath = r'C:\\Scratch'
+filePath = r'C:\\Scratch\\misc'
 txrx = 'tx'
 ymin=-20; ymax=30
 
 # definitions
-def find_measFiles(path, fileString, beam):
+def find_measFiles(path:str, fileString:str, beam:int)->List[str]:
+    """
+    
+    :param path: DESCRIPTION
+    :type path: str
+    :param fileString: DESCRIPTION
+    :type fileString: str
+    :param beam: DESCRIPTION
+    :type beam: int
+    :return: DESCRIPTION
+    :rtype: List[str]
+
+    """
     global measFiles, files
     files = []
     for root, directories, file in os.walk(path):
@@ -34,7 +52,6 @@ def find_measFiles(path, fileString, beam):
     for i in range(len(files)):
         if fileString in files[i] and 'eam' + str(beam) in files[i]:
             measFiles.append(files[i])
-
 
 def load__measFiles(filePath):
     global meas_info, meas_array, meas_frequencies, meas_params, meas_array_gain, meas_array_phase
