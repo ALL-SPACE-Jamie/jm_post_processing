@@ -22,14 +22,14 @@ dirScript = os.getcwd()
 # parmas
 
 temperature = '45' ##
-tlmType = 'Rx'
+tlmType = 'Tx'
 measType = 'Calibration' #'Calibration'  # 'Calibration' or 'Evaluation'
-filePath = r'C:\Users\JamieMitchell\OneDrive - ALL.SPACE\S-Type\Rx_TLM\ES2c-Laser_Cut\TLM_Calibration_Measurements\RX_Batch_1\Rx_Batch1_Recal\sw_test'
-# filePath = r'C:\Users\JamieMitchell\OneDrive - ALL.SPACE\S-Type\Tx_TLM\ES2\TLM_Calibration_Measurements\Tx_Batch_1\Tx_Batch1_Recal\sw_test'
+# filePath = r'C:\Users\JamieMitchell\OneDrive - ALL.SPACE\S-Type\Rx_TLM\ES2c-Laser_Cut\Test\MCR2\20230717 - 21\sw_test'
+filePath = r'C:\Users\JamieMitchell\OneDrive - ALL.SPACE\S-Type\Tx_TLM\ES2\Test\20230717-21\MCR1'
 SaveFileName = '\Post_Processed_Data'
-BoardFont = '8'
+BoardFont = '6'
 counter = 0
-external_folder_name = "Figures\\TLM_54321\\StressTest" ##
+external_folder_name = "Figures\\StressTest\\MCR1_Rig1"
 measFileShift = 0
 droppedThresh = -19
 
@@ -52,7 +52,7 @@ def find_measFiles(path, fileString, beam):
                 files.append(os.path.join(root, file))
     measFiles = []
     for i in range(len(files)):
-        if fileString in files[i] and 'eam' + str(beam) in files[i] and '54321' in files[i] and 'MCR3' not in files[i]:
+        if fileString in files[i] and 'eam' + str(beam) in files[i] and 'calibration_0' in files[i]:
             measFiles.append(files[i])
     # print(measFiles)
 
@@ -107,7 +107,6 @@ def plot__gainVport(f_set, measType):
                 log.append(p+1)
         if len(log) > 12:
             log = [str(len(log)) + ' ports dropped']
-        print(log)
         stat_l2_dropped = ((y[int(len(y) / 3):2 * int(len(y) / 3)]) < -20).sum()
         stat_l3_dropped = ((y[2 * int(len(y) / 3):3 * int(len(y) / 3)]) < -20).sum()
         stat_TLM_std = np.std(y, dtype=np.float64) ##
@@ -116,7 +115,7 @@ def plot__gainVport(f_set, measType):
         stat_l2_std = np.std(y[int(len(y) / 3):2 * int(len(y) / 3)])
         stat_l3_std = np.std(y[2 * int(len(y) / 3):3 * int(len(y) / 3)])
         # plots
-        dataSetLabel = meas_params['date time'] + '\n' + meas_params['lens type (rx/tx)'] + meas_params['barcodes'] + '\n SW: ' + meas_params['acu_version'] + '\n ITCC: ' + meas_params['itcc_runner_version']
+        dataSetLabel = meas_params['date time'] + '\n' + meas_params['lens type (rx/tx)'] + meas_params['barcodes'] + ', SW: ' + meas_params['acu_version'] + '\n ITCC: ' + meas_params['itcc_runner_version']
         # plot 1
         minY = -30
         maxY = 50
@@ -210,14 +209,18 @@ for p in range(2):
             # load meas file
             if '_4' in measFiles[k]:  # str(temperature) + 'C' in measFiles[k]:# and 'teration_1' in measFiles[k]:
                 load_measFiles(measFiles[k])
+                print('-------------------------------------')
+                print(meas_params['date time'][1:])
                 print(meas_params['barcodes'])
-                print(meas_params['Temp. [°C]'])
+                print('Temperature = ' + meas_params['Temp. [°C]'])
+                print('-------------------------------------')
 
                 # plot
-                plot__gainVport(f_set, measType)
-                # colate
-                if loaded == True:
-                    stat_TLM_median_log.append(stat_TLM_median)
+                if '.' in meas_params['acu_version']:
+                    plot__gainVport(f_set, measType)
+                    # colate
+                    if loaded == True:
+                        stat_TLM_median_log.append(stat_TLM_median)
         # plot histogram
         ymax1 = 25.0
 
@@ -248,11 +251,11 @@ for p in range(2):
         plt.savefig(newPath + '/' + fileName, dpi=200)
 
 external_path = os.path.join(filePath, external_folder_name)
-os.makedirs(external_path, exist_ok=True) #The path of the external folder
+os.makedirs(external_path, exist_ok=True) # The path of the external folder
 
 for dirpath, dirnames, filenames in os.walk(filePath):
     for file in filenames:
-        if file.lower().endswith('png'):
+        if 'f-set' in file.lower():
             try:
                file_path = os.path.join(dirpath, file)
                shutil.copy(file_path, external_path)
@@ -260,4 +263,3 @@ for dirpath, dirnames, filenames in os.walk(filePath):
             except shutil.SameFileError as e:
                 print(f"Skipped copying file{file}:{e}")
 print("done")
-

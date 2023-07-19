@@ -1,0 +1,2252 @@
+getCommon got {"lens":"1","rfic":"1","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 36862
+2023-07-14T13:48:45.644Z
+getCommon got {"lens":"2","rfic":"1","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 36864
+2023-07-14T13:48:45.669Z
+getCommon got {"lens":"3","rfic":"1","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 36866
+2023-07-14T13:48:45.694Z
+getCommon got {"lens":"1","rfic":"2","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 36868
+2023-07-14T13:48:45.785Z
+getCommon got {"lens":"2","rfic":"2","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 36870
+2023-07-14T13:48:45.810Z
+getCommon got {"lens":"3","rfic":"2","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 36872
+2023-07-14T13:48:45.835Z
+getCommon got {"lens":"1","rfic":"3","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 36874
+2023-07-14T13:48:45.925Z
+getCommon got {"lens":"2","rfic":"3","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 36876
+2023-07-14T13:48:45.950Z
+getCommon got {"lens":"3","rfic":"3","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 36878
+2023-07-14T13:48:45.975Z
+getCommon got {"lens":"1","rfic":"4","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 36880
+2023-07-14T13:48:46.065Z
+getCommon got {"lens":"2","rfic":"4","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 36882
+2023-07-14T13:48:46.090Z
+getCommon got {"lens":"3","rfic":"4","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 36884
+2023-07-14T13:48:46.116Z
+getCommon got {"lens":"1","rfic":"5","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 36886
+2023-07-14T13:48:46.205Z
+getCommon got {"lens":"2","rfic":"5","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 36888
+2023-07-14T13:48:46.230Z
+getCommon got {"lens":"3","rfic":"5","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 36890
+2023-07-14T13:48:46.256Z
+getCommon got {"lens":"1","rfic":"6","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 36892
+2023-07-14T13:48:46.346Z
+getCommon got {"lens":"2","rfic":"6","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 36894
+2023-07-14T13:48:46.371Z
+getCommon got {"lens":"3","rfic":"6","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 36896
+2023-07-14T13:48:46.396Z
+getCommon got {"lens":"1","rfic":"7","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 36898
+2023-07-14T13:48:46.486Z
+getCommon got {"lens":"2","rfic":"7","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 36900
+2023-07-14T13:48:46.511Z
+getCommon got {"lens":"3","rfic":"7","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 36902
+2023-07-14T13:48:46.536Z
+getCommon got {"lens":"1","rfic":"8","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 36904
+2023-07-14T13:48:46.626Z
+getCommon got {"lens":"2","rfic":"8","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 36906
+2023-07-14T13:48:46.651Z
+getCommon got {"lens":"3","rfic":"8","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 36908
+2023-07-14T13:48:46.676Z
+getCommon got {"lens":"1","rfic":"9","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 36910
+2023-07-14T13:48:46.766Z
+getCommon got {"lens":"2","rfic":"9","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 36912
+2023-07-14T13:48:46.790Z
+getCommon got {"lens":"3","rfic":"9","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 36914
+2023-07-14T13:48:46.816Z
+getCommon got {"lens":"1","rfic":"10","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 36916
+2023-07-14T13:48:46.907Z
+getCommon got {"lens":"2","rfic":"10","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 36918
+2023-07-14T13:48:46.932Z
+getCommon got {"lens":"3","rfic":"10","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 36920
+2023-07-14T13:48:46.957Z
+getCommon got {"lens":"1","rfic":"11","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 36922
+2023-07-14T13:48:47.033Z
+getCommon got {"lens":"2","rfic":"11","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 36924
+2023-07-14T13:48:47.058Z
+getCommon got {"lens":"3","rfic":"11","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 36926
+2023-07-14T13:48:47.083Z
+getCommon got {"lens":"1","rfic":"12","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 36928
+2023-07-14T13:48:47.160Z
+getCommon got {"lens":"2","rfic":"12","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 36930
+2023-07-14T13:48:47.205Z
+getCommon got {"lens":"3","rfic":"12","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 36932
+2023-07-14T13:48:47.230Z
+getCommon got {"lens":"1","rfic":"0","chans":[{"id":"0","phase":"0","atten":"32"}]} id 36934
+2023-07-14T13:48:47.317Z
+getCommon got {"lens":"2","rfic":"0","chans":[{"id":"0","phase":"0","atten":"32"}]} id 36936
+2023-07-14T13:48:47.342Z
+getCommon got {"lens":"3","rfic":"0","chans":[]} id 36938
+2023-07-14T13:48:47.368Z
+getCommon got {"lens":"1","rfic":"0","chans":[{"id":"0","phase":"0","atten":"32"}]} id 36940
+2023-07-14T13:48:47.456Z
+getCommon got {"lens":"2","rfic":"0","chans":[{"id":"0","phase":"0","atten":"32"}]} id 36942
+2023-07-14T13:48:47.481Z
+getCommon got {"lens":"3","rfic":"0","chans":[]} id 36944
+2023-07-14T13:48:47.506Z
+Manual Antenna beam 0 created, phi 0, theta 40, rx frequency 17700, tx frequency 28750, rx polarisation RHCP, tx polarisation RHCP
+2023-07-14T13:48:47.760Z
+No frequency change for beam 0 frequency 17700
+2023-07-14T13:48:47.766Z
+No frequency or group change for beam 1 group Default frequency 17700 lens 0
+2023-07-14T13:48:47.767Z
+Beam 1 using freq 17700 offset 0
+2023-07-14T13:48:47.767Z
+No frequency change for beam 0 frequency 17700
+2023-07-14T13:48:47.768Z
+Loading combiner pointing table for lens=0, beam=1, frequency=17700, temperature=0, polarisation=RHCP
+2023-07-14T13:48:47.768Z
+No frequency or group change for beam 1 group Default frequency 17700 lens 0
+2023-07-14T13:48:47.769Z
+Beam 1 using freq 17700 offset 0
+2023-07-14T13:48:47.769Z
+No frequency change for beam 0 frequency 17700
+2023-07-14T13:48:47.770Z
+No frequency or group change for beam 1 group Default frequency 17700 lens 1
+2023-07-14T13:48:47.771Z
+Loading combiner pointing table for lens=0, beam=1, frequency=17700, temperature=0, polarisation=RHCP
+2023-07-14T13:48:47.771Z
+Beam 1 using freq 17700 offset 0
+2023-07-14T13:48:47.771Z
+No frequency change for beam 0 frequency 17700
+2023-07-14T13:48:47.772Z
+Loading combiner pointing table for lens=1, beam=1, frequency=17700, temperature=0, polarisation=RHCP
+2023-07-14T13:48:47.773Z
+No frequency or group change for beam 1 group Default frequency 17700 lens 1
+2023-07-14T13:48:47.773Z
+Beam 1 using freq 17700 offset 0
+2023-07-14T13:48:47.774Z
+No frequency change for beam 0 frequency 17700
+2023-07-14T13:48:47.774Z
+No frequency or group change for beam 1 group Default frequency 17700 lens 2
+2023-07-14T13:48:47.775Z
+Loading combiner pointing table for lens=1, beam=1, frequency=17700, temperature=0, polarisation=RHC
+2023-07-14T13:48:47.775Z
+Beam 1 using freq 17700 offset 0
+2023-07-14T13:48:47.776Z
+No frequency change for beam 0 frequency 17700
+2023-07-14T13:48:47.776Z
+Loading combiner pointing table for lens=2, beam=1, frequency=17700, temperature=0, polarisation=RHCP
+2023-07-14T13:48:47.777Z
+No frequency or group change for beam 1 group Default frequency 17700 lens 2
+2023-07-14T13:48:47.778Z
+Beam 1 using freq 17700 offset 0
+2023-07-14T13:48:47.778Z
+Loading combiner pointing table for lens=2, beam=1, frequency=17700, temperature=0, polarisation=RHCP
+2023-07-14T13:48:47.779Z
+No frequency change for beam 0 frequency 17700
+2023-07-14T13:48:49.893Z
+No frequency or group change for beam 1 group Default frequency 17700 lens 
+2023-07-14T13:48:49.894Z
+No frequency change for beam 0 frequency 17700
+2023-07-14T13:48:49.894Z
+Beam 1 using freq 17700 offset 0
+2023-07-14T13:48:49.895Z
+No frequency or group change for beam 1 group Default frequency 17700 lens 0
+2023-07-14T13:48:49.896Z
+Beam 1 using freq 17700 offset 0
+2023-07-14T13:48:49.896Z
+Loading combiner pointing table for lens=0, beam=1, frequency=17700, temperature=0, polarisation=Linear
+2023-07-14T13:48:49.896Z
+No frequency change for beam 0 frequency 17700
+2023-07-14T13:48:49.898Z
+Loading combiner pointing table for lens=0, beam=1, frequency=17700, temperature=0, polarisation=Linear
+2023-07-14T13:48:49.898Z
+No frequency or group change for beam 1 group Default frequency 17700 lens 1
+2023-07-14T13:48:49.899Z
+No frequency change for beam 0 frequency 17700
+2023-07-14T13:48:49.899Z
+Beam 1 using freq 17700 offset 0
+2023-07-14T13:48:49.899Z
+No frequency or group change for beam 1 group Default frequency 17700 lens 1
+2023-07-14T13:48:49.900Z
+Beam 1 using freq 17700 offset 0
+2023-07-14T13:48:49.901Z
+Loading combiner pointing table for lens=1, beam=1, frequency=17700, temperature=0, polarisation=Linear
+2023-07-14T13:48:49.901Z
+No frequency change for beam 0 frequency 17700
+2023-07-14T13:48:49.902Z
+Loading combiner pointing table for lens=1, beam=1, frequency=17700, temperature=0, polarisation=Linear
+2023-07-14T13:48:49.902Z
+No frequency or group change for beam 1 group Default frequency 17700 lens 2
+2023-07-14T13:48:49.903Z
+No frequency change for beam 0 frequency 17700
+2023-07-14T13:48:49.903Z
+Beam 1 using freq 17700 offset 0
+2023-07-14T13:48:49.903Z
+No frequency or group change for beam 1 group Default frequency 17700 lens 2
+2023-07-14T13:48:49.904Z
+Beam 1 using freq 17700 offset 0
+2023-07-14T13:48:49.905Z
+Loading combiner pointing table for lens=2, beam=1, frequency=17700, temperature=0, polarisation=Linear
+2023-07-14T13:48:49.905Z
+Loading combiner pointing table for lens=2, beam=1, frequency=17700, temperature=0, polarisation=Linear
+2023-07-14T13:48:49.906Z
+Manual Antenna beam 1 created, phi 0, theta 0, rx frequency 17700, tx frequency 28750, rx polarisation RHCP, tx polarisation RHCP
+2023-07-14T13:48:50.483Z
+No frequency change for beam 1 frequency 17700
+2023-07-14T13:48:50.489Z
+No frequency or group change for beam 2 group Default frequency 17700 lens 0
+2023-07-14T13:48:50.490Z
+Beam 2 using freq 17700 offset 0
+2023-07-14T13:48:50.490Z
+No frequency change for beam 1 frequency 17700
+2023-07-14T13:48:50.490Z
+No frequency or group change for beam 2 group Default frequency 17700 lens 0
+2023-07-14T13:48:50.491Z
+Loading combiner pointing table for lens=0, beam=2, frequency=17700, temperature=0, polarisation=RHCP
+2023-07-14T13:48:50.492Z
+Beam 2 using freq 17700 offset 0
+2023-07-14T13:48:50.492Z
+No frequency change for beam 1 frequency 17700
+2023-07-14T13:48:50.493Z
+Loading combiner pointing table for lens=0, beam=2, frequency=17700, temperature=0, polarisation=RHCP
+2023-07-14T13:48:50.493Z
+No frequency or group change for beam 2 group Default frequency 17700 lens 1
+2023-07-14T13:48:50.494Z
+Beam 2 using freq 17700 offset 0
+2023-07-14T13:48:50.494Z
+No frequency change for beam 1 frequency 17700
+2023-07-14T13:48:50.495Z
+No frequency or group change for beam 2 group Default frequency 17700 lens 1
+2023-07-14T13:48:50.496Z
+Loading combiner pointing table for lens=1, beam=2, frequency=17700, temperature=0, polarisation=RHCP
+2023-07-14T13:48:50.496Z
+Beam 2 using freq 17700 offset 0
+2023-07-14T13:48:50.496Z
+No frequency change for beam 1 frequency 17700
+2023-07-14T13:48:50.497Z
+Loading combiner pointing table for lens=1, beam=2, frequency=17700, temperature=0, polarisation=RHCP
+2023-07-14T13:48:50.498Z
+No frequency or group change for beam 2 group Default frequency 17700 lens 2
+2023-07-14T13:48:50.498Z
+Beam 2 using freq 17700 offset 
+2023-07-14T13:48:50.499Z
+No frequency change for beam 1 frequency 17700
+2023-07-14T13:48:50.499Z
+No frequency or group change for beam 2 group Default frequency 17700 lens 2
+2023-07-14T13:48:50.500Z
+Loading combiner pointing table for lens=2, beam=2, frequency=17700, temperature=0, polarisation=RHCP
+2023-07-14T13:48:50.500Z
+Beam 2 using freq 17700 offset 0
+2023-07-14T13:48:50.501Z
+Loading combiner pointing table for lens=2, beam=2, frequency=17700, temperature=0, polarisation=RHCP
+2023-07-14T13:48:50.501Z
+getCommon got {"lens":"1","rfic":"1","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 36946
+2023-07-14T13:48:52.530Z
+getCommon got {"lens":"2","rfic":"1","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 36948
+2023-07-14T13:48:52.555Z
+getCommon got {"lens":"3","rfic":"1","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 36950
+2023-07-14T13:48:52.580Z
+No frequency change for beam 1 frequency 17700
+2023-07-14T13:48:52.608Z
+No frequency or group change for beam 2 group Default frequency 17700 lens 0
+2023-07-14T13:48:52.609Z
+No frequency change for beam 1 frequency 17700
+2023-07-14T13:48:52.609Z
+Beam 2 using freq 17700 offset 0
+2023-07-14T13:48:52.610Z
+No frequency or group change for beam 2 group Default frequency 17700 lens 0
+2023-07-14T13:48:52.611Z
+Beam 2 using freq 17700 offset 0
+2023-07-14T13:48:52.611Z
+Loading combiner pointing table for lens=0, beam=2, frequency=17700, temperature=0, polarisation=Linear
+2023-07-14T13:48:52.611Z
+No frequency change for beam 1 frequency 17700
+2023-07-14T13:48:52.612Z
+Loading combiner pointing table for lens=0, beam=2, frequency=17700, temperature=0, polarisation=Linear
+2023-07-14T13:48:52.613Z
+No frequency or group change for beam 2 group Default frequency 17700 lens 1
+2023-07-14T13:48:52.614Z
+No frequency change for beam 1 frequency 17700
+2023-07-14T13:48:52.614Z
+Beam 2 using freq 17700 offset 0
+2023-07-14T13:48:52.614Z
+No frequency or group change for beam 2 group Default frequency 17700 lens 1
+2023-07-14T13:48:52.615Z
+Beam 2 using freq 17700 offset 0
+2023-07-14T13:48:52.616Z
+Loading combiner pointing table for lens=1, beam=2, frequency=17700, temperature=0, polarisation=Linear
+2023-07-14T13:48:52.616Z
+No frequency change for beam 1 frequency 17700
+2023-07-14T13:48:52.617Z
+Loading combiner pointing table for lens=1, beam=2, frequency=17700, temperature=0, polarisation=Linear
+2023-07-14T13:48:52.617Z
+No frequency or group change for beam 2 group Default frequency 17700 lens 2
+2023-07-14T13:48:52.618Z
+No frequency change for beam 1 frequency 1770
+2023-07-14T13:48:52.618Z
+Beam 2 using freq 17700 offset 0
+2023-07-14T13:48:52.618Z
+No frequency or group change for beam 2 group Default frequency 17700 lens 2
+2023-07-14T13:48:52.619Z
+Beam 2 using freq 17700 offset 0
+2023-07-14T13:48:52.620Z
+Loading combiner pointing table for lens=2, beam=2, frequency=17700, temperature=0, polarisation=Linear
+2023-07-14T13:48:52.620Z
+Loading combiner pointing table for lens=2, beam=2, frequency=17700, temperature=0, polarisation=Linear
+2023-07-14T13:48:52.621Z
+getCommon got {"lens":"1","rfic":"2","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 36952
+2023-07-14T13:48:52.669Z
+getCommon got {"lens":"2","rfic":"2","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 36954
+2023-07-14T13:48:52.694Z
+getCommon got {"lens":"3","rfic":"2","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 36956
+2023-07-14T13:48:52.719Z
+getCommon got {"lens":"1","rfic":"3","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 36958
+2023-07-14T13:48:52.809Z
+getCommon got {"lens":"2","rfic":"3","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 3696
+2023-07-14T13:48:52.834Z
+getCommon got {"lens":"3","rfic":"3","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 36962
+2023-07-14T13:48:52.860Z
+getCommon got {"lens":"1","rfic":"4","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 36964
+2023-07-14T13:48:52.949Z
+getCommon got {"lens":"2","rfic":"4","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 36966
+2023-07-14T13:48:52.974Z
+getCommon got {"lens":"3","rfic":"4","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 36968
+2023-07-14T13:48:52.999Z
+getCommon got {"lens":"1","rfic":"5","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 36970
+2023-07-14T13:48:53.088Z
+getCommon got {"lens":"2","rfic":"5","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 3697
+2023-07-14T13:48:53.113Z
+getCommon got {"lens":"3","rfic":"5","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 36974
+2023-07-14T13:48:53.139Z
+getCommon got {"lens":"1","rfic":"6","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 36976
+2023-07-14T13:48:53.215Z
+getCommon got {"lens":"2","rfic":"6","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 36978
+2023-07-14T13:48:53.240Z
+getCommon got {"lens":"3","rfic":"6","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 36980
+2023-07-14T13:48:53.265Z
+getCommon got {"lens":"1","rfic":"7","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 36982
+2023-07-14T13:48:53.355Z
+getCommon got {"lens":"2","rfic":"7","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 3698
+2023-07-14T13:48:53.380Z
+getCommon got {"lens":"3","rfic":"7","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 36986
+2023-07-14T13:48:53.405Z
+getCommon got {"lens":"1","rfic":"8","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 36988
+2023-07-14T13:48:53.494Z
+getCommon got {"lens":"2","rfic":"8","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 36990
+2023-07-14T13:48:53.519Z
+getCommon got {"lens":"3","rfic":"8","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 36992
+2023-07-14T13:48:53.545Z
+getCommon got {"lens":"1","rfic":"9","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 36994
+2023-07-14T13:48:53.633Z
+getCommon got {"lens":"2","rfic":"9","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 3699
+2023-07-14T13:48:53.658Z
+getCommon got {"lens":"3","rfic":"9","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 36998
+2023-07-14T13:48:53.683Z
+getCommon got {"lens":"1","rfic":"10","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 37000
+2023-07-14T13:48:53.774Z
+getCommon got {"lens":"2","rfic":"10","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 37002
+2023-07-14T13:48:53.799Z
+getCommon got {"lens":"3","rfic":"10","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 37004
+2023-07-14T13:48:53.824Z
+getCommon got {"lens":"1","rfic":"11","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 37006
+2023-07-14T13:48:53.914Z
+getCommon got {"lens":"2","rfic":"11","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 3700
+2023-07-14T13:48:53.939Z
+getCommon got {"lens":"3","rfic":"11","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 37010
+2023-07-14T13:48:53.964Z
+getCommon got {"lens":"1","rfic":"12","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 37012
+2023-07-14T13:48:54.040Z
+getCommon got {"lens":"2","rfic":"12","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 37014
+2023-07-14T13:48:54.065Z
+getCommon got {"lens":"3","rfic":"12","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 37016
+2023-07-14T13:48:54.090Z
+getCommon got {"lens":"1","rfic":"0","chans":[{"id":"0","phase":"0","atten":"32"}]} id 37018
+2023-07-14T13:48:54.179Z
+getCommon got {"lens":"2","rfic":"0","chans":[{"id":"0","phase":"0","atten":"32"}]} id 37020
+2023-07-14T13:48:54.204Z
+getCommon got {"lens":"3","rfic":"0","chans":[]} id 37022
+2023-07-14T13:48:54.229Z
+getCommon got {"lens":"1","rfic":"0","chans":[{"id":"0","phase":"0","atten":"32"}]} id 37024
+2023-07-14T13:48:54.319Z
+getCommon got {"lens":"2","rfic":"0","chans":[{"id":"0","phase":"0","atten":"32"}]} id 37026
+2023-07-14T13:48:54.344Z
+getCommon got {"lens":"3","rfic":"0","chans":[]} id 37028
+2023-07-14T13:48:54.369Z
+Manual Antenna beam 0 created, phi 0, theta 40, rx frequency 18200, tx frequency 28750, rx polarisation RHCP, tx polarisation RHCP
+2023-07-14T13:56:28.705Z
+Frequency or group changed for beam 1 group Default frequency 18200 lens 0
+2023-07-14T13:56:28.732Z
+Frequency or group changed for beam 1 group Default frequency 18200 lens 0
+2023-07-14T13:56:28.732Z
+Beam 1 using freq 18200 offset 0
+2023-07-14T13:56:28.733Z
+Beam 1 using freq 18200 offset 0
+2023-07-14T13:56:28.733Z
+Loading combiner pointing table for lens=0, beam=1, frequency=18200, temperature=0, polarisation=RHC
+2023-07-14T13:56:28.734Z
+Loading combiner pointing table for lens=0, beam=1, frequency=18200, temperature=0, polarisation=RHCP
+2023-07-14T13:56:28.735Z
+Frequency or group changed for beam 1 group Default frequency 18200 lens 1
+2023-07-14T13:56:28.736Z
+Frequency or group changed for beam 1 group Default frequency 18200 lens 1
+2023-07-14T13:56:28.737Z
+Beam 1 using freq 18200 offset 0
+2023-07-14T13:56:28.737Z
+Beam 1 using freq 18200 offset 0
+2023-07-14T13:56:28.737Z
+Loading combiner pointing table for lens=1, beam=1, frequency=18200, temperature=0, polarisation=RHCP
+2023-07-14T13:56:28.739Z
+Loading combiner pointing table for lens=1, beam=1, frequency=18200, temperature=0, polarisation=RHCP
+2023-07-14T13:56:28.739Z
+Frequency or group changed for beam 1 group Default frequency 18200 lens 2
+2023-07-14T13:56:28.741Z
+Frequency or group changed for beam 1 group Default frequency 18200 lens 2
+2023-07-14T13:56:28.741Z
+Beam 1 using freq 18200 offset 0
+2023-07-14T13:56:28.741Z
+Beam 1 using freq 18200 offset 0
+2023-07-14T13:56:28.742Z
+Loading combiner pointing table for lens=2, beam=1, frequency=18200, temperature=0, polarisation=RHCP
+2023-07-14T13:56:28.743Z
+Loading combiner pointing table for lens=2, beam=1, frequency=18200, temperature=0, polarisation=RHCP
+2023-07-14T13:56:28.743Z
+Manual Antenna beam 1 created, phi 0, theta 0, rx frequency 18200, tx frequency 28750, rx polarisation RHCP, tx polarisation RHCP
+2023-07-14T13:56:30.915Z
+No frequency change for beam 0 frequency 18200
+2023-07-14T13:56:30.920Z
+No frequency change for beam 0 frequency 18200
+2023-07-14T13:56:30.921Z
+No frequency or group change for beam 1 group Default frequency 18200 lens 0
+2023-07-14T13:56:30.921Z
+Beam 1 using freq 18200 offset 0
+2023-07-14T13:56:30.922Z
+No frequency or group change for beam 1 group Default frequency 18200 lens 0
+2023-07-14T13:56:30.943Z
+Beam 1 using freq 18200 offset 0
+2023-07-14T13:56:30.944Z
+Loading combiner pointing table for lens=0, beam=1, frequency=18200, temperature=0, polarisation=Linear
+2023-07-14T13:56:30.944Z
+Loading combiner pointing table for lens=0, beam=1, frequency=18200, temperature=0, polarisation=Linear
+2023-07-14T13:56:30.945Z
+No frequency change for beam 0 frequency 18200
+2023-07-14T13:56:30.945Z
+No frequency change for beam 0 frequency 18200
+2023-07-14T13:56:30.946Z
+No frequency or group change for beam 1 group Default frequency 18200 lens 1
+2023-07-14T13:56:30.947Z
+Beam 1 using freq 18200 offset 0
+2023-07-14T13:56:30.947Z
+No frequency or group change for beam 1 group Default frequency 18200 lens 1
+2023-07-14T13:56:30.947Z
+Beam 1 using freq 18200 offset 0
+2023-07-14T13:56:30.948Z
+Loading combiner pointing table for lens=1, beam=1, frequency=18200, temperature=0, polarisation=Linear
+2023-07-14T13:56:30.949Z
+Loading combiner pointing table for lens=1, beam=1, frequency=18200, temperature=0, polarisation=Linear
+2023-07-14T13:56:30.950Z
+No frequency change for beam 0 frequency 18200
+2023-07-14T13:56:30.950Z
+No frequency change for beam 0 frequency 18200
+2023-07-14T13:56:30.951Z
+No frequency or group change for beam 1 group Default frequency 18200 lens 2
+2023-07-14T13:56:30.951Z
+Beam 1 using freq 18200 offset 0
+2023-07-14T13:56:30.952Z
+No frequency or group change for beam 1 group Default frequency 18200 lens 2
+2023-07-14T13:56:30.952Z
+Beam 1 using freq 18200 offset 0
+2023-07-14T13:56:30.953Z
+Loading combiner pointing table for lens=2, beam=1, frequency=18200, temperature=0, polarisation=Linear
+2023-07-14T13:56:30.953Z
+Loading combiner pointing table for lens=2, beam=1, frequency=18200, temperature=0, polarisation=Linear
+2023-07-14T13:56:30.954Z
+Frequency or group changed for beam 2 group Default frequency 18200 lens 0
+2023-07-14T13:56:30.956Z
+Beam 2 using freq 18200 offset 0
+2023-07-14T13:56:30.957Z
+Frequency or group changed for beam 2 group Default frequency 18200 lens 0
+2023-07-14T13:56:30.957Z
+Beam 2 using freq 18200 offset 0
+2023-07-14T13:56:30.958Z
+Loading combiner pointing table for lens=0, beam=2, frequency=18200, temperature=0, polarisation=RHCP
+2023-07-14T13:56:30.959Z
+Loading combiner pointing table for lens=0, beam=2, frequency=18200, temperature=0, polarisation=RHCP
+2023-07-14T13:56:30.959Z
+Frequency or group changed for beam 2 group Default frequency 18200 lens 1
+2023-07-14T13:56:30.961Z
+Beam 2 using freq 18200 offset 0
+2023-07-14T13:56:30.961Z
+Frequency or group changed for beam 2 group Default frequency 18200 lens 1
+2023-07-14T13:56:30.961Z
+Beam 2 using freq 18200 offset 0
+2023-07-14T13:56:30.962Z
+Loading combiner pointing table for lens=1, beam=2, frequency=18200, temperature=0, polarisation=RHCP
+2023-07-14T13:56:30.963Z
+Loading combiner pointing table for lens=1, beam=2, frequency=18200, temperature=0, polarisation=RHCP
+2023-07-14T13:56:30.964Z
+Frequency or group changed for beam 2 group Default frequency 18200 lens 2
+2023-07-14T13:56:30.965Z
+Beam 2 using freq 18200 offset 0
+2023-07-14T13:56:30.965Z
+Frequency or group changed for beam 2 group Default frequency 18200 lens 2
+2023-07-14T13:56:30.966Z
+Beam 2 using freq 18200 offset 0
+2023-07-14T13:56:30.966Z
+Loading combiner pointing table for lens=2, beam=2, frequency=18200, temperature=0, polarisation=RHCP
+2023-07-14T13:56:30.967Z
+Loading combiner pointing table for lens=2, beam=2, frequency=18200, temperature=0, polarisation=RHCP
+2023-07-14T13:56:30.968Z
+getCommon got {"lens":"1","rfic":"1","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 38253
+2023-07-14T13:56:33.088Z
+getCommon got {"lens":"2","rfic":"1","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 38255
+2023-07-14T13:56:33.113Z
+getCommon got {"lens":"3","rfic":"1","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 38257
+2023-07-14T13:56:33.137Z
+No frequency change for beam 1 frequency 18200
+2023-07-14T13:56:33.171Z
+No frequency or group change for beam 2 group Default frequency 18200 lens 0
+2023-07-14T13:56:33.172Z
+No frequency change for beam 1 frequency 18200
+2023-07-14T13:56:33.172Z
+Beam 2 using freq 18200 offset 0
+2023-07-14T13:56:33.173Z
+No frequency or group change for beam 2 group Default frequency 18200 lens 0
+2023-07-14T13:56:33.174Z
+Beam 2 using freq 18200 offset 0
+2023-07-14T13:56:33.174Z
+Loading combiner pointing table for lens=0, beam=2, frequency=18200, temperature=0, polarisation=Linear
+2023-07-14T13:56:33.174Z
+No frequency change for beam 1 frequency 18200
+2023-07-14T13:56:33.175Z
+Loading combiner pointing table for lens=0, beam=2, frequency=18200, temperature=0, polarisation=Linear
+2023-07-14T13:56:33.176Z
+No frequency or group change for beam 2 group Default frequency 18200 lens 1
+2023-07-14T13:56:33.176Z
+No frequency change for beam 1 frequency 18200
+2023-07-14T13:56:33.177Z
+Beam 2 using freq 18200 offset 0
+2023-07-14T13:56:33.177Z
+No frequency or group change for beam 2 group Default frequency 18200 lens 1
+2023-07-14T13:56:33.178Z
+Beam 2 using freq 18200 offset 0
+2023-07-14T13:56:33.179Z
+Loading combiner pointing table for lens=1, beam=2, frequency=18200, temperature=0, polarisation=Linear
+2023-07-14T13:56:33.179Z
+No frequency change for beam 1 frequency 18200
+2023-07-14T13:56:33.180Z
+Loading combiner pointing table for lens=1, beam=2, frequency=18200, temperature=0, polarisation=Linear
+2023-07-14T13:56:33.180Z
+No frequency or group change for beam 2 group Default frequency 18200 lens 2
+2023-07-14T13:56:33.181Z
+No frequency change for beam 1 frequency 18200
+2023-07-14T13:56:33.181Z
+Beam 2 using freq 18200 offset 0
+2023-07-14T13:56:33.181Z
+No frequency or group change for beam 2 group Default frequency 18200 lens 2
+2023-07-14T13:56:33.182Z
+Beam 2 using freq 18200 offset 0
+2023-07-14T13:56:33.183Z
+Loading combiner pointing table for lens=2, beam=2, frequency=18200, temperature=0, polarisation=Linear
+2023-07-14T13:56:33.183Z
+Loading combiner pointing table for lens=2, beam=2, frequency=18200, temperature=0, polarisation=Linea
+2023-07-14T13:56:33.184Z
+getCommon got {"lens":"1","rfic":"2","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 38259
+2023-07-14T13:56:33.219Z
+getCommon got {"lens":"2","rfic":"2","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 38261
+2023-07-14T13:56:33.243Z
+getCommon got {"lens":"3","rfic":"2","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 38263
+2023-07-14T13:56:33.267Z
+getCommon got {"lens":"1","rfic":"3","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 38265
+2023-07-14T13:56:33.344Z
+getCommon got {"lens":"2","rfic":"3","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 38267
+2023-07-14T13:56:33.369Z
+getCommon got {"lens":"3","rfic":"3","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 3826
+2023-07-14T13:56:33.393Z
+getCommon got {"lens":"1","rfic":"4","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 38271
+2023-07-14T13:56:33.471Z
+getCommon got {"lens":"2","rfic":"4","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 38273
+2023-07-14T13:56:33.495Z
+getCommon got {"lens":"3","rfic":"4","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 38275
+2023-07-14T13:56:33.520Z
+getCommon got {"lens":"1","rfic":"5","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 38277
+2023-07-14T13:56:33.598Z
+getCommon got {"lens":"2","rfic":"5","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 38279
+2023-07-14T13:56:33.622Z
+getCommon got {"lens":"3","rfic":"5","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 3828
+2023-07-14T13:56:33.646Z
+getCommon got {"lens":"1","rfic":"6","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 38283
+2023-07-14T13:56:33.724Z
+getCommon got {"lens":"2","rfic":"6","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 38285
+2023-07-14T13:56:33.748Z
+getCommon got {"lens":"3","rfic":"6","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 38287
+2023-07-14T13:56:33.772Z
+getCommon got {"lens":"1","rfic":"7","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 38289
+2023-07-14T13:56:33.850Z
+getCommon got {"lens":"2","rfic":"7","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 38291
+2023-07-14T13:56:33.874Z
+getCommon got {"lens":"3","rfic":"7","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 3829
+2023-07-14T13:56:33.898Z
+getCommon got {"lens":"1","rfic":"8","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 38295
+2023-07-14T13:56:33.976Z
+getCommon got {"lens":"2","rfic":"8","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 38297
+2023-07-14T13:56:34.000Z
+getCommon got {"lens":"3","rfic":"8","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 38299
+2023-07-14T13:56:34.025Z
+getCommon got {"lens":"1","rfic":"9","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 38301
+2023-07-14T13:56:34.102Z
+getCommon got {"lens":"2","rfic":"9","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 38303
+2023-07-14T13:56:34.126Z
+getCommon got {"lens":"3","rfic":"9","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 38305
+2023-07-14T13:56:34.150Z
+getCommon got {"lens":"1","rfic":"10","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 38307
+2023-07-14T13:56:34.229Z
+getCommon got {"lens":"2","rfic":"10","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 38309
+2023-07-14T13:56:34.253Z
+getCommon got {"lens":"3","rfic":"10","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 38311
+2023-07-14T13:56:34.277Z
+getCommon got {"lens":"1","rfic":"11","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 38313
+2023-07-14T13:56:34.355Z
+getCommon got {"lens":"2","rfic":"11","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 38315
+2023-07-14T13:56:34.380Z
+getCommon got {"lens":"3","rfic":"11","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 38317
+2023-07-14T13:56:34.404Z
+getCommon got {"lens":"1","rfic":"12","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 38319
+2023-07-14T13:56:34.482Z
+getCommon got {"lens":"2","rfic":"12","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 38321
+2023-07-14T13:56:34.506Z
+getCommon got {"lens":"3","rfic":"12","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 38323
+2023-07-14T13:56:34.530Z
+getCommon got {"lens":"1","rfic":"0","chans":[{"id":"0","phase":"0","atten":"32"}]} id 38325
+2023-07-14T13:56:34.609Z
+getCommon got {"lens":"2","rfic":"0","chans":[{"id":"0","phase":"0","atten":"32"}]} id 38327
+2023-07-14T13:56:34.633Z
+getCommon got {"lens":"3","rfic":"0","chans":[]} id 38329
+2023-07-14T13:56:34.657Z
+getCommon got {"lens":"1","rfic":"0","chans":[{"id":"0","phase":"0","atten":"32"}]} id 38331
+2023-07-14T13:56:34.733Z
+getCommon got {"lens":"2","rfic":"0","chans":[{"id":"0","phase":"0","atten":"32"}]} id 38333
+2023-07-14T13:56:34.758Z
+getCommon got {"lens":"3","rfic":"0","chans":[]} id 38335
+2023-07-14T13:56:34.782Z
+Manual Antenna beam 0 created, phi 0, theta 40, rx frequency 18700, tx frequency 28750, rx polarisation RHCP, tx polarisation RHCP
+2023-07-14T14:02:55.327Z
+Frequency or group changed for beam 1 group Default frequency 18700 lens 0
+2023-07-14T14:02:55.356Z
+Frequency or group changed for beam 1 group Default frequency 18700 lens 0
+2023-07-14T14:02:55.356Z
+Beam 1 using freq 18700 offset 0
+2023-07-14T14:02:55.357Z
+Beam 1 using freq 18700 offset 0
+2023-07-14T14:02:55.357Z
+Loading combiner pointing table for lens=0, beam=1, frequency=18700, temperature=0, polarisation=RHCP
+2023-07-14T14:02:55.358Z
+Loading combiner pointing table for lens=0, beam=1, frequency=18700, temperature=0, polarisation=RHCP
+2023-07-14T14:02:55.358Z
+Frequency or group changed for beam 1 group Default frequency 18700 lens 1
+2023-07-14T14:02:55.360Z
+Frequency or group changed for beam 1 group Default frequency 18700 lens 1
+2023-07-14T14:02:55.361Z
+Beam 1 using freq 18700 offset 0
+2023-07-14T14:02:55.361Z
+Beam 1 using freq 18700 offset 0
+2023-07-14T14:02:55.361Z
+Loading combiner pointing table for lens=1, beam=1, frequency=18700, temperature=0, polarisation=RHC
+2023-07-14T14:02:55.363Z
+Loading combiner pointing table for lens=1, beam=1, frequency=18700, temperature=0, polarisation=RHCP
+2023-07-14T14:02:55.363Z
+Frequency or group changed for beam 1 group Default frequency 18700 lens 2
+2023-07-14T14:02:55.364Z
+Frequency or group changed for beam 1 group Default frequency 18700 lens 2
+2023-07-14T14:02:55.365Z
+Beam 1 using freq 18700 offset 0
+2023-07-14T14:02:55.365Z
+Beam 1 using freq 18700 offset 0
+2023-07-14T14:02:55.365Z
+Loading combiner pointing table for lens=2, beam=1, frequency=18700, temperature=0, polarisation=RHCP
+2023-07-14T14:02:55.367Z
+Loading combiner pointing table for lens=2, beam=1, frequency=18700, temperature=0, polarisation=RHCP
+2023-07-14T14:02:55.367Z
+Manual Antenna beam 1 created, phi 0, theta 0, rx frequency 18700, tx frequency 28750, rx polarisation RHCP, tx polarisation RHCP
+2023-07-14T14:02:58.026Z
+No frequency change for beam 0 frequency 18700
+2023-07-14T14:02:58.054Z
+No frequency change for beam 0 frequency 18700
+2023-07-14T14:02:58.055Z
+No frequency or group change for beam 1 group Default frequency 18700 lens 0
+2023-07-14T14:02:58.055Z
+Beam 1 using freq 18700 offset 0
+2023-07-14T14:02:58.056Z
+No frequency or group change for beam 1 group Default frequency 18700 lens 0
+2023-07-14T14:02:58.056Z
+Beam 1 using freq 18700 offset 0
+2023-07-14T14:02:58.057Z
+Loading combiner pointing table for lens=0, beam=1, frequency=18700, temperature=0, polarisation=Linea
+2023-07-14T14:02:58.057Z
+Loading combiner pointing table for lens=0, beam=1, frequency=18700, temperature=0, polarisation=Linear
+2023-07-14T14:02:58.058Z
+No frequency change for beam 0 frequency 18700
+2023-07-14T14:02:58.058Z
+No frequency change for beam 0 frequency 18700
+2023-07-14T14:02:58.059Z
+No frequency or group change for beam 1 group Default frequency 18700 lens 1
+2023-07-14T14:02:58.059Z
+Beam 1 using freq 18700 offset 0
+2023-07-14T14:02:58.060Z
+No frequency or group change for beam 1 group Default frequency 18700 lens 1
+2023-07-14T14:02:58.060Z
+Beam 1 using freq 18700 offset 0
+2023-07-14T14:02:58.061Z
+Loading combiner pointing table for lens=1, beam=1, frequency=18700, temperature=0, polarisation=Linear
+2023-07-14T14:02:58.062Z
+Loading combiner pointing table for lens=1, beam=1, frequency=18700, temperature=0, polarisation=Linear
+2023-07-14T14:02:58.063Z
+No frequency change for beam 0 frequency 18700
+2023-07-14T14:02:58.063Z
+No frequency change for beam 0 frequency 18700
+2023-07-14T14:02:58.064Z
+No frequency or group change for beam 1 group Default frequency 18700 lens 2
+2023-07-14T14:02:58.064Z
+Beam 1 using freq 18700 offset 0
+2023-07-14T14:02:58.065Z
+No frequency or group change for beam 1 group Default frequency 18700 lens 2
+2023-07-14T14:02:58.065Z
+Beam 1 using freq 18700 offset 0
+2023-07-14T14:02:58.065Z
+Loading combiner pointing table for lens=2, beam=1, frequency=18700, temperature=0, polarisation=Linear
+2023-07-14T14:02:58.066Z
+Loading combiner pointing table for lens=2, beam=1, frequency=18700, temperature=0, polarisation=Linear
+2023-07-14T14:02:58.067Z
+Frequency or group changed for beam 2 group Default frequency 18700 lens 0
+2023-07-14T14:02:58.069Z
+Beam 2 using freq 18700 offset 0
+2023-07-14T14:02:58.071Z
+Frequency or group changed for beam 2 group Default frequency 18700 lens 0
+2023-07-14T14:02:58.071Z
+Beam 2 using freq 18700 offset 0
+2023-07-14T14:02:58.072Z
+Loading combiner pointing table for lens=0, beam=2, frequency=18700, temperature=0, polarisation=RHCP
+2023-07-14T14:02:58.072Z
+Loading combiner pointing table for lens=0, beam=2, frequency=18700, temperature=0, polarisation=RHCP
+2023-07-14T14:02:58.073Z
+Frequency or group changed for beam 2 group Default frequency 18700 lens 1
+2023-07-14T14:02:58.074Z
+Beam 2 using freq 18700 offset 0
+2023-07-14T14:02:58.075Z
+Frequency or group changed for beam 2 group Default frequency 18700 lens 1
+2023-07-14T14:02:58.075Z
+Beam 2 using freq 18700 offset 0
+2023-07-14T14:02:58.076Z
+Loading combiner pointing table for lens=1, beam=2, frequency=18700, temperature=0, polarisation=RHCP
+2023-07-14T14:02:58.077Z
+Loading combiner pointing table for lens=1, beam=2, frequency=18700, temperature=0, polarisation=RHCP
+2023-07-14T14:02:58.077Z
+Frequency or group changed for beam 2 group Default frequency 18700 lens 2
+2023-07-14T14:02:58.079Z
+Beam 2 using freq 18700 offset 0
+2023-07-14T14:02:58.079Z
+Frequency or group changed for beam 2 group Default frequency 18700 lens 2
+2023-07-14T14:02:58.080Z
+Beam 2 using freq 18700 offset 0
+2023-07-14T14:02:58.080Z
+Loading combiner pointing table for lens=2, beam=2, frequency=18700, temperature=0, polarisation=RHCP
+2023-07-14T14:02:58.081Z
+Loading combiner pointing table for lens=2, beam=2, frequency=18700, temperature=0, polarisation=RHCP
+2023-07-14T14:02:58.082Z
+getCommon got {"lens":"1","rfic":"1","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 39522
+2023-07-14T14:03:00.043Z
+getCommon got {"lens":"2","rfic":"1","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 39524
+2023-07-14T14:03:00.067Z
+getCommon got {"lens":"3","rfic":"1","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 39526
+2023-07-14T14:03:00.092Z
+No frequency change for beam 1 frequency 18700
+2023-07-14T14:03:00.121Z
+No frequency or group change for beam 2 group Default frequency 18700 lens 0
+2023-07-14T14:03:00.122Z
+Beam 2 using freq 18700 offset 
+2023-07-14T14:03:00.123Z
+No frequency change for beam 1 frequency 18700
+2023-07-14T14:03:00.124Z
+Loading combiner pointing table for lens=0, beam=2, frequency=18700, temperature=0, polarisation=Linear
+2023-07-14T14:03:00.124Z
+No frequency or group change for beam 2 group Default frequency 18700 lens 0
+2023-07-14T14:03:00.125Z
+No frequency change for beam 1 frequency 18700
+2023-07-14T14:03:00.125Z
+Beam 2 using freq 18700 offset 0
+2023-07-14T14:03:00.125Z
+No frequency or group change for beam 2 group Default frequency 18700 lens 1
+2023-07-14T14:03:00.126Z
+Beam 2 using freq 18700 offset 0
+2023-07-14T14:03:00.127Z
+Loading combiner pointing table for lens=0, beam=2, frequency=18700, temperature=0, polarisation=Linear
+2023-07-14T14:03:00.127Z
+No frequency change for beam 1 frequency 18700
+2023-07-14T14:03:00.128Z
+Loading combiner pointing table for lens=1, beam=2, frequency=18700, temperature=0, polarisation=Linear
+2023-07-14T14:03:00.128Z
+No frequency or group change for beam 2 group Default frequency 18700 lens 1
+2023-07-14T14:03:00.129Z
+No frequency change for beam 1 frequency 18700
+2023-07-14T14:03:00.129Z
+Beam 2 using freq 18700 offset 0
+2023-07-14T14:03:00.130Z
+No frequency or group change for beam 2 group Default frequency 18700 lens 2
+2023-07-14T14:03:00.131Z
+Beam 2 using freq 18700 offset 0
+2023-07-14T14:03:00.131Z
+Loading combiner pointing table for lens=1, beam=2, frequency=18700, temperature=0, polarisation=Linear
+2023-07-14T14:03:00.132Z
+No frequency change for beam 1 frequency 18700
+2023-07-14T14:03:00.133Z
+Loading combiner pointing table for lens=2, beam=2, frequency=18700, temperature=0, polarisation=Linear
+2023-07-14T14:03:00.133Z
+No frequency or group change for beam 2 group Default frequency 18700 lens 2
+2023-07-14T14:03:00.133Z
+Beam 2 using freq 18700 offset 0
+2023-07-14T14:03:00.134Z
+Loading combiner pointing table for lens=2, beam=2, frequency=18700, temperature=0, polarisation=Linear
+2023-07-14T14:03:00.135Z
+getCommon got {"lens":"1","rfic":"2","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 39528
+2023-07-14T14:03:00.172Z
+getCommon got {"lens":"2","rfic":"2","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 39530
+2023-07-14T14:03:00.197Z
+getCommon got {"lens":"3","rfic":"2","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 39532
+2023-07-14T14:03:00.222Z
+getCommon got {"lens":"1","rfic":"3","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 39534
+2023-07-14T14:03:00.299Z
+getCommon got {"lens":"2","rfic":"3","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 39536
+2023-07-14T14:03:00.324Z
+getCommon got {"lens":"3","rfic":"3","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 39538
+2023-07-14T14:03:00.349Z
+getCommon got {"lens":"1","rfic":"4","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 39540
+2023-07-14T14:03:00.425Z
+getCommon got {"lens":"2","rfic":"4","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 39542
+2023-07-14T14:03:00.449Z
+getCommon got {"lens":"3","rfic":"4","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 39544
+2023-07-14T14:03:00.473Z
+getCommon got {"lens":"1","rfic":"5","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 39546
+2023-07-14T14:03:00.551Z
+getCommon got {"lens":"2","rfic":"5","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 39548
+2023-07-14T14:03:00.575Z
+getCommon got {"lens":"3","rfic":"5","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 39550
+2023-07-14T14:03:00.599Z
+getCommon got {"lens":"1","rfic":"6","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 39552
+2023-07-14T14:03:00.678Z
+getCommon got {"lens":"2","rfic":"6","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 39554
+2023-07-14T14:03:00.703Z
+getCommon got {"lens":"3","rfic":"6","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 39556
+2023-07-14T14:03:00.727Z
+getCommon got {"lens":"1","rfic":"7","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 39558
+2023-07-14T14:03:00.803Z
+getCommon got {"lens":"2","rfic":"7","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 39560
+2023-07-14T14:03:00.827Z
+getCommon got {"lens":"3","rfic":"7","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 39562
+2023-07-14T14:03:00.852Z
+getCommon got {"lens":"1","rfic":"8","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 39564
+2023-07-14T14:03:00.928Z
+getCommon got {"lens":"2","rfic":"8","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 39566
+2023-07-14T14:03:00.952Z
+getCommon got {"lens":"3","rfic":"8","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 39568
+2023-07-14T14:03:00.976Z
+getCommon got {"lens":"1","rfic":"9","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 39570
+2023-07-14T14:03:01.055Z
+getCommon got {"lens":"2","rfic":"9","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 39572
+2023-07-14T14:03:01.079Z
+getCommon got {"lens":"3","rfic":"9","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 39574
+2023-07-14T14:03:01.104Z
+getCommon got {"lens":"1","rfic":"10","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 39576
+2023-07-14T14:03:01.181Z
+getCommon got {"lens":"2","rfic":"10","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 39578
+2023-07-14T14:03:01.205Z
+getCommon got {"lens":"3","rfic":"10","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 39580
+2023-07-14T14:03:01.230Z
+getCommon got {"lens":"1","rfic":"11","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 39582
+2023-07-14T14:03:01.306Z
+getCommon got {"lens":"2","rfic":"11","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 39584
+2023-07-14T14:03:01.333Z
+getCommon got {"lens":"3","rfic":"11","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 39586
+2023-07-14T14:03:01.357Z
+getCommon got {"lens":"1","rfic":"12","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 39588
+2023-07-14T14:03:01.433Z
+getCommon got {"lens":"2","rfic":"12","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 39590
+2023-07-14T14:03:01.458Z
+getCommon got {"lens":"3","rfic":"12","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 39592
+2023-07-14T14:03:01.483Z
+getCommon got {"lens":"1","rfic":"0","chans":[{"id":"0","phase":"0","atten":"32"}]} id 39594
+2023-07-14T14:03:01.559Z
+getCommon got {"lens":"2","rfic":"0","chans":[{"id":"0","phase":"0","atten":"32"}]} id 39596
+2023-07-14T14:03:01.584Z
+getCommon got {"lens":"3","rfic":"0","chans":[]} id 39598
+2023-07-14T14:03:01.608Z
+getCommon got {"lens":"1","rfic":"0","chans":[{"id":"0","phase":"0","atten":"32"}]} id 39600
+2023-07-14T14:03:01.685Z
+getCommon got {"lens":"2","rfic":"0","chans":[{"id":"0","phase":"0","atten":"32"}]} id 3960
+2023-07-14T14:03:01.710Z
+getCommon got {"lens":"3","rfic":"0","chans":[]} id 39604
+2023-07-14T14:03:01.735Z
+Frequency or group changed for beam 1 group Default frequency 19200 lens 0
+2023-07-14T14:09:21.441Z
+Beam 1 using freq 19200 offset 0
+2023-07-14T14:09:21.442Z
+Loading combiner pointing table for lens=0, beam=1, frequency=19200, temperature=0, polarisation=Linear
+2023-07-14T14:09:21.443Z
+Frequency or group changed for beam 1 group Default frequency 19200 lens 0
+2023-07-14T14:09:21.444Z
+Beam 1 using freq 19200 offset 0
+2023-07-14T14:09:21.444Z
+Frequency or group changed for beam 1 group Default frequency 19200 lens 1
+2023-07-14T14:09:21.446Z
+Loading combiner pointing table for lens=0, beam=1, frequency=19200, temperature=0, polarisation=Linear
+2023-07-14T14:09:21.446Z
+Beam 1 using freq 19200 offset 0
+2023-07-14T14:09:21.446Z
+Loading combiner pointing table for lens=1, beam=1, frequency=19200, temperature=0, polarisation=Linear
+2023-07-14T14:09:21.448Z
+Frequency or group changed for beam 1 group Default frequency 19200 lens 1
+2023-07-14T14:09:21.448Z
+Beam 1 using freq 19200 offset 0
+2023-07-14T14:09:21.449Z
+Frequency or group changed for beam 1 group Default frequency 19200 lens 2
+2023-07-14T14:09:21.450Z
+Loading combiner pointing table for lens=1, beam=1, frequency=19200, temperature=0, polarisation=Linear
+2023-07-14T14:09:21.450Z
+Beam 1 using freq 19200 offset 0
+2023-07-14T14:09:21.450Z
+Loading combiner pointing table for lens=2, beam=1, frequency=19200, temperature=0, polarisation=Linear
+2023-07-14T14:09:21.452Z
+Frequency or group changed for beam 1 group Default frequency 19200 lens 2
+2023-07-14T14:09:21.452Z
+Beam 1 using freq 19200 offset 0
+2023-07-14T14:09:21.453Z
+Loading combiner pointing table for lens=2, beam=1, frequency=19200, temperature=0, polarisation=Linear
+2023-07-14T14:09:21.454Z
+Manual Antenna beam 0 created, phi 0, theta 40, rx frequency 19200, tx frequency 28750, rx polarisation RHCP, tx polarisation RHCP
+2023-07-14T14:09:21.814Z
+No frequency change for beam 0 frequency 19200
+2023-07-14T14:09:21.818Z
+No frequency change for beam 0 frequency 19200
+2023-07-14T14:09:21.819Z
+No frequency or group change for beam 1 group Default frequency 19200 lens 0
+2023-07-14T14:09:21.820Z
+No frequency or group change for beam 1 group Default frequency 19200 lens 0
+2023-07-14T14:09:21.820Z
+Beam 1 using freq 19200 offset 0
+2023-07-14T14:09:21.821Z
+Beam 1 using freq 19200 offset 0
+2023-07-14T14:09:21.821Z
+Loading combiner pointing table for lens=0, beam=1, frequency=19200, temperature=0, polarisation=RHCP
+2023-07-14T14:09:21.823Z
+Loading combiner pointing table for lens=0, beam=1, frequency=19200, temperature=0, polarisation=RHCP
+2023-07-14T14:09:21.823Z
+No frequency change for beam 0 frequency 19200
+2023-07-14T14:09:21.824Z
+No frequency change for beam 0 frequency 19200
+2023-07-14T14:09:21.824Z
+No frequency or group change for beam 1 group Default frequency 19200 lens 1
+2023-07-14T14:09:21.825Z
+No frequency or group change for beam 1 group Default frequency 19200 lens 1
+2023-07-14T14:09:21.825Z
+Beam 1 using freq 19200 offset 0
+2023-07-14T14:09:21.825Z
+Beam 1 using freq 19200 offset 0
+2023-07-14T14:09:21.826Z
+Loading combiner pointing table for lens=1, beam=1, frequency=19200, temperature=0, polarisation=RHCP
+2023-07-14T14:09:21.827Z
+Loading combiner pointing table for lens=1, beam=1, frequency=19200, temperature=0, polarisation=RHCP
+2023-07-14T14:09:21.827Z
+No frequency change for beam 0 frequency 1920
+2023-07-14T14:09:21.828Z
+No frequency change for beam 0 frequency 19200
+2023-07-14T14:09:21.828Z
+No frequency or group change for beam 1 group Default frequency 19200 lens 2
+2023-07-14T14:09:21.829Z
+No frequency or group change for beam 1 group Default frequency 19200 lens 2
+2023-07-14T14:09:21.830Z
+Beam 1 using freq 19200 offset 0
+2023-07-14T14:09:21.830Z
+Beam 1 using freq 19200 offset 0
+2023-07-14T14:09:21.830Z
+Loading combiner pointing table for lens=2, beam=1, frequency=19200, temperature=0, polarisation=RHCP
+2023-07-14T14:09:21.832Z
+Loading combiner pointing table for lens=2, beam=1, frequency=19200, temperature=0, polarisation=RHCP
+2023-07-14T14:09:21.832Z
+Manual Antenna beam 1 created, phi 0, theta 0, rx frequency 19200, tx frequency 28750, rx polarisation RHCP, tx polarisation RHCP
+2023-07-14T14:09:24.257Z
+No frequency change for beam 0 frequency 19200
+2023-07-14T14:09:24.262Z
+No frequency or group change for beam 1 group Default frequency 19200 lens 0
+2023-07-14T14:09:24.263Z
+Beam 1 using freq 19200 offset 0
+2023-07-14T14:09:24.263Z
+Loading combiner pointing table for lens=0, beam=1, frequency=19200, temperature=0, polarisation=Linear
+2023-07-14T14:09:24.286Z
+No frequency change for beam 0 frequency 19200
+2023-07-14T14:09:24.287Z
+No frequency change for beam 0 frequency 19200
+2023-07-14T14:09:24.287Z
+No frequency or group change for beam 1 group Default frequency 19200 lens 0
+2023-07-14T14:09:24.288Z
+No frequency or group change for beam 1 group Default frequency 19200 lens 1
+2023-07-14T14:09:24.289Z
+Beam 1 using freq 19200 offset 0
+2023-07-14T14:09:24.289Z
+Beam 1 using freq 19200 offset 0
+2023-07-14T14:09:24.290Z
+Loading combiner pointing table for lens=1, beam=1, frequency=19200, temperature=0, polarisation=Linear
+2023-07-14T14:09:24.291Z
+Loading combiner pointing table for lens=0, beam=1, frequency=19200, temperature=0, polarisation=Linear
+2023-07-14T14:09:24.291Z
+No frequency change for beam 0 frequency 19200
+2023-07-14T14:09:24.292Z
+No frequency change for beam 0 frequency 19200
+2023-07-14T14:09:24.292Z
+No frequency or group change for beam 1 group Default frequency 19200 lens 2
+2023-07-14T14:09:24.293Z
+No frequency or group change for beam 1 group Default frequency 19200 lens 
+2023-07-14T14:09:24.293Z
+Beam 1 using freq 19200 offset 0
+2023-07-14T14:09:24.294Z
+Beam 1 using freq 19200 offset 0
+2023-07-14T14:09:24.294Z
+Loading combiner pointing table for lens=2, beam=1, frequency=19200, temperature=0, polarisation=Linear
+2023-07-14T14:09:24.295Z
+Loading combiner pointing table for lens=1, beam=1, frequency=19200, temperature=0, polarisation=Linear
+2023-07-14T14:09:24.296Z
+No frequency change for beam 0 frequency 19200
+2023-07-14T14:09:24.297Z
+No frequency or group change for beam 1 group Default frequency 19200 lens 2
+2023-07-14T14:09:24.298Z
+Beam 1 using freq 19200 offset 0
+2023-07-14T14:09:24.298Z
+Frequency or group changed for beam 2 group Default frequency 19200 lens 0
+2023-07-14T14:09:24.299Z
+Beam 2 using freq 19200 offset 0
+2023-07-14T14:09:24.299Z
+Loading combiner pointing table for lens=2, beam=1, frequency=19200, temperature=0, polarisation=Linear
+2023-07-14T14:09:24.300Z
+Loading combiner pointing table for lens=0, beam=2, frequency=19200, temperature=0, polarisation=RHCP
+2023-07-14T14:09:24.301Z
+Frequency or group changed for beam 2 group Default frequency 19200 lens 1
+2023-07-14T14:09:24.303Z
+Frequency or group changed for beam 2 group Default frequency 19200 lens 0
+2023-07-14T14:09:24.303Z
+Beam 2 using freq 19200 offset 0
+2023-07-14T14:09:24.303Z
+Beam 2 using freq 19200 offset 0
+2023-07-14T14:09:24.304Z
+Loading combiner pointing table for lens=1, beam=2, frequency=19200, temperature=0, polarisation=RHCP
+2023-07-14T14:09:24.305Z
+Loading combiner pointing table for lens=0, beam=2, frequency=19200, temperature=0, polarisation=RHCP
+2023-07-14T14:09:24.305Z
+Frequency or group changed for beam 2 group Default frequency 19200 lens 2
+2023-07-14T14:09:24.307Z
+Frequency or group changed for beam 2 group Default frequency 19200 lens 1
+2023-07-14T14:09:24.307Z
+Beam 2 using freq 19200 offset 0
+2023-07-14T14:09:24.308Z
+Beam 2 using freq 19200 offset 0
+2023-07-14T14:09:24.308Z
+Loading combiner pointing table for lens=2, beam=2, frequency=19200, temperature=0, polarisation=RHC
+2023-07-14T14:09:24.309Z
+Loading combiner pointing table for lens=1, beam=2, frequency=19200, temperature=0, polarisation=RHCP
+2023-07-14T14:09:24.309Z
+Frequency or group changed for beam 2 group Default frequency 19200 lens 2
+2023-07-14T14:09:24.311Z
+Beam 2 using freq 19200 offset 0
+2023-07-14T14:09:24.312Z
+Loading combiner pointing table for lens=2, beam=2, frequency=19200, temperature=0, polarisation=RHCP
+2023-07-14T14:09:24.313Z
+getCommon got {"lens":"1","rfic":"1","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 40791
+2023-07-14T14:09:26.302Z
+getCommon got {"lens":"2","rfic":"1","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 40793
+2023-07-14T14:09:26.326Z
+getCommon got {"lens":"3","rfic":"1","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 40795
+2023-07-14T14:09:26.350Z
+No frequency change for beam 1 frequency 19200
+2023-07-14T14:09:26.381Z
+No frequency or group change for beam 2 group Default frequency 19200 lens 0
+2023-07-14T14:09:26.382Z
+Beam 2 using freq 19200 offset 0
+2023-07-14T14:09:26.383Z
+Loading combiner pointing table for lens=0, beam=2, frequency=19200, temperature=0, polarisation=Linear
+2023-07-14T14:09:26.384Z
+No frequency change for beam 1 frequency 19200
+2023-07-14T14:09:26.385Z
+No frequency or group change for beam 2 group Default frequency 19200 lens 1
+2023-07-14T14:09:26.386Z
+No frequency change for beam 1 frequency 19200
+2023-07-14T14:09:26.386Z
+Beam 2 using freq 19200 offset 0
+2023-07-14T14:09:26.386Z
+No frequency or group change for beam 2 group Default frequency 19200 lens 0
+2023-07-14T14:09:26.387Z
+Beam 2 using freq 19200 offset 0
+2023-07-14T14:09:26.388Z
+Loading combiner pointing table for lens=1, beam=2, frequency=19200, temperature=0, polarisation=Linear
+2023-07-14T14:09:26.388Z
+No frequency change for beam 1 frequency 1920
+2023-07-14T14:09:26.389Z
+Loading combiner pointing table for lens=0, beam=2, frequency=19200, temperature=0, polarisation=Linear
+2023-07-14T14:09:26.389Z
+No frequency or group change for beam 2 group Default frequency 19200 lens 2
+2023-07-14T14:09:26.390Z
+No frequency change for beam 1 frequency 19200
+2023-07-14T14:09:26.391Z
+Beam 2 using freq 19200 offset 0
+2023-07-14T14:09:26.391Z
+No frequency or group change for beam 2 group Default frequency 19200 lens 1
+2023-07-14T14:09:26.392Z
+Beam 2 using freq 19200 offset 0
+2023-07-14T14:09:26.392Z
+Loading combiner pointing table for lens=2, beam=2, frequency=19200, temperature=0, polarisation=Linear
+2023-07-14T14:09:26.393Z
+Loading combiner pointing table for lens=1, beam=2, frequency=19200, temperature=0, polarisation=Linear
+2023-07-14T14:09:26.393Z
+No frequency change for beam 1 frequency 19200
+2023-07-14T14:09:26.394Z
+No frequency or group change for beam 2 group Default frequency 19200 lens 2
+2023-07-14T14:09:26.395Z
+Beam 2 using freq 19200 offset 0
+2023-07-14T14:09:26.395Z
+Loading combiner pointing table for lens=2, beam=2, frequency=19200, temperature=0, polarisation=Linear
+2023-07-14T14:09:26.396Z
+getCommon got {"lens":"1","rfic":"2","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 40797
+2023-07-14T14:09:26.429Z
+getCommon got {"lens":"2","rfic":"2","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 40799
+2023-07-14T14:09:26.453Z
+getCommon got {"lens":"3","rfic":"2","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 40801
+2023-07-14T14:09:26.477Z
+getCommon got {"lens":"1","rfic":"3","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 40803
+2023-07-14T14:09:26.555Z
+getCommon got {"lens":"2","rfic":"3","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 40805
+2023-07-14T14:09:26.580Z
+getCommon got {"lens":"3","rfic":"3","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 40807
+2023-07-14T14:09:26.604Z
+getCommon got {"lens":"1","rfic":"4","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 40809
+2023-07-14T14:09:26.682Z
+getCommon got {"lens":"2","rfic":"4","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 40811
+2023-07-14T14:09:26.707Z
+getCommon got {"lens":"3","rfic":"4","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 40813
+2023-07-14T14:09:26.731Z
+getCommon got {"lens":"1","rfic":"5","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 40815
+2023-07-14T14:09:26.808Z
+getCommon got {"lens":"2","rfic":"5","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 40817
+2023-07-14T14:09:26.832Z
+getCommon got {"lens":"3","rfic":"5","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 40819
+2023-07-14T14:09:26.856Z
+getCommon got {"lens":"1","rfic":"6","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 40821
+2023-07-14T14:09:26.934Z
+getCommon got {"lens":"2","rfic":"6","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 40823
+2023-07-14T14:09:26.958Z
+getCommon got {"lens":"3","rfic":"6","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 40825
+2023-07-14T14:09:26.982Z
+getCommon got {"lens":"1","rfic":"7","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 40827
+2023-07-14T14:09:27.060Z
+getCommon got {"lens":"2","rfic":"7","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 40829
+2023-07-14T14:09:27.085Z
+getCommon got {"lens":"3","rfic":"7","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 40831
+2023-07-14T14:09:27.109Z
+getCommon got {"lens":"1","rfic":"8","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 40833
+2023-07-14T14:09:27.187Z
+getCommon got {"lens":"2","rfic":"8","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 40835
+2023-07-14T14:09:27.211Z
+getCommon got {"lens":"3","rfic":"8","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 40837
+2023-07-14T14:09:27.237Z
+getCommon got {"lens":"1","rfic":"9","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 40839
+2023-07-14T14:09:27.313Z
+getCommon got {"lens":"2","rfic":"9","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 40841
+2023-07-14T14:09:27.337Z
+getCommon got {"lens":"3","rfic":"9","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 40843
+2023-07-14T14:09:27.361Z
+getCommon got {"lens":"1","rfic":"10","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 40845
+2023-07-14T14:09:27.439Z
+getCommon got {"lens":"2","rfic":"10","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 40847
+2023-07-14T14:09:27.463Z
+getCommon got {"lens":"3","rfic":"10","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 40849
+2023-07-14T14:09:27.488Z
+getCommon got {"lens":"1","rfic":"11","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 40851
+2023-07-14T14:09:27.566Z
+getCommon got {"lens":"2","rfic":"11","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 40853
+2023-07-14T14:09:27.590Z
+getCommon got {"lens":"3","rfic":"11","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 40855
+2023-07-14T14:09:27.614Z
+getCommon got {"lens":"1","rfic":"12","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 40857
+2023-07-14T14:09:27.692Z
+getCommon got {"lens":"2","rfic":"12","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 40859
+2023-07-14T14:09:27.716Z
+getCommon got {"lens":"3","rfic":"12","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 40861
+2023-07-14T14:09:27.741Z
+getCommon got {"lens":"1","rfic":"0","chans":[{"id":"0","phase":"0","atten":"48"}]} id 40863
+2023-07-14T14:09:27.819Z
+getCommon got {"lens":"2","rfic":"0","chans":[{"id":"0","phase":"0","atten":"48"}]} id 40865
+2023-07-14T14:09:27.843Z
+getCommon got {"lens":"3","rfic":"0","chans":[]} id 40867
+2023-07-14T14:09:27.867Z
+getCommon got {"lens":"1","rfic":"0","chans":[{"id":"0","phase":"0","atten":"48"}]} id 40869
+2023-07-14T14:09:27.944Z
+getCommon got {"lens":"2","rfic":"0","chans":[{"id":"0","phase":"0","atten":"48"}]} id 40871
+2023-07-14T14:09:27.968Z
+getCommon got {"lens":"3","rfic":"0","chans":[]} id 40873
+2023-07-14T14:09:27.993Z
+Manual Antenna beam 0 created, phi 0, theta 40, rx frequency 19700, tx frequency 28750, rx polarisation RHCP, tx polarisation RHCP
+2023-07-14T14:15:47.109Z
+Frequency or group changed for beam 1 group Default frequency 19700 lens 0
+2023-07-14T14:15:47.137Z
+Frequency or group changed for beam 1 group Default frequency 19700 lens 0
+2023-07-14T14:15:47.137Z
+Beam 1 using freq 19700 offset 0
+2023-07-14T14:15:47.137Z
+Beam 1 using freq 19700 offset 0
+2023-07-14T14:15:47.138Z
+Loading combiner pointing table for lens=0, beam=1, frequency=19700, temperature=0, polarisation=RHCP
+2023-07-14T14:15:47.139Z
+Loading combiner pointing table for lens=0, beam=1, frequency=19700, temperature=0, polarisation=RHCP
+2023-07-14T14:15:47.139Z
+Frequency or group changed for beam 1 group Default frequency 19700 lens 1
+2023-07-14T14:15:47.141Z
+Frequency or group changed for beam 1 group Default frequency 19700 lens 1
+2023-07-14T14:15:47.141Z
+Beam 1 using freq 19700 offset 0
+2023-07-14T14:15:47.142Z
+Beam 1 using freq 19700 offset 0
+2023-07-14T14:15:47.142Z
+Loading combiner pointing table for lens=1, beam=1, frequency=19700, temperature=0, polarisation=RHCP
+2023-07-14T14:15:47.143Z
+Loading combiner pointing table for lens=1, beam=1, frequency=19700, temperature=0, polarisation=RHCP
+2023-07-14T14:15:47.143Z
+Frequency or group changed for beam 1 group Default frequency 19700 lens 2
+2023-07-14T14:15:47.145Z
+Frequency or group changed for beam 1 group Default frequency 19700 lens 2
+2023-07-14T14:15:47.145Z
+Beam 1 using freq 19700 offset 0
+2023-07-14T14:15:47.146Z
+Beam 1 using freq 19700 offset 0
+2023-07-14T14:15:47.146Z
+Loading combiner pointing table for lens=2, beam=1, frequency=19700, temperature=0, polarisation=RHCP
+2023-07-14T14:15:47.147Z
+Loading combiner pointing table for lens=2, beam=1, frequency=19700, temperature=0, polarisation=RHCP
+2023-07-14T14:15:47.148Z
+No frequency change for beam 0 frequency 19700
+2023-07-14T14:15:51.203Z
+No frequency change for beam 0 frequency 19700
+2023-07-14T14:15:51.203Z
+No frequency or group change for beam 1 group Default frequency 19700 lens 0
+2023-07-14T14:15:51.204Z
+No frequency or group change for beam 1 group Default frequency 19700 lens 0
+2023-07-14T14:15:51.204Z
+Beam 1 using freq 19700 offset 
+2023-07-14T14:15:51.205Z
+Beam 1 using freq 19700 offset 0
+2023-07-14T14:15:51.205Z
+Loading combiner pointing table for lens=0, beam=1, frequency=19700, temperature=0, polarisation=Linear
+2023-07-14T14:15:51.206Z
+Loading combiner pointing table for lens=0, beam=1, frequency=19700, temperature=0, polarisation=Linear
+2023-07-14T14:15:51.207Z
+No frequency change for beam 0 frequency 19700
+2023-07-14T14:15:51.207Z
+No frequency change for beam 0 frequency 19700
+2023-07-14T14:15:51.208Z
+No frequency or group change for beam 1 group Default frequency 19700 lens 1
+2023-07-14T14:15:51.208Z
+No frequency or group change for beam 1 group Default frequency 19700 lens 1
+2023-07-14T14:15:51.209Z
+Beam 1 using freq 19700 offset 0
+2023-07-14T14:15:51.209Z
+Beam 1 using freq 19700 offset 0
+2023-07-14T14:15:51.209Z
+Loading combiner pointing table for lens=1, beam=1, frequency=19700, temperature=0, polarisation=Linear
+2023-07-14T14:15:51.211Z
+Loading combiner pointing table for lens=1, beam=1, frequency=19700, temperature=0, polarisation=Linear
+2023-07-14T14:15:51.211Z
+No frequency change for beam 0 frequency 19700
+2023-07-14T14:15:51.212Z
+No frequency change for beam 0 frequency 19700
+2023-07-14T14:15:51.212Z
+No frequency or group change for beam 1 group Default frequency 19700 lens 2
+2023-07-14T14:15:51.213Z
+No frequency or group change for beam 1 group Default frequency 19700 lens 2
+2023-07-14T14:15:51.213Z
+Beam 1 using freq 19700 offset 0
+2023-07-14T14:15:51.213Z
+Beam 1 using freq 19700 offset 0
+2023-07-14T14:15:51.214Z
+Loading combiner pointing table for lens=2, beam=1, frequency=19700, temperature=0, polarisation=Linear
+2023-07-14T14:15:51.215Z
+Loading combiner pointing table for lens=2, beam=1, frequency=19700, temperature=0, polarisation=Linear
+2023-07-14T14:15:51.215Z
+Manual Antenna beam 1 created, phi 0, theta 0, rx frequency 19700, tx frequency 28750, rx polarisation RHCP, tx polarisation RHCP
+2023-07-14T14:15:52.588Z
+Frequency or group changed for beam 2 group Default frequency 19700 lens 0
+2023-07-14T14:15:52.613Z
+Beam 2 using freq 19700 offset 0
+2023-07-14T14:15:52.616Z
+Loading combiner pointing table for lens=0, beam=2, frequency=19700, temperature=0, polarisation=Linear
+2023-07-14T14:15:52.618Z
+Frequency or group changed for beam 2 group Default frequency 19700 lens 0
+2023-07-14T14:15:52.618Z
+Beam 2 using freq 19700 offset 0
+2023-07-14T14:15:52.619Z
+Frequency or group changed for beam 2 group Default frequency 19700 lens 1
+2023-07-14T14:15:52.620Z
+Beam 2 using freq 19700 offset 0
+2023-07-14T14:15:52.621Z
+Loading combiner pointing table for lens=0, beam=2, frequency=19700, temperature=0, polarisation=Linear
+2023-07-14T14:15:52.621Z
+Loading combiner pointing table for lens=1, beam=2, frequency=19700, temperature=0, polarisation=Linear
+2023-07-14T14:15:52.622Z
+Frequency or group changed for beam 2 group Default frequency 19700 lens 1
+2023-07-14T14:15:52.623Z
+Beam 2 using freq 19700 offset 0
+2023-07-14T14:15:52.623Z
+Frequency or group changed for beam 2 group Default frequency 19700 lens 2
+2023-07-14T14:15:52.624Z
+Beam 2 using freq 19700 offset 0
+2023-07-14T14:15:52.625Z
+Loading combiner pointing table for lens=1, beam=2, frequency=19700, temperature=0, polarisation=Linear
+2023-07-14T14:15:52.625Z
+Loading combiner pointing table for lens=2, beam=2, frequency=19700, temperature=0, polarisation=Linear
+2023-07-14T14:15:52.626Z
+Frequency or group changed for beam 2 group Default frequency 19700 lens 2
+2023-07-14T14:15:52.627Z
+Beam 2 using freq 19700 offset 0
+2023-07-14T14:15:52.628Z
+Loading combiner pointing table for lens=2, beam=2, frequency=19700, temperature=0, polarisation=Linear
+2023-07-14T14:15:52.629Z
+No frequency change for beam 1 frequency 19700
+2023-07-14T14:15:52.629Z
+No frequency or group change for beam 2 group Default frequency 19700 lens 0
+2023-07-14T14:15:52.630Z
+Beam 2 using freq 19700 offset 0
+2023-07-14T14:15:52.631Z
+No frequency change for beam 1 frequency 19700
+2023-07-14T14:15:52.632Z
+Loading combiner pointing table for lens=0, beam=2, frequency=19700, temperature=0, polarisation=RHCP
+2023-07-14T14:15:52.633Z
+No frequency or group change for beam 2 group Default frequency 19700 lens 0
+2023-07-14T14:15:52.634Z
+No frequency change for beam 1 frequency 19700
+2023-07-14T14:15:52.634Z
+Beam 2 using freq 19700 offset 0
+2023-07-14T14:15:52.634Z
+No frequency or group change for beam 2 group Default frequency 19700 lens 1
+2023-07-14T14:15:52.635Z
+Beam 2 using freq 19700 offset 0
+2023-07-14T14:15:52.636Z
+Loading combiner pointing table for lens=0, beam=2, frequency=19700, temperature=0, polarisation=RHCP
+2023-07-14T14:15:52.636Z
+No frequency change for beam 1 frequency 19700
+2023-07-14T14:15:52.637Z
+Loading combiner pointing table for lens=1, beam=2, frequency=19700, temperature=0, polarisation=RHCP
+2023-07-14T14:15:52.637Z
+No frequency or group change for beam 2 group Default frequency 19700 lens 1
+2023-07-14T14:15:52.638Z
+No frequency change for beam 1 frequency 19700
+2023-07-14T14:15:52.638Z
+Beam 2 using freq 19700 offset 0
+2023-07-14T14:15:52.638Z
+No frequency or group change for beam 2 group Default frequency 19700 lens 2
+2023-07-14T14:15:52.639Z
+Beam 2 using freq 19700 offset 0
+2023-07-14T14:15:52.640Z
+Loading combiner pointing table for lens=1, beam=2, frequency=19700, temperature=0, polarisation=RHCP
+2023-07-14T14:15:52.640Z
+No frequency change for beam 1 frequency 19700
+2023-07-14T14:15:52.641Z
+Loading combiner pointing table for lens=2, beam=2, frequency=19700, temperature=0, polarisation=RHCP
+2023-07-14T14:15:52.641Z
+No frequency or group change for beam 2 group Default frequency 19700 lens 2
+2023-07-14T14:15:52.642Z
+Beam 2 using freq 19700 offset 
+2023-07-14T14:15:52.643Z
+Loading combiner pointing table for lens=2, beam=2, frequency=19700, temperature=0, polarisation=RHCP
+2023-07-14T14:15:52.644Z
+getCommon got {"lens":"1","rfic":"1","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 42060
+2023-07-14T14:15:55.482Z
+getCommon got {"lens":"2","rfic":"1","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 42062
+2023-07-14T14:15:55.506Z
+getCommon got {"lens":"3","rfic":"1","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 42064
+2023-07-14T14:15:55.530Z
+No frequency change for beam 1 frequency 19700
+2023-07-14T14:15:55.563Z
+No frequency or group change for beam 2 group Default frequency 19700 lens 0
+2023-07-14T14:15:55.564Z
+No frequency change for beam 1 frequency 19700
+2023-07-14T14:15:55.564Z
+Beam 2 using freq 19700 offset 0
+2023-07-14T14:15:55.565Z
+No frequency or group change for beam 2 group Default frequency 19700 lens 0
+2023-07-14T14:15:55.566Z
+Beam 2 using freq 19700 offset 0
+2023-07-14T14:15:55.566Z
+Loading combiner pointing table for lens=0, beam=2, frequency=19700, temperature=0, polarisation=Linear
+2023-07-14T14:15:55.566Z
+No frequency change for beam 1 frequency 19700
+2023-07-14T14:15:55.567Z
+Loading combiner pointing table for lens=0, beam=2, frequency=19700, temperature=0, polarisation=Linear
+2023-07-14T14:15:55.568Z
+No frequency or group change for beam 2 group Default frequency 19700 lens 1
+2023-07-14T14:15:55.568Z
+No frequency change for beam 1 frequency 19700
+2023-07-14T14:15:55.569Z
+Beam 2 using freq 19700 offset 0
+2023-07-14T14:15:55.569Z
+No frequency or group change for beam 2 group Default frequency 19700 lens 1
+2023-07-14T14:15:55.570Z
+Beam 2 using freq 19700 offset 0
+2023-07-14T14:15:55.571Z
+Loading combiner pointing table for lens=1, beam=2, frequency=19700, temperature=0, polarisation=Linear
+2023-07-14T14:15:55.571Z
+No frequency change for beam 1 frequency 19700
+2023-07-14T14:15:55.572Z
+Loading combiner pointing table for lens=1, beam=2, frequency=19700, temperature=0, polarisation=Linear
+2023-07-14T14:15:55.572Z
+No frequency or group change for beam 2 group Default frequency 19700 lens 2
+2023-07-14T14:15:55.573Z
+No frequency change for beam 1 frequency 1970
+2023-07-14T14:15:55.573Z
+Beam 2 using freq 19700 offset 0
+2023-07-14T14:15:55.573Z
+No frequency or group change for beam 2 group Default frequency 19700 lens 2
+2023-07-14T14:15:55.574Z
+Beam 2 using freq 19700 offset 0
+2023-07-14T14:15:55.575Z
+Loading combiner pointing table for lens=2, beam=2, frequency=19700, temperature=0, polarisation=Linear
+2023-07-14T14:15:55.575Z
+Loading combiner pointing table for lens=2, beam=2, frequency=19700, temperature=0, polarisation=Linear
+2023-07-14T14:15:55.576Z
+getCommon got {"lens":"1","rfic":"2","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 42066
+2023-07-14T14:15:55.606Z
+getCommon got {"lens":"2","rfic":"2","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 42068
+2023-07-14T14:15:55.630Z
+getCommon got {"lens":"3","rfic":"2","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 42070
+2023-07-14T14:15:55.654Z
+getCommon got {"lens":"1","rfic":"3","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 42072
+2023-07-14T14:15:55.732Z
+getCommon got {"lens":"2","rfic":"3","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 4207
+2023-07-14T14:15:55.757Z
+getCommon got {"lens":"3","rfic":"3","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 42076
+2023-07-14T14:15:55.781Z
+getCommon got {"lens":"1","rfic":"4","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 42078
+2023-07-14T14:15:55.858Z
+getCommon got {"lens":"2","rfic":"4","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 42080
+2023-07-14T14:15:55.882Z
+getCommon got {"lens":"3","rfic":"4","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 42082
+2023-07-14T14:15:55.906Z
+getCommon got {"lens":"1","rfic":"5","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 42084
+2023-07-14T14:15:55.984Z
+getCommon got {"lens":"2","rfic":"5","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 4208
+2023-07-14T14:15:56.008Z
+getCommon got {"lens":"3","rfic":"5","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 42088
+2023-07-14T14:15:56.033Z
+getCommon got {"lens":"1","rfic":"6","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 42090
+2023-07-14T14:15:56.111Z
+getCommon got {"lens":"2","rfic":"6","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 42092
+2023-07-14T14:15:56.136Z
+getCommon got {"lens":"3","rfic":"6","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 42094
+2023-07-14T14:15:56.160Z
+getCommon got {"lens":"1","rfic":"7","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 42096
+2023-07-14T14:15:56.237Z
+getCommon got {"lens":"2","rfic":"7","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 4209
+2023-07-14T14:15:56.262Z
+getCommon got {"lens":"3","rfic":"7","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 42100
+2023-07-14T14:15:56.286Z
+getCommon got {"lens":"1","rfic":"8","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 42102
+2023-07-14T14:15:56.364Z
+getCommon got {"lens":"2","rfic":"8","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 42104
+2023-07-14T14:15:56.388Z
+getCommon got {"lens":"3","rfic":"8","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 42106
+2023-07-14T14:15:56.412Z
+getCommon got {"lens":"1","rfic":"9","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 42108
+2023-07-14T14:15:56.490Z
+getCommon got {"lens":"2","rfic":"9","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 4211
+2023-07-14T14:15:56.514Z
+getCommon got {"lens":"3","rfic":"9","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 42112
+2023-07-14T14:15:56.539Z
+getCommon got {"lens":"1","rfic":"10","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 42114
+2023-07-14T14:15:56.616Z
+getCommon got {"lens":"2","rfic":"10","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 42116
+2023-07-14T14:15:56.640Z
+getCommon got {"lens":"3","rfic":"10","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 42118
+2023-07-14T14:15:56.664Z
+getCommon got {"lens":"1","rfic":"11","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 42120
+2023-07-14T14:15:56.743Z
+getCommon got {"lens":"2","rfic":"11","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 4212
+2023-07-14T14:15:56.767Z
+getCommon got {"lens":"3","rfic":"11","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 42124
+2023-07-14T14:15:56.791Z
+getCommon got {"lens":"1","rfic":"12","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 42126
+2023-07-14T14:15:56.869Z
+getCommon got {"lens":"2","rfic":"12","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 42128
+2023-07-14T14:15:56.894Z
+getCommon got {"lens":"3","rfic":"12","chans":[{"id":"0","phase":"0","atten":"24"},{"id":"1","phase":"0","atten":"24"}]} id 42130
+2023-07-14T14:15:56.918Z
+getCommon got {"lens":"1","rfic":"0","chans":[{"id":"0","phase":"0","atten":"48"}]} id 42132
+2023-07-14T14:15:56.995Z
+getCommon got {"lens":"2","rfic":"0","chans":[{"id":"0","phase":"0","atten":"48"}]} id 42134
+2023-07-14T14:15:57.019Z
+getCommon got {"lens":"3","rfic":"0","chans":[]} id 42136
+2023-07-14T14:15:57.043Z
+getCommon got {"lens":"1","rfic":"0","chans":[{"id":"0","phase":"0","atten":"48"}]} id 42138
+2023-07-14T14:15:57.120Z
+getCommon got {"lens":"2","rfic":"0","chans":[{"id":"0","phase":"0","atten":"48"}]} id 42140
+2023-07-14T14:15:57.144Z
+getCommon got {"lens":"3","rfic":"0","chans":[]} id 42142
+2023-07-14T14:15:57.168Z
+Manual Antenna beam 0 created, phi 0, theta 40, rx frequency 20200, tx frequency 28750, rx polarisation RHCP, tx polarisation RHCP
+2023-07-14T14:22:17.558Z
+Frequency or group changed for beam 1 group Default frequency 20200 lens 
+2023-07-14T14:22:17.585Z
+Beam 1 using freq 20200 offset 0
+2023-07-14T14:22:17.585Z
+Frequency or group changed for beam 1 group Default frequency 20200 lens 0
+2023-07-14T14:22:17.586Z
+Beam 1 using freq 20200 offset 0
+2023-07-14T14:22:17.587Z
+Loading combiner pointing table for lens=0, beam=1, frequency=20200, temperature=0, polarisation=RHCP
+2023-07-14T14:22:17.587Z
+Loading combiner pointing table for lens=0, beam=1, frequency=20200, temperature=0, polarisation=RHCP
+2023-07-14T14:22:17.588Z
+Frequency or group changed for beam 1 group Default frequency 20200 lens 1
+2023-07-14T14:22:17.589Z
+Beam 1 using freq 20200 offset 0
+2023-07-14T14:22:17.590Z
+Frequency or group changed for beam 1 group Default frequency 20200 lens 1
+2023-07-14T14:22:17.590Z
+Beam 1 using freq 20200 offset 0
+2023-07-14T14:22:17.591Z
+Loading combiner pointing table for lens=1, beam=1, frequency=20200, temperature=0, polarisation=RHCP
+2023-07-14T14:22:17.591Z
+Loading combiner pointing table for lens=1, beam=1, frequency=20200, temperature=0, polarisation=RHCP
+2023-07-14T14:22:17.593Z
+Frequency or group changed for beam 1 group Default frequency 20200 lens 2
+2023-07-14T14:22:17.593Z
+Beam 1 using freq 20200 offset 0
+2023-07-14T14:22:17.594Z
+Frequency or group changed for beam 1 group Default frequency 20200 lens 2
+2023-07-14T14:22:17.595Z
+Beam 1 using freq 20200 offset 0
+2023-07-14T14:22:17.595Z
+Loading combiner pointing table for lens=2, beam=1, frequency=20200, temperature=0, polarisation=RHCP
+2023-07-14T14:22:17.596Z
+Loading combiner pointing table for lens=2, beam=1, frequency=20200, temperature=0, polarisation=RHCP
+2023-07-14T14:22:17.597Z
+Manual Antenna beam 1 created, phi 0, theta 0, rx frequency 20200, tx frequency 28750, rx polarisation RHCP, tx polarisation RHCP
+2023-07-14T14:22:20.948Z
+No frequency change for beam 0 frequency 20200
+2023-07-14T14:22:20.953Z
+No frequency or group change for beam 1 group Default frequency 20200 lens 0
+2023-07-14T14:22:20.955Z
+Beam 1 using freq 20200 offset 0
+2023-07-14T14:22:20.977Z
+No frequency change for beam 0 frequency 20200
+2023-07-14T14:22:20.978Z
+Loading combiner pointing table for lens=0, beam=1, frequency=20200, temperature=0, polarisation=Linear
+2023-07-14T14:22:20.979Z
+No frequency or group change for beam 1 group Default frequency 20200 lens 0
+2023-07-14T14:22:20.979Z
+Beam 1 using freq 20200 offset 0
+2023-07-14T14:22:20.980Z
+No frequency change for beam 0 frequency 20200
+2023-07-14T14:22:20.980Z
+No frequency or group change for beam 1 group Default frequency 20200 lens 1
+2023-07-14T14:22:20.981Z
+Loading combiner pointing table for lens=0, beam=1, frequency=20200, temperature=0, polarisation=Linear
+2023-07-14T14:22:20.981Z
+Beam 1 using freq 20200 offset 0
+2023-07-14T14:22:20.982Z
+No frequency change for beam 0 frequency 20200
+2023-07-14T14:22:20.982Z
+Loading combiner pointing table for lens=1, beam=1, frequency=20200, temperature=0, polarisation=Linear
+2023-07-14T14:22:20.983Z
+No frequency or group change for beam 1 group Default frequency 20200 lens 1
+2023-07-14T14:22:20.983Z
+Beam 1 using freq 20200 offset 0
+2023-07-14T14:22:20.984Z
+No frequency change for beam 0 frequency 20200
+2023-07-14T14:22:20.984Z
+No frequency or group change for beam 1 group Default frequency 20200 lens 2
+2023-07-14T14:22:20.985Z
+Loading combiner pointing table for lens=1, beam=1, frequency=20200, temperature=0, polarisation=Linear
+2023-07-14T14:22:20.986Z
+Beam 1 using freq 20200 offset 0
+2023-07-14T14:22:20.986Z
+No frequency change for beam 0 frequency 20200
+2023-07-14T14:22:20.987Z
+Loading combiner pointing table for lens=2, beam=1, frequency=20200, temperature=0, polarisation=Linear
+2023-07-14T14:22:20.987Z
+No frequency or group change for beam 1 group Default frequency 20200 lens 2
+2023-07-14T14:22:20.988Z
+Beam 1 using freq 20200 offset 
+2023-07-14T14:22:20.988Z
+Loading combiner pointing table for lens=2, beam=1, frequency=20200, temperature=0, polarisation=Linear
+2023-07-14T14:22:20.990Z
+Frequency or group changed for beam 2 group Default frequency 20200 lens 0
+2023-07-14T14:22:20.991Z
+Beam 2 using freq 20200 offset 0
+2023-07-14T14:22:20.991Z
+Loading combiner pointing table for lens=0, beam=2, frequency=20200, temperature=0, polarisation=RHCP
+2023-07-14T14:22:20.993Z
+Frequency or group changed for beam 2 group Default frequency 20200 lens 0
+2023-07-14T14:22:20.993Z
+Beam 2 using freq 20200 offset 0
+2023-07-14T14:22:20.994Z
+Frequency or group changed for beam 2 group Default frequency 20200 lens 1
+2023-07-14T14:22:20.995Z
+Loading combiner pointing table for lens=0, beam=2, frequency=20200, temperature=0, polarisation=RHCP
+2023-07-14T14:22:20.995Z
+Beam 2 using freq 20200 offset 0
+2023-07-14T14:22:20.996Z
+Loading combiner pointing table for lens=1, beam=2, frequency=20200, temperature=0, polarisation=RHCP
+2023-07-14T14:22:20.997Z
+Frequency or group changed for beam 2 group Default frequency 20200 lens 1
+2023-07-14T14:22:20.997Z
+Beam 2 using freq 20200 offset 0
+2023-07-14T14:22:20.998Z
+Frequency or group changed for beam 2 group Default frequency 20200 lens 2
+2023-07-14T14:22:20.999Z
+Loading combiner pointing table for lens=1, beam=2, frequency=20200, temperature=0, polarisation=RHCP
+2023-07-14T14:22:21.000Z
+Beam 2 using freq 20200 offset 0
+2023-07-14T14:22:21.000Z
+Loading combiner pointing table for lens=2, beam=2, frequency=20200, temperature=0, polarisation=RHCP
+2023-07-14T14:22:21.001Z
+Frequency or group changed for beam 2 group Default frequency 20200 lens 2
+2023-07-14T14:22:21.002Z
+Beam 2 using freq 20200 offset 0
+2023-07-14T14:22:21.002Z
+Loading combiner pointing table for lens=2, beam=2, frequency=20200, temperature=0, polarisation=RHC
+2023-07-14T14:22:21.004Z
+getCommon got {"lens":"1","rfic":"1","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 43329
+2023-07-14T14:22:23.918Z
+getCommon got {"lens":"2","rfic":"1","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 43331
+2023-07-14T14:22:23.942Z
+getCommon got {"lens":"3","rfic":"1","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 43333
+2023-07-14T14:22:23.966Z
+No frequency change for beam 1 frequency 20200
+2023-07-14T14:22:23.999Z
+No frequency or group change for beam 2 group Default frequency 20200 lens 0
+2023-07-14T14:22:24.000Z
+Beam 2 using freq 20200 offset 0
+2023-07-14T14:22:24.001Z
+No frequency change for beam 1 frequency 20200
+2023-07-14T14:22:24.002Z
+Loading combiner pointing table for lens=0, beam=2, frequency=20200, temperature=0, polarisation=Linear
+2023-07-14T14:22:24.002Z
+No frequency or group change for beam 2 group Default frequency 20200 lens 0
+2023-07-14T14:22:24.003Z
+Beam 2 using freq 20200 offset 0
+2023-07-14T14:22:24.003Z
+No frequency change for beam 1 frequency 20200
+2023-07-14T14:22:24.004Z
+No frequency or group change for beam 2 group Default frequency 20200 lens 1
+2023-07-14T14:22:24.005Z
+Loading combiner pointing table for lens=0, beam=2, frequency=20200, temperature=0, polarisation=Linear
+2023-07-14T14:22:24.005Z
+Beam 2 using freq 20200 offset 0
+2023-07-14T14:22:24.005Z
+No frequency change for beam 1 frequency 20200
+2023-07-14T14:22:24.006Z
+Loading combiner pointing table for lens=1, beam=2, frequency=20200, temperature=0, polarisation=Linear
+2023-07-14T14:22:24.007Z
+No frequency or group change for beam 2 group Default frequency 20200 lens 1
+2023-07-14T14:22:24.007Z
+Beam 2 using freq 20200 offset 0
+2023-07-14T14:22:24.008Z
+No frequency change for beam 1 frequency 20200
+2023-07-14T14:22:24.008Z
+No frequency or group change for beam 2 group Default frequency 20200 lens 2
+2023-07-14T14:22:24.009Z
+Loading combiner pointing table for lens=1, beam=2, frequency=20200, temperature=0, polarisation=Linear
+2023-07-14T14:22:24.009Z
+Beam 2 using freq 20200 offset 
+2023-07-14T14:22:24.010Z
+No frequency change for beam 1 frequency 20200
+2023-07-14T14:22:24.010Z
+Loading combiner pointing table for lens=2, beam=2, frequency=20200, temperature=0, polarisation=Linear
+2023-07-14T14:22:24.011Z
+No frequency or group change for beam 2 group Default frequency 20200 lens 2
+2023-07-14T14:22:24.012Z
+Beam 2 using freq 20200 offset 0
+2023-07-14T14:22:24.012Z
+Loading combiner pointing table for lens=2, beam=2, frequency=20200, temperature=0, polarisation=Linear
+2023-07-14T14:22:24.013Z
+getCommon got {"lens":"1","rfic":"2","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 43335
+2023-07-14T14:22:24.044Z
+getCommon got {"lens":"2","rfic":"2","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 43337
+2023-07-14T14:22:24.068Z
+getCommon got {"lens":"3","rfic":"2","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 43339
+2023-07-14T14:22:24.092Z
+getCommon got {"lens":"1","rfic":"3","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 43341
+2023-07-14T14:22:24.171Z
+getCommon got {"lens":"2","rfic":"3","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 4334
+2023-07-14T14:22:24.195Z
+getCommon got {"lens":"3","rfic":"3","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 43345
+2023-07-14T14:22:24.219Z
+getCommon got {"lens":"1","rfic":"4","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 43347
+2023-07-14T14:22:24.300Z
+getCommon got {"lens":"2","rfic":"4","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 43349
+2023-07-14T14:22:24.324Z
+getCommon got {"lens":"3","rfic":"4","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 43351
+2023-07-14T14:22:24.348Z
+getCommon got {"lens":"1","rfic":"5","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 43353
+2023-07-14T14:22:24.436Z
+getCommon got {"lens":"2","rfic":"5","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 4335
+2023-07-14T14:22:24.461Z
+getCommon got {"lens":"3","rfic":"5","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 43357
+2023-07-14T14:22:24.485Z
+getCommon got {"lens":"1","rfic":"6","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 43359
+2023-07-14T14:22:24.562Z
+getCommon got {"lens":"2","rfic":"6","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 43361
+2023-07-14T14:22:24.587Z
+getCommon got {"lens":"3","rfic":"6","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 43363
+2023-07-14T14:22:24.611Z
+getCommon got {"lens":"1","rfic":"7","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 43365
+2023-07-14T14:22:24.689Z
+getCommon got {"lens":"2","rfic":"7","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 4336
+2023-07-14T14:22:24.713Z
+getCommon got {"lens":"3","rfic":"7","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 43369
+2023-07-14T14:22:24.738Z
+getCommon got {"lens":"1","rfic":"8","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 43371
+2023-07-14T14:22:24.816Z
+getCommon got {"lens":"2","rfic":"8","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 43373
+2023-07-14T14:22:24.840Z
+getCommon got {"lens":"3","rfic":"8","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 43375
+2023-07-14T14:22:24.864Z
+getCommon got {"lens":"1","rfic":"9","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 43377
+2023-07-14T14:22:24.943Z
+getCommon got {"lens":"2","rfic":"9","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 4337
+2023-07-14T14:22:24.967Z
+getCommon got {"lens":"3","rfic":"9","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 43381
+2023-07-14T14:22:24.991Z
+getCommon got {"lens":"1","rfic":"10","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 43383
+2023-07-14T14:22:25.069Z
+getCommon got {"lens":"2","rfic":"10","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 43385
+2023-07-14T14:22:25.093Z
+getCommon got {"lens":"3","rfic":"10","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 43387
+2023-07-14T14:22:25.117Z
+getCommon got {"lens":"1","rfic":"11","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 43389
+2023-07-14T14:22:25.196Z
+getCommon got {"lens":"2","rfic":"11","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 4339
+2023-07-14T14:22:25.220Z
+getCommon got {"lens":"3","rfic":"11","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 43393
+2023-07-14T14:22:25.245Z
+getCommon got {"lens":"1","rfic":"12","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 43395
+2023-07-14T14:22:25.322Z
+getCommon got {"lens":"2","rfic":"12","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 43397
+2023-07-14T14:22:25.346Z
+getCommon got {"lens":"3","rfic":"12","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 43399
+2023-07-14T14:22:25.370Z
+getCommon got {"lens":"1","rfic":"0","chans":[{"id":"0","phase":"0","atten":"40"}]} id 43401
+2023-07-14T14:22:25.448Z
+getCommon got {"lens":"2","rfic":"0","chans":[{"id":"0","phase":"0","atten":"40"}]} id 43403
+2023-07-14T14:22:25.472Z
+getCommon got {"lens":"3","rfic":"0","chans":[]} id 43405
+2023-07-14T14:22:25.496Z
+getCommon got {"lens":"1","rfic":"0","chans":[{"id":"0","phase":"0","atten":"40"}]} id 43407
+2023-07-14T14:22:25.576Z
+getCommon got {"lens":"2","rfic":"0","chans":[{"id":"0","phase":"0","atten":"40"}]} id 43409
+2023-07-14T14:22:25.600Z
+getCommon got {"lens":"3","rfic":"0","chans":[]} id 43411
+2023-07-14T14:22:25.624Z
+Manual Antenna beam 0 created, phi 0, theta 40, rx frequency 20700, tx frequency 28750, rx polarisation RHCP, tx polarisation RHCP
+2023-07-14T14:28:45.591Z
+Frequency or group changed for beam 1 group Default frequency 20700 lens 0
+2023-07-14T14:28:45.616Z
+Beam 1 using freq 20700 offset 
+2023-07-14T14:28:45.617Z
+Frequency or group changed for beam 1 group Default frequency 20700 lens 0
+2023-07-14T14:28:45.618Z
+Loading combiner pointing table for lens=0, beam=1, frequency=20700, temperature=0, polarisation=RHCP
+2023-07-14T14:28:45.619Z
+Beam 1 using freq 20700 offset 0
+2023-07-14T14:28:45.619Z
+Loading combiner pointing table for lens=0, beam=1, frequency=20700, temperature=0, polarisation=RHCP
+2023-07-14T14:28:45.620Z
+Frequency or group changed for beam 1 group Default frequency 20700 lens 1
+2023-07-14T14:28:45.621Z
+Beam 1 using freq 20700 offset 0
+2023-07-14T14:28:45.621Z
+Frequency or group changed for beam 1 group Default frequency 20700 lens 1
+2023-07-14T14:28:45.623Z
+Loading combiner pointing table for lens=1, beam=1, frequency=20700, temperature=0, polarisation=RHCP
+2023-07-14T14:28:45.623Z
+Beam 1 using freq 20700 offset 0
+2023-07-14T14:28:45.623Z
+Loading combiner pointing table for lens=1, beam=1, frequency=20700, temperature=0, polarisation=RHCP
+2023-07-14T14:28:45.625Z
+Frequency or group changed for beam 1 group Default frequency 20700 lens 2
+2023-07-14T14:28:45.625Z
+Beam 1 using freq 20700 offset 0
+2023-07-14T14:28:45.626Z
+Frequency or group changed for beam 1 group Default frequency 20700 lens 2
+2023-07-14T14:28:45.627Z
+Loading combiner pointing table for lens=2, beam=1, frequency=20700, temperature=0, polarisation=RHCP
+2023-07-14T14:28:45.627Z
+Beam 1 using freq 20700 offset 0
+2023-07-14T14:28:45.627Z
+Loading combiner pointing table for lens=2, beam=1, frequency=20700, temperature=0, polarisation=RHCP
+2023-07-14T14:28:45.629Z
+Manual Antenna beam 1 created, phi 0, theta 0, rx frequency 20700, tx frequency 28750, rx polarisation RHCP, tx polarisation RHCP
+2023-07-14T14:28:47.802Z
+No frequency change for beam 0 frequency 20700
+2023-07-14T14:28:47.806Z
+No frequency change for beam 0 frequency 20700
+2023-07-14T14:28:47.807Z
+No frequency or group change for beam 1 group Default frequency 20700 lens 0
+2023-07-14T14:28:47.808Z
+No frequency or group change for beam 1 group Default frequency 20700 lens 0
+2023-07-14T14:28:47.809Z
+Beam 1 using freq 20700 offset 0
+2023-07-14T14:28:47.809Z
+Beam 1 using freq 20700 offset 0
+2023-07-14T14:28:47.830Z
+Loading combiner pointing table for lens=0, beam=1, frequency=20700, temperature=0, polarisation=Linear
+2023-07-14T14:28:47.831Z
+Loading combiner pointing table for lens=0, beam=1, frequency=20700, temperature=0, polarisation=Linear
+2023-07-14T14:28:47.832Z
+No frequency change for beam 0 frequency 20700
+2023-07-14T14:28:47.832Z
+No frequency change for beam 0 frequency 20700
+2023-07-14T14:28:47.833Z
+No frequency or group change for beam 1 group Default frequency 20700 lens 1
+2023-07-14T14:28:47.834Z
+No frequency or group change for beam 1 group Default frequency 20700 lens 1
+2023-07-14T14:28:47.834Z
+Beam 1 using freq 20700 offset 0
+2023-07-14T14:28:47.834Z
+Beam 1 using freq 20700 offset 0
+2023-07-14T14:28:47.835Z
+Loading combiner pointing table for lens=1, beam=1, frequency=20700, temperature=0, polarisation=Linear
+2023-07-14T14:28:47.836Z
+Loading combiner pointing table for lens=1, beam=1, frequency=20700, temperature=0, polarisation=Linear
+2023-07-14T14:28:47.836Z
+No frequency change for beam 0 frequency 20700
+2023-07-14T14:28:47.837Z
+No frequency change for beam 0 frequency 20700
+2023-07-14T14:28:47.837Z
+No frequency or group change for beam 1 group Default frequency 20700 lens 2
+2023-07-14T14:28:47.838Z
+No frequency or group change for beam 1 group Default frequency 20700 lens 2
+2023-07-14T14:28:47.838Z
+Beam 1 using freq 20700 offset 0
+2023-07-14T14:28:47.839Z
+Beam 1 using freq 20700 offset 0
+2023-07-14T14:28:47.839Z
+Loading combiner pointing table for lens=2, beam=1, frequency=20700, temperature=0, polarisation=Linear
+2023-07-14T14:28:47.840Z
+Loading combiner pointing table for lens=2, beam=1, frequency=20700, temperature=0, polarisation=Linea
+2023-07-14T14:28:47.841Z
+Frequency or group changed for beam 2 group Default frequency 20700 lens 0
+2023-07-14T14:28:47.844Z
+Frequency or group changed for beam 2 group Default frequency 20700 lens 0
+2023-07-14T14:28:47.844Z
+Beam 2 using freq 20700 offset 0
+2023-07-14T14:28:47.844Z
+Beam 2 using freq 20700 offset 0
+2023-07-14T14:28:47.844Z
+Loading combiner pointing table for lens=0, beam=2, frequency=20700, temperature=0, polarisation=RHCP
+2023-07-14T14:28:47.846Z
+Loading combiner pointing table for lens=0, beam=2, frequency=20700, temperature=0, polarisation=RHCP
+2023-07-14T14:28:47.846Z
+Frequency or group changed for beam 2 group Default frequency 20700 lens 1
+2023-07-14T14:28:47.848Z
+Frequency or group changed for beam 2 group Default frequency 20700 lens 1
+2023-07-14T14:28:47.848Z
+Beam 2 using freq 20700 offset 0
+2023-07-14T14:28:47.848Z
+Beam 2 using freq 20700 offset 0
+2023-07-14T14:28:47.849Z
+Loading combiner pointing table for lens=1, beam=2, frequency=20700, temperature=0, polarisation=RHCP
+2023-07-14T14:28:47.850Z
+Loading combiner pointing table for lens=1, beam=2, frequency=20700, temperature=0, polarisation=RHCP
+2023-07-14T14:28:47.850Z
+Frequency or group changed for beam 2 group Default frequency 20700 lens 2
+2023-07-14T14:28:47.852Z
+Frequency or group changed for beam 2 group Default frequency 20700 lens 2
+2023-07-14T14:28:47.852Z
+Beam 2 using freq 20700 offset 0
+2023-07-14T14:28:47.853Z
+Beam 2 using freq 20700 offset 0
+2023-07-14T14:28:47.853Z
+Loading combiner pointing table for lens=2, beam=2, frequency=20700, temperature=0, polarisation=RHCP
+2023-07-14T14:28:47.854Z
+Loading combiner pointing table for lens=2, beam=2, frequency=20700, temperature=0, polarisation=RHCP
+2023-07-14T14:28:47.855Z
+getCommon got {"lens":"1","rfic":"1","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 44598
+2023-07-14T14:28:51.284Z
+getCommon got {"lens":"2","rfic":"1","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 44600
+2023-07-14T14:28:51.308Z
+getCommon got {"lens":"3","rfic":"1","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 44602
+2023-07-14T14:28:51.333Z
+No frequency change for beam 1 frequency 20700
+2023-07-14T14:28:51.365Z
+No frequency or group change for beam 2 group Default frequency 20700 lens 0
+2023-07-14T14:28:51.366Z
+Beam 2 using freq 20700 offset 0
+2023-07-14T14:28:51.366Z
+Loading combiner pointing table for lens=0, beam=2, frequency=20700, temperature=0, polarisation=Linear
+2023-07-14T14:28:51.368Z
+No frequency change for beam 1 frequency 20700
+2023-07-14T14:28:51.368Z
+No frequency change for beam 1 frequency 20700
+2023-07-14T14:28:51.368Z
+No frequency or group change for beam 2 group Default frequency 20700 lens 0
+2023-07-14T14:28:51.369Z
+Beam 2 using freq 20700 offset 0
+2023-07-14T14:28:51.369Z
+No frequency or group change for beam 2 group Default frequency 20700 lens 1
+2023-07-14T14:28:51.370Z
+Beam 2 using freq 20700 offset 0
+2023-07-14T14:28:51.370Z
+Loading combiner pointing table for lens=0, beam=2, frequency=20700, temperature=0, polarisation=Linear
+2023-07-14T14:28:51.371Z
+Loading combiner pointing table for lens=1, beam=2, frequency=20700, temperature=0, polarisation=Linear
+2023-07-14T14:28:51.372Z
+No frequency change for beam 1 frequency 20700
+2023-07-14T14:28:51.372Z
+No frequency change for beam 1 frequency 20700
+2023-07-14T14:28:51.373Z
+No frequency or group change for beam 2 group Default frequency 20700 lens 1
+2023-07-14T14:28:51.373Z
+Beam 2 using freq 20700 offset 0
+2023-07-14T14:28:51.374Z
+No frequency or group change for beam 2 group Default frequency 20700 lens 2
+2023-07-14T14:28:51.374Z
+Beam 2 using freq 20700 offset 0
+2023-07-14T14:28:51.375Z
+Loading combiner pointing table for lens=1, beam=2, frequency=20700, temperature=0, polarisation=Linea
+2023-07-14T14:28:51.376Z
+Loading combiner pointing table for lens=2, beam=2, frequency=20700, temperature=0, polarisation=Linear
+2023-07-14T14:28:51.376Z
+No frequency change for beam 1 frequency 20700
+2023-07-14T14:28:51.376Z
+No frequency or group change for beam 2 group Default frequency 20700 lens 2
+2023-07-14T14:28:51.377Z
+Beam 2 using freq 20700 offset 0
+2023-07-14T14:28:51.377Z
+Loading combiner pointing table for lens=2, beam=2, frequency=20700, temperature=0, polarisation=Linear
+2023-07-14T14:28:51.378Z
+getCommon got {"lens":"1","rfic":"2","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 44604
+2023-07-14T14:28:51.422Z
+getCommon got {"lens":"2","rfic":"2","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 44606
+2023-07-14T14:28:51.446Z
+getCommon got {"lens":"3","rfic":"2","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 44608
+2023-07-14T14:28:51.470Z
+getCommon got {"lens":"1","rfic":"3","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 44610
+2023-07-14T14:28:51.547Z
+getCommon got {"lens":"2","rfic":"3","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 4461
+2023-07-14T14:28:51.571Z
+getCommon got {"lens":"3","rfic":"3","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 44614
+2023-07-14T14:28:51.595Z
+getCommon got {"lens":"1","rfic":"4","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 44616
+2023-07-14T14:28:51.674Z
+getCommon got {"lens":"2","rfic":"4","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 44618
+2023-07-14T14:28:51.698Z
+getCommon got {"lens":"3","rfic":"4","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 44620
+2023-07-14T14:28:51.722Z
+getCommon got {"lens":"1","rfic":"5","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 44622
+2023-07-14T14:28:51.800Z
+getCommon got {"lens":"2","rfic":"5","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 4462
+2023-07-14T14:28:51.824Z
+getCommon got {"lens":"3","rfic":"5","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 44626
+2023-07-14T14:28:51.849Z
+getCommon got {"lens":"1","rfic":"6","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 44628
+2023-07-14T14:28:51.927Z
+getCommon got {"lens":"2","rfic":"6","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 44630
+2023-07-14T14:28:51.951Z
+getCommon got {"lens":"3","rfic":"6","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 44632
+2023-07-14T14:28:51.976Z
+getCommon got {"lens":"1","rfic":"7","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 44634
+2023-07-14T14:28:52.053Z
+getCommon got {"lens":"2","rfic":"7","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 4463
+2023-07-14T14:28:52.077Z
+getCommon got {"lens":"3","rfic":"7","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 44638
+2023-07-14T14:28:52.101Z
+getCommon got {"lens":"1","rfic":"8","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 44640
+2023-07-14T14:28:52.180Z
+getCommon got {"lens":"2","rfic":"8","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 44642
+2023-07-14T14:28:52.205Z
+getCommon got {"lens":"3","rfic":"8","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 44644
+2023-07-14T14:28:52.229Z
+getCommon got {"lens":"1","rfic":"9","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 44646
+2023-07-14T14:28:52.307Z
+getCommon got {"lens":"2","rfic":"9","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 4464
+2023-07-14T14:28:52.331Z
+getCommon got {"lens":"3","rfic":"9","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 44650
+2023-07-14T14:28:52.356Z
+getCommon got {"lens":"1","rfic":"10","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 44652
+2023-07-14T14:28:52.432Z
+getCommon got {"lens":"2","rfic":"10","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 44654
+2023-07-14T14:28:52.456Z
+getCommon got {"lens":"3","rfic":"10","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 44656
+2023-07-14T14:28:52.480Z
+getCommon got {"lens":"1","rfic":"11","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 44658
+2023-07-14T14:28:52.558Z
+getCommon got {"lens":"2","rfic":"11","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 4466
+2023-07-14T14:28:52.582Z
+getCommon got {"lens":"3","rfic":"11","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 44662
+2023-07-14T14:28:52.606Z
+getCommon got {"lens":"1","rfic":"12","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 44664
+2023-07-14T14:28:52.682Z
+getCommon got {"lens":"2","rfic":"12","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 44666
+2023-07-14T14:28:52.707Z
+getCommon got {"lens":"3","rfic":"12","chans":[{"id":"0","phase":"0","atten":"16"},{"id":"1","phase":"0","atten":"16"}]} id 44668
+2023-07-14T14:28:52.731Z
+getCommon got {"lens":"1","rfic":"0","chans":[{"id":"0","phase":"0","atten":"40"}]} id 44670
+2023-07-14T14:28:52.808Z
+getCommon got {"lens":"2","rfic":"0","chans":[{"id":"0","phase":"0","atten":"40"}]} id 44672
+2023-07-14T14:28:52.832Z
+getCommon got {"lens":"3","rfic":"0","chans":[]} id 44674
+2023-07-14T14:28:52.856Z
+getCommon got {"lens":"1","rfic":"0","chans":[{"id":"0","phase":"0","atten":"40"}]} id 44676
+2023-07-14T14:28:52.934Z
+getCommon got {"lens":"2","rfic":"0","chans":[{"id":"0","phase":"0","atten":"40"}]} id 44678
+2023-07-14T14:28:52.958Z
+getCommon got {"lens":"3","rfic":"0","chans":[]} id 44680
+2023-07-14T14:28:52.982Z
+Manual Antenna beam 0 created, phi 0, theta 40, rx frequency 21200, tx frequency 28750, rx polarisation RHCP, tx polarisation RHCP
+2023-07-14T14:35:12.803Z
+Frequency or group changed for beam 1 group Default frequency 21200 lens 0
+2023-07-14T14:35:12.830Z
+Frequency or group changed for beam 1 group Default frequency 21200 lens 0
+2023-07-14T14:35:12.830Z
+Beam 1 using freq 21200 offset 0
+2023-07-14T14:35:12.831Z
+Beam 1 using freq 21200 offset 0
+2023-07-14T14:35:12.831Z
+Loading combiner pointing table for lens=0, beam=1, frequency=21200, temperature=0, polarisation=RHCP
+2023-07-14T14:35:12.832Z
+Loading combiner pointing table for lens=0, beam=1, frequency=21200, temperature=0, polarisation=RHCP
+2023-07-14T14:35:12.832Z
+Frequency or group changed for beam 1 group Default frequency 21200 lens 1
+2023-07-14T14:35:12.834Z
+Frequency or group changed for beam 1 group Default frequency 21200 lens 1
+2023-07-14T14:35:12.834Z
+Beam 1 using freq 21200 offset 0
+2023-07-14T14:35:12.835Z
+Beam 1 using freq 21200 offset 0
+2023-07-14T14:35:12.835Z
+Loading combiner pointing table for lens=1, beam=1, frequency=21200, temperature=0, polarisation=RHC
+2023-07-14T14:35:12.836Z
+Loading combiner pointing table for lens=1, beam=1, frequency=21200, temperature=0, polarisation=RHCP
+2023-07-14T14:35:12.837Z
+Frequency or group changed for beam 1 group Default frequency 21200 lens 2
+2023-07-14T14:35:12.838Z
+Frequency or group changed for beam 1 group Default frequency 21200 lens 2
+2023-07-14T14:35:12.839Z
+Beam 1 using freq 21200 offset 0
+2023-07-14T14:35:12.839Z
+Beam 1 using freq 21200 offset 0
+2023-07-14T14:35:12.839Z
+Loading combiner pointing table for lens=2, beam=1, frequency=21200, temperature=0, polarisation=RHCP
+2023-07-14T14:35:12.841Z
+Loading combiner pointing table for lens=2, beam=1, frequency=21200, temperature=0, polarisation=RHCP
+2023-07-14T14:35:12.841Z
+Manual Antenna beam 1 created, phi 0, theta 0, rx frequency 21200, tx frequency 28750, rx polarisation RHCP, tx polarisation RHCP
+2023-07-14T14:35:16.455Z
+No frequency change for beam 0 frequency 21200
+2023-07-14T14:35:16.484Z
+No frequency or group change for beam 1 group Default frequency 21200 lens 0
+2023-07-14T14:35:16.486Z
+No frequency change for beam 0 frequency 21200
+2023-07-14T14:35:16.486Z
+Beam 1 using freq 21200 offset 0
+2023-07-14T14:35:16.487Z
+No frequency or group change for beam 1 group Default frequency 21200 lens 0
+2023-07-14T14:35:16.487Z
+Beam 1 using freq 21200 offset 0
+2023-07-14T14:35:16.488Z
+Loading combiner pointing table for lens=0, beam=1, frequency=21200, temperature=0, polarisation=Linea
+2023-07-14T14:35:16.488Z
+Loading combiner pointing table for lens=0, beam=1, frequency=21200, temperature=0, polarisation=Linear
+2023-07-14T14:35:16.489Z
+No frequency change for beam 0 frequency 21200
+2023-07-14T14:35:16.489Z
+No frequency change for beam 0 frequency 21200
+2023-07-14T14:35:16.490Z
+No frequency or group change for beam 1 group Default frequency 21200 lens 1
+2023-07-14T14:35:16.490Z
+Beam 1 using freq 21200 offset 0
+2023-07-14T14:35:16.491Z
+No frequency or group change for beam 1 group Default frequency 21200 lens 1
+2023-07-14T14:35:16.491Z
+Beam 1 using freq 21200 offset 0
+2023-07-14T14:35:16.492Z
+Loading combiner pointing table for lens=1, beam=1, frequency=21200, temperature=0, polarisation=Linear
+2023-07-14T14:35:16.493Z
+Loading combiner pointing table for lens=1, beam=1, frequency=21200, temperature=0, polarisation=Linear
+2023-07-14T14:35:16.494Z
+No frequency change for beam 0 frequency 21200
+2023-07-14T14:35:16.494Z
+No frequency change for beam 0 frequency 21200
+2023-07-14T14:35:16.494Z
+No frequency or group change for beam 1 group Default frequency 21200 lens 2
+2023-07-14T14:35:16.495Z
+Beam 1 using freq 21200 offset 0
+2023-07-14T14:35:16.495Z
+No frequency or group change for beam 1 group Default frequency 21200 lens 2
+2023-07-14T14:35:16.496Z
+Beam 1 using freq 21200 offset 0
+2023-07-14T14:35:16.496Z
+Loading combiner pointing table for lens=2, beam=1, frequency=21200, temperature=0, polarisation=Linear
+2023-07-14T14:35:16.497Z
+Loading combiner pointing table for lens=2, beam=1, frequency=21200, temperature=0, polarisation=Linear
+2023-07-14T14:35:16.498Z
+Frequency or group changed for beam 2 group Default frequency 21200 lens 0
+2023-07-14T14:35:16.500Z
+Beam 2 using freq 21200 offset 0
+2023-07-14T14:35:16.501Z
+Frequency or group changed for beam 2 group Default frequency 21200 lens 0
+2023-07-14T14:35:16.501Z
+Beam 2 using freq 21200 offset 0
+2023-07-14T14:35:16.502Z
+Loading combiner pointing table for lens=0, beam=2, frequency=21200, temperature=0, polarisation=RHCP
+2023-07-14T14:35:16.503Z
+Loading combiner pointing table for lens=0, beam=2, frequency=21200, temperature=0, polarisation=RHCP
+2023-07-14T14:35:16.503Z
+Frequency or group changed for beam 2 group Default frequency 21200 lens 1
+2023-07-14T14:35:16.504Z
+Beam 2 using freq 21200 offset 0
+2023-07-14T14:35:16.505Z
+Frequency or group changed for beam 2 group Default frequency 21200 lens 1
+2023-07-14T14:35:16.505Z
+Beam 2 using freq 21200 offset 0
+2023-07-14T14:35:16.506Z
+Loading combiner pointing table for lens=1, beam=2, frequency=21200, temperature=0, polarisation=RHCP
+2023-07-14T14:35:16.507Z
+Loading combiner pointing table for lens=1, beam=2, frequency=21200, temperature=0, polarisation=RHCP
+2023-07-14T14:35:16.508Z
+Frequency or group changed for beam 2 group Default frequency 21200 lens 2
+2023-07-14T14:35:16.509Z
+Beam 2 using freq 21200 offset 0
+2023-07-14T14:35:16.509Z
+Frequency or group changed for beam 2 group Default frequency 21200 lens 2
+2023-07-14T14:35:16.510Z
+Beam 2 using freq 21200 offset 0
+2023-07-14T14:35:16.510Z
+Loading combiner pointing table for lens=2, beam=2, frequency=21200, temperature=0, polarisation=RHCP
+2023-07-14T14:35:16.511Z
+Loading combiner pointing table for lens=2, beam=2, frequency=21200, temperature=0, polarisation=RHCP
+2023-07-14T14:35:16.512Z
+getCommon got {"lens":"1","rfic":"1","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 45867
+2023-07-14T14:35:18.991Z
+getCommon got {"lens":"2","rfic":"1","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 45869
+2023-07-14T14:35:19.016Z
+getCommon got {"lens":"3","rfic":"1","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 45871
+2023-07-14T14:35:19.040Z
+No frequency change for beam 1 frequency 21200
+2023-07-14T14:35:19.073Z
+No frequency or group change for beam 2 group Default frequency 21200 lens 0
+2023-07-14T14:35:19.074Z
+Beam 2 using freq 21200 offset 0
+2023-07-14T14:35:19.075Z
+Loading combiner pointing table for lens=0, beam=2, frequency=21200, temperature=0, polarisation=Linea
+2023-07-14T14:35:19.076Z
+No frequency change for beam 1 frequency 21200
+2023-07-14T14:35:19.078Z
+No frequency or group change for beam 2 group Default frequency 21200 lens 1
+2023-07-14T14:35:19.079Z
+Beam 2 using freq 21200 offset 0
+2023-07-14T14:35:19.080Z
+Loading combiner pointing table for lens=1, beam=2, frequency=21200, temperature=0, polarisation=Linear
+2023-07-14T14:35:19.081Z
+No frequency change for beam 1 frequency 21200
+2023-07-14T14:35:19.082Z
+No frequency or group change for beam 2 group Default frequency 21200 lens 2
+2023-07-14T14:35:19.084Z
+Beam 2 using freq 21200 offset 0
+2023-07-14T14:35:19.084Z
+Loading combiner pointing table for lens=2, beam=2, frequency=21200, temperature=0, polarisation=Linear
+2023-07-14T14:35:19.086Z
+No frequency change for beam 1 frequency 21200
+2023-07-14T14:35:19.107Z
+No frequency or group change for beam 2 group Default frequency 21200 lens 0
+2023-07-14T14:35:19.108Z
+Beam 2 using freq 21200 offset 0
+2023-07-14T14:35:19.108Z
+Loading combiner pointing table for lens=0, beam=2, frequency=21200, temperature=0, polarisation=Linear
+2023-07-14T14:35:19.110Z
+No frequency change for beam 1 frequency 21200
+2023-07-14T14:35:19.111Z
+No frequency or group change for beam 2 group Default frequency 21200 lens 1
+2023-07-14T14:35:19.112Z
+Beam 2 using freq 21200 offset 0
+2023-07-14T14:35:19.112Z
+Loading combiner pointing table for lens=1, beam=2, frequency=21200, temperature=0, polarisation=Linear
+2023-07-14T14:35:19.113Z
+No frequency change for beam 1 frequency 21200
+2023-07-14T14:35:19.113Z
+No frequency or group change for beam 2 group Default frequency 21200 lens 2
+2023-07-14T14:35:19.114Z
+Beam 2 using freq 21200 offset 0
+2023-07-14T14:35:19.114Z
+Loading combiner pointing table for lens=2, beam=2, frequency=21200, temperature=0, polarisation=Linear
+2023-07-14T14:35:19.115Z
+getCommon got {"lens":"1","rfic":"2","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 45873
+2023-07-14T14:35:19.129Z
+getCommon got {"lens":"2","rfic":"2","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 45875
+2023-07-14T14:35:19.153Z
+getCommon got {"lens":"3","rfic":"2","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 45877
+2023-07-14T14:35:19.177Z
+getCommon got {"lens":"1","rfic":"3","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 45879
+2023-07-14T14:35:19.255Z
+getCommon got {"lens":"2","rfic":"3","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 45881
+2023-07-14T14:35:19.279Z
+getCommon got {"lens":"3","rfic":"3","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 45883
+2023-07-14T14:35:19.304Z
+getCommon got {"lens":"1","rfic":"4","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 45885
+2023-07-14T14:35:19.381Z
+getCommon got {"lens":"2","rfic":"4","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 45887
+2023-07-14T14:35:19.406Z
+getCommon got {"lens":"3","rfic":"4","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 45889
+2023-07-14T14:35:19.430Z
+getCommon got {"lens":"1","rfic":"5","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 45891
+2023-07-14T14:35:19.508Z
+getCommon got {"lens":"2","rfic":"5","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 45893
+2023-07-14T14:35:19.533Z
+getCommon got {"lens":"3","rfic":"5","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 45895
+2023-07-14T14:35:19.557Z
+getCommon got {"lens":"1","rfic":"6","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 45897
+2023-07-14T14:35:19.635Z
+getCommon got {"lens":"2","rfic":"6","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 45899
+2023-07-14T14:35:19.659Z
+getCommon got {"lens":"3","rfic":"6","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 45901
+2023-07-14T14:35:19.683Z
+getCommon got {"lens":"1","rfic":"7","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 45903
+2023-07-14T14:35:19.762Z
+getCommon got {"lens":"2","rfic":"7","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 45905
+2023-07-14T14:35:19.786Z
+getCommon got {"lens":"3","rfic":"7","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 45907
+2023-07-14T14:35:19.810Z
+getCommon got {"lens":"1","rfic":"8","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 45909
+2023-07-14T14:35:19.887Z
+getCommon got {"lens":"2","rfic":"8","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 45911
+2023-07-14T14:35:19.911Z
+getCommon got {"lens":"3","rfic":"8","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 45913
+2023-07-14T14:35:19.935Z
+getCommon got {"lens":"1","rfic":"9","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 45915
+2023-07-14T14:35:20.013Z
+getCommon got {"lens":"2","rfic":"9","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 45917
+2023-07-14T14:35:20.037Z
+getCommon got {"lens":"3","rfic":"9","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 45919
+2023-07-14T14:35:20.061Z
+getCommon got {"lens":"1","rfic":"10","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 45921
+2023-07-14T14:35:20.140Z
+getCommon got {"lens":"2","rfic":"10","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 45923
+2023-07-14T14:35:20.164Z
+getCommon got {"lens":"3","rfic":"10","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 45925
+2023-07-14T14:35:20.188Z
+getCommon got {"lens":"1","rfic":"11","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 45927
+2023-07-14T14:35:20.265Z
+getCommon got {"lens":"2","rfic":"11","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 45929
+2023-07-14T14:35:20.290Z
+getCommon got {"lens":"3","rfic":"11","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 45931
+2023-07-14T14:35:20.314Z
+getCommon got {"lens":"1","rfic":"12","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 45933
+2023-07-14T14:35:20.393Z
+getCommon got {"lens":"2","rfic":"12","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 45935
+2023-07-14T14:35:20.417Z
+getCommon got {"lens":"3","rfic":"12","chans":[{"id":"0","phase":"0","atten":"8"},{"id":"1","phase":"0","atten":"8"}]} id 45937
+2023-07-14T14:35:20.441Z
+getCommon got {"lens":"1","rfic":"0","chans":[{"id":"0","phase":"0","atten":"32"}]} id 45939
+2023-07-14T14:35:20.520Z
+getCommon got {"lens":"2","rfic":"0","chans":[{"id":"0","phase":"0","atten":"32"}]} id 45941
+2023-07-14T14:35:20.545Z
+getCommon got {"lens":"3","rfic":"0","chans":[]} id 45943
+2023-07-14T14:35:20.569Z
+getCommon got {"lens":"1","rfic":"0","chans":[{"id":"0","phase":"0","atten":"32"}]} id 45945
+2023-07-14T14:35:20.645Z
+getCommon got {"lens":"2","rfic":"0","chans":[{"id":"0","phase":"0","atten":"32"}]} id 4594
+2023-07-14T14:35:20.669Z
+getCommon got {"lens":"3","rfic":"0","chans":[]} id 45949
+2023-07-14T14:35:20.693Z

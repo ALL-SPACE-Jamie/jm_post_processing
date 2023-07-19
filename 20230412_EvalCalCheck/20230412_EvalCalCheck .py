@@ -30,7 +30,7 @@ filePath = r'C:\Users\JamieMitchell\OneDrive - ALL.SPACE\S-Type\Rx_TLM\ES2c-Lase
 SaveFileName = '\Post_Processed_Data'
 BoardFont = '10'
 counter = 0
-external_folder_name = "Figures\\TLM_0036\\45C" ##
+external_folder_name = "Figures\\TLM_0036\\45C"
 measFileShift = 0
 droppedThresh = -19
 
