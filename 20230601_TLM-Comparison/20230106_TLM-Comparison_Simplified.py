@@ -11,7 +11,7 @@ import time
 from pylab import *
 plt.close('all')
 
-f_set_list = [27.5, 28.0, 28.5, 29.0, 29.5, 30.0, 30.5, 31.0]
+# f_set_list = [27.5, 28.0, 28.5, 29.0, 29.5, 30.0, 30.5, 31.0]
 f_set_list = [17.7, 18.2, 18.7, 19.2, 19.7, 20.2, 20.7, 21.2]
 
 # file path
@@ -60,17 +60,22 @@ for beamChoice in range(2):
     beamChoice = beamChoice+1
     for f_set in f_set_list:
         plt.figure()
-        find_measFiles('C:\\Scratch', 'OP', beamChoice)
+        find_measFiles(r'C:\Scratch\Single_Rx_TLM_Recal\Rx_TLM_Recal', 'OP', beamChoice)
         for measFile in measFiles:
             load_measFiles(measFile)
             if float(meas_params['f_c']) == float(f_set):
-                plt.plot(meas_frequencies, np.average(meas_array_gain, axis=0), label = meas_params['acu_version'] + ' Port mean')
-                plt.fill_between(meas_frequencies, np.min(meas_array_gain, axis=0), np.max(meas_array_gain, axis=0), alpha=0.2, label = 'Port min/max')
+                if meas_params['acu_version'] == ' 1.16.1':
+                    meas_params['acu_version'] = ' No Capacitor tuning'
+                if meas_params['acu_version'] == ' 1.16.6':
+                    meas_params['acu_version'] = ' Capacitor tuning'
+                plt.plot(meas_frequencies, np.median(meas_array_gain, axis=0), linewidth = 5, label = meas_params['acu_version'] + '\n Port median')
+                # plt.fill_between(meas_frequencies, np.min(meas_array_gain, axis=0), np.max(meas_array_gain, axis=0), alpha=0.2, label = '\n Port min/max')
+                temp = meas_array_gain*1.0
         plt.xlabel('Frequency [GHz]'); plt.ylabel('S$_{21}$ (arb.) [dB]')
-        plt.ylim([-10,50]); plt.xlim([17.7, 21.2]); plt.xlim([min(f_set_list), max(f_set_list)])
-        plt.yticks(np.linspace(-10, 50, num=int(60/5)+1))
+        plt.ylim([10,50]); plt.xlim([17.7, 21.2]); plt.xlim([min(f_set_list), max(f_set_list)])
+        plt.yticks(np.linspace(10, 50, num=int(40/5)+1))
         plt.grid('on')   
-        plt.legend(ncol=2, loc='lower right', fontsize=7)
+        plt.legend(ncol=2, loc='lower right', fontsize=12)
         plt.tight_layout()
         plt.title('f_set = ' + str(f_set) + ' GHz, Beam ' + str(beamChoice))
         plt.savefig('C:\\Scratch\\Figures\\' + 'f_set_' + str(f_set) + 'GHz_Beam_' + str(beamChoice) + '.png', dpi=400)

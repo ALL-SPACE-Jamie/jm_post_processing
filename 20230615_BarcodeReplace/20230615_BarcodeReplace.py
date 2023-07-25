@@ -6,9 +6,9 @@ import csv
 import pickle
 
 # inputs
-filePath = r'C:\Users\JamieMitchell\OneDrive - ALL.SPACE\S-Type\Rx_TLM\ES2c-Laser_Cut\TLM_Calibration_Measurements\RX_Batch_1\Rx_Batch1_Recal'
+filePath = r'C:\Users\JamieMitchell\Downloads\S1_Tx_RFA\59'
 bc1_Replace = '440'
-bc2_Replace = '0254'
+bc2_Replace = '0255'
 
 # definitions
 def find__measFiles(filePath, fileString):
@@ -20,7 +20,7 @@ def find__measFiles(filePath, fileString):
                 files.append(os.path.join(root, file))
     measFiles = []
     for i in range(len(files)):
-        if fileString in files[i] and 'run2' in files[i]:
+        if fileString in files[i]:
             measFiles.append(files[i])
             
 def find__fileDetails(filePath):
@@ -54,7 +54,7 @@ def find__fileDetails(filePath):
 ## run ##
 
 # check barcode
-fileTypes = ['OP']
+fileTypes = ['RFA']
 for fileType in fileTypes:
     find__measFiles(filePath, fileType)
     for measFile in measFiles:
@@ -66,6 +66,7 @@ for fileType in fileTypes:
         bc1 = bc1_Replace
         bc2 = bc2_Replace
         bc3 = '0' + '0010_run2'#+ bc3[-4:]
+        bc3 = '00059'
         barcodeNEW = bc1 + '-' + bc2 + '-' + bc3
         
         # change barcode

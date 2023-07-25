@@ -18,9 +18,9 @@ plt.close('all')
 dirScript = os.getcwd()
 
 # parmas
-filePath = r'C:\\Scratch'
+filePath = r'C:\Scratch\ComparisonTx\1-16-8'
 txrx = 'tx'
-ymin=-20; ymax=30
+ymin=-20; ymax=50
 
 # definitions
 def find_measFiles(path, fileString, beam):
