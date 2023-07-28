@@ -12,7 +12,7 @@ import time
 from pylab import *
 plt.close('all')
 
-mapPlot = True
+mapPlot = False
 
 folders = [r'C:\Scratch\Ref_TLM_Tx\Ref', r'C:\\Scratch\\Ref_TLM_Tx\forCompare']
 f_set_list = [27.5] #[27.5, 28.0, 28.5, 29.0, 29.5, 30.0, 30.5, 31.0]
@@ -144,12 +144,12 @@ for beamChoice in range(2):
             minmax_log.append(minmax)
             stdev_log.append(stdev)
             details = '(max-min)/2 = ' + str(minmax/2.0) + ', st. dev. = ' + str(stdev)
-            print(str(labelList[i].split('_')[0:2]) + str(labelList[i].split('_')[-4:-2]) + ', beam' + str(beamChoice) + ', ' + str(f_set) + ', ' + str(details))
-            label = str(labelList[i].split('_')[0:2]) + str(labelList[i].split('_')[-4:-2])
+            print(str(labelList[i].split('_')[0:2]) + str(labelList[i].split('_')[7:9]) + ', beam' + str(beamChoice) + ', ' + str(f_set) + ', ' + str(details))
+            label = str(labelList[i].split('_')[0:2]) + str(labelList[i].split('_')[7:9])
             date_log.append(labelList[i].split('_')[0])
             time_log.append(labelList[i].split('_')[1])
-            rig_log.append(labelList[i].split('_')[-4] + '_' + labelList[i].split('_')[-3])
-            side_log.append(labelList[i].split('_')[-3])
+            rig_log.append(labelList[i].split('_')[7] + '_' + labelList[i].split('_')[-3])
+            side_log.append(labelList[i].split('_')[8])
             FN_log.append(label)
             beam_log.append(beamChoice)
             f_set_log.append(f_set)
@@ -158,7 +158,7 @@ for beamChoice in range(2):
             plotLabel = label+ '\n' + 'max-min = ' + str(minmax) + ', st. dev. = ' + str(stdev)
             if mapPlot == True:
                 plot_phaseDrift(deltaNew, title + '\n' + plotLabel, -45,  40.0, 5, f_set)
-                plt.savefig(savePath + labelList[i].split('_')[-4] + '_' + labelList[i].split('_')[-3] + '_f_set_' + str(f_set) + 'GHz_Beam_' + str(beamChoice) + '_map' + str(mapPlot) + '.png', dpi=400)
+                plt.savefig(savePath + labelList[i].split('_')[7] + '_' + labelList[i].split('_')[8] + '_f_set_' + str(f_set) + 'GHz_Beam_' + str(beamChoice) + '_map' + str(mapPlot) + '.png', dpi=400)
             if mapPlot == False:
                 plt.plot(deltaNew-np.mean(deltaNew), label = plotLabel)
         if mapPlot == False:
@@ -166,7 +166,7 @@ for beamChoice in range(2):
             plt.ylim([-45,45]);
             plt.yticks(np.linspace(-45, 45, num=int(90/5)+1))
             plt.grid('on')   
-            plt.legend(ncol=1, loc='lower right', fontsize=7)
+            plt.legend(ncol=1, loc='lower right', fontsize=15)
             plt.tight_layout()
             
             plt.title(title)

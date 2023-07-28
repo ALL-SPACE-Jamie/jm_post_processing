@@ -18,7 +18,7 @@ plt.close('all')
 dirScript = os.getcwd()
 
 # parmas
-filePath = r'C:\Scratch\ComparisonTx\1-16-8'
+filePath = r'C:\Scratch\17-3'
 txrx = 'tx'
 ymin=-20; ymax=50
 
@@ -162,7 +162,7 @@ for beamNo in range(2):
                     axs[axsRows[j], axsCols[j]].set_xlim([17.7, 21.2])
                 else:
                     axs[axsRows[j], axsCols[j]].set_xlim([27.5, 31.0])
-                axs[axsRows[j], axsCols[j]].set_yticks(np.linspace(ymin,ymax, num=int(50 / 5) + 1))
+                axs[axsRows[j], axsCols[j]].set_yticks(np.linspace(ymin,ymax, num=int((ymax-ymin) / 10) + 1))
                 axs[axsRows[j], axsCols[j]].grid('on')
                 axs[axsRows[j], axsCols[j]].legend(fontsize=8, ncol=5, loc='lower right')
                 axs[axsRows[j], axsCols[j]].set_title('C' + str(chanCycle[j]) + '-' + linCycle[j])
