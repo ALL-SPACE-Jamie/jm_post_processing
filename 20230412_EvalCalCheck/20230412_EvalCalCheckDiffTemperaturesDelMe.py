@@ -198,6 +198,8 @@ def plot__gainVport(f_set, measType):
         axs[1, 0].plot(np.linspace(1, len(y) + 1, num=len(y)), y, 'k', alpha=0.2)
         axs[1, 0].set_xlabel('port')
         axs[1, 0].set_ylabel('Phase [deg]')
+        phaseLog.append(y)
+        tlmLog.append(dataSetLabel)
         axs[1, 0].set_xlim([1, len(y) + 1])
         axs[1, 0].set_ylim([minY, maxY])
         axs[1, 0].set_yticks(np.linspace(0, 360, num=int(360 / 45) + 1))
@@ -213,9 +215,11 @@ def plot__gainVport(f_set, measType):
 ## RUN ##
 
 # run
-for p in range(2):
+for p in range(1):
     beam = p + 1
     for l in range(len(f_set_list)):
+        phaseLog = []
+        tlmLog = []
         f_set = f_set_list[l]
         droppedThresh = droppedThreshList[l]
 
@@ -283,3 +287,14 @@ for dirpath, dirnames, filenames in os.walk(filePath):
             except shutil.SameFileError as e:
                 print(f"Skipped copying file{file}:{e}")
 print("done")
+
+diffLog = []
+plt.figure
+for i in range(len(phaseLog)):
+    diff = phaseLog[i] - phaseLog[0]
+    diffLog.append(np.median(diff))
+    
+plt.plot(tlmLog, diffLog, 'o')
+plt.xticks(rotation=90)
+plt.grid('on')
+plt.ylabel('median port phase diff (from reference)')

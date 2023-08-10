@@ -6,9 +6,7 @@ import csv
 import pickle
 
 # inputs
-filePath = r'C:\Scratch\20230810_CalFile\Tx\step0_barcodeReplace'
-bc1_Replace = '440'
-bc2_Replace = '0255'
+filePath = r'C:\Scratch\20230801_CalFile\RFA_Tx2'
 
 # definitions
 def find__measFiles(filePath, fileString):
@@ -49,39 +47,31 @@ def find__fileDetails(filePath):
             meas_params[paramName] = meas_info[i][1]
             if meas_params[paramName][0] == ' ':
                 meas_params[paramName] = meas_params[paramName][1:]
-            
-            
+          
 ## run ##
 
-# check barcode
+# check frequency
 fileTypes = ['RFA']
 for fileType in fileTypes:
     find__measFiles(filePath, fileType)
     for measFile in measFiles:
         find__fileDetails(measFile)
-        barcodeOLD = meas_params['barcodes']
-        bc1 = meas_params['barcodes'].split('-')[0]
-        bc2 = meas_params['barcodes'].split('-')[1]
-        bc3 = meas_params['barcodes'].split('-')[2]
-        bc1 = bc1_Replace
-        bc2 = bc2_Replace
-        bc3 = bc3[-4:]
-        barcodeNEW = bc1 + '-' + bc2 + '-0' + bc3
+        freq_center = meas_params['f_c']
         
         # change barcode
-        if barcodeNEW != barcodeOLD:
+        if '.' not in freq_center:
             meas_infoNEW = meas_info
-            meas_infoNEW[25][1] = barcodeNEW
+            meas_infoNEW[15][1] = freq_center + '.0'
             
             meas_array_list = meas_infoNEW.copy()
             for k in range(len(meas_array)):
                 meas_array_list.append(list(meas_array[k,:]))
                 
             # new fileName
-            measFileNEW = measFile[0:measFile.find('None_QR')+len('None_QR')] + barcodeNEW + measFile[measFile.find('-CG'):]
+            measFileNEW = measFile[0:measFile.find('z_both_')+len('z_both_')] + freq_center + '.0' + measFile[measFile.find('_GHz_45C.csv'):]
             
             # write new file
-            file = open(measFileNEW, 'w+', newline ='') 
+            file = open(filePath + '\\step1_replaceINT\\' + measFileNEW.split('\\')[-1], 'w+', newline ='') 
             with file:
                 write = csv.writer(file) 
                 write.writerows(meas_array_list)
