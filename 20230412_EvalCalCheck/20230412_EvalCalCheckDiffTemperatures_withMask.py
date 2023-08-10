@@ -27,7 +27,6 @@ counter = 0
 external_folder_name = "Figures\\StressTest\\MCR1_Rig1"
 measFileShift = 0
 droppedThresh = 10
-mask = os.path.join(dirScript, r'2022_09_28_discrete_17700_21200_8_calibration_data_L1L6_48feed_v10_L6_89_10RX_anisotropic_calibration_13mm_single_pol_probe (1).csv')
 
 # frequencies to iterate through
 if measType == 'Evaluation' and tlmType == 'Tx':
@@ -42,6 +41,10 @@ elif measType == 'Evaluation' and tlmType == 'Rx':
 elif measType == 'Calibration' and tlmType == 'Rx':
     f_set_list = [17.7, 18.2]#, 18.7, 19.2, 19.7, 20.2, 20.7, 21.2]
     droppedThreshList = [10, 10, 15, 15, 15, 12, 12, -5]
+if tlmType == 'Tx':
+    mask = os.path.join(dirScript, r'2023_06_07_Sweep_Discrete_7pts_calibration_data_ES2_TX_TLM_Lens1_cal_equ_FR_Norm_renormalization_of_ports.csv')
+if tlmType == 'Rx':
+    mask = os.path.join(dirScript, r'2023_03_17_discrete_17700_21200_8_calibration_data_175-0081_sanmina_rel1c_2023_03_07_L1L14_48feed_calibration_13mm_dual_pol_probe.csv')
 
 # definitions
 def find_measFiles(path, fileString, beam):
