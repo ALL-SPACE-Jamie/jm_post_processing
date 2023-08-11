@@ -5,7 +5,7 @@ import os
 plt.close('all')
 
 # load
-fileName = 'ppk_data_CCG24_PCG48'
+fileName = 'C:\Scratch\MilBand\ppk_data'
 dirScript = os.getcwd()
 os.chdir(dirScript)
 dfFull = pd.read_excel(fileName + ".xlsx")
@@ -71,12 +71,12 @@ def plot__devVsTheta(lensSet, phiAng, activeCal, beamNo, freqMeas, RFICFreq, fil
     df = pd.read_excel(fileName + ".xlsx")
 
     # reduce
-    df = df[(df["lens_enabled"] == lensSet)]
+    # df = df[(df["lens_enabled"] == lensSet)]
     df = df[(df["pa_phi_deg"] == phiAng)]
-    df = df[(df["cal_freq_GHz"] == RFICFreq)]
+    # df = df[(df["cal_freq_GHz"] == RFICFreq)]
     df = df[(df["freq_GHz"] == freqMeas)]
-    df = df[(df["active_cal"] == activeCal)]
-    df = df[(df["beam_no"] == beamNo)]
+    # df = df[(df["active_cal"] == activeCal)]
+    # df = df[(df["beam_no"] == beamNo)]
     dfPlot = df[(df["entry_type"] == 'gain_at_peak')]
     
     # theta / phi deviations
@@ -126,9 +126,9 @@ def plot__devVsTheta(lensSet, phiAng, activeCal, beamNo, freqMeas, RFICFreq, fil
 # Params
 calSet = 'S2000_Rx_TLM_QR00038_MCR_1_45deg_Mfreq_v8.tar'
 fileName = fileName
-RFICFreq = 19.95
-freqLog = [19.2]
-phiAng = 244.8
+RFICFreq = 21.2
+freqLog = [21.2]
+phiAng = 0.0
 # run
 for i in range(len(freqLog)):
     freqMeas = freqLog[i]    
@@ -150,4 +150,4 @@ for i in range(len(freqLog)):
     plot__gainVstheta('l1d_l2d_l3e', phiAng, calSet, 1, freqMeas, RFICFreq, fileName, 'Gain_dB', [20,80], False, 'b', 'b', 'l3 ')
     plot__gainVstheta('l1e_l2e_l3e', phiAng, calSet, 1, freqMeas, RFICFreq, fileName, 'Gain_dB', [20,80], False, 'm', 'm', 'TLM ')
     plt.legend(ncol=2, fontsize=10)
-    plt.savefig('./figures/gainVsthetaAllLenses' + '_freqMeas=' + str(freqMeas) + 'GHz' + '_freqRFIC=' + str(RFICFreq) + 'GHz' + '.png')
+    # plt.savefig('./figures/gainVsthetaAllLenses' + '_freqMeas=' + str(freqMeas) + 'GHz' + '_freqRFIC=' + str(RFICFreq) + 'GHz' + '.png')

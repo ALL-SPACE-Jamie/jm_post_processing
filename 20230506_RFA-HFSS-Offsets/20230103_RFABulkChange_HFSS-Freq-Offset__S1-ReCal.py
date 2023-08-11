@@ -6,10 +6,8 @@ import pandas as pd
 import matplotlib.pyplot as plt; plt.close('all')
 import pickle
 
-filePath = r'C:\Users\JamieMitchell\OneDrive - ALL.SPACE\S-Type\Rx_TLM\ES2c-Laser_Cut\TLM_Calibration_RFA_Files\RX_Batch_2\Post-processed_RFA_Temp_45deg\Post_Step4_Fixed_QR_BadHFSSOffsets_OffsetsFixed_AllFiles'
-filePath = r'C:\Users\JamieMitchell\Downloads\S1_Rx_RFA (1)\S1_Rx_RFA'
-filePath = r'C:\Users\JamieMitchell\Downloads\S1_Tx_RFA (1)\S1_Tx_RFA'
-normVal = 3.00
+filePath = r'C:\Scratch\20230811_S1-newTLM\Rx\step1_Offset'
+normVal = 0.01
 
 for beamChoice in range(2):
     beam = beamChoice + 1
@@ -69,8 +67,8 @@ for beamChoice in range(2):
             
     
     portFailDict = {}
-    f_set_Log = [27.5,28,28.5,29,29.5,30,30.5,31]
-    # f_set_Log = [17.7,18.2,18.7,19.2,19.7,20.2,20.7,21.2]
+    # f_set_Log = [27.5,28,28.5,29,29.5,30,30.5,31]
+    f_set_Log = [17.7,18.2,18.7,19.2,19.7,20.2,20.7,21.2]
     for f_set in f_set_Log:
         ## RUN
         # f_set = 29.0
@@ -247,7 +245,7 @@ for beamChoice in range(2):
             for o in range(len(meas_array_corrected)):
                 meas_info_list.append(list(meas_array_corrected[o,:]))
     
-            savePath = r'C:\Users\JamieMitchell\Downloads\S1_Tx_RFA (1)\rfaNew'
+            savePath = r'C:\Scratch\20230811_S1-newTLM\Rx\step1_Offset-offset'
             if not os.path.exists(savePath):
                 os.makedirs(savePath) 
             # write new file

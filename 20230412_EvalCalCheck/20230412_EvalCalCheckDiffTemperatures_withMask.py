@@ -20,13 +20,16 @@ dirScript = os.getcwd()
 temperature = '45'
 tlmType = 'Rx'
 measType = 'Calibration' # 'Calibration' or 'Evaluation'
-filePath = r'C:\Scratch\S1_ReCal'
+filePath = r'C:\Scratch\20230811_S1-newTLM\Rx\step0'
 SaveFileName = '\Post_Processed_Data'
 BoardFont = '6'
 counter = 0
 external_folder_name = "Figures\\StressTest\\MCR1_Rig1"
 measFileShift = 0
 droppedThresh = 10
+mask_lim = 10.0
+maskPlot = False
+fileForm = 'RFA' # 'RFA' or 'OP'
 
 # frequencies to iterate through
 if measType == 'Evaluation' and tlmType == 'Tx':
@@ -39,7 +42,7 @@ elif measType == 'Evaluation' and tlmType == 'Rx':
     f_set_list = [19.2]
     droppedThreshList = [droppedThresh]
 elif measType == 'Calibration' and tlmType == 'Rx':
-    f_set_list = [17.7, 18.2]#, 18.7, 19.2, 19.7, 20.2, 20.7, 21.2]
+    f_set_list = [21.2]#[17.7, 18.2, 18.7, 19.2, 19.7, 20.2, 20.7, 21.2]
     droppedThreshList = [10, 10, 15, 15, 15, 12, 12, -5]
 if tlmType == 'Tx':
     mask = os.path.join(dirScript, r'2023_06_07_Sweep_Discrete_7pts_calibration_data_ES2_TX_TLM_Lens1_cal_equ_FR_Norm_renormalization_of_ports.csv')
@@ -60,7 +63,7 @@ def find_measFiles(path, fileString, beam):
             measFiles.append(files[i])
     
 def import_mask(f_set, mask, offset):
-    global mask_gain, mask_phase
+    global mask_gain, mask_phase, mask_gain_cross
     meas_info = []
     meas_array = np.genfromtxt(mask, delimiter=',', skip_header=1)[:,2:]
     meas_array_frequencies = np.genfromtxt(mask, delimiter=',', skip_header=1)[0:int(len(meas_array)/2),1]
@@ -68,9 +71,12 @@ def import_mask(f_set, mask, offset):
     meas_arrayT = meas_array[index,:][::2]
     meas_arrayB = meas_array[int(len(meas_array)/2)+index,:][::2]
     meas_array_gain = np.zeros(len(meas_arrayT))
+    meas_array_gain_cross = np.zeros(len(meas_arrayT))
     for i in range(int(len(meas_arrayT)/2)):
         meas_array_gain[2*i] = meas_arrayT[2*i]
         meas_array_gain[2*i+1] = meas_arrayB[2*i+1]
+        meas_array_gain_cross[2*i] = meas_arrayT[2*i+1]
+        meas_array_gain_cross[2*i+1] = meas_arrayB[2*i]
     meas_arrayT = meas_array[index,:][1:][::2]
     meas_arrayB = meas_array[int(len(meas_array)/2)+index,:][1:][::2]
     meas_array_phase = np.zeros(len(meas_arrayT))
@@ -78,6 +84,10 @@ def import_mask(f_set, mask, offset):
         meas_array_phase[2*i] = meas_arrayT[2*i]
         meas_array_phase[2*i+1] = meas_arrayB[2*i+1]
     mask_gain = meas_array_gain*1.0 + offset
+    mask_gain_cross = meas_array_gain_cross*1.0 + offset
+    for i in range(len(mask_gain)):
+        if mask_gain_cross[i] > mask_gain[i]:
+            mask_gain[i] = mask_gain_cross[i]*1.0
     mask_phase = meas_array_phase*1.0
     mask_gain = np.hstack([mask_gain, mask_gain, mask_gain])
     mask_phase = np.hstack([mask_phase, mask_phase, mask_phase])
@@ -226,7 +236,7 @@ for p in range(2):
         droppedThresh = droppedThreshList[l]
 
         # find all meas files
-        find_measFiles(filePath, 'OP', beam)
+        find_measFiles(filePath, fileForm, beam)
 
         fig, axs = plt.subplots(3, 2, figsize=(25, 15))
         stat_TLM_median_log = []
@@ -251,23 +261,25 @@ for p in range(2):
                         stat_TLM_median_log.append(stat_TLM_median)
                         y_gain_log.append(y_gain)
                         tlm_log.append(meas_params['barcodes'])
-                        
-        # mask
-        import_mask(f_set, mask, 0.0)
-        mask_lim = 10.0
-        mask_offset = np.median(np.array(stat_TLM_median_log)) - np.median(np.array(mask_gain))
-        axs[0, 0].plot(np.linspace(1,len(mask_gain), num=len(mask_gain)), mask_gain + mask_offset, 'g-', alpha = 0.5)
-        axs[0, 0].fill_between(np.linspace(1,len(mask_gain), num=len(mask_gain)), mask_gain + mask_offset - mask_lim, mask_gain + mask_offset + mask_lim, color='green', alpha=0.2)
         
-        # mask_check
-        for jj in range(len(y_gain_log)):
-            delta = y_gain_log[jj] - (mask_gain+mask_offset)
-            if max(abs(delta)) > mask_lim:
-                print(tlm_log[jj])
-                for i in range(len(delta)):
-                    if abs(delta[i]) > mask_lim:
-                        axs[0, 0].plot(i+1, y_gain_log[jj][i], 'rs', markersize=10)
-                        axs[0, 0].text(i+1, y_gain_log[jj][i], str(tlm_log[jj]) + ': port ' + str(i+1))
+        # mask
+        if maskPlot == True:                
+            import_mask(f_set, mask, 0.0)
+            mask_offset = np.median(np.array(stat_TLM_median_log)) - np.median(np.array(mask_gain))
+            axs[0, 0].plot(np.linspace(1,len(mask_gain), num=len(mask_gain)), mask_gain + mask_offset, 'g-', alpha = 0.5)
+            axs[0, 0].fill_between(np.linspace(1,len(mask_gain), num=len(mask_gain)), mask_gain + mask_offset - mask_lim, mask_gain + mask_offset + mask_lim, color='green', alpha=0.2)
+            message = 'Mask offset = ' + str(round(mask_offset, 2)) + ' dB \nRange = $\pm$ ' + str(round(mask_lim,2)) + ' dB'
+            axs[0, 0].text(len(mask_gain)/48, 38.0, message, bbox=dict(boxstyle="round", ec='k', fc='white'))
+            
+            # mask_check
+            for jj in range(len(y_gain_log)):
+                delta = y_gain_log[jj] - (mask_gain+mask_offset)
+                if max(abs(delta)) > mask_lim:
+                    print(tlm_log[jj])
+                    for i in range(len(delta)):
+                        if abs(delta[i]) > mask_lim:
+                            axs[0, 0].plot(i+1, y_gain_log[jj][i], 'rs', markersize=10)
+                            axs[0, 0].text(i+1, y_gain_log[jj][i], str(tlm_log[jj]) + ': port ' + str(i+1))
                         
         # plot histogram
         ymax1 = 25.0
