@@ -5,10 +5,11 @@ import numpy as np
 import pandas as pd
 from pylab import *
 import os
+plt.close('all')
 
 # import geometry files
-df_geom = pd.read_csv(r'20221019_TLMCalInputs\Mrk1_S2000_TLM_TX_ArrayGeometry_V20062022_CalInfo.csv', skiprows=[0])
-df_geom_IC = pd.read_csv(r'20221019_TLMCalInputs\MK1_TX_TLM_RFIC_Patch_Feed_Mapping.csv')
+df_geom = pd.read_csv(r'20221019_TLMCalInputs\MK1_RX_TLM_RFIC_Patch_Feed_mapping.csv', skiprows=[0])
+df_geom_IC = pd.read_csv(r'20221019_TLMCalInputs\Mrk1_S2000_RX_ArrayGeometry_V20062022.csv')
 
 # patch positions
 x = np.array(df_geom[' Feed x [mm]']); y = np.array(df_geom[' Feed y [mm]'])
@@ -16,7 +17,7 @@ x = np.array(df_geom[' Feed x [mm]']); y = np.array(df_geom[' Feed y [mm]'])
 def import_OP_files(FOM, frequency_GHz, meas_filename_beam1, meas_filename_beam2):
     global meas_data_beams, meas_info
     # import measurements
-    head_info_len = 22
+    head_info_len = 25
     
     meas_data_dict = {}
     meas_info = {}
@@ -114,25 +115,24 @@ for i in range(len(items)):
         beam2_fileNames.append('\\' + items[i])
 
 # inputs
-meas_filename_beam1 = '\OP_221111-12_24_01-s2000 Tx TLM QR 0006 4V_bCCG36 PaRFIC_CG36_calT2_LUT_p_-5-tx_Beam2_HV_27.5_31_GHz_both_29.5_GHz_20C.csv'
-meas_filename_beam2 = '\OP_221111-12_24_01-s2000 Tx TLM QR 0006 4V_bCCG36 PaRFIC_CG36_calT2_LUT_p_-5-tx_Beam2_HV_27.5_31_GHz_both_29.5_GHz_20C.csv'
+meas_filename_beam1 = r'\OP_230607-19_19_11-None_QR00006-ES2c_TSW_1p14p491_CCG24_PCG24-CGNone_None_biasNone_p-40_rx_Beam1_HV_17.7_21.2_GHz_both_21.2_GHz_45C.csv'
+meas_filename_beam2 = r'\OP_230607-19_19_11-None_QR00006-ES2c_TSW_1p14p491_CCG24_PCG24-CGNone_None_biasNone_p-40_rx_Beam2_HV_17.7_21.2_GHz_both_21.2_GHz_45C.csv'
 FOM = 'amp [dB]'
-frequency_GHz = 29.0
+frequency_GHz = 21.2
 
 # plot
 plt.figure(figsize=(17,9))
 import_OP_files(FOM, frequency_GHz, meas_filename_beam1, meas_filename_beam2)
 plot__TLM_Visual(-60, 60, -40, -5, -60, 60, 7, True)
     
-for l in range(len(beam1_fileNames)):
-    meas_filename_beam1 = beam1_fileNames[l]
-    meas_filename_beam2 = beam2_fileNames[l]
-    
-    # plot loop frequencies
-    freqList = np.linspace(27.5, 31.0, num=8)
-    freqList = [29.5]
-    for plotLoop in range(len(freqList)):
-        frequency_GHz = freqList[plotLoop]*1.0
-        plt.figure(figsize=(17,9))
-        import_OP_files(FOM, frequency_GHz, meas_filename_beam1, meas_filename_beam2)
-        plot__TLM_Visual(-60, 60, -40, -5, -60, 60, 7, True)
+# meas_filename_beam1 = beam1_fileNames[l]
+# meas_filename_beam2 = beam2_fileNames[l]
+
+# # plot loop frequencies
+# freqList = np.linspace(27.5, 31.0, num=8)
+# freqList = [29.5]
+# for plotLoop in range(len(freqList)):
+#     frequency_GHz = freqList[plotLoop]*1.0
+#     plt.figure(figsize=(17,9))
+#     import_OP_files(FOM, frequency_GHz, meas_filename_beam1, meas_filename_beam2)
+#     plot__TLM_Visual(-60, 60, -40, -5, -60, 60, 7, True)

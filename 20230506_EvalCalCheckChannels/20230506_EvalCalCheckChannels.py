@@ -18,9 +18,9 @@ plt.close('all')
 dirScript = os.getcwd()
 
 # parmas
-filePath = r'C:\Scratch\17-3'
+filePath = r'C:\Users\JamieMitchell\Downloads\29G5'
 txrx = 'tx'
-ymin=-20; ymax=50
+ymin=-20; ymax=30
 
 # definitions
 def find_measFiles(path, fileString, beam):
@@ -164,7 +164,7 @@ for beamNo in range(2):
                     axs[axsRows[j], axsCols[j]].set_xlim([27.5, 31.0])
                 axs[axsRows[j], axsCols[j]].set_yticks(np.linspace(ymin,ymax, num=int((ymax-ymin) / 10) + 1))
                 axs[axsRows[j], axsCols[j]].grid('on')
-                axs[axsRows[j], axsCols[j]].legend(fontsize=8, ncol=5, loc='lower right')
+                axs[axsRows[j], axsCols[j]].legend(fontsize=5, ncol=5, loc='lower right')
                 axs[axsRows[j], axsCols[j]].set_title('C' + str(chanCycle[j]) + '-' + linCycle[j])
             beam = meas_info[[index for index in range(len(meas_info)) if 'Beam' in meas_info[index]][0]][1]
             f_c = meas_info[[index for index in range(len(meas_info)) if '# f_c' in meas_info[index]][0]][1]

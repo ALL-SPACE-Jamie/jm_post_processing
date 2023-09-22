@@ -6,9 +6,10 @@ import csv
 import pickle
 
 # inputs
-filePath = r'C:\Scratch\orig_forChange'
+filePath = r'C:\Users\JamieMitchell\Downloads\Batch_1_RFC\Batch_1'
 bc1_Replace = '440'
 bc2_Replace = '0238'
+txrx = 'tx'
 
 # definitions
 def find__measFiles(filePath, fileString):
@@ -40,21 +41,24 @@ def find__fileDetails(filePath):
         meas_array_phase = meas_array[:, 1:][:, ::2]
         meas_frequencies = np.array(meas_info[index_start - 1])[::2].astype(float)
         
-    # meas_params
+    meas_params
     for i in range(len(meas_info) - 1):
         if len(meas_info[i]) > 1:
             paramName = meas_info[i][0]
+            # print(paramName)
             if paramName[0:2] == '# ':
                 paramName = paramName[2:]
             meas_params[paramName] = meas_info[i][1]
-            if meas_params[paramName][0] == ' ':
-                meas_params[paramName] = meas_params[paramName][1:]
+            print('hh'+meas_params[paramName])
+            if len(meas_params[paramName])>1:
+                if meas_params[paramName][0] == ' ':
+                    meas_params[paramName] = meas_params[paramName][1:]
             
             
 ## run ##
 
 # check barcode
-fileTypes = ['RFA']
+fileTypes = ['RFC']
 for fileType in fileTypes:
     find__measFiles(filePath, fileType)
     for measFile in measFiles:
@@ -78,7 +82,7 @@ for fileType in fileTypes:
                 meas_array_list.append(list(meas_array[k,:]))
                 
             # new fileName
-            measFileNEW = measFile[0:measFile.find('None_QR')+len('None_QR')] + barcodeNEW + measFile[measFile.find('-CG'):]
+            measFileNEW = measFile[0:measFile.find('_QR')+len('_QR')] + barcodeNEW + measFile[measFile.find('_'+txrx):]
             
             # write new file
             file = open(measFileNEW, 'w+', newline ='') 

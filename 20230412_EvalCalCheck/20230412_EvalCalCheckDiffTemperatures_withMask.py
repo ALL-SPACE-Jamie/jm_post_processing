@@ -18,9 +18,9 @@ dirScript = os.getcwd()
 
 # parmas
 temperature = '45'
-tlmType = 'Rx'
-measType = 'Calibration' # 'Calibration' or 'Evaluation'
-filePath = r'C:\Scratch\20230811_S1-newTLM\Rx\step0'
+tlmType = 'Tx'
+measType = 'Evaluation' # 'Calibration' or 'Evaluation'
+filePath = r'C:\Users\JamieMitchell\Downloads\F-type_dev'
 SaveFileName = '\Post_Processed_Data'
 BoardFont = '6'
 counter = 0
@@ -29,11 +29,11 @@ measFileShift = 0
 droppedThresh = 10
 mask_lim = 10.0
 maskPlot = False
-fileForm = 'RFA' # 'RFA' or 'OP'
+fileForm = 'OP_2' # 'RFA' or 'OP'
 
 # frequencies to iterate through
 if measType == 'Evaluation' and tlmType == 'Tx':
-    f_set_list = [29.5]
+    f_set_list = [27.5]
     droppedThreshList = [droppedThresh]
 elif measType == 'Calibration' and tlmType == 'Tx':
     f_set_list = [27.5, 28.0, 28.5, 29.0, 29.5, 30.0, 30.5, 31.0]
@@ -162,11 +162,11 @@ def plot__gainVport(f_set, measType):
         minY = -30
         maxY = 50
         axs[0, 0].vlines(int(len(y) / 3), minY, maxY, 'k', alpha=0.2)
-        axs[0, 0].vlines(2 * int(len(y) / 3), minY, maxY, 'k', alpha=0.2)
+        axs[0, 0].vlines(2 * int(len(y) / 3), minY, maxY, 'k', alpha=0.5)
         axs[0, 0].text(0.8 * int(len(y) / 6), minY + 5, 'Lens 1', backgroundcolor='r', fontsize=20)
         axs[0, 0].text(2.8 * int(len(y) / 6), minY + 5, 'Lens 2', backgroundcolor='g', fontsize=20)
         axs[0, 0].text(4.8 * int(len(y) / 6), minY + 5, 'Lens 3', backgroundcolor='b', fontsize=20)
-        axs[0, 0].plot(np.linspace(1, len(y), num=len(y)), y, 'k', alpha=0.2)
+        axs[0, 0].plot(np.linspace(1, len(y), num=len(y)), y, alpha=0.2)
         axs[0, 0].set_xlabel('port')
         axs[0, 0].set_ylabel('S$_{21}$ [dB]')
         axs[0, 0].set_xticks([0.5 * int(len(y) / 3), 1 * int(len(y) / 3), 1.5 * int(len(y) / 3),  2 * int(len(y) / 3), 2.5 * int(len(y) / 3), 3 * int(len(y) / 3)])
@@ -215,7 +215,7 @@ def plot__gainVport(f_set, measType):
         axs[1, 0].text(0.8 * int(len(y) / 6), minY + 35, 'Lens 1', backgroundcolor='r', fontsize=20)
         axs[1, 0].text(2.8 * int(len(y) / 6), minY + 35, 'Lens 2', backgroundcolor='g', fontsize=20)
         axs[1, 0].text(4.8 * int(len(y) / 6), minY + 35, 'Lens 3', backgroundcolor='b', fontsize=20)
-        axs[1, 0].plot(np.linspace(1, len(y), num=len(y)), y, 'k', alpha=0.2)
+        axs[1, 0].plot(np.linspace(1, len(y), num=len(y)), y, alpha=0.5)
         axs[1, 0].set_xlabel('port')
         axs[1, 0].set_ylabel('Phase [deg]')
         axs[1, 0].set_xlim([1, len(y) + 1])
