@@ -6,9 +6,9 @@ import csv
 import pickle
 
 # inputs
-filePath = r'C:\Scratch\20230810_CalFile\Tx\step0_barcodeReplace'
+filePath = r'C:/Users/RyanFairclough/Downloads/F2_18_Tx_Batch_2'
 bc1_Replace = '440'
-bc2_Replace = '0255'
+bc2_Replace = '0238'
 
 # definitions
 def find__measFiles(filePath, fileString):

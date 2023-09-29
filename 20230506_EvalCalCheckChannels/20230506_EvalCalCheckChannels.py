@@ -18,8 +18,8 @@ plt.close('all')
 dirScript = os.getcwd()
 
 # parmas
-filePath = r'C:\Scratch\17-3'
-txrx = 'tx'
+filePath = r'C:\Users\RyanFairclough\Downloads\Version_Comparison_G-Type\V19.102_sivers_LUT'
+txrx = 'rx'
 ymin=-20; ymax=50
 
 # definitions

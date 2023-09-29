@@ -8,11 +8,13 @@ import os
 import glob
 import copy
 import csv
-import json
-import time
-import math
-import statistics
+import os
 import shutil
+import time
+
+import matplotlib.pyplot as plt;
+import numpy as np
+from scipy.stats import norm
 
 plt.rcParams['font.size'] = 12
 plt.close('all')
@@ -22,11 +24,11 @@ dirScript = os.getcwd()
 
 # parmas
 
-temperature = '45' ##
-tlmType = 'Rx'
-measType = 'Calibration' #'Calibration'  # 'Calibration' or 'Evaluation'
+temperature = '45'
+tlmType = 'Tx'
+measType = 'Evaluation' #'Calibration'  # 'Calibration' or 'Evaluation'
 # filePath = r'C:\Users\JamieMitchell\OneDrive - ALL.SPACE\S-Type\Tx_TLM\ES2\TLM_Calibration_Measurements\Tx_Batch_1\Tx_Batch1_Recal'
-filePath = r'C:\Users\JamieMitchell\OneDrive - ALL.SPACE\S-Type\Rx_TLM\ES2c-Laser_Cut\TLM_Calibration_Measurements\RX_Batch_1\Rx_Batch1_Recal'
+filePath = r'C:\Users\RyanFairclough\Downloads\F1_tx_Eval_Batch_1'
 SaveFileName = '\Post_Processed_Data'
 BoardFont = '10'
 counter = 0

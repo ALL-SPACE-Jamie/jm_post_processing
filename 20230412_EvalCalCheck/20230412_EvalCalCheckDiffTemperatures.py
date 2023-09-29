@@ -1,6 +1,5 @@
 import pandas as pd
 import numpy as np
-import matplotlib.patches as patches
 import matplotlib.pyplot as plt;
 
 from scipy.stats import norm
@@ -23,29 +22,28 @@ dirScript = os.getcwd()
 # parmas
 
 temperature = '45' ##
-tlmType = 'Rx'
-measType = 'Calibration' #'Calibration'  # 'Calibration' or 'Evaluation'
+tlmType = 'Tx'
+measType = 'Evaluation' #'Calibration'  # 'Calibration' or 'Evaluation'
 # filePath = r'C:\Users\JamieMitchell\OneDrive - ALL.SPACE\S-Type\Rx_TLM\ES2c-Laser_Cut\Test\MCR2\20230717 - 21\sw_test'
-filePath = r'C:\Scratch\S1_ReCal'
+filePath = r'C:\Users\RyanFairclough\Downloads\F1_tx_Eval_Batch_1'
 SaveFileName = '\Post_Processed_Data'
-BoardFont = '6'
+BoardFont = '8'
 counter = 0
-external_folder_name = "Figures\\StressTest\\MCR1_Rig1"
+external_folder_name = "Figures"
 measFileShift = 0
-droppedThresh = 10
+droppedThresh = -15
+acuPlot = '.'
+labelRot = 0.0
+colourPlots = True
 
 if measType == 'Evaluation' and tlmType == 'Tx':
     f_set_list = [29.5]
-    droppedThreshList = [droppedThresh]
 elif measType == 'Calibration' and tlmType == 'Tx':
-    f_set_list = [27.5, 28.0, 28.5, 29.0, 29.5, 30.0, 30.5, 31.0]
-    droppedThreshList = [-15, -15, -15, -9, -15, -15, -15, -20]
+    f_set_list = [27.5,29.5,31.0]#[27.5, 28.0, 28.5, 29.0, 29.5, 30.0, 30.5, 31.0]
 elif measType == 'Evaluation' and tlmType == 'Rx':
     f_set_list = [19.2]
-    droppedThreshList = [droppedThresh]
 elif measType == 'Calibration' and tlmType == 'Rx':
-    f_set_list = [17.7]#[17.7, 18.2, 18.7, 19.2, 19.7, 20.2, 20.7, 21.2]
-    droppedThreshList = [10, 10, 15, 15, 15, 12, 12, -5]
+    f_set_list = [17.7, 19.2, 21.2]
 
 # definitions
 def find_measFiles(path, fileString, beam):
@@ -57,7 +55,7 @@ def find_measFiles(path, fileString, beam):
                 files.append(os.path.join(root, file))
     measFiles = []
     for i in range(len(files)):
-        if fileString in files[i] and 'eam' + str(beam) in files[i] and 'Archive' not in files[i]:
+        if fileString in files[i] and 'eam' + str(beam) in files[i] and 'calibration_0' in files[i]:
             measFiles.append(files[i])
     # print(measFiles)
 
@@ -106,48 +104,41 @@ def plot__gainVport(f_set, measType):
         stat_l3_median = np.median(y[2 * int(len(y) / 3):3 * int(len(y) / 3)])
         stat_l1_dropped = ((y[0:int(len(y) / 3)]) < droppedThresh).sum()
         stat_l1_dropped_list = ((y[0:int(len(y) / 3)]) < droppedThresh)
-        stat_l2_dropped_list = ((y[int(len(y) / 3):2 * int(len(y) / 3)]) < droppedThresh)
-        stat_l3_dropped_list = ((y[2 * int(len(y) / 3):3 * int(len(y) / 3)]) < droppedThresh)
         log = []
         for p in range(len(stat_l1_dropped_list)):
             if stat_l1_dropped_list[p] == True:
                 log.append(p+1)
-        for p in range(len(stat_l2_dropped_list)):
-            if stat_l2_dropped_list[p] == True:
-                log.append(1 * int(len(y) / 3) + p+1)
-        for p in range(len(stat_l3_dropped_list)):
-            if stat_l3_dropped_list[p] == True:
-                log.append(2 * int(len(y) / 3) + p+1)
         if len(log) > 12:
             log = [str(len(log)) + ' ports dropped']
-        stat_l2_dropped = ((y[int(len(y) / 3):2 * int(len(y) / 3)]) < droppedThresh).sum()
-        stat_l3_dropped = ((y[2 * int(len(y) / 3):3 * int(len(y) / 3)]) < droppedThresh).sum()
+        stat_l2_dropped = ((y[int(len(y) / 3):2 * int(len(y) / 3)]) < -droppedThresh).sum()
+        stat_l3_dropped = ((y[2 * int(len(y) / 3):3 * int(len(y) / 3)]) < -droppedThresh).sum()
         stat_TLM_std = np.std(y, dtype=np.float64) ##
 
         stat_l1_std = np.std(y[0:int(len(y) / 3)])
         stat_l2_std = np.std(y[int(len(y) / 3):2 * int(len(y) / 3)])
         stat_l3_std = np.std(y[2 * int(len(y) / 3):3 * int(len(y) / 3)])
         # plots
-        dataSetLabel = meas_params['date time'] + '\n' + meas_params['lens type (rx/tx)'] + meas_params['barcodes'] + ', SW: ' + meas_params['acu_version'] + '\n ITCC: ' + meas_params['itcc_runner_version']
+        dataSetLabel = meas_params['date time'] + '\n' + meas_params['lens type (rx/tx)'] + meas_params['barcodes'][0:5] + '\n SW: ' + meas_params['acu_version'] + '\n ITCC: ' + meas_params['itcc_runner_version']
         # plot 1
-        minY = -30
-        maxY = 50
+        minY = -60
+        maxY = 30
         axs[0, 0].vlines(int(len(y) / 3), minY, maxY, 'k', alpha=0.2)
         axs[0, 0].vlines(2 * int(len(y) / 3), minY, maxY, 'k', alpha=0.2)
+        axs[0, 0].vlines(3 * int(len(y) / 3), minY, maxY, 'k', alpha=0.2)
         axs[0, 0].text(0.8 * int(len(y) / 6), minY + 5, 'Lens 1', backgroundcolor='r', fontsize=20)
         axs[0, 0].text(2.8 * int(len(y) / 6), minY + 5, 'Lens 2', backgroundcolor='g', fontsize=20)
         axs[0, 0].text(4.8 * int(len(y) / 6), minY + 5, 'Lens 3', backgroundcolor='b', fontsize=20)
-        axs[0, 0].plot(np.linspace(1, len(y) + 1, num=len(y)), y, 'k', alpha=0.2)
+        if colourPlots == False:
+            axs[0, 0].plot(np.linspace(1, len(y) + 1, num=len(y)), y, 'k', alpha=0.2)
+        else:
+            axs[0, 0].plot(np.linspace(1, len(y) + 1, num=len(y)), y, alpha=0.5, label = dataSetLabel)
         axs[0, 0].set_xlabel('port')
         axs[0, 0].set_ylabel('S$_{21}$ [dB]')
-        axs[0, 0].set_xticks([0.5 * int(len(y) / 3), 1 * int(len(y) / 3), 1.5 * int(len(y) / 3),  2 * int(len(y) / 3), 2.5 * int(len(y) / 3), 3 * int(len(y) / 3)])
         axs[0, 0].set_xlim([1, len(y) + 1])
         axs[0, 0].set_ylim([minY, maxY])
+        axs[0, 0].set_xticks([0.5 * int(len(y) / 3), 1 * int(len(y) / 3), 1.5 * int(len(y) / 3),  2 * int(len(y) / 3), 2.5 * int(len(y) / 3), 3 * int(len(y) / 3)])
         axs[0, 0].grid('on')
-        axs[0, 0].axhline(y=droppedThresh, color="red", linestyle='--')
-        #if gain < droppedThresh:
-           # circle = patches.Circle((0, droppedThresh), radius=0.1, edgecolor='red', facecolor='none')
-            #axs[0, 0].add_patch(circle)
+
         # plot 2
         axs[0, 1].plot(dataSetLabel, stat_l1_median, 'rs')
         axs[0, 1].plot(dataSetLabel, stat_l2_median, 'g^')
@@ -155,7 +146,7 @@ def plot__gainVport(f_set, measType):
         axs[0, 1].plot(dataSetLabel, stat_TLM_median, 'kX', markersize=10)
         axs[0, 1].set_xlabel('board')
         axs[0, 1].set_ylabel('Median [dB]')
-        axs[0, 1].tick_params(axis='x', labelrotation=90, labelsize=BoardFont)
+        axs[0, 1].tick_params(axis='x', labelrotation=labelRot, labelsize=BoardFont)
         axs[0, 1].set_ylim([minY, maxY])
         axs[0, 1].grid('on')
         # plot 3
@@ -165,7 +156,7 @@ def plot__gainVport(f_set, measType):
         axs[1, 1].plot(dataSetLabel, stat_TLM_std, 'kX', markersize=10)
         axs[1, 1].set_xlabel('board')
         axs[1, 1].set_ylabel('$\sigma$ [dB]')
-        axs[1, 1].tick_params(axis='x', labelrotation=90, labelsize=BoardFont)
+        axs[1, 1].tick_params(axis='x', labelrotation=labelRot, labelsize=BoardFont)
         axs[1, 1].set_ylim([0, 20])
         axs[1, 1].grid('on')
         # plot 4
@@ -181,8 +172,8 @@ def plot__gainVport(f_set, measType):
                        'bP')
         axs[2, 1].set_xlabel('board')
         axs[2, 1].set_ylabel('Number of dropped ports (gain < ' + str(droppedThresh) + ' dB)')
-        axs[2, 1].text(dataSetLabel, 2.0, log) # bug
-        axs[2, 1].tick_params(axis='x', labelrotation=90, labelsize=BoardFont)
+        axs[2, 1].text(dataSetLabel, stat_l3_dropped+2, log)
+        axs[2, 1].tick_params(axis='x', labelrotation=labelRot, labelsize=BoardFont)
         axs[2, 1].set_ylim([0, 10])
         axs[2, 1].grid('on')
 
@@ -192,10 +183,14 @@ def plot__gainVport(f_set, measType):
         maxY = 360 + 45
         axs[1, 0].vlines(int(len(y) / 3), minY, maxY, 'k', alpha=0.2)
         axs[1, 0].vlines(2 * int(len(y) / 3), minY, maxY, 'k', alpha=0.2)
+        axs[1, 0].vlines(3 * int(len(y) / 3), minY, maxY, 'k', alpha=0.2)
         axs[1, 0].text(0.8 * int(len(y) / 6), minY + 35, 'Lens 1', backgroundcolor='r', fontsize=20)
         axs[1, 0].text(2.8 * int(len(y) / 6), minY + 35, 'Lens 2', backgroundcolor='g', fontsize=20)
         axs[1, 0].text(4.8 * int(len(y) / 6), minY + 35, 'Lens 3', backgroundcolor='b', fontsize=20)
-        axs[1, 0].plot(np.linspace(1, len(y) + 1, num=len(y)), y, 'k', alpha=0.2)
+        if colourPlots == False:
+            axs[1, 0].plot(np.linspace(1, len(y) + 1, num=len(y)), y, 'k', alpha=0.2)
+        else:
+            axs[1, 0].plot(np.linspace(1, len(y) + 1, num=len(y)), y, alpha=0.5, label = dataSetLabel)
         axs[1, 0].set_xlabel('port')
         axs[1, 0].set_ylabel('Phase [deg]')
         axs[1, 0].set_xlim([1, len(y) + 1])
@@ -203,6 +198,12 @@ def plot__gainVport(f_set, measType):
         axs[1, 0].set_yticks(np.linspace(0, 360, num=int(360 / 45) + 1))
         axs[1, 0].set_xticks([0.5 * int(len(y) / 3), 1 * int(len(y) / 3), 1.5 * int(len(y) / 3),  2 * int(len(y) / 3), 2.5 * int(len(y) / 3), 3 * int(len(y) / 3)])
         axs[1, 0].grid('on')
+        
+        if colourPlots == True:
+            axs[0, 0].set_xlim([1, len(y) + 75])
+            axs[0, 0].legend(loc='right', fontsize = BoardFont)
+            axs[1, 0].set_xlim([1, len(y) + 75])
+            axs[1, 0].legend(loc='right', fontsize = BoardFont)
 
         # out
         loaded = True
@@ -217,11 +218,10 @@ for p in range(2):
     beam = p + 1
     for l in range(len(f_set_list)):
         f_set = f_set_list[l]
-        droppedThresh = droppedThreshList[l]
 
         # find all meas files
         find_measFiles(filePath, 'OP', beam)
-
+        plt.close('all')
         fig, axs = plt.subplots(3, 2, figsize=(25, 15))
         stat_TLM_median_log = []
         for k in range(len(measFiles)-measFileShift):
@@ -236,7 +236,7 @@ for p in range(2):
                 print('-------------------------------------')
 
                 # plot
-                if '.' in meas_params['acu_version']:
+                if acuPlot in meas_params['acu_version']:
                     plot__gainVport(f_set, measType)
                     # colate
                     if loaded == True:
