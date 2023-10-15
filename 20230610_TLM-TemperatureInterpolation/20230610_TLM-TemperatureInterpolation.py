@@ -7,8 +7,7 @@ import pickle
 
 # set-up
 setUp = {}
-setUp['filePath'] = r'C:\Users\JamieMitchell\OneDrive - ALL.SPACE\S-Type\Tx_TLM\ES2\TLM_Calibration_Measurements\Tx_Batch_1'
-setUp['filePath'] = r'C:\Scratch\results__TX_Batch_1'
+setUp['filePath'] = r'C:\Scratch\thermal\data'
 
 # definitions
 def find__measFiles(filePath, fileString):
@@ -19,9 +18,11 @@ def find__measFiles(filePath, fileString):
             if (file.endswith(".csv")) == True:
                 files.append(os.path.join(root, file))
     measFiles = []
+    sizeLog = []
     for i in range(len(files)):
-        if fileString in files[i] in files[i]:
-            measFiles.append(files[i])
+        if fileString in files[i]:# and '19.2' in files[i]:
+            if os.path.getsize(files[i]) > 1000:
+                measFiles.append(files[i])
 
 def find__fileDetails(filePath):
     global meas_info, meas_params, meas_array, meas_frequencies, meas_array_gain, meas_array_phase
@@ -55,7 +56,7 @@ def find__fileDetails(filePath):
 # find all of the measurements
 outFileType = 'OP'
 find__measFiles(setUp['filePath'], 'OP')
-# measFiles = measFiles[0:200] ##### DelMe
+# measFiles = measFiles[0:100] ##### DelMe
 
 # find all of the boards tested and make a dictionary
 globalDict = {}; globalDict['barcodes'] = []
@@ -163,8 +164,8 @@ with open("C:\\Scratch\\pickles\\test_pickle.pickle", "rb") as file:
 plt.close('all')
 temperatureGrads = {}
 count = 0
-for port in range(phaseArray.shape[0]):
-# for port in range(22):
+# for port in range(phaseArray.shape[0]):
+for port in range(3): ##### DelMe
     temperatureGrads[str(port)] = {}
     for beam in calcArrays:
         temperatureGrads[str(port)][beam] = {}

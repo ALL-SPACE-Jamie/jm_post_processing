@@ -18,9 +18,10 @@ plt.close('all')
 dirScript = os.getcwd()
 
 # parmas
-filePath = r'C:\Users\JamieMitchell\Downloads\29G5'
-txrx = 'tx'
-ymin=-20; ymax=30
+filePath = r'C:\Users\JamieMitchell\Downloads\S_vs_F_vs_G_type\S_vs_F_vs_G_type'
+# filePath = r'C:\Users\JamieMitchell\Downloads\S_vs_F_vs_G_type\S_vs_F_vs_G_type\2023-09-21_14-58-23_MCR2_Rig2_cal_QRG-Type_00002_v1.19.102_Siv_LUT_17.70_45C'
+txrx = 'rx'
+ymin=0; ymax=50
 
 # definitions
 def find_measFiles(path, fileString, beam):
