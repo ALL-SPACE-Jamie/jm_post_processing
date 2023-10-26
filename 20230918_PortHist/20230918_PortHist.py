@@ -22,7 +22,7 @@ plt.close('all')
 dirScript = os.getcwd()
 
 # parmas
-filePath = r'C:\Users\JamieMitchell\OneDrive - ALL.SPACE\G-Type\Tx_TLM_G-Type\TLM_Evaluation_Measurements\All_TLMs\G-Type_ES2i_E-fused_Bias'
+filePath = r'C:\Users\jmitchell\OneDrive - ALL.SPACE\G-Type\Tx_TLM_G-Type\TLM_Evaluation_Measurements\All_TLMs\G-Type_ES2i_E-fused_Bias\2023-10-04_20-45-45_MCR3_Rig1_eval_QR420-0230-00009\frequency_29.5_GHz'
 # filePath = r'C:\Users\JamieMitchell\OneDrive - ALL.SPACE\G-Type\Tx_TLM_G-Type\TLM_Evaluation_Measurements\All_TLMs\G-Type_ES2i_ES2c_Opt_Bias'
 # filePath = r'C:\Users\JamieMitchell\OneDrive - ALL.SPACE\G-Type\Tx_TLM_G-Type\TLM_Evaluation_Measurements\All_TLMs\G-Type_ES2i_ES2i_Opt_Bias'
 # filePath = r'C:\Users\JamieMitchell\OneDrive - ALL.SPACE\F-Type\Tx_TLM_F-Type\TLM_Evaluation_Measurements'
@@ -43,7 +43,7 @@ def find_measFiles(path, fileString, beam):
                 files.append(os.path.join(root, file))
     measFiles = []
     for i in range(len(files)):
-        if fileString in files[i] and 'eam' + str(beam) in files[i] and 'rchive' not in files[i] and 'ALL_' not in files[i]:# and '0017' in files[i]:# and '0022' not in files[i] and '0021' not in files[i]:
+        if fileString in files[i] and 'eam' + str(beam) in files[i] and 'rchive' not in files[i] and 'ALL_' not in files[i]:# and '0011' in files[i]:# and '0022' not in files[i] and '0021' not in files[i]:
             measFiles.append(files[i])
 
 def load__measFiles(filePath):
@@ -94,13 +94,16 @@ def portSort():
     port2IC = []
     port2chan = []
     port2pol = []
-    for i in range(int(len(ports))):
+    for i in range(int(len(ports)/3)):
         for j in range(len(S2000_TX_RFIC_PORT_MAP)):
             forCheck = S2000_TX_RFIC_PORT_MAP[str(j + 1)]
             if int(i + 1) in forCheck:
                 port2IC.append(j + 1)
                 port2chan.append(S2000_TX_RFIC_CHANNEL_MAP[str(i + 1)][0])
                 port2pol.append(S2000_TX_RFIC_CHANNEL_MAP[str(i + 1)][1])
+    # port2IC = port2IC + port2IC + port2IC
+    # port2chan = port2chan + port2chan + port2chan
+    # port2pol = port2pol + port2pol + port2pol
 
 lensLog = [1,2,3]
 beamLog = [1,2]
