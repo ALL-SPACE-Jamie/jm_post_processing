@@ -84,7 +84,7 @@ def plot__1D(filePath, fileString, beam, title, freqSelect, ymax):
         axs[i,0].set_ylabel('dB (lens ' + str(i+1) + ')')            
         axs[i,0].set_xlabel('port')
         axs[i,0].grid('on')
-        axs[i,0].legend(loc='upper left')
+        # axs[i,0].legend(loc='upper left')
     
     # histogram 
     w = 1
@@ -122,13 +122,13 @@ def plot__1D(filePath, fileString, beam, title, freqSelect, ymax):
 
 ##### run #####  
 for k in range(2):
-    plot__1D(r'C:\Users\jmitchell\Downloads\20231020\Calibrations2\F-type', 'OP_2', k+1, 'OP F-type', '29.50_GHz_45C', 40.0)   
+    # plot__1D(r'C:\Users\jmitchell\Downloads\20231020\Calibrations2\F-type', 'OP_2', k+1, 'OP F-type', '29.50_GHz_45C', 40.0)   
 #     plot__1D(r'C:\Users\jmitchell\Downloads\20231020\Calibrations2\G-type', 'OP_2', k+1, 'OP G-type', '29.50_GHz_45C', 40.0)    
 #     plot__1D(r'C:\Users\jmitchell\Downloads\20231020\Calibrations2\G-type_1-5', 'OP_2', k+1, 'OP G-type gain equal.', '29.50_GHz_45C', 40.0)
     
-#     plot__1D(r'C:\Users\jmitchell\Downloads\20231020\Calibrations2\F-type', 'RFA', k+1, 'RFA F-type', '29.50_GHz_45C', 40.0)    
-#     plot__1D(r'C:\Users\jmitchell\Downloads\20231020\Calibrations2\G-type', 'RFA', k+1, 'RFA G-type', '29.50_GHz_45C', 40.0)    
-#     plot__1D(r'C:\Users\jmitchell\Downloads\20231020\Calibrations2\G-type_1-5', 'RFA', k+1, 'RFA G-type gain equal.', '29.50_GHz_45C', 40.0)
+    # plot__1D(r'C:\Users\jmitchell\Downloads\RFA_RFC_Files\RFA_F-Type', 'RFA_2', k+1, 'RFA F-type', '29.50_GHz_45C', 40.0)    
+    # plot__1D(r'C:\Users\jmitchell\Downloads\RFA_RFC_Files\RFA_G_1p5', 'RFA_2', k+1, 'RFA G-type gain equal.', '29.50_GHz_45C', 40.0)    
+    # plot__1D(r'C:\Users\jmitchell\Downloads\RFA_RFC_Files\RFA_G-Type', 'RFA_2', k+1, 'RFA G-type', '29.50_GHz_45C', 40.0)
     
 #     plot__1D(r'C:\Users\jmitchell\Downloads\20231020\Evaluations2\F-type', 'OP_2', k+1, 'OP F-type', '29.50_GHz_45C', 40.0)   
 #     plot__1D(r'C:\Users\jmitchell\Downloads\20231020\Evaluations2\G-type', 'OP_2', k+1, 'OP G-type', '29.50_GHz_45C', 40.0)    
@@ -142,11 +142,15 @@ for k in range(2):
 #     plot__1D(r'C:\Users\jmitchell\Downloads\20231020\Calibrations2\G-type', 'RFC', k+1, 'RFC G-type', '29.50_GHz_45C', 40.0)    
 #     plot__1D(r'C:\Users\jmitchell\Downloads\20231020\Calibrations2\G-type_1-5', 'RFC', k+1, 'RFC G-type gain equal.', '29.50_GHz_45C', 40.0)
 
-#     plot__1D(r'C:\Users\jmitchell\Downloads\20231020\Evaluations2\F-type', 'OP_C', k+1, 'OP_C F-type', '29.50_GHz_45C', 40.0)    
-#     plot__1D(r'C:\Users\jmitchell\Downloads\20231020\Evaluations2\G-type', 'OP_C', k+1, 'OP_C G-type', '29.50_GHz_45C', 40.0)    
-#     plot__1D(r'C:\Users\jmitchell\Downloads\20231020\Evaluations2\G-type_1-5', 'OP_C', k+1, 'OP_C G-type gain equal.', '29.50_GHz_45C', 40.0)
+    # plot__1D(r'C:\Users\jmitchell\Downloads\RFA_RFC_Files\RFA_F-Type', 'OP_C', k+1, 'OP_C F-type', '29.50_GHz_45C', 40.0)    
+    # plot__1D(r'C:\Users\jmitchell\Downloads\RFA_RFC_Files\RFA_G_1p5', 'OP_C', k+1, 'OP_C G-type gain equal.', '29.50_GHz_45C', 40.0)    
+    # plot__1D(r'C:\Users\jmitchell\Downloads\RFA_RFC_Files\RFA_G-Type', 'OP_C', k+1, 'OP_C G-type', '29.50_GHz_45C', 40.0)
+    
+    # plot__1D(r'C:\Users\jmitchell\Downloads\RFA_RFC_Files\RFA_F-Type', 'OP_2', k+1, 'OP F-type', '29.50_GHz_45C', 40.0)    
+    # plot__1D(r'C:\Users\jmitchell\Downloads\RFA_RFC_Files\RFA_G_1p5', 'OP_2', k+1, 'OP G-type gain equal.', '29.50_GHz_45C', 40.0)    
+    # plot__1D(r'C:\Users\jmitchell\Downloads\RFA_RFC_Files\RFA_G-Type', 'OP_2', k+1, 'OP G-type', '29.50_GHz_45C', 40.0)
 
-#     plot__1D(r'C:\Users\jmitchell\Downloads\20231020\Evaluations2\F-type', 'RFC', k+1, 'RFC F-type', '29.50_GHz_45C', 40.0)    
+    plot__1D(r'C:\Scratch\20231031', 'OP_C', k+1, 'RFC F-type', '29.50_GHz_45C', 40.0)    
 #     plot__1D(r'C:\Users\jmitchell\Downloads\20231020\Evaluations2\G-type', 'RFC', k+1, 'RFC G-type', '29.50_GHz_45C', 40.0)    
 #     plot__1D(r'C:\Users\jmitchell\Downloads\20231020\Evaluations2\G-type_1-5', 'RFC', k+1, 'RFC G-type gain equal.', '29.50_GHz_45C', 40.0)
     
@@ -158,39 +162,52 @@ for k in range(2):
 #     plot__1D(r'C:\Users\jmitchell\Downloads\20231020\Calibrations2\G-type', 'RFC', k+1, 'RFC G-type', '29.50_GHz_45C', 40.0)    
 #     plot__1D(r'C:\Users\jmitchell\Downloads\20231020\Calibrations2\G-type_1-5', 'RFC', k+1, 'RFC G-type gain equal.', '29.50_GHz_45C', 40.0)
 
-def dict__maps(txrx):
-    global S2000_TX_RFIC_CHANNEL_MAP, S2000_TX_RFIC_PORT_MAP
-    if txrx == 'rx':
-        with open('rx_s2000_channel_map.json') as json_file:
-            S2000_TX_RFIC_CHANNEL_MAP = json.load(json_file)
-        with open('rx_s2000_rfic_map.json') as json_file:
-            S2000_TX_RFIC_PORT_MAP = json.load(json_file)
-    if txrx == 'tx':
-        with open('S2000_TX_RFIC_CHANNEL_MAP.json') as json_file:
-            S2000_TX_RFIC_CHANNEL_MAP = json.load(json_file)
-        with open('S2000_TX_RFIC_PORT_MAP.json') as json_file:
-            S2000_TX_RFIC_PORT_MAP = json.load(json_file)
+# def dict__maps(txrx):
+#     global S2000_TX_RFIC_CHANNEL_MAP, S2000_TX_RFIC_PORT_MAP
+#     if txrx == 'rx':
+#         with open('rx_s2000_channel_map.json') as json_file:
+#             S2000_TX_RFIC_CHANNEL_MAP = json.load(json_file)
+#         with open('rx_s2000_rfic_map.json') as json_file:
+#             S2000_TX_RFIC_PORT_MAP = json.load(json_file)
+#     if txrx == 'tx':
+#         with open('S2000_TX_RFIC_CHANNEL_MAP.json') as json_file:
+#             S2000_TX_RFIC_CHANNEL_MAP = json.load(json_file)
+#         with open('S2000_TX_RFIC_PORT_MAP.json') as json_file:
+#             S2000_TX_RFIC_PORT_MAP = json.load(json_file)
 
-dict__maps('tx')
-df = pd.read_csv(os.path.join(dirScript, 'inputs', 'Mrk1_S2000_TLM_TX_ArrayGeometry_V20062022_CalInfo.csv'), header=1)
-fcol = np.argmin((meas_frequencies-float(meas_params['f_c']))**2)
-selection = meas_array_gain[:, fcol]
-ports = np.linspace(1,len(selection), num=len(selection))
-plt.figure()
-x = []
-y = []
-a = []
-for i in ports[0:int(len(ports)/3)]:
-    if S2000_TX_RFIC_CHANNEL_MAP[str(int(i))][1] == 'V':
-        portdf = df.iloc[[i]]
-        x.append(float(portdf[' Feed x [mm]']))
-        y.append(float(portdf[' Feed y [mm]']))
-        print(portdf['Lens no.'])
-        a.append(selection[int(i)])
-colSeg = 1
-plt.scatter(x, y, c=a, cmap = cm.get_cmap('jet', colSeg))
-plt.colorbar()
-# ranges
-# plt.clim(cmin, cmax); plt.xlim([xmin, xmax]); plt.ylim([ymin,ymax])
+# dict__maps('tx')
+# df = pd.read_csv(os.path.join(dirScript, 'inputs', 'Mrk1_S2000_TLM_TX_ArrayGeometry_V20062022_CalInfo.csv'), header=1)
+# fcol = np.argmin((meas_frequencies-float(meas_params['f_c']))**2)
+# selection = meas_array_gain[:, fcol]
+# ports = np.linspace(1,len(selection), num=len(selection))
+# plt.figure()
+# x = []
+# y = []
+# a = []
+# for i in ports:
+#     if i < 153:
+#         loc1 = str(int(i))
+#         print('lens1: '+ str(i) + ': ' + loc1)
+#     if 152 < i < 305:
+#         loc1 = str(int(i%152))
+#         if loc1 == '0.0':
+#             loc1 = '152'
+#         print('lens2: '+ str(i) + ': ' + loc1)
+#     if 304 < i < 457:
+#         loc1 = str(int(i%152))
+#         if loc1 == '0.0':
+#             loc1 = '152'
+#         print('lens3: '+ str(i) + ': ' + loc1)
+#     if S2000_TX_RFIC_CHANNEL_MAP[loc1][1] == 'V':
+#         loc = int(i/2)
+#         portdf = df.iloc[loc]
+#         x.append(float(portdf[' Feed x [mm]']))
+#         y.append(float(portdf[' Feed y [mm]']))
+#         a.append(selection[int(i)])
+# colSeg = 1
+# plt.scatter(x, y, c=a, cmap = cm.get_cmap('jet', colSeg))
+# plt.colorbar()
+# # ranges
+# # plt.clim(cmin, cmax); plt.xlim([xmin, xmax]); plt.ylim([ymin,ymax])
         
     
