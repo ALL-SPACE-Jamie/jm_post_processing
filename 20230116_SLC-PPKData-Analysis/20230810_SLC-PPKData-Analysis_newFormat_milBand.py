@@ -5,7 +5,7 @@ import os
 plt.close('all')
 
 # load
-fileName = 'C:\Scratch\MilBand\ppk_data'
+fileName = 'Downloads/ppk_data_QR10'
 
 dirScript = os.getcwd()
 os.chdir(dirScript)
@@ -58,7 +58,7 @@ b1_theta = 0.0
 b1_phi = 0.0
 b2_phi = 0.0
 plt.figure(figsize=([7,6]))
-fpathLog = [r'/mnt/nfs/data/groups/measurements/slc3/S2000/DVT/S-Type/RX_TLM-ES2c/QR440-0254-00045/Single_Beam/RHCP/B2/20230809/Cal_3dB', r'/mnt/nfs/data/groups/measurements/slc3/S2000/DVT/S-Type/RX_TLM-ES2c/QR440-0254-00045/Single_Beam/RHCP/B2/20230809/Cal_3dB_BA_3dB', r'/mnt/nfs/data/groups/measurements/slc3/S2000/DVT/S-Type/RX_TLM-ES2c/QR440-0254-00045/Single_Beam/RHCP/B2/20230809/Cal_3dB_BA_m6dB']
+fpathLog = [r'Downloads/ppk_data_QR100']
 for i in range(3):
     fpath = fpathLog[i]
     plot__gainVstheta(sb_mute, b1_theta, b1_phi, acu, freq, b2_phi, fpath)

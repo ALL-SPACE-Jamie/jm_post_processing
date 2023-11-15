@@ -50,7 +50,6 @@ def find__fileDetails(filePath):
             if meas_params[paramName][0] == ' ':
                 meas_params[paramName] = meas_params[paramName][1:]
             
-            
 ## run ##
 
 # check barcode
