@@ -23,7 +23,7 @@ dirScript = os.getcwd()
 
 # parmas
 # filePath = r'C:\Users\jmitchell\OneDrive - ALL.SPACE\G-Type\Tx_TLM_G-Type\TLM_Evaluation_Measurements\G-Type\G-Type_ES2i_E-fused_Bias\Raw_Data\2023-10-04_20-45-45_MCR3_Rig1_eval_QR420-0230-00009\frequency_29.5_GHz'
-# filePath = r'C:\Users\jmitchell\Downloads\OneDrive_1_15-11-2023\2023-11-07_14-33-07_MCR3_Rig2_cal_QR00046_G1.5_No_LUT_CG60_Att_0_29.00_45C\iteration_1'
+filePath = r'C:\Users\jmitchell\Downloads\forAsh\2023-11-07_15-29-26_MCR3_Rig2_cal_QR00017_No_LUT_CG60_Att_0_29.00_45C\iteration_1'
 # filePath = r'C:\Users\jmitchell\Downloads\OneDrive_1_15-11-2023\2023-11-07_14-51-16_MCR3_Rig2_cal_QR00046_G1.5_No_LUT_CG60_Att_16_29.00_45C\iteration_1'
 # filePath = r'C:\Users\jmitchell\Downloads\OneDrive_1_15-11-2023\2023-11-07_15-13-25_MCR3_Rig2_cal_QR00017_No_LUT_CG60_Att_16_29.00_45C\iteration_1'
 # filePath = r'C:\Users\jmitchell\Downloads\OneDrive_1_15-11-2023\2023-11-07_15-29-26_MCR3_Rig2_cal_QR00017_No_LUT_CG60_Att_0_29.00_45C\iteration_1'
@@ -32,6 +32,7 @@ dirScript = os.getcwd()
 # filePath = r'C:\Users\JamieMitchell\OneDrive - ALL.SPACE\F-Type\Tx_TLM_F-Type\TLM_Evaluation_Measurements'
 # filePath = r'C:\Users\JamieMitchell\OneDrive - ALL.SPACE\G-Type\Rx_TLM_G-Type\TLM_Evaluation_Measurements\All_TLMs'
 # filePath = r'C:\Users\JamieMitchell\OneDrive - ALL.SPACE\F-Type\Rx_TLM_F-Type\TLM_Evaluation_Measurements'
+fname = '2023-11-07_15-29-26_MCR3_Rig2_cal_QR00017_No_LUT_CG60_Att_0_29.00_45C'
 txrx = 'tx'
 saveFolder = filePath + '\\Figures\\'
 freqLog = [29.0]
@@ -98,7 +99,7 @@ def portSort():
     port2IC = []
     port2chan = []
     port2pol = []
-    for i in range(int(len(ports)/3)):
+    for i in range(int(len(ports))):
         for j in range(len(S2000_TX_RFIC_PORT_MAP)):
             forCheck = S2000_TX_RFIC_PORT_MAP[str(j + 1)]
             if int(i + 1) in forCheck:
@@ -110,9 +111,10 @@ def portSort():
     # port2pol = port2pol + port2pol + port2pol
 
 lensLog = [1,2,3]
-beamLog = [1,2]
+beamLog = [1]
+printLog=[]
 for lens in lensLog:
-    print('lens ' + str(lens))
+    printLog.append('lens ' + str(lens))
     for beam in beamLog:
         meanLog = []
         varianceLog = []
@@ -131,8 +133,8 @@ for lens in lensLog:
             
             for j in range(4):
                 for k in range(2):
-                    print(chanMap[j] + polMap[k])
-                    print('beam ' + str(beam))
+                    printLog.append(chanMap[j] + polMap[k])
+                    printLog.append('beam ' + str(beam))
                     selectedPorts = []
                     badBoards = 0
                     for measFile in measFiles:
@@ -144,9 +146,10 @@ for lens in lensLog:
                             for l in range(len(port2chan)):
                                 if port2chan[l] == int(chanMap[j]):
                                     if port2pol[l] == polMap[k]:
+                                        printLog.append('RFIC ' + str(port2IC[l]) + ', port ' + str(l+1) + ', ' + str(meas_array_gain[l,freqCol]))
                                         if len(np.array(meas_array_gain[l,freqCol])[np.array(meas_array_gain[l,freqCol]) < -30.0]) < 1:
                                             selectedPorts.append(meas_array_gain[l,freqCol])
-                                            print('RFIC ' + str(port2IC[l]) + ', port ' + str(l+1) + ', ' + str(meas_array_gain[l,freqCol]))
+                                            
                                         else:
                                             badBoards = badBoards+1.0
                     w = 1
@@ -232,8 +235,13 @@ for lens in lensLog:
             
             
         
-        
-        
+# Open file to write data
+with open(fname + '.csv', 'w', newline='') as file:
+    writer = csv.writer(file)
+
+    # Write each item in a new row
+    for item in printLog:
+        writer.writerow([item])
         
         
         

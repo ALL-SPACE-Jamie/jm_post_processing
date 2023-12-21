@@ -14,10 +14,10 @@ plt.close('all')
 
 mapPlot = False
 
-folders = [r'C:\Scratch\Ref_TLM_Tx\Ref', r'C:\\Scratch\\Ref_TLM_Tx\forCompare']
+folders = [r'C:\Users\jmitchell\Downloads\RFA_Files(1)\RFA_Files', r'C:\Users\jmitchell\Downloads\RFA_Files(1)\RFA_Files']
 f_set_list = [27.5] #[27.5, 28.0, 28.5, 29.0, 29.5, 30.0, 30.5, 31.0]
 savePath = 'C:\\Scratch\\FiguresTx\\'
-map_tlm = np.genfromtxt(r'C:\Users\JamieMitchell\PycharmProjects\Post-Processing\20230601_TLM-Comparison\Mrk1_S2000_TLM_TX_ArrayGeometry_V20062022_CalInfo.csv', skip_header=2, dtype=float, delimiter=',')
+map_tlm = np.genfromtxt(r'C:\Users\jmitchell\Documents\GitHub\Post-Processing\20230601_TLM-Comparison\Mrk1_S2000_TLM_TX_ArrayGeometry_V20062022_CalInfo.csv', skip_header=2, dtype=float, delimiter=',')
 
 # folders = [r'C:\Scratch\Ref_TLM_Rx\Ref', r'C:\\Scratch\\Ref_TLM_Rx\forCompare']
 # f_set_list = [17.7, 18.2, 18.7, 19.2, 19.7, 20.2, 20.7, 21.2]
