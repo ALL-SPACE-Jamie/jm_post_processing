@@ -7,21 +7,37 @@ import pickle
 
 # set-up
 setUp = {}
-setUp['filePath'] = r'C:\Users\JamieMitchell\OneDrive - ALL.SPACE\S-Type\Tx_TLM\ES2\TLM_Calibration_Measurements\Tx_Batch_1'
-setUp['filePath'] = r'C:\Scratch\results__TX_Batch_1'
+setUp['filePath'] = r'C:\Scratch\20231018_ThermalInterpolation\Rx_19-7\RFA_forGradGen'
+setUp['pathCreate'] = ['figures', 'figuresBAD', 'files', 'pickles', 'overviews']
+setUp['filePath_forInterp'] = r'C:\Scratch\20231018_ThermalInterpolation\Rx_19-7\RFA_forInterp'
+setUp['picklePath'] = r'C:\Scratch\20231018_ThermalInterpolation\Rx_19-7\pickles'
+setUp['fileOutPath'] = r'C:\Scratch\20231018_ThermalInterpolation\Rx_19-7\files' 
+freqChoice = '19.7'
+
+# create directories
+for subDirectory in setUp['pathCreate']:
+    directory = ''
+    for i in range(len(setUp['filePath'].split('\\')[0:-1])):
+        directory = directory + setUp['filePath'].split('\\')[i] + '\\'
+    directory = directory  + '\\' + subDirectory
+    print(directory)
+    if not os.path.exists(directory):
+        os.makedirs(directory)
 
 # definitions
 def find__measFiles(filePath, fileString):
-    global measFiles
+    global measFiles, files
     files = []
     for root, directories, file in os.walk(filePath):
         for file in file:
             if (file.endswith(".csv")) == True:
                 files.append(os.path.join(root, file))
     measFiles = []
+    sizeLog = []
     for i in range(len(files)):
-        if fileString in files[i] in files[i]:
-            measFiles.append(files[i])
+        if fileString in files[i] and freqChoice in files[i]:
+            if os.path.getsize(files[i]) > 1000:
+                measFiles.append(files[i])
 
 def find__fileDetails(filePath):
     global meas_info, meas_params, meas_array, meas_frequencies, meas_array_gain, meas_array_phase
@@ -54,8 +70,8 @@ def find__fileDetails(filePath):
 
 # find all of the measurements
 outFileType = 'OP'
-find__measFiles(setUp['filePath'], 'OP')
-# measFiles = measFiles[0:200] ##### DelMe
+find__measFiles(setUp['filePath'], 'RFA')
+# measFiles = measFiles[0:100] ################################################## DelMe
 
 # find all of the boards tested and make a dictionary
 globalDict = {}; globalDict['barcodes'] = []
@@ -153,18 +169,18 @@ for beam in calcArrays:
             calcArrays[beam][f_c]['Averages'][diff]['phase'] = phase_arrays_av
 
 # save dictionary as pickle
-with open('C:\\Scratch\\pickles\\test_pickle.pickle', 'wb') as file:
+with open(setUp['picklePath'] + '\\test_pickle.pickle', 'wb') as file:
     pickle.dump(calcArrays, file, protocol=pickle.HIGHEST_PROTOCOL)
 # import pickle as dictionary
-with open("C:\\Scratch\\pickles\\test_pickle.pickle", "rb") as file:
+with open(setUp['picklePath'] + '\\test_pickle.pickle', "rb") as file:
     loaded_dict = pickle.load(file)
 
 # plot check
 plt.close('all')
 temperatureGrads = {}
 count = 0
-for port in range(phaseArray.shape[0]):
-# for port in range(22):
+for port in range(phaseArray.shape[0]): ################################################## KeepMe
+# for port in range(3): ################################################## DelMe
     temperatureGrads[str(port)] = {}
     for beam in calcArrays:
         temperatureGrads[str(port)][beam] = {}
@@ -208,7 +224,7 @@ for port in range(phaseArray.shape[0]):
             plt.grid('on')
             plt.tight_layout()
             plt.savefig('C:\\Scratch\\figures\\Frequency = ' + str(frequency) + ' GHz, Port = ' + str(port) + ', Beam' + str(beam)[-1] + '_phase.png', dpi=400)
-            if y[0] < y[1] or max(y)-min(y) > 180 or y[1] < y[2]:
+            if max(y)-min(y):
                 plt.savefig('C:\\Scratch\\figuresBAD\\Frequency = ' + str(frequency) + ' GHz, Port = ' + str(port) + ', Beam' + str(beam)[-1] + '_phase.png', dpi=400)
             plt.close('all')
             
@@ -235,7 +251,7 @@ for f_c in temperatureGrads[str(0)][beam]:
     plt.grid('on')
     plt.legend()
     plt.tight_layout()
-    plt.savefig('C:\\Scratch\\' + 'Frequency = ' + str(float(f_c.split('=')[1])) + ' GHz_gain.png', dpi = 400)
+    plt.savefig('C:\\Scratch\\overviews\\' + 'Frequency = ' + str(float(f_c.split('=')[1])) + ' GHz_gain.png', dpi = 400)
 
 for f_c in temperatureGrads[str(0)][beam]:
     plt.figure(figsize=(7,4))
@@ -255,12 +271,14 @@ for f_c in temperatureGrads[str(0)][beam]:
     plt.grid('on')
     plt.legend()
     plt.tight_layout()
-    plt.savefig('C:\\Scratch\\' + 'Frequency = ' + str(float(f_c.split('=')[1])) + ' GHz_phase.png', dpi = 400)
+    plt.savefig('C:\\Scratch\\overviews\\' + 'Frequency = ' + str(float(f_c.split('=')[1])) + ' GHz_phase.png', dpi = 400)
     
 # open all files and create new files if multi-temperature not available
-find__measFiles(setUp['filePath'], 'RFA')
+find__measFiles(r'C:\Scratch\20231018_ThermalInterpolation\Rx_19-7\RFA_forInterp', 'RFA')
 for filePath in measFiles:
+    print(filePath)
     find__fileDetails(filePath)
+    print(meas_params['Temp. [°C]'])
     if meas_params['Temp. [°C]'] == '45':
         meas_array_25 = np.zeros_like(meas_array)
         meas_array_gain_25 = meas_array_gain + calcArrays[beam][f_c]['Averages']['TdiffMin']['gain']
@@ -280,7 +298,7 @@ for filePath in measFiles:
         temperature_index = [index for index in range(len(meas_info)) if 'Temp. [°C]' in meas_info[index]][0]
         meas_array_25_list[temperature_index][1] = str(25)
         # write new file
-        file = open('C:\\Scratch\\files\\' + filePath.split('\\')[-1][0:-4] + '_interp25C.csv', 'w+', newline ='') 
+        file = open('C:\\Scratch\\files' + '\\' + filePath.split('\\')[-1][0:-4] + '_interp25C.csv', 'w+', newline ='') 
         with file:
             write = csv.writer(file) 
             write.writerows(meas_array_25_list)
@@ -306,7 +324,7 @@ for filePath in measFiles:
         temperature_index = [index for index in range(len(meas_info)) if 'Temp. [°C]' in meas_info[index]][0]
         meas_array_65_list[temperature_index][1] = str(65)
         # write new file
-        file = open('C:\\Scratch\\files\\' + filePath.split('\\')[-1][0:-4] + '_interp65C.csv', 'w+', newline ='') 
+        file = open('C:\\Scratch\\files' + '\\' + filePath.split('\\')[-1][0:-4] + '_interp65C.csv', 'w+', newline ='') 
         with file:
             write = csv.writer(file) 
             write.writerows(meas_array_65_list)
