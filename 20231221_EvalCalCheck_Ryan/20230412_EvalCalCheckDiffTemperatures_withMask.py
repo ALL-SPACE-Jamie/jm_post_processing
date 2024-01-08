@@ -1,8 +1,5 @@
-import pandas as pd
 import numpy as np
-import matplotlib.patches as patches
-import matplotlib.pyplot as plt;
-
+import matplotlib.pyplot as plt
 plt.rcParams['font.size'] = 12;
 plt.close('all')
 from scipy.stats import norm
@@ -21,14 +18,14 @@ dirScript = os.getcwd()
 
 # parmas
 temperature = '45'
-tlmType = 'Tx'
+tlmType = 'Rx'
 measType = 'Evaluation'  # 'Calibration' or 'Evaluation'
-filePath = r'C:\Users\RyanFairclough\Downloads\All_TLMs_I-type'
+filePath = r'C:\Users\jmitchell\Downloads\Raw_Data'
 SaveFileName = '\Post_Processed_Data'#_RFA'
 BoardFont = '6'
 counter = 0
 mask_lim_variable = []
-external_folder_name = "Figures\\StressTest\\MCR1_Rig1"
+external_folder_name = r'C:\Users\jmitchell\Downloads\rfas\rfas\extFolder'
 measFileShift = 0
 droppedThresh = 0
 Exempt_Folder = 'combiner'
@@ -58,6 +55,7 @@ elif measType == 'Evaluation' and tlmType == 'Tx':
     mask = os.path.join(dirScript, r'2023_09_22_Sweep_FF_calibration_data_LensA_Sim_HFSS_ES2iXS_perf_eval_stackup_Cluster_freq_change_sorted_Edit.csv')
 elif measType == 'Evaluation' and tlmType == 'Rx':
     mask = os.path.join(dirScript, r'2023_03_16_discrete_17700_21200_8_calibration_data_175-0081_sanmina_rel1c_2023_03_07_L1L14_48feed_v10_performance_evaluation_250mm_dual_pol_probe.csv')
+
 # definitions
 def find_measFiles(path, fileString, beam):
     global measFiles, files
