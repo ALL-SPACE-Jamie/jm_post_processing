@@ -22,9 +22,9 @@ dirScript = os.getcwd()
 # parmas
 temperature = '45'
 tlmType = 'Tx'
-measType = 'Evaluation'  # 'Calibration' or 'Evaluation'
-filePath = r'C:\Users\RyanFairclough\Downloads\All_TLMs_I-type'
-SaveFileName = '\Post_Processed_Data'#_RFA'
+measType = 'Calibration' #or 'Evaluation'
+filePath = r'C:\Users\RyanFairclough\ALL.SPACE\Engineering - Systems\S2000 0.8m\DVT\I-Type\Tx_TLM_I-Type\TLM_Calibration_Measurements\Batch_15\Raw_Data'
+SaveFileName = '\Post_Processed_Data_OP'
 BoardFont = '6'
 counter = 0
 mask_lim_variable = []
@@ -32,6 +32,8 @@ external_folder_name = "Figures\\StressTest\\MCR1_Rig1"
 measFileShift = 0
 droppedThresh = 0
 Exempt_Folder = 'combiner'
+Exempt_Folder2 = 'Archive'
+file_type = 'OP'
 
 # frequencies to iterate through
 if tlmType == 'Tx':
@@ -43,13 +45,13 @@ if measType == 'Evaluation' and tlmType == 'Tx':
     droppedThreshList = [droppedThresh]
 elif measType == 'Calibration' and tlmType == 'Tx':
     f_set_list = [27.5, 28.0, 28.5, 29.0, 29.5, 30.0, 30.5, 31.0]
-    droppedThreshList = [7, 10, 10, 7, 7, 7, 7, 0]
+    droppedThreshList = [3, 10, 10, 7, 7, 7, 7, 0]
 elif measType == 'Evaluation' and tlmType == 'Rx':
-    f_set_list = [19.2]
-    droppedThreshList = [droppedThresh]
+    f_set_list = [17.7, 18.2, 18.7, 19.2, 19.7, 20.2, 20.7, 21.2]
+    droppedThreshList = [0, 0 ,0, 0, 0 ,0 ,0 ,0]
 elif measType == 'Calibration' and tlmType == 'Rx':
     f_set_list = [17.70, 18.20, 18.70, 19.20, 19.70, 20.20, 20.70, 21.20]
-    droppedThreshList = [31, 35, 30, 30, 30, 25, 25, 10]
+    droppedThreshList = [28, 31, 30, 30, 35, 40, 25, 10]
 if measType == 'Calibration' and tlmType == 'Tx':
     mask = os.path.join(dirScript,r'2023_06_07_Sweep_Discrete_7pts_calibration_data_ES2_TX_TLM_Lens1_cal_equ_FR_Norm_renormalization_of_ports.csv')
 elif measType == 'Calibration' and tlmType == 'Rx':
@@ -68,7 +70,7 @@ def find_measFiles(path, fileString, beam):
                 files.append(os.path.join(root, file))
     measFiles = []
     for i in range(len(files)):
-        if fileString in files[i] and 'eam' + str(beam) in files[i] and Exempt_Folder not in files[i]:
+        if fileString in files[i] and 'eam' + str(beam) in files[i] and (Exempt_Folder not in files[i] and Exempt_Folder2 not in files[i]):
             measFiles.append(files[i])
 
 
@@ -190,7 +192,10 @@ def plot__gainVport(f_set, measType):
         axs[0, 0].set_xlim([1, len(y) + 1])
         axs[0, 0].set_ylim([minY, maxY])
         axs[0, 0].grid('on')
-        axs[0, 0].axhline(y=droppedThresh, color="red", linestyle='--')
+        if file_type == 'OP':
+            axs[0, 0].axhline(y=droppedThresh, color="red", linestyle='--')
+        else:
+            print('xxxxx:',file_type)
         # plot 2
         axs[0, 1].plot(dataSetLabel, stat_l1_median, 'rs')
         axs[0, 1].plot(dataSetLabel, stat_l2_median, 'g^')
@@ -256,7 +261,7 @@ for p in range(2):
         droppedThresh = droppedThreshList[l]
 
         # find all meas files
-        find_measFiles(filePath, 'OP', beam)
+        find_measFiles(filePath, file_type, beam)
 
         fig, axs = plt.subplots(3, 2, figsize=(25, 15))
         stat_TLM_median_log = []
@@ -272,6 +277,8 @@ for p in range(2):
                 print(meas_params['barcodes'])
                 print('Temperature = ' + meas_params['Temp. [°C]'])
                 print('-------------------------------------')
+                #for i in range(len(meas_params['barcodes'])):
+                    #print('DDDDDD:',i)
 
                 # plot
                 if '.' in meas_params['acu_version']:
@@ -309,10 +316,19 @@ for p in range(2):
 
 
         # mask_check
+        tlm_numbers = []
         for jj in range(len(y_gain_log)):
          delta = y_gain_log[jj] - (mask_gain + mask_offset)
          if max(abs(delta)) > mask_lim:
-                print(tlm_log[jj])
+                print('DDDDDD:',tlm_log[jj])
+                for k in range(len(tlm_log)):
+                    tlm_numbers.append(len(tlm_log))
+                    tlm_numbers = list(set(tlm_numbers))
+                    print('xxxxx:',k)
+                    print(tlm_numbers)
+                    axs[0,1].text(0,stat_TLM_median - 35, 'Total_Number_of_TLMs: ' + str(tlm_numbers))
+
+                    #axs[0, 1].text()
                 for i in range(len(delta)):
                     if abs(delta[i]) > mask_lim:
                         axs[0, 0].plot(i + 1, y_gain_log[jj][i], 'ro', markersize=1)
