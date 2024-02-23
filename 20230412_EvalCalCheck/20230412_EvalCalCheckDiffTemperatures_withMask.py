@@ -1,12 +1,9 @@
 import os
 import csv
-import time
 import shutil
-import sys
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.stats import norm
-
 
 
 def find_meas_files(path, file_string, beam_number, ignored_folders):
@@ -30,16 +27,17 @@ def find_meas_files(path, file_string, beam_number, ignored_folders):
     return meas_files
 
 
-def import_mask(frequency, mask, offset):
+def import_mask(frequency: float, mask_filename: str, offset: float):
     """
     Generate the mask gain from the mask?
     :param frequency: A frequency
-    :param mask: A mask?
+    :param mask_filenamek:  Full path and filename of the mask
     :param offset: Offset added to the mask gain and mask gain cross.
     :return: The mask gain
     """
-    meas_array = np.genfromtxt(mask, delimiter=',', skip_header=1)[:, 2:]
-    meas_array_frequencies = np.genfromtxt(mask, delimiter=',', skip_header=1)[0:int(len(meas_array)/2), 1]
+    mask_data = np.genfromtxt(mask_filename, delimiter=',', skip_header=1)
+    meas_array = mask_data[:, 2:]
+    meas_array_frequencies = mask_data[0:int(len(meas_array)/2), 1]
     index = np.argmin((meas_array_frequencies-float(frequency))**2)
     meas_array_t = meas_array[index, :][::2]
     meas_array_b = meas_array[int(len(meas_array)/2)+index, :][::2]
@@ -69,28 +67,43 @@ def load_meas_files(meas_file_path: str):
     meas_frequencies = None
     # meas_info, array and measurement frequencies
     with open(meas_file_path, 'r') as openfile:
-         for line in openfile:
-             split_line = line.split(",")
-             if len(split_line) >= 2:
-                 param_name = split_line[0]
-                 if param_name.startswith("# "):
-                     param_name = param_name[2:]
-                 meas_params[param_name] = split_line[1]
-                 if "barcodes" in param_name:  # this is the last of the parameter names
-                     freq_line = openfile.readline()  # the next line is the frequency values
-                     meas_frequencies = np.array(freq_line.split(",")[::2]).astype(float)
-                     break  #  collected all the parameters
-         # The rest of the file is measurement readings which can be read straight into an array without
-         # closing and reopening the file, as the file object is on the correct line already.
-         csv_reader = csv.reader(openfile)
-         readings = list(csv_reader)
-         meas_array = np.array(readings).astype(float)
-    print(meas_frequencies)
+        for line in openfile:
+            split_line = line.split(",")
+            if len(split_line) >= 2:
+                param_name = split_line[0]
+                if param_name.startswith("# "):
+                    param_name = param_name[2:]
+                meas_params[param_name] = split_line[1]
+                if "barcodes" in param_name:  # this is the last of the parameter names
+                    freq_line = openfile.readline()  # the next line is the frequency values
+                    meas_frequencies = np.array(freq_line.split(",")[::2]).astype(float)
+                    break  # collected all the parameters
+        # The rest of the file is measurement readings which can be read straight into an array without
+        # closing and reopening the file, as the file object is on the correct line already.
+        csv_reader = csv.reader(openfile)
+        readings = list(csv_reader)
+        meas_array = np.array(readings).astype(float)
     return meas_array, meas_frequencies, meas_params
 
 
 def plot_gain_v_port(frequency, meas_array, meas_frequencies, meas_params, tlm_type, fig, axs, suptitle,
                      stat_tlm_median_log, barcode_num, dropped_thresh, mask):
+    """
+    Plot gain vs. frequency
+    :param frequency:
+    :param meas_array:
+    :param meas_frequencies:
+    :param meas_params:
+    :param tlm_type:
+    :param fig:
+    :param axs:
+    :param suptitle:
+    :param stat_tlm_median_log:
+    :param barcode_num:
+    :param dropped_thresh:
+    :param mask:
+    :return:
+    """
     fig.suptitle(suptitle, fontsize=25)
     board_font = '6'
     if float(meas_params['f_c']) == frequency and len(meas_array) > 2:
@@ -119,12 +132,12 @@ def plot_gain_v_port(frequency, meas_array, meas_frequencies, meas_params, tlm_t
             mask_l2 = mask_gain[96:192]
             mask_l3 = mask_gain[192:288]
         mask_offset = np.median(np.array(stat_tlm_median_log)) - np.median(np.array(mask_gain))
-        mask_G_lens1 = mask_l1 + mask_offset
-        mask_G_lens2 = mask_l2 + mask_offset
-        mask_G_lens3 = mask_l3 + mask_offset
-        mask_gain_lim1 = [item - 5 for item in mask_G_lens1]
-        mask_gain_lim3 = [item - 5 for item in mask_G_lens2]
-        mask_gain_lim5 = [item - 5 for item in mask_G_lens3]
+        mask_g_lens1 = mask_l1 + mask_offset
+        mask_g_lens2 = mask_l2 + mask_offset
+        mask_g_lens3 = mask_l3 + mask_offset
+        mask_gain_lim1 = [item - 5 for item in mask_g_lens1]
+        mask_gain_lim3 = [item - 5 for item in mask_g_lens2]
+        mask_gain_lim5 = [item - 5 for item in mask_g_lens3]
         stat_l1_dropped = (y[0:int(len(y) / 3)] < mask_gain_lim1).sum()
         stat_l1_dropped_list = (y[0:length_y_over_3]) < dropped_thresh
         stat_l2_dropped_list = (y[length_y_over_3:2 * length_y_over_3]) < dropped_thresh
@@ -260,7 +273,6 @@ def run_eval_cal_check():
 
     # params for notebook?
     temperature = '45'
-    Type = '0267'
     measurement_type = "Calibration"  # or 'Evaluation'
     meas_file_path = r"C:\input\Test_Folder_Calibration"
     save_file_name = 'Post_Processed_Data_OP'
@@ -374,11 +386,11 @@ def run_eval_cal_check():
 
             # mask_check
             tlm_numbers = []
-            for jj in range(len(y_gain_log)):
-                delta = y_gain_log[jj] - (mask_gain + mask_offset)
+            for jj, y_gain in enumerate(y_gain_log):
+                delta = y_gain - (mask_gain + mask_offset)
                 if max(abs(delta)) > mask_lim_variable:
                     print('TLMs_in_List:', tlm_log[jj])
-                    for k in range(len(tlm_log)):
+                    for _ in range(len(tlm_log)):
                         tlm_numbers.append(len(tlm_log))
                         tlm_numbers = list(set(tlm_numbers))
                         axs[0, 1].text(0, stat_tlm_median - 35, 'Total_Number_of_TLMs: ' + str(tlm_numbers))
@@ -411,5 +423,6 @@ def run_eval_cal_check():
                 except shutil.SameFileError as e:
                     print(f"Skipped copying file: {e}")
     print("Done.")
+
 
 run_eval_cal_check()
