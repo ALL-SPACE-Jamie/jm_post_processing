@@ -66,30 +66,26 @@ def load_meas_files(meas_file_path: str):
     :return: An array of measurements, an array of frequencies and a dictionary of parameters and their values
     """
     meas_params = {}
-    meas_info = []
+    meas_frequencies = None
     # meas_info, array and measurement frequencies
-    with open(meas_file_path, 'r') as file:
-        file_reader = csv.reader(file, delimiter=',')
-        time.sleep(0.10)
-        for row in file_reader:
-            meas_info.append(row)
-        index_start = [index for index in range(len(meas_info)) if 'barcodes' in meas_info[index]][0] + 2
-        meas_info = meas_info[0:index_start]
-
-        meas_array = np.genfromtxt(meas_file_path, delimiter=',', skip_header=index_start)
-        meas_frequencies = np.array(meas_info[index_start - 1])[::2].astype(float)
-
-    for i in range(len(meas_info) - 1):
-        if len(meas_info[i]) > 1:
-            param_name = meas_info[i][0]
-
-            if param_name[0:2] == '# ':
-                param_name = param_name[2:]
-            meas_params[param_name] = meas_info[i][1]
-    asize = sys.getsizeof(meas_array) #kym
-    fsize = sys.getsizeof(meas_frequencies) #kym
-    psize = sys.getsizeof(meas_params) #kym
-
+    with open(meas_file_path, 'r') as openfile:
+         for line in openfile:
+             split_line = line.split(",")
+             if len(split_line) >= 2:
+                 param_name = split_line[0]
+                 if param_name.startswith("# "):
+                     param_name = param_name[2:]
+                 meas_params[param_name] = split_line[1]
+                 if "barcodes" in param_name:  # this is the last of the parameter names
+                     freq_line = openfile.readline()  # the next line is the frequency values
+                     meas_frequencies = np.array(freq_line.split(",")[::2]).astype(float)
+                     break  #  collected all the parameters
+         # The rest of the file is measurement readings which can be read straight into an array without
+         # closing and reopening the file, as the file object is on the correct line already.
+         csv_reader = csv.reader(openfile)
+         readings = list(csv_reader)
+         meas_array = np.array(readings).astype(float)
+    print(meas_frequencies)
     return meas_array, meas_frequencies, meas_params
 
 
@@ -103,14 +99,16 @@ def plot_gain_v_port(frequency, meas_array, meas_frequencies, meas_params, tlm_t
         col = int(np.where(meas_frequencies == frequency)[0][0] * 2)
         y = meas_array[:, col]
         y_gain = y * 1.0
+        length_y_over_3 = int(len(y) / 3)
+        length_y_over_6 = int(len(y) / 6)
 
         # stats
         stat_tlm_median = np.median(y)
         stat_tlm_median_log.append(stat_tlm_median)
         barcode_num.append(meas_params['barcodes'])
-        stat_l1_median = np.median(y[0:int(len(y) / 3)])
-        stat_l2_median = np.median(y[int(len(y) / 3):2 * int(len(y) / 3)])
-        stat_l3_median = np.median(y[2 * int(len(y) / 3):3 * int(len(y) / 3)])
+        stat_l1_median = np.median(y[0:length_y_over_3])
+        stat_l2_median = np.median(y[length_y_over_3:2 * length_y_over_3])
+        stat_l3_median = np.median(y[2 * length_y_over_3:3 * length_y_over_3])
         mask_gain = import_mask(frequency, mask, 0.0)
         if tlm_type == 'Tx':
             mask_l1 = mask_gain[:152]
@@ -128,25 +126,25 @@ def plot_gain_v_port(frequency, meas_array, meas_frequencies, meas_params, tlm_t
         mask_gain_lim3 = [item - 5 for item in mask_G_lens2]
         mask_gain_lim5 = [item - 5 for item in mask_G_lens3]
         stat_l1_dropped = (y[0:int(len(y) / 3)] < mask_gain_lim1).sum()
-        stat_l1_dropped_list = (y[0:int(len(y) / 3)]) < dropped_thresh
-        stat_l2_dropped_list = (y[int(len(y) / 3):2 * int(len(y) / 3)]) < dropped_thresh
-        stat_l3_dropped_list = (y[2 * int(len(y) / 3):3 * int(len(y) / 3)]) < dropped_thresh
+        stat_l1_dropped_list = (y[0:length_y_over_3]) < dropped_thresh
+        stat_l2_dropped_list = (y[length_y_over_3:2 * length_y_over_3]) < dropped_thresh
+        stat_l3_dropped_list = (y[2 * length_y_over_6:3 * length_y_over_3]) < dropped_thresh
 
         log = []
-        for p in range(len(stat_l1_dropped_list)):
-            if stat_l1_dropped_list[p]:
+        for p, is_dropped in enumerate(stat_l1_dropped_list):
+            if is_dropped:
                 log.append(p + 1)
-        for p in range(len(stat_l2_dropped_list)):
-            if stat_l2_dropped_list[p]:
-                log.append(1 * int(len(y) / 3) + p + 1)
-        for p in range(len(stat_l3_dropped_list)):
-            if stat_l3_dropped_list[p]:
-                log.append(2 * int(len(y) / 3) + p + 1)
+        for p, is_dropped in enumerate(stat_l2_dropped_list):
+            if is_dropped:
+                log.append(1 * length_y_over_3 + p + 1)
+        for p, is_dropped in enumerate(stat_l3_dropped_list):
+            if is_dropped:
+                log.append(2 * length_y_over_3 + p + 1)
         if len(log) > 12:
             log = [str(len(log)) + ' ports dropped']
-        stat_l2_dropped = ((y[int(len(y) / 3):2 * int(len(y) / 3)]) < mask_gain_lim3).sum()
-        stat_l3_dropped = ((y[2 * int(len(y) / 3):3 * int(len(y) / 3)]) < mask_gain_lim5).sum()
-        stat_TLM_std = np.std(y, dtype=np.float64)
+        stat_l2_dropped = ((y[length_y_over_3:2 * int(len(y) / 3)]) < mask_gain_lim3).sum()
+        stat_l3_dropped = ((y[2 * length_y_over_3:3 * length_y_over_3]) < mask_gain_lim5).sum()
+        stat_tlm_stat = np.std(y, dtype=np.float64)
 
         stat_l1_std = np.std(y[0:int(len(y) / 3)])
         stat_l2_std = np.std(y[int(len(y) / 3):2 * int(len(y) / 3)])
@@ -157,13 +155,13 @@ def plot_gain_v_port(frequency, meas_array, meas_frequencies, meas_params, tlm_t
                           + ', SW: ' + meas_params['acu_version'] + '\n ITCC: ' + meas_params['itcc_runner_version'])
 
         # plot 1
-        minY = -30
-        maxY = 60
-        axs[0, 0].vlines(int(len(y) / 3), minY, maxY, 'k', alpha=0.2)
-        axs[0, 0].vlines(2 * int(len(y) / 3), minY, maxY, 'k', alpha=0.2)
-        axs[0, 0].text(0.8 * int(len(y) / 6), minY + 5, 'Lens 1', backgroundcolor='r', fontsize=20)
-        axs[0, 0].text(2.8 * int(len(y) / 6), minY + 5, 'Lens 2', backgroundcolor='g', fontsize=20)
-        axs[0, 0].text(4.8 * int(len(y) / 6), minY + 5, 'Lens 3', backgroundcolor='b', fontsize=20)
+        min_y = -30
+        max_y = 60
+        axs[0, 0].vlines(length_y_over_3, min_y, max_y, 'k', alpha=0.2)
+        axs[0, 0].vlines(2 * length_y_over_3, min_y, max_y, 'k', alpha=0.2)
+        axs[0, 0].text(0.8 * length_y_over_6, min_y + 5, 'Lens 1', backgroundcolor='r', fontsize=20)
+        axs[0, 0].text(2.8 * length_y_over_6, min_y + 5, 'Lens 2', backgroundcolor='g', fontsize=20)
+        axs[0, 0].text(4.8 * length_y_over_6, min_y + 5, 'Lens 3', backgroundcolor='b', fontsize=20)
         if '0267' in meas_params['barcodes']:
             axs[0, 0].plot(np.linspace(1, len(y), num=len(y)), y, 'r', alpha=0.2)
         elif 'B2' in meas_params['barcodes']:
@@ -174,10 +172,10 @@ def plot_gain_v_port(frequency, meas_array, meas_frequencies, meas_params, tlm_t
             axs[0, 0].plot(np.linspace(1, len(y), num=len(y)), y, 'k', alpha=0.2)
         axs[0, 0].set_xlabel('port')
         axs[0, 0].set_ylabel('S$_{21}$ [dB]')
-        axs[0, 0].set_xticks([0.5 * int(len(y) / 3), 1 * int(len(y) / 3), 1.5 * int(len(y) / 3),
-                              2 * int(len(y) / 3), 2.5 * int(len(y) / 3), 3 * int(len(y) / 3)])
+        axs[0, 0].set_xticks([0.5 * length_y_over_3, 1 * length_y_over_3, 1.5 * length_y_over_3,
+                              2 * length_y_over_3, 2.5 * length_y_over_3, 3 * length_y_over_3])
         axs[0, 0].set_xlim([1, len(y) + 1])
-        axs[0, 0].set_ylim([minY, maxY])
+        axs[0, 0].set_ylim([min_y, max_y])
         axs[0, 0].grid('on')
         axs[0, 1].plot(data_set_label, stat_l1_median, 'rs')
         axs[0, 1].plot(data_set_label, stat_l2_median, 'g^')
@@ -204,13 +202,13 @@ def plot_gain_v_port(frequency, meas_array, meas_frequencies, meas_params, tlm_t
         axs[0, 1].set_xlabel('board')
         axs[0, 1].set_ylabel('Median [dB]')
         axs[0, 1].tick_params(axis='x', labelrotation=90, labelsize=board_font)
-        axs[0, 1].set_ylim([minY, maxY])
+        axs[0, 1].set_ylim([min_y, max_y])
         axs[0, 1].grid('on')
         # plot 3
         axs[1, 1].plot(data_set_label, stat_l1_std, 'rs')
         axs[1, 1].plot(data_set_label, stat_l2_std, 'g^')
         axs[1, 1].plot(data_set_label, stat_l3_std, 'bP')
-        axs[1, 1].plot(data_set_label, stat_TLM_std, 'kX', markersize=10)
+        axs[1, 1].plot(data_set_label, stat_tlm_stat, 'kX', markersize=10)
         axs[1, 1].set_xlabel('board')
         axs[1, 1].set_ylabel(r'$\sigma$ [dB]')
         axs[1, 1].tick_params(axis='x', labelrotation=90, labelsize=board_font)
@@ -230,21 +228,23 @@ def plot_gain_v_port(frequency, meas_array, meas_frequencies, meas_params, tlm_t
         axs[2, 1].grid('on')
         # plot 5
         y = meas_array[:, col + 1]
-        minY = -90
-        maxY = 360 + 45
-        axs[1, 0].vlines(int(len(y) / 3), minY, maxY, 'k', alpha=0.2)
-        axs[1, 0].vlines(2 * int(len(y) / 3), minY, maxY, 'k', alpha=0.2)
-        axs[1, 0].text(0.8 * int(len(y) / 6), minY + 35, 'Lens 1', backgroundcolor='r', fontsize=20)
-        axs[1, 0].text(2.8 * int(len(y) / 6), minY + 35, 'Lens 2', backgroundcolor='g', fontsize=20)
-        axs[1, 0].text(4.8 * int(len(y) / 6), minY + 35, 'Lens 3', backgroundcolor='b', fontsize=20)
+        length_y_over_3 = int(len(y) / 3)
+        length_y_over_6 = int(len(y) / 6)
+        min_y = -90
+        max_y = 360 + 45
+        axs[1, 0].vlines(length_y_over_3, min_y, max_y, 'k', alpha=0.2)
+        axs[1, 0].vlines(2 * length_y_over_3, min_y, max_y, 'k', alpha=0.2)
+        axs[1, 0].text(0.8 * length_y_over_6, min_y + 35, 'Lens 1', backgroundcolor='r', fontsize=20)
+        axs[1, 0].text(2.8 * length_y_over_6, min_y + 35, 'Lens 2', backgroundcolor='g', fontsize=20)
+        axs[1, 0].text(4.8 * length_y_over_6, min_y + 35, 'Lens 3', backgroundcolor='b', fontsize=20)
         axs[1, 0].plot(np.linspace(1, len(y), num=len(y)), y, 'k', alpha=0.2)
         axs[1, 0].set_xlabel('port')
         axs[1, 0].set_ylabel('Phase [deg]')
         axs[1, 0].set_xlim([1, len(y) + 1])
-        axs[1, 0].set_ylim([minY, maxY])
+        axs[1, 0].set_ylim([min_y, max_y])
         axs[1, 0].set_yticks(np.linspace(0, 360, num=int(360 / 45) + 1))
-        axs[1, 0].set_xticks([0.5 * int(len(y) / 3), 1 * int(len(y) / 3), 1.5 * int(len(y) / 3), 2 * int(len(y) / 3),
-                              2.5 * int(len(y) / 3), 3 * int(len(y) / 3)])
+        axs[1, 0].set_xticks([0.5 * length_y_over_3, 1 * length_y_over_3, 1.5 * length_y_over_3,
+                              2 * length_y_over_3, 2.5 * length_y_over_3, 3 * length_y_over_3])
         axs[1, 0].grid('on')
 
         # out
