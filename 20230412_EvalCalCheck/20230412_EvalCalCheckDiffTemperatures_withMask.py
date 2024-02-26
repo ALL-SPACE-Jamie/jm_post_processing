@@ -27,15 +27,22 @@ def find_meas_files(path, file_string, beam_number, ignored_folders):
     return meas_files
 
 
-def import_mask(frequency: float, mask_filename: str, offset: float):
+def load_mask_from_file(mask_filename: str) -> np.ndarray:
     """
-    Generate the mask gain from the mask?
-    :param frequency: A frequency
-    :param mask_filenamek:  Full path and filename of the mask
-    :param offset: Offset added to the mask gain and mask gain cross.
-    :return: The mask gain
+    :param mask_filename:  Full path and filename of the mask
+    :return: Mask data from file
     """
     mask_data = np.genfromtxt(mask_filename, delimiter=',', skip_header=1)
+    return mask_data
+
+
+def get_mask_for_frequency(mask_data, frequency: float,offset: float):
+    """
+    Use the mask data and frequency to generate the mask gain.
+    :param frequency: A frequency in ?Hz
+    :param offset: Offset added to the mask gain and mask gain cross.
+    :return: The calculated mask gain
+    """
     meas_array = mask_data[:, 2:]
     meas_array_frequencies = mask_data[0:int(len(meas_array)/2), 1]
     index = np.argmin((meas_array_frequencies-float(frequency))**2)
@@ -43,18 +50,17 @@ def import_mask(frequency: float, mask_filename: str, offset: float):
     meas_array_b = meas_array[int(len(meas_array)/2)+index, :][::2]
     meas_array_gain = np.zeros(len(meas_array_t))
     meas_array_gain_cross = np.zeros(len(meas_array_t))
-    for i in range(int(len(meas_array_t)/2)):
-        meas_array_gain[2*i] = meas_array_t[2*i]
-        meas_array_gain[2*i+1] = meas_array_b[2*i+1]
-        meas_array_gain_cross[2*i] = meas_array_t[2*i+1]
-        meas_array_gain_cross[2*i+1] = meas_array_b[2*i]
+    meas_array_gain[::2] = meas_array_t[::2]
+    meas_array_gain[1::2] = meas_array_b[1::2]
+    meas_array_gain_cross[::2] = meas_array_t[1::2]
+    meas_array_gain_cross[1::2] = meas_array_b[::2]
     mask_gain = meas_array_gain*1.0 + offset
     mask_gain_cross = meas_array_gain_cross*1.0 + offset
     for i in range(len(mask_gain)):
         if mask_gain_cross[i] > mask_gain[i]:
             mask_gain[i] = mask_gain_cross[i]*1.0
-    mask_gain_hstack = np.hstack([mask_gain, mask_gain, mask_gain])
-    return mask_gain_hstack
+    mask_gain_stack = np.hstack([mask_gain, mask_gain, mask_gain])
+    return mask_gain_stack
 
 
 def load_meas_files(meas_file_path: str):
@@ -87,7 +93,7 @@ def load_meas_files(meas_file_path: str):
 
 
 def plot_gain_v_port(frequency, meas_array, meas_frequencies, meas_params, tlm_type, fig, axs, suptitle,
-                     stat_tlm_median_log, barcode_num, dropped_thresh, mask):
+                     stat_tlm_median_log, barcode_num, dropped_thresh, mask_data):
     """
     Plot gain vs. frequency
     :param frequency:
@@ -101,7 +107,7 @@ def plot_gain_v_port(frequency, meas_array, meas_frequencies, meas_params, tlm_t
     :param stat_tlm_median_log:
     :param barcode_num:
     :param dropped_thresh:
-    :param mask:
+    :param mask_data: Mask data for all frequencies
     :return:
     """
     fig.suptitle(suptitle, fontsize=25)
@@ -122,7 +128,7 @@ def plot_gain_v_port(frequency, meas_array, meas_frequencies, meas_params, tlm_t
         stat_l1_median = np.median(y[0:length_y_over_3])
         stat_l2_median = np.median(y[length_y_over_3:2 * length_y_over_3])
         stat_l3_median = np.median(y[2 * length_y_over_3:3 * length_y_over_3])
-        mask_gain = import_mask(frequency, mask, 0.0)
+        mask_gain = get_mask_for_frequency(mask_data, frequency, 0.0)
         if tlm_type == 'Tx':
             mask_l1 = mask_gain[:152]
             mask_l2 = mask_gain[152:304]
@@ -291,37 +297,37 @@ def run_eval_cal_check():
     if tlm_type == 'Rx':
         mask_lim_variable = [5]
     if measurement_type == 'Evaluation' and tlm_type == 'Tx':
+        mask_filepath = os.path.join(input_folder,
+                                     r'2023_09_22_Sweep_FF_calibration_data_LensA_Sim_HFSS_ES2iXS_perf_eval_stackup_'
+                                     r'Cluster_freq_change_sorted_Edit.csv')
         set_frequencies = [29.5]
         dropped_thresh_list = [dropped_thresh]
     elif measurement_type == 'Calibration' and tlm_type == 'Tx':
+        mask_filepath = os.path.join(input_folder,
+                                     r'2023_06_07_Sweep_Discrete_7pts_calibration_data_ES2_TX_TLM_Lens1_cal_equ_FR_'
+                                     r'Norm_renormalization_of_ports.csv')
         set_frequencies = [27.5, 28.0, 28.5, 29.0, 29.5, 30.0, 30.5, 31.0]
         dropped_thresh_list = [3, 10, 10, 7, 7, 7, 7, 0]
     elif measurement_type == 'Evaluation' and tlm_type == 'Rx':
+        mask_filepath = os.path.join(input_folder,
+                                     r'2023_10_31_discrete_17700_21200_8_calibration_data_175-0212_sanmina_rel1c_'
+                                     r'2023_perf_eval_sorted.csv')
         set_frequencies = [19.2]
         dropped_thresh_list = [0]
     elif measurement_type == 'Calibration' and tlm_type == 'Rx':
+        mask_filepath = os.path.join(input_folder,
+                                     r'2023_03_17_discrete_17700_21200_8_calibration_data_175-0081_sanmina_rel1c_2023_'
+                                     r'03_07_L1L14_48feed_calibration_13mm_dual_pol_probe_2.csv')
         set_frequencies = [17.70]  # [17.70, 18.20, 18.70,19.20, 19.70, 20.20, 20.70, 21.20]
         dropped_thresh_list = [10, 15, 15, 15, 15, 15, 15, 10]
-    if measurement_type == 'Calibration' and tlm_type == 'Tx':
-        mask = os.path.join(input_folder,
-                            r'2023_06_07_Sweep_Discrete_7pts_calibration_data_ES2_TX_TLM_Lens1_cal_equ_FR_'
-                            r'Norm_renormalization_of_ports.csv')
-    elif measurement_type == 'Calibration' and tlm_type == 'Rx':
-        mask = os.path.join(input_folder,
-                            r'2023_03_17_discrete_17700_21200_8_calibration_data_175-0081_sanmina_rel1c_2023_'
-                            r'03_07_L1L14_48feed_calibration_13mm_dual_pol_probe_2.csv')
-    elif measurement_type == 'Evaluation' and tlm_type == 'Tx':
-        mask = os.path.join(input_folder,
-                            r'2023_09_22_Sweep_FF_calibration_data_LensA_Sim_HFSS_ES2iXS_perf_eval_stackup_'
-                            r'Cluster_freq_change_sorted_Edit.csv')
-    elif measurement_type == 'Evaluation' and tlm_type == 'Rx':
-        mask = os.path.join(input_folder, r'2023_10_31_discrete_17700_21200_8_calibration_data_175-0212_sanmina_rel1c_'
-                                          r'2023_perf_eval_sorted.csv')
+    else:
+        raise ValueError(f"Unknown configuration: measurement_type={measurement_type}', tlm_type={tlm_type}")
 
     y = None
     y_gain = None
     mask_gain = None
     stat_tlm_median = None
+    mask_data = load_mask_from_file(mask_filepath)
 
     # run
     for beam in range(1, 3):
@@ -351,7 +357,7 @@ def run_eval_cal_check():
                         suptitle = f"{measurement_type}: {f_set} GHz, Beam {beam}, {temperature} degC"
                         plot_data = plot_gain_v_port(f_set, measurement_array, measurement_frequencies,
                                                      measurement_params, tlm_type, fig, axs, suptitle,
-                                                     stat_tlm_median_log, barcode_num, dropped_thresh, mask)
+                                                     stat_tlm_median_log, barcode_num, dropped_thresh, mask_data)
                         # colate
                         if plot_data is not None:
                             y, y_gain, stat_tlm_median, mask_gain = plot_data
@@ -359,7 +365,7 @@ def run_eval_cal_check():
                             tlm_log.append(measurement_params['barcodes'])
 
             # mask
-            mask_gain = import_mask(f_set, mask, 0.0)
+            mask_gain = get_mask_for_frequency(mask_data, f_set, 0.0)
             mask_offset = np.median(np.array(stat_tlm_median_log)) - np.median(np.array(mask_gain))
             axs[0, 0].plot(np.linspace(1, len(mask_gain), num=len(mask_gain)), mask_gain + mask_offset, 'g-', alpha=0.5)
             axs[0, 0].fill_between(
