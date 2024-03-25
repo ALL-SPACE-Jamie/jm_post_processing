@@ -177,7 +177,7 @@ for measFile in meas_files_selected:
     count = count + 1
 
     
-stop
+
 theta_list = np.linspace(float(meas_params['FirstTheta']), float(meas_params['NumTheta'])*float(meas_params['DeltaTheta']), num = int(meas_params['NumTheta']))
 phi_list = np.linspace(float(meas_params['FirstPhi']), float(meas_params['NumPhi'])*float(meas_params['DeltaPhi']), num = int(meas_params['NumPhi']))
 
