@@ -23,40 +23,42 @@ dirScript = os.getcwd()
 temperature = '45'
 tlmType = 'Rx'
 Type = '0267'
-measType = 'Evaluation' #or 'Evaluation'
-filePath = r'C:\Users\RyanFairclough\Downloads\All_P-type_Evals'
+measType = 'Calibration' #or 'Evaluation'
+filePath = r'C:\Users\RyanFairclough\Downloads\V1_V2_Rx'
 SaveFileName = '\Post_Processed_Data_OP'
+port_Label = 'OFF'
 BoardFont = '6'
 counter = 0
 mask_lim_variable = []
 external_folder_name = "Figures\\StressTest\\MCR1_Rig1"
 measFileShift = 0
 droppedThresh = 0
-Exempt_Folder = 'Archive'
+Exempt_Folder = 'iteration_2'
 Exempt_Folder2 = 'combiner'
 file_type = 'OP'
 
+
 # frequencies to iterate through
 if tlmType == 'Tx':
-    mask_lim_variable = [5]
+    mask_lim_variable = [7]
 if tlmType == 'Rx':
     mask_lim_variable = [5]
 if measType == 'Evaluation' and tlmType == 'Tx':
-    f_set_list = [29.5]
+    f_set_list = [29]
     droppedThreshList = [droppedThresh]
 elif measType == 'Calibration' and tlmType == 'Tx':
-    f_set_list = [27.5, 28.0, 28.5, 29.0, 29.5, 30.0, 30.5, 31.0]
+    f_set_list = [27.5, 28.0, 28.5, 29.0,29.5, 30.0, 30.5, 31.0]
     droppedThreshList = [3, 10, 10, 7, 7, 7, 7, 0]
 elif measType == 'Evaluation' and tlmType == 'Rx':
-    f_set_list = [19.2]
-    droppedThreshList = [0]
+    f_set_list = [17.70, 18.20, 18.70, 19.20, 19.70, 20.20, 20.70, 21.20]
+    droppedThreshList = [droppedThresh]
 elif measType == 'Calibration' and tlmType == 'Rx':
-    f_set_list = [17.70]#[17.70, 18.20, 18.70,19.20, 19.70, 20.20, 20.70, 21.20]
+    f_set_list = [17.70, 18.20, 18.70,19.20, 19.70, 20.2, 20.7, 21.2]
     droppedThreshList = [10, 15, 15, 15, 15, 15, 15, 10]
 if measType == 'Calibration' and tlmType == 'Tx':
-    mask = os.path.join(dirScript,r'2023_06_07_Sweep_Discrete_7pts_calibration_data_ES2_TX_TLM_Lens1_cal_equ_FR_Norm_renormalization_of_ports.csv')
+    mask = os.path.join(dirScript,r'2023_09_22_Sweep_FF_calibration_data_LensA_Sim_HFSS_ES2iXS_cal_equ_stackup_Cluster_freq_change_sorted.csv') #2023_09_22_Sweep_FF_calibration_data_LensA_Sim_HFSS_ES2iXS_cal_equ_stackup_Cluster_freq_change_sorted
 elif measType == 'Calibration' and tlmType == 'Rx':
-    mask = os.path.join(dirScript,r'2023_03_17_discrete_17700_21200_8_calibration_data_175-0081_sanmina_rel1c_2023_03_07_L1L14_48feed_calibration_13mm_dual_pol_probe_2.csv') #2023_10_31_discrete_17700_21200_8_calibration_data_175-0212_sanmina_rel1c_2023_09_01_v0_LensA_RX_default_cal_equ_sorted, 2023_03_17_discrete_17700_21200_8_calibration_data_175-0081_sanmina_rel1c_2023_03_07_L1L14_48feed_calibration_13mm_dual_pol_probe_2
+    mask = os.path.join(dirScript,r'2023_10_20_discrete_17700_21200_8_calibration_data_175-0200_dual_probe_cal_equ_sorted.csv') #2023_10_31_discrete_17700_21200_8_calibration_data_175-0212_sanmina_rel1c_2023_09_01_v0_LensA_RX_default_cal_equ_sorted, 2023_03_17_discrete_17700_21200_8_calibration_data_175-0081_sanmina_rel1c_2023_03_07_L1L14_48feed_calibration_13mm_dual_pol_probe_2
 elif measType == 'Evaluation' and tlmType == 'Tx':
     mask = os.path.join(dirScript, r'2023_09_22_Sweep_FF_calibration_data_LensA_Sim_HFSS_ES2iXS_perf_eval_stackup_Cluster_freq_change_sorted_Edit.csv')
 elif measType == 'Evaluation' and tlmType == 'Rx':
@@ -150,7 +152,7 @@ def load_measFiles(filePath):
 
 
 def plot__gainVport(f_set, measType):
-    global y, stat_TLM_median, loaded, y_gain, paramName, mask_gain
+    global y, stat_TLM_median, loaded, y_gain, paramName, mask_gain, rfic
     fig.suptitle(measType + ': ' + str(f_set) + ' GHz, Beam ' + str(beam) + ', ' + str(temperature) + ' degC',
                  fontsize=25)
     all_gain = []
@@ -227,11 +229,11 @@ def plot__gainVport(f_set, measType):
         #colormap = plt.get_cmap('viridis')
         #colors = np.linspace(0, 1, len(y))
         #axs[0, 0].scatter(np.linspace(1, len(y), num=len(y)), y, c=colors, cmap=colormap, alpha=0.2)
-        if '0267' in meas_params['barcodes']:
+        if 'Old_Lens' in meas_params['barcodes']:
             axs[0, 0].plot(np.linspace(1, len(y), num=len(y)), y, 'r', alpha=0.2)
-        elif 'B2' in meas_params['barcodes']:
-            axs[0, 0].plot(np.linspace(1, len(y), num=len(y)), y, 'y', alpha=0.2)
-        elif 'v3' in meas_params['barcodes']:
+        #elif '420' in meas_params['barcodes']:
+            #axs[0, 0].plot(np.linspace(1, len(y), num=len(y)), y, 'y', alpha=0.2)
+        elif 'New' in meas_params['barcodes']:
             axs[0, 0].plot(np.linspace(1, len(y), num=len(y)), y, 'g', alpha=0.2)
         else:
             axs[0, 0].plot(np.linspace(1, len(y), num=len(y)), y, 'k', alpha=0.2)
@@ -249,18 +251,22 @@ def plot__gainVport(f_set, measType):
         axs[0, 1].plot(dataSetLabel, stat_l1_median, 'rs')
         axs[0, 1].plot(dataSetLabel, stat_l2_median, 'g^')
         axs[0, 1].plot(dataSetLabel, stat_l3_median, 'bP')
-        if '0267' in meas_params['barcodes']:
+        if 'Old_Lens' in meas_params['barcodes']:
             axs[0, 1].plot(dataSetLabel, stat_TLM_median, 'rX', markersize=10)
-        elif 'B2' in meas_params['barcodes']:
+            axs[0, 1].text(dataSetLabel, stat_TLM_median + 10, 'Old_Lens', fontsize = 5)
+        elif '420' in meas_params['barcodes']:
             axs[0, 1].plot(dataSetLabel, stat_TLM_median, 'yX', markersize=10)
-        elif 'v3' in meas_params['barcodes']:
+            axs[0, 1].text(dataSetLabel, stat_TLM_median + 10, 'Bare-Board', fontsize=5)
+        elif 'New' in meas_params['barcodes']:
             axs[0, 1].plot(dataSetLabel, stat_TLM_median, 'gX', markersize=10)
+            axs[0, 1].text(dataSetLabel, stat_TLM_median + 10, 'Reassembled_Lens', fontsize=5)
         else:
             axs[0, 1].plot(dataSetLabel, stat_TLM_median, 'kX', markersize=10)
+            axs[0, 1].text(dataSetLabel, stat_TLM_median + 10, 'New_Lens', fontsize=5)
         rounded = round(stat_TLM_median,1)
         axs[0, 1].text(dataSetLabel,stat_TLM_median + 5, rounded, fontsize=3 )
 
-        with open(r'C:\Users\RyanFairclough\Downloads\All_P-type_Evals\Gain_+_SerialNo.csv', mode='w') as file:
+        with open(r'C:\Users\RyanFairclough\Downloads\Failed_Evals\Gain_+_SerialNo.csv', mode='w') as file:
             writer = csv.writer(file)
             writer.writerow(['Serial_Number', 'Median_Gain'])
             for value in barcode_num:
@@ -416,14 +422,18 @@ for p in range(2):
                             #axs[0, 0].plot(i + 1, y_gain_log[jj][i], 'ko', markersize=1)
 
                         axs[0, 0].plot(i + 1, y_gain_log[jj][i], 'ro', markersize=1)
-
+                        if port_Label == 'ON':
+                            axs[0, 0].text(i + 1, y_gain_log[jj][i], str(tlm_log[jj]) + ': port ' + str(i + 1), fontsize=5)
+                        else:
+                            print('Port Label Off')
+                        ports_dropped.append(str(i + 1))
                         #axs[0,0].gcf().gca().add_artist(plt.Circle(i+1, y_gain_log[jj][i], radius = 1, edgecolor='red', facecolor=0.5))
-                        #axs[0, 0].text(i+1, y_gain_log[jj][i], str(tlm_log[jj]) + ': port ' + str(i+1), fontsize = 5)
+
                         #print(range(len(str(i+1))))
                         #ports_dropped.append(str(i+1))
                         #print(set(ports_dropped))
 
-        ports_dropped = []
+        #ports_dropped = []
         barcodes = []
 
         with open(r'C:\Users\RyanFairclough\Downloads\All_P-type_Evals\circle_counts.csv', mode='w') as file:
@@ -431,22 +441,76 @@ for p in range(2):
             writer.writerow(['Red Circles', 'Black Circles', 'Total Circles'])
 
         #for i in range(len(delta)):
-         #   if abs(delta[i]) > mask_lim:
+         #if abs(delta[i]) > mask_lim:
           #      if '0267' in tlm_log[jj]:  # Check if '0267' is in the barcode
            #         axs[0, 0].plot(i + 1, y_gain_log[jj][i], 'ko', markersize=1)
 
             #    else:
              #       axs[0, 0].plot(i + 1, y_gain_log[jj][i], 'ro', markersize=1)
-              #      axs[0, 0].text(i + 1, y_gain_log[jj][i], str(tlm_log[jj]) + ': port ' + str(i + 1), fontsize=5)
-               #     ports_dropped.append(str(i + 1))
+                    #axs[0, 0].text(i + 1, y_gain_log[jj][i], str(tlm_log[jj]) + ': port ' + str(i + 1), fontsize=5)
+                    #ports_dropped.append(str(i + 1))
 
-        with open(r'C:\Users\RyanFairclough\Downloads\All_P-type_Evals\ports_dropped.csv', mode='w') as file:
+        with open(r'C:\Users\RyanFairclough\Downloads\23022024_P_Batch_eval\ports_dropped.csv', mode='w') as file:
             writer = csv.writer(file)
             writer.writerow(['Ports_Outside_Mask'])
             for port in ports_dropped:
                 writer.writerow([port])
                 print('dropped_ports',ports_dropped)
 
+
+        with open('S2000_TX_RFIC_PORT_MAP.json') as json_file:
+            S2000_TX_RFIC_PORT_MAP = json.load(json_file)
+        with open('rx_s2000_rfic_map.json') as json_file:
+            rx_s2000_rfic_map = json.load(json_file)
+
+        lens1 = []
+        lens2 =[]
+        lens3 =[]
+        for port in ports_dropped:
+            if tlmType == 'Rx' and int(port) <= 96:
+                result = int(port)
+                #print('Lens_1:\n',result)
+                lens1.append(result)
+                print(lens1)
+            elif tlmType == 'Rx' and 96 < int(port) < 192:
+                result1 = 192 - int(port)
+                #print('Lens_2:\n',result1)
+                print(lens2)
+                lens2.append(result1)
+            elif tlmType == 'Rx' and 192 < int(port) < 288:
+                result2 = 288 - int(port)
+                #print('Lens_3:\n',result2)
+                lens3.append(result2)
+                print(lens3)
+        if beam == 1:
+            Beam1_drops = "Lens1:" + str(lens1) + "  Lens2:" + str(lens2) + "  Lens3:" + str(lens3)
+
+            print(Beam1_drops)
+        elif beam == 2:
+            Beam2_drops = "Lens1:" + str(lens1) + "  Lens2:" + str(lens2) + "  Lens3:" + str(lens3)
+
+        lst = []
+        rfic_list = []
+        appended_values = set()
+        append_rfic_val = set()
+
+        for key in sorted(rx_s2000_rfic_map.keys(), key=lambda x: int(x)):
+            if 1 <= int(key) <= 12:
+                for value in lens2:
+                    if value not in appended_values:
+                        lst.append(value)
+                        appended_values.add(value)
+                for val in rx_s2000_rfic_map[key]:
+                    rfic_list.append(val)
+                    append_rfic_val.add(val)
+
+        print(rfic_list)
+        print(lst)
+        Common_val = set(lst) & set(rfic_list)
+        print(Common_val)
+        for key in rx_s2000_rfic_map.keys():
+            if any(common_value in rx_s2000_rfic_map[key] for common_value in Common_val):
+                print(key)
         # format
         plt.tight_layout()
 
