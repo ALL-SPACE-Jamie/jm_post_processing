@@ -8,15 +8,15 @@ import pickle
 # set-up
 make_plots = True
 setUp = {}
-setUp['filePath'] = r'C:\Scratch\20240219\Tx'
+setUp['filePath'] = r'C:\Scratch\20240405\Tx_I5'
 setUp['pathCreate'] = ['figures', 'figuresBAD', 'files', 'pickles', 'overviews']
 setUp['filePath_forGradGen'] = setUp['filePath'] + r'\_data_forGradGen'
 setUp['filePath_forInterp'] = setUp['filePath'] + r'\_data_forInterp'
 setUp['picklePath'] = setUp['filePath'] + r'\pickles'
 setUp['fileOutPath'] = setUp['filePath'] + r'\files'
-freq_list = ['17.70', '18.20', '18.70', '19.20', '19.70', '20.20', '20.70', '21.20']
-freq_list = ['27.50', '28.00', '28.50', '29.00', '31.00']
-freqChoice = '17.70'
+# freq_list = ['17.70', '18.20', '18.70', '19.20', '19.70', '20.20', '20.70', '21.20']
+freq_list = ['27.50', '28.00', '28.50', '29.00', '29.50', '30.00', '30.50', '31.00']
+# freqChoice = '17.70'
 
 # create directories
 for subDirectory in setUp['pathCreate']:

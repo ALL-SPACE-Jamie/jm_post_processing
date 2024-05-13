@@ -19,7 +19,7 @@ import csv
 import json
 import time
 from pylab import *
-# import seaborn as sns
+import seaborn as sns
 from matplotlib.markers import MarkerStyle
 plt.close('all')
 
@@ -66,48 +66,30 @@ def load__measFiles(file_path):
                     meas_params[paramName] = meas_params[paramName][1:]
 
 
-# file_path = r'C:\Scratch\20240409'
-# f_set_list = ['27.50', '29.00', '31.00']
-# fig, axs = plt.subplots(nrows=2, ncols=3, figsize=(30, 20))
-# it=1
-# for beam in [1,2]:
-#     for fig_no in [0,1,2]:
-#         f_set = f_set_list[fig_no]
-#         find_measFiles(file_path, 'OP_2', beam, f_set, it=it)
-#         for measFile in measFiles:
-#             load__measFiles(measFile)
-#             col = np.argmin((meas_frequencies-float(f_set))**2)
-#             power = meas_params['Source power [dBm]']
-#             CCG = meas_params['combiners_common_setting']
-#             PaCG =  meas_params['common_settings'].split('.')[2][1:-1]
-#             axs[beam-1, fig_no].plot(meas_array_gain[:,col], alpha=0.4, label=f'CCG={CCG}, PaCG={PaCG}, {power}dBm')
-#             axs[beam-1, fig_no].set_title(f'{f_set} GHz, beam {beam}')
-#             axs[beam-1, fig_no].set_xlabel('port')
-#             axs[beam-1, fig_no].set_ylabel('gain')
-#         axs[beam-1, fig_no].legend(loc='upper right')
-#         axs[beam-1, fig_no].set_ylim([0,40])
-#         axs[beam-1, fig_no].grid()
-# plt.tight_layout()
-
-file_path = r'C:\Scratch\20240506\Tx_3Lens_Mask_BB'
-f_set_list = ['29.50']
-fig, axs = plt.subplots(nrows=2, ncols=2, figsize=(30, 20))
-it=2
+file_path = r'C:\Users\jmitchell\Downloads\5_iteration'
+f_set_list = ['27.50', '29.00', '31.00']
+fig, axs = plt.subplots(nrows=2, ncols=3, figsize=(30, 20))
 for beam in [1,2]:
-    for fig_no in [0]:
+    for fig_no in [0,1,2]:
         f_set = f_set_list[fig_no]
-        find_measFiles(file_path, 'RFA', beam, f_set, it=it)
-        for measFile in measFiles:
-            load__measFiles(measFile)
+        std_list = []
+        for it in [1,2,3,4,5]:
+            find_measFiles(file_path, 'OP_2', beam, f_set, it=it)
+            load__measFiles(measFiles[0])
             col = np.argmin((meas_frequencies-float(f_set))**2)
-            power = meas_params['Source power [dBm]']
-            CCG = meas_params['combiners_common_setting']
-            PaCG =  meas_params['common_settings'].split('.')[2][1:-1]
-            axs[beam-1, fig_no].plot(meas_array_gain[:,col], alpha=0.4, label=f'CCG={CCG}, PaCG={PaCG}, {power}dBm')
+            stdev = round(np.std(meas_array_phase[:,col]),2)
+            pkpk = round(max(meas_array_phase[:,col])-min(meas_array_phase[:,col]),2)
+            std_list.append(stdev)
+            axs[beam-1, fig_no].plot(meas_array_phase[:,col], alpha=0.4, label=f'iteration {it}, stdev = {stdev}, pkpk = {pkpk}')
             axs[beam-1, fig_no].set_title(f'{f_set} GHz, beam {beam}')
             axs[beam-1, fig_no].set_xlabel('port')
             axs[beam-1, fig_no].set_ylabel('gain')
+        ax2 = axs[beam-1, fig_no].twiny()
+        ax2.plot([1,2,3,4,5],std_list, 'ro-')
+        ax2.set_xlabel('iteation', color='red')
+        ax2.set_xticks([1,2,3,4,5,6,7,8])
         axs[beam-1, fig_no].legend(loc='upper right')
-        axs[beam-1, fig_no].set_ylim([0,40])
+        axs[beam-1, fig_no].set_ylim([-5,360])
         axs[beam-1, fig_no].grid()
 plt.tight_layout()
+plt.savefig('temp.pdf')
