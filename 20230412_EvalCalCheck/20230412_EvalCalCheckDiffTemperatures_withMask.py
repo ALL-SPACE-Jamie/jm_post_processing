@@ -21,20 +21,22 @@ dirScript = os.getcwd()
 
 # parmas
 temperature = '45'
-tlmType = 'Rx'
+tlmType = 'Tx'
 Type = '0267'
-measType = 'Calibration' #or 'Evaluation'
-filePath = r'C:\Users\RyanFairclough\Downloads\V1_V2_Rx'
-SaveFileName = '\Post_Processed_Data_OP'
-port_Label = 'OFF'
+Drop_level = -8
+measType = 'Calibration'
+filePath = r'C:\Users\RyanFairclough\Downloads\BB_pwr_cycle'
+SaveFileName = '\Post_Processed_Data_OP_iteration_1'
+port_Label = 'ON'
 BoardFont = '6'
 counter = 0
+Dropped_Port_indentifier ='ON'
 mask_lim_variable = []
 external_folder_name = "Figures\\StressTest\\MCR1_Rig1"
 measFileShift = 0
 droppedThresh = 0
-Exempt_Folder = 'iteration_2'
-Exempt_Folder2 = 'combiner'
+Exempt_Folder = 'combiner'
+Exempt_Folder2 = 'iteration_2'
 file_type = 'OP'
 
 
@@ -44,23 +46,23 @@ if tlmType == 'Tx':
 if tlmType == 'Rx':
     mask_lim_variable = [5]
 if measType == 'Evaluation' and tlmType == 'Tx':
-    f_set_list = [29]
+    f_set_list = [29.5]
     droppedThreshList = [droppedThresh]
 elif measType == 'Calibration' and tlmType == 'Tx':
     f_set_list = [27.5, 28.0, 28.5, 29.0,29.5, 30.0, 30.5, 31.0]
     droppedThreshList = [3, 10, 10, 7, 7, 7, 7, 0]
 elif measType == 'Evaluation' and tlmType == 'Rx':
-    f_set_list = [17.70, 18.20, 18.70, 19.20, 19.70, 20.20, 20.70, 21.20]
+    f_set_list = [19.20]#[17.70, 18.20, 18.70, 19.20, 19.70, 20.20, 20.70, 21.20]
     droppedThreshList = [droppedThresh]
 elif measType == 'Calibration' and tlmType == 'Rx':
     f_set_list = [17.70, 18.20, 18.70,19.20, 19.70, 20.2, 20.7, 21.2]
     droppedThreshList = [10, 15, 15, 15, 15, 15, 15, 10]
 if measType == 'Calibration' and tlmType == 'Tx':
-    mask = os.path.join(dirScript,r'2023_09_22_Sweep_FF_calibration_data_LensA_Sim_HFSS_ES2iXS_cal_equ_stackup_Cluster_freq_change_sorted.csv') #2023_09_22_Sweep_FF_calibration_data_LensA_Sim_HFSS_ES2iXS_cal_equ_stackup_Cluster_freq_change_sorted
+    mask = os.path.join(dirScript,r'2023_09_22_Sweep_FF_calibration_data_LensA_Sim_HFSS_ES2iXS_perf_eval_stackup_Cluster_freq_change_sorted.csv') #2023_09_22_Sweep_FF_calibration_data_LensA_Sim_HFSS_ES2iXS_cal_equ_stackup_Cluster_freq_change_sorted, 2023_09_22_Sweep_FF_calibration_data_LensA_Sim_HFSS_ES2iXS_cal_equ_stackup_Cluster_freq_change_sorted
 elif measType == 'Calibration' and tlmType == 'Rx':
-    mask = os.path.join(dirScript,r'2023_10_20_discrete_17700_21200_8_calibration_data_175-0200_dual_probe_cal_equ_sorted.csv') #2023_10_31_discrete_17700_21200_8_calibration_data_175-0212_sanmina_rel1c_2023_09_01_v0_LensA_RX_default_cal_equ_sorted, 2023_03_17_discrete_17700_21200_8_calibration_data_175-0081_sanmina_rel1c_2023_03_07_L1L14_48feed_calibration_13mm_dual_pol_probe_2
+    mask = os.path.join(dirScript,r'2023_10_31_discrete_17700_21200_8_calibration_data_175-0212_sanmina_rel1c_2023_perf_eval_sorted.csv') #2023_10_31_discrete_17700_21200_8_calibration_data_175-0212_sanmina_rel1c_2023_09_01_v0_LensA_RX_default_cal_equ_sorted, 2023_10_20_discrete_17700_21200_8_calibration_data_175-0200_dual_probe_cal_equ_sorted.csv ,2023_03_17_discrete_17700_21200_8_calibration_data_175-0081_sanmina_rel1c_2023_03_07_L1L14_48feed_calibration_13mm_dual_pol_probe_2
 elif measType == 'Evaluation' and tlmType == 'Tx':
-    mask = os.path.join(dirScript, r'2023_09_22_Sweep_FF_calibration_data_LensA_Sim_HFSS_ES2iXS_perf_eval_stackup_Cluster_freq_change_sorted_Edit.csv')
+    mask = os.path.join(dirScript, r'2023_09_22_Sweep_FF_calibration_data_LensA_Sim_HFSS_ES2iXS_perf_eval_stackup_Cluster_freq_change_sorted.csv')
 elif measType == 'Evaluation' and tlmType == 'Rx':
     mask = os.path.join(dirScript, r'2023_10_31_discrete_17700_21200_8_calibration_data_175-0212_sanmina_rel1c_2023_perf_eval_sorted.csv') #2023_10_31_discrete_17700_21200_8_calibration_data_175-0212_sanmina_rel1c_2023_perf_eval_sorted, 2023_03_16_discrete_17700_21200_8_calibration_data_175-0081_sanmina_rel1c_2023_03_07_L1L14_48feed_v10_performance_evaluation_250mm_dual_pol_probe.csv
 # definitions
@@ -229,12 +231,22 @@ def plot__gainVport(f_set, measType):
         #colormap = plt.get_cmap('viridis')
         #colors = np.linspace(0, 1, len(y))
         #axs[0, 0].scatter(np.linspace(1, len(y), num=len(y)), y, c=colors, cmap=colormap, alpha=0.2)
-        if 'Old_Lens' in meas_params['barcodes']:
+        print(meas_params['barcodes'])
+        if '00138' in meas_params['barcodes']:
+            axs[0, 0].plot(np.linspace(1, len(y), num=len(y)), y, 'b', alpha=0.2)
+            axs[0,0].text(120, 40, 'Algo2_V4', color = 'blue',fontsize = 5)
+        if '00133' in meas_params['barcodes']:
+            axs[0, 0].plot(np.linspace(1, len(y), num=len(y)), y, 'b', alpha=0.2)
+            axs[0,0].text(80, 40, 'Algo2_V4', color = 'blue',fontsize = 5)
+        elif '00099' in meas_params['barcodes']:
+            axs[0, 0].plot(np.linspace(1, len(y), num=len(y)), y, 'y', alpha=0.2)
+            axs[0, 0].text(40, 40, 'Algo1_V3', color='yellow', fontsize=5)
+        elif '00003' in meas_params['barcodes']:
             axs[0, 0].plot(np.linspace(1, len(y), num=len(y)), y, 'r', alpha=0.2)
-        #elif '420' in meas_params['barcodes']:
-            #axs[0, 0].plot(np.linspace(1, len(y), num=len(y)), y, 'y', alpha=0.2)
-        elif 'New' in meas_params['barcodes']:
-            axs[0, 0].plot(np.linspace(1, len(y), num=len(y)), y, 'g', alpha=0.2)
+            axs[0, 0].text(0, 40, 'Algo2_V4_initial', color='red', fontsize=5)
+        elif '00004' in meas_params['barcodes']:
+            axs[0, 0].plot(np.linspace(1, len(y), num=len(y)), y, 'r', alpha=0.2)
+            axs[0, 0].text(0, 40, 'Algo2_V4_initial', color='red', fontsize=5)
         else:
             axs[0, 0].plot(np.linspace(1, len(y), num=len(y)), y, 'k', alpha=0.2)
         axs[0, 0].set_xlabel('port')
@@ -251,15 +263,20 @@ def plot__gainVport(f_set, measType):
         axs[0, 1].plot(dataSetLabel, stat_l1_median, 'rs')
         axs[0, 1].plot(dataSetLabel, stat_l2_median, 'g^')
         axs[0, 1].plot(dataSetLabel, stat_l3_median, 'bP')
-        if 'Old_Lens' in meas_params['barcodes']:
-            axs[0, 1].plot(dataSetLabel, stat_TLM_median, 'rX', markersize=10)
+        if '00138' in meas_params['barcodes']:
+            axs[0, 1].plot(dataSetLabel, stat_TLM_median, 'bX', markersize=10)
+        elif '00133' in meas_params['barcodes']:
+            axs[0, 1].plot(dataSetLabel, stat_TLM_median, 'bX', markersize=10)
             axs[0, 1].text(dataSetLabel, stat_TLM_median + 10, 'Old_Lens', fontsize = 5)
-        elif '420' in meas_params['barcodes']:
+        elif '00099' in meas_params['barcodes']:
             axs[0, 1].plot(dataSetLabel, stat_TLM_median, 'yX', markersize=10)
             axs[0, 1].text(dataSetLabel, stat_TLM_median + 10, 'Bare-Board', fontsize=5)
-        elif 'New' in meas_params['barcodes']:
-            axs[0, 1].plot(dataSetLabel, stat_TLM_median, 'gX', markersize=10)
-            axs[0, 1].text(dataSetLabel, stat_TLM_median + 10, 'Reassembled_Lens', fontsize=5)
+        elif '00003' in meas_params['barcodes']:
+            axs[0, 1].plot(dataSetLabel, stat_TLM_median, 'rX', markersize=10)
+            axs[0, 1].text(dataSetLabel, stat_TLM_median + 10, 'Algo2_V4_initial', fontsize=5)
+        elif '00004' in meas_params['barcodes']:
+            axs[0, 1].plot(dataSetLabel, stat_TLM_median, 'rX', markersize=10)
+            axs[0, 1].text(dataSetLabel, stat_TLM_median + 10, 'Algo2_V4_initial', fontsize=5)
         else:
             axs[0, 1].plot(dataSetLabel, stat_TLM_median, 'kX', markersize=10)
             axs[0, 1].text(dataSetLabel, stat_TLM_median + 10, 'New_Lens', fontsize=5)
@@ -416,29 +433,32 @@ for p in range(2):
                 ports_dropped = []
                 for i in range(len(delta)):
                     if abs(delta[i]) > mask_lim:
-                        #if '0267' in tlm_log[jj]:  # Check if '0267' is in the barcode
-                        #axs[0, 0].plot(i + 1, y_gain_log[jj][i], 'ro', markersize=1)
-                        #else:
-                            #axs[0, 0].plot(i + 1, y_gain_log[jj][i], 'ko', markersize=1)
-
-                        axs[0, 0].plot(i + 1, y_gain_log[jj][i], 'ro', markersize=1)
-                        if port_Label == 'ON':
-                            axs[0, 0].text(i + 1, y_gain_log[jj][i], str(tlm_log[jj]) + ': port ' + str(i + 1), fontsize=5)
+                        if Dropped_Port_indentifier == 'ON':
+                            less_than_5 = y_gain_log[jj][i] <= Drop_level
+                            if less_than_5:
+                                axs[0, 0].plot(i + 1, y_gain_log[jj][i], 'ro', markersize=1)
+                                if port_Label == 'ON':
+                                    if y_gain_log[jj][i] <= Drop_level:
+                                       Test = axs[0, 0].text(i + 1, y_gain_log[jj][i], str(tlm_log[jj]) + ': port ' + str(i + 1), fontsize=5)
+                                       print(Test)
+                                       ports_dropped.append(str(i + 1))
                         else:
-                            print('Port Label Off')
-                        ports_dropped.append(str(i + 1))
+                            axs[0, 0].plot(i + 1, y_gain_log[jj][i], 'ro', markersize=1)
+                            if port_Label == 'ON':
+                                axs[0, 0].text(i + 1, y_gain_log[jj][i],str(tlm_log[jj]) + ': port ' + str(i + 1), fontsize=5)
+
                         #axs[0,0].gcf().gca().add_artist(plt.Circle(i+1, y_gain_log[jj][i], radius = 1, edgecolor='red', facecolor=0.5))
 
                         #print(range(len(str(i+1))))
                         #ports_dropped.append(str(i+1))
-                        #print(set(ports_dropped))
+                        print('PORT',ports_dropped)
 
         #ports_dropped = []
         barcodes = []
 
-        with open(r'C:\Users\RyanFairclough\Downloads\All_P-type_Evals\circle_counts.csv', mode='w') as file:
-            writer = csv.writer(file)
-            writer.writerow(['Red Circles', 'Black Circles', 'Total Circles'])
+       # with open(r'C:\Users\RyanFairclough\Downloads\All_P-type_Evals\circle_counts.csv', mode='w') as file:
+           # writer = csv.writer(file)
+           # writer.writerow(['Red Circles', 'Black Circles', 'Total Circles'])
 
         #for i in range(len(delta)):
          #if abs(delta[i]) > mask_lim:
@@ -450,9 +470,9 @@ for p in range(2):
                     #axs[0, 0].text(i + 1, y_gain_log[jj][i], str(tlm_log[jj]) + ': port ' + str(i + 1), fontsize=5)
                     #ports_dropped.append(str(i + 1))
 
-        with open(r'C:\Users\RyanFairclough\Downloads\23022024_P_Batch_eval\ports_dropped.csv', mode='w') as file:
+        with open(r'C:\Users\RyanFairclough\Downloads\Dropped_ports\ports_dropped.csv', mode='w') as file:
             writer = csv.writer(file)
-            writer.writerow(['Ports_Outside_Mask'])
+            writer.writerow(['Dropped_Ports_RFIC_Fault'])
             for port in ports_dropped:
                 writer.writerow([port])
                 print('dropped_ports',ports_dropped)
@@ -471,17 +491,17 @@ for p in range(2):
                 result = int(port)
                 #print('Lens_1:\n',result)
                 lens1.append(result)
-                print(lens1)
-            elif tlmType == 'Rx' and 96 < int(port) < 192:
-                result1 = 192 - int(port)
+                print("Lens1:",lens1)
+            elif tlmType == 'Rx' and 96 <= int(port) <= 192:
+                result1 = int(port) - 96
                 #print('Lens_2:\n',result1)
-                print(lens2)
+                print("Lens2:",lens2)
                 lens2.append(result1)
             elif tlmType == 'Rx' and 192 < int(port) < 288:
-                result2 = 288 - int(port)
+                result2 = int(port) - 192
                 #print('Lens_3:\n',result2)
                 lens3.append(result2)
-                print(lens3)
+                print("Lens3:",lens3)   ######------------------Fix Below here-------------------
         if beam == 1:
             Beam1_drops = "Lens1:" + str(lens1) + "  Lens2:" + str(lens2) + "  Lens3:" + str(lens3)
 
@@ -491,12 +511,12 @@ for p in range(2):
 
         lst = []
         rfic_list = []
-        appended_values = set()
+        appended_values = set()   #At the moment it is manual to display each lenses dropped ports, integrate this so it can see all lenses.
         append_rfic_val = set()
 
         for key in sorted(rx_s2000_rfic_map.keys(), key=lambda x: int(x)):
             if 1 <= int(key) <= 12:
-                for value in lens2:
+                for value in lens1:
                     if value not in appended_values:
                         lst.append(value)
                         appended_values.add(value)
@@ -505,12 +525,12 @@ for p in range(2):
                     append_rfic_val.add(val)
 
         print(rfic_list)
-        print(lst)
+        print('----',lst)
         Common_val = set(lst) & set(rfic_list)
-        print(Common_val)
+        print('xxx',Common_val)
         for key in rx_s2000_rfic_map.keys():
             if any(common_value in rx_s2000_rfic_map[key] for common_value in Common_val):
-                print(key)
+                print(key) #### Only gives 1 lens at a time, need to change so it provides all.
         # format
         plt.tight_layout()
 
