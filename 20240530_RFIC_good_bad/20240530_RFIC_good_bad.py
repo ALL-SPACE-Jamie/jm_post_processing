@@ -216,7 +216,7 @@ map_rfic = pd.read_csv(r'C:\GitHub\jm_post_processing\20240227_tlm_map_plotter\2
 
 # params
 freq_set = '29.50'
-pass_thresh = -5
+pass_thresh = -7.5
 
 # run
 beam_log = {}
@@ -244,7 +244,7 @@ for beam in [1,2]:
     x_co_log = []
     y_co_log = []
     wafer_log = []
-    for hex_num in df_flagged['uid']:
+    for hex_num in beam_log[f'df_flagged (beam{beam})']['uid']:
     # hex_num = 'c0063c5a'
         if hex_num == 'not found':
             x_co_log.append(1e9)
@@ -279,10 +279,23 @@ for beam in [1,2]:
     plt.ylim([-10,60])
     plt.xlabel('x'); plt.ylabel('y')
     plt.grid()
-    
-    # plt.figure()
-    # plt.hist(df_flagged_fail['wafer'], bins=range(min(df_flagged_fail['wafer']), max(df_flagged_fail['wafer']) + 1, 1), edgecolor='white', linewidth=2)
-            
+
+plt.close('all')
+for beam in [1,2]:
+    plt.figure()
+    wafers = list(set(beam_log[f'df_flagged (beam{beam})']['wafer']))
+    dead_log = []
+    count_log= []
+    for wafer in wafers:
+        df_wafer = beam_log[f'df_flagged (beam{beam})'][beam_log[f'df_flagged (beam{beam})']['wafer']==wafer]
+        dead_log.append(100.0*np.sum(df_wafer[f'fail flag (beam{beam}, pass_thresh={pass_thresh}dB)'])/len(df_wafer))
+        # dead_log.append(np.sum(df_wafer[f'fail flag (beam{beam}, pass_thresh={pass_thresh}dB)']))
+        count_log.append(len(df_wafer))
+        plt.plot(df_wafer['x_co'], df_wafer['y_co'], 'o', markersize=10, label=wafer)
+        plt.xlim([20,80])
+        plt.ylim([-10,60])
+    plt.legend()
+                
             
             
             
