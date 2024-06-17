@@ -20,7 +20,7 @@ import csv
 import json
 import time
 from pylab import *
-import seaborn as sns
+# import seaborn as sns
 from matplotlib.markers import MarkerStyle
 
 plt.close('all')
@@ -111,7 +111,7 @@ def plot_tlm_map(array_in, title, cmin, cmax, cstp, f_set, plot_no, tick_step, d
     # odd ports
     Z_trim = Z[::2]
     Z_trim_pol1 = Z_trim.copy()
-
+    #print(Z_trim_pol1)
     # marker for odd ports
     m = MarkerStyle('D', fillstyle='left')
     m._transform.rotate_deg(float(rot[i] + 45))
@@ -170,15 +170,15 @@ def plot_tlm_map(array_in, title, cmin, cmax, cstp, f_set, plot_no, tick_step, d
     # scatter plot for odd pol
     v = np.linspace(cmin, cmax, int((cmax - cmin) / cstp), endpoint=True)
     cmap_chosen = cm.get_cmap(col_map, int((cmax - cmin) / cstp))
-    print(v)
-    #cntr = axs[plot_no].scatter(x, y, c=Z_trim, marker=m, s=200, edgecolors='black', linewidths=0.5, cmap=cmap_chosen,
-                               # vmin=min(v), vmax=max(v), alpha=1.0)
+    #print(v)
+    cntr = axs[plot_no].scatter(x, y, c=Z_trim, marker=m, s=200, edgecolors='black', linewidths=0.5, cmap=cmap_chosen,
+                                vmin=min(v), vmax=max(v), alpha=1.0)
 
     # even pol
     # even pol
     Z_trim = Z[1::2]
     Z_trim_pol2 = Z_trim.copy()
-
+    print(Z_trim_pol2)
     # marker for even ports
     m = MarkerStyle('D', fillstyle='right')
     m._transform.rotate_deg(float(rot[i] + 45))
@@ -203,13 +203,13 @@ def plot_tlm_map(array_in, title, cmin, cmax, cstp, f_set, plot_no, tick_step, d
 # set-up
 file_path = r'C:\Users\RyanFairclough\Downloads\Test_rx_lensPLOT'
 map_tlm = np.genfromtxt(
-    r'C:\Users\RyanFairclough\PycharmProjects\Post-Processing\20231218_TLMPortMapPlot\20240227_tlm_map_plotter\20221019_TLMCalInputs\Mrk1_S2000_RX_ArrayGeometry_V20062022.csv',
+    r'C:\Users\RyanFairclough\PycharmProjects\Post-Processing\20231218_TLMPortMapPlot\20240227_tlm_map_plotter\20221019_TLMCalInputs\Mrk1_S2000_TLM_RX_ArrayGeometry_V20062022_CalInfo_Orig.csv',
     skip_header=2, dtype=float, delimiter=',')
 
 # freq_list = ['27.50', '28.00', '28.50', '29.00', '29.50', '30.00', '30.50', '31.00']
-freq_list = ['19.20']
+freq_list = ['18.20']
 align = True
-beam_list = [1]
+beam_list = [2]
 it = 1
 
 # run
@@ -238,7 +238,7 @@ for gain_phase in ['gain', 'phase']:
         if delta_pol == False:
             if gain_phase == 'gain':
                 vmax_std = 6.0
-                v_OP = 15.0
+                v_OP = 25.0
                 v_RFA = v_OP * 1.0
                 v_OP_step = 0.01
                 v_RFA_step = v_OP_step * 1.0
