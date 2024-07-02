@@ -1,0 +1,1192 @@
+
+07/01/2024, 17:17:54
+initialisation data
+
+{'report_status': 'to be added for s2000 in itcc 450'}
+
+{'name': 'ACU.PointingEngine.Mode', 'value': '0'}
+
+{'name': 'AutoGainControl.ColdSky.Phi', 'value': '0.000000000000'}
+
+{'name': 'AutoGainControl.ColdSky.Theta', 'value': '0.000000000000'}
+
+{'name': 'AutoGainControl.Rx.FpgaAgcEnable', 'value': '1'}
+
+{'name': 'AutoGainControl.Rx.ModemIfNoiseTarget', 'value': '-105.000000000000'}
+
+{'name': 'AutoGainControl.Rx.PcsAgcEnable', 'value': '1'}
+
+{'name': 'AutoGainControl.Rx.PcsNoiseTarget', 'value': '-18.000000000000'}
+
+{'name': 'AutoGainControl.Rx.SignalDspBackOff', 'value': '18.000000000000'}
+
+{'name': 'AutoGainControl.Tx.Beam1.FpgaInputGain', 'value': '0.000000000000'}
+
+{'name': 'AutoGainControl.Tx.Beam1.FpgaOutputGain', 'value': '0.000000000000'}
+
+{'name': 'AutoGainControl.Tx.Beam2.FpgaInputGain', 'value': '0.000000000000'}
+
+{'name': 'AutoGainControl.Tx.Beam2.FpgaOutputGain', 'value': '0.000000000000'}
+
+{'name': 'AutoGainControl.Tx.SignalDspBackOff', 'value': '18.000000000000'}
+
+{'name': 'AutoGainControl.Tx.SignalTargetPcsDac', 'value': '-18.000000000000'}
+
+{'name': 'Beam1.Enables.PlatformCompensation', 'value': '0'}
+
+{'name': 'Beam1.Enables.SignalTracking', 'value': '0'}
+
+{'name': 'Beam1.Enables.TxOffset', 'value': '0'}
+
+{'name': 'Beam1.Manual.Azimuth', 'value': '0.000000000000'}
+
+{'name': 'Beam1.Manual.Elevation', 'value': '0.000000000000'}
+
+{'name': 'Beam1.Manual.Phi', 'value': '60.000000000000'}
+
+{'name': 'Beam1.Manual.RxFrequencyMHz', 'value': '19950.000000000000'}
+
+{'name': 'Beam1.Manual.RxPolarisation', 'value': 'RHCP'}
+
+{'name': 'Beam1.Manual.Theta', 'value': '0.000000000000'}
+
+{'name': 'Beam1.Manual.TxFrequencyMHz', 'value': '29500.000000000000'}
+
+{'name': 'Beam1.Manual.TxPolarisation', 'value': 'RHCP'}
+
+{'name': 'Beam1.Modem.AliveInterval', 'value': '1'}
+
+{'name': 'Beam1.Modem.Port', 'value': '6400'}
+
+{'name': 'Beam1.Mute', 'value': '0'}
+
+{'name': 'Beam1.OperationalMode', 'value': '5'}
+
+{'name': 'Beam1.PatchInhibits.Rx', 'value': ''}
+
+{'name': 'Beam1.PatchInhibits.Tx', 'value': ''}
+
+{'name': 'Beam1.RealBeamLock', 'value': '0'}
+
+{'name': 'Beam1.Satellite', 'value': ''}
+
+{'name': 'Beam1.TLM.Rx.Combiner.CommonAttenuation', 'value': '28'}
+
+{'name': 'Beam1.TLM.Rx.Patch.CommonAttenuation', 'value': '28'}
+
+{'name': 'Beam1.TLM.Tx.Combiner.CommonAttenuation', 'value': '36'}
+
+{'name': 'Beam1.TLM.Tx.Patch.CommonAttenuation', 'value': '6'}
+
+{'name': 'Beam1.UnmuteOnCreation', 'value': '0'}
+
+{'name': 'Beam1.WeightingGroup.Rx', 'value': ''}
+
+{'name': 'Beam1.WeightingGroup.Tx', 'value': 'Default'}
+
+{'name': 'Beam2.Enables.PlatformCompensation', 'value': '0'}
+
+{'name': 'Beam2.Enables.SignalTracking', 'value': '0'}
+
+{'name': 'Beam2.Enables.TxOffset', 'value': '0'}
+
+{'name': 'Beam2.Manual.Azimuth', 'value': '0.000000000000'}
+
+{'name': 'Beam2.Manual.Elevation', 'value': '0.000000000000'}
+
+{'name': 'Beam2.Manual.Phi', 'value': '45.000000000000'}
+
+{'name': 'Beam2.Manual.RxFrequencyMHz', 'value': '18200.000000000000'}
+
+{'name': 'Beam2.Manual.RxPolarisation', 'value': 'RHCP'}
+
+{'name': 'Beam2.Manual.Theta', 'value': '50.000000000000'}
+
+{'name': 'Beam2.Manual.TxFrequencyMHz', 'value': '29500.000000000000'}
+
+{'name': 'Beam2.Manual.TxPolarisation', 'value': 'RHCP'}
+
+{'name': 'Beam2.Modem.AliveInterval', 'value': '1'}
+
+{'name': 'Beam2.Modem.Port', 'value': '6500'}
+
+{'name': 'Beam2.Mute', 'value': '0'}
+
+{'name': 'Beam2.OperationalMode', 'value': '5'}
+
+{'name': 'Beam2.PatchInhibits.Rx', 'value': ''}
+
+{'name': 'Beam2.PatchInhibits.Tx', 'value': ''}
+
+{'name': 'Beam2.RealBeamLock', 'value': '0'}
+
+{'name': 'Beam2.Satellite', 'value': ''}
+
+{'name': 'Beam2.TLM.Rx.Combiner.CommonAttenuation', 'value': '36'}
+
+{'name': 'Beam2.TLM.Rx.Patch.CommonAttenuation', 'value': '36'}
+
+{'name': 'Beam2.TLM.Tx.Combiner.CommonAttenuation', 'value': '36'}
+
+{'name': 'Beam2.TLM.Tx.Patch.CommonAttenuation', 'value': '6'}
+
+{'name': 'Beam2.UnmuteOnCreation', 'value': '0'}
+
+{'name': 'Beam2.WeightingGroup.Rx', 'value': ''}
+
+{'name': 'Beam2.WeightingGroup.Tx', 'value': 'Default'}
+
+{'name': 'Calibration.Weightings.CacheEnabled', 'value': '0'}
+
+{'name': 'Calibration.Weightings.Pcs1.PhiOffset', 'value': '0.000000000000'}
+
+{'name': 'Calibration.Weightings.Pcs1.ThetaOffset', 'value': '0.000000000000'}
+
+{'name': 'Calibration.Weightings.Pcs2.PhiOffset', 'value': '0.000000000000'}
+
+{'name': 'Calibration.Weightings.Pcs2.ThetaOffset', 'value': '0.000000000000'}
+
+{'name': 'Calibration.Weightings.Pcs3.PhiOffset', 'value': '0.000000000000'}
+
+{'name': 'Calibration.Weightings.Pcs3.ThetaOffset', 'value': '0.000000000000'}
+
+{'name': 'Calibration.Weightings.Pcs4.PhiOffset', 'value': '0.000000000000'}
+
+{'name': 'Calibration.Weightings.Pcs4.ThetaOffset', 'value': '0.000000000000'}
+
+{'name': 'Calibration.Weightings.Pcs5.PhiOffset', 'value': '0.000000000000'}
+
+{'name': 'Calibration.Weightings.Pcs5.ThetaOffset', 'value': '0.000000000000'}
+
+{'name': 'Calibration.Weightings.Pcs6.PhiOffset', 'value': '0.000000000000'}
+
+{'name': 'Calibration.Weightings.Pcs6.ThetaOffset', 'value': '0.000000000000'}
+
+{'name': 'Calibration.Weightings.SelectionMethod', 'value': '0'}
+
+{'name': 'Calibration.Weightings.Tlm1.PhiOffset', 'value': '0.000000000000'}
+
+{'name': 'Calibration.Weightings.Tlm1.ThetaOffset', 'value': '0.000000000000'}
+
+{'name': 'Calibration.Weightings.Tlm2.PhiOffset', 'value': '0.000000000000'}
+
+{'name': 'Calibration.Weightings.Tlm2.ThetaOffset', 'value': '0.000000000000'}
+
+{'name': 'Calibration.Weightings.Tlm3.PhiOffset', 'value': '0.000000000000'}
+
+{'name': 'Calibration.Weightings.Tlm3.ThetaOffset', 'value': '0.000000000000'}
+
+{'name': 'Calibration.Weightings.Tlm4.PhiOffset', 'value': '0.000000000000'}
+
+{'name': 'Calibration.Weightings.Tlm4.ThetaOffset', 'value': '0.000000000000'}
+
+{'name': 'Calibration.Weightings.Tlm5.PhiOffset', 'value': '0.000000000000'}
+
+{'name': 'Calibration.Weightings.Tlm5.ThetaOffset', 'value': '0.000000000000'}
+
+{'name': 'Calibration.Weightings.Tlm6.PhiOffset', 'value': '0.000000000000'}
+
+{'name': 'Calibration.Weightings.Tlm6.ThetaOffset', 'value': '0.000000000000'}
+
+{'name': 'CombinerLUT.Beam1.RxOffset', 'value': '0'}
+
+{'name': 'CombinerLUT.Beam1.TxOffset', 'value': '0'}
+
+{'name': 'CombinerLUT.Beam2.RxOffset', 'value': '0'}
+
+{'name': 'CombinerLUT.Beam2.TxOffset', 'value': '0'}
+
+{'name': 'ControlModel.Beam1.ANTPitch', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam1.ANTRoll', 'value': '180.000000000000'}
+
+{'name': 'ControlModel.Beam1.ANTYaw', 'value': '90.000000000000'}
+
+{'name': 'ControlModel.Beam1.AntennaSize', 'value': '0.600000000000'}
+
+{'name': 'ControlModel.Beam1.AutoRSSINoiseSamples', 'value': '10.000000000000'}
+
+{'name': 'ControlModel.Beam1.AutoRSSIOffsetMode', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam1.AutoRSSIThreshold', 'value': '12.000000000000'}
+
+{'name': 'ControlModel.Beam1.AutoSearchInitEnabled', 'value': '0'}
+
+{'name': 'ControlModel.Beam1.EarthModelOblate', 'value': '1'}
+
+{'name': 'ControlModel.Beam1.EnableForcedAutoRSSI', 'value': '1'}
+
+{'name': 'ControlModel.Beam1.ExtRSSIEnabled', 'value': '0'}
+
+{'name': 'ControlModel.Beam1.ExtRSSIIn', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam1.FineStepDivider', 'value': '2.000000000000'}
+
+{'name': 'ControlModel.Beam1.GPSPosition', 'value': '1'}
+
+{'name': 'ControlModel.Beam1.GPSPositionTimeout', 'value': '5.000000000000'}
+
+{'name': 'ControlModel.Beam1.GPSTime', 'value': '1'}
+
+{'name': 'ControlModel.Beam1.IMUMode', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam1.IMUPitch', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam1.IMURoll', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam1.IMUTimeout', 'value': '0.300000000000'}
+
+{'name': 'ControlModel.Beam1.IMUYaw', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam1.IgnoreUnityCheck', 'value': '1'}
+
+{'name': 'ControlModel.Beam1.LocalAvgSamples', 'value': '1.000000000000'}
+
+{'name': 'ControlModel.Beam1.LockLevel', 'value': '3.000000000000'}
+
+{'name': 'ControlModel.Beam1.ManualDeltasEnabled', 'value': '0'}
+
+{'name': 'ControlModel.Beam1.MaxFineDelta', 'value': '0.500000000000'}
+
+{'name': 'ControlModel.Beam1.MaxMonopulseStep', 'value': '1.000000000000'}
+
+{'name': 'ControlModel.Beam1.MinimumElevation', 'value': '5.000000000000'}
+
+{'name': 'ControlModel.Beam1.ModeSimulation', 'value': '0'}
+
+{'name': 'ControlModel.Beam1.ModeStop', 'value': '0'}
+
+{'name': 'ControlModel.Beam1.MonopulseAxesSelected1', 'value': '1.000000000000'}
+
+{'name': 'ControlModel.Beam1.MonopulseAxesSelected2', 'value': '2.000000000000'}
+
+{'name': 'ControlModel.Beam1.MonopulseDeltaSign', 'value': '1.000000000000'}
+
+{'name': 'ControlModel.Beam1.MonopulseEnabled', 'value': '0'}
+
+{'name': 'ControlModel.Beam1.MonopulseKsiOffset1', 'value': '77.593000000000'}
+
+{'name': 'ControlModel.Beam1.MonopulseKsiOffset2', 'value': '137.593000000000'}
+
+{'name': 'ControlModel.Beam1.MonopulseKsiOffset3', 'value': '197.593000000000'}
+
+{'name': 'ControlModel.Beam1.MonopulseSensorDistance1', 'value': '0.228840000000'}
+
+{'name': 'ControlModel.Beam1.MonopulseSensorDistance2', 'value': '0.228840000000'}
+
+{'name': 'ControlModel.Beam1.MonopulseSensorDistance3', 'value': '0.228840000000'}
+
+{'name': 'ControlModel.Beam1.MonopulseSign', 'value': '1.000000000000'}
+
+{'name': 'ControlModel.Beam1.MonopulseSwapAxes', 'value': '1'}
+
+{'name': 'ControlModel.Beam1.MuteInSearchMode', 'value': '1'}
+
+{'name': 'ControlModel.Beam1.MuteOffset', 'value': '10.000000000000'}
+
+{'name': 'ControlModel.Beam1.NoiseLevel', 'value': '0.500000000000'}
+
+{'name': 'ControlModel.Beam1.NowUTC', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam1.PeakFineLevel', 'value': '12.500000000000'}
+
+{'name': 'ControlModel.Beam1.PeakNeverReturn', 'value': '0'}
+
+{'name': 'ControlModel.Beam1.PeakStepDivider', 'value': '10.000000000000'}
+
+{'name': 'ControlModel.Beam1.PeakStrategy', 'value': '2.000000000000'}
+
+{'name': 'ControlModel.Beam1.PeakTimeout', 'value': '0.900000000000'}
+
+{'name': 'ControlModel.Beam1.PrintTimeout', 'value': '50.000000000000'}
+
+{'name': 'ControlModel.Beam1.RSSIMode', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam1.RSSIModePSD', 'value': '0'}
+
+{'name': 'ControlModel.Beam1.RSSIOffset', 'value': '14.000000000000'}
+
+{'name': 'ControlModel.Beam1.RSSIScanCompMode', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam1.RSSITimeout', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam1.SatPosTimeout', 'value': '0.900000000000'}
+
+{'name': 'ControlModel.Beam1.Scan0', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam1.Scan1', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam1.Scan2', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam1.Scan3', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam1.Scan4', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam1.Scan5', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam1.Scan6', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam1.Scan7', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam1.SearchRange', 'value': '5.000000000000'}
+
+{'name': 'ControlModel.Beam1.SearchTimeout', 'value': '0.300000000000'}
+
+{'name': 'ControlModel.Beam1.ShowTruePointing', 'value': '1'}
+
+{'name': 'ControlModel.Beam1.SiteAlt', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam1.SiteLat', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam1.SiteLon', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam1.StaticPitch', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam1.StaticRoll', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam1.StaticYaw', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam1.StepsAfterStartToRunAutoRSSI', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam1.TRBandwidth', 'value': '1.000000000000'}
+
+{'name': 'ControlModel.Beam1.TRbAvgTime', 'value': '100.000000000000'}
+
+{'name': 'ControlModel.Beam1.TRmAvgTaps', 'value': '10.000000000000'}
+
+{'name': 'ControlModel.Beam1.TXPitch', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam1.TXRoll', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam1.TXYaw', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam1.TargetAlfa', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam1.TargetBeta', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam1.TargetFrame', 'value': 'SEU'}
+
+{'name': 'ControlModel.Beam1.TargetTimeout', 'value': '0.300000000000'}
+
+{'name': 'ControlModel.Beam1.TestCycle', 'value': '2.000000000000'}
+
+{'name': 'ControlModel.Beam1.TestId', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam1.TimeoutDivider', 'value': '1.000000000000'}
+
+{'name': 'ControlModel.Beam1.UnityCheckThreshold', 'value': '0.001000000000'}
+
+{'name': 'ControlModel.Beam1.UnlockLevel', 'value': '2.000000000000'}
+
+{'name': 'ControlModel.Beam1.UnlockTimeout', 'value': '30.000000000000'}
+
+{'name': 'ControlModel.Beam1.UseLastLock', 'value': '0'}
+
+{'name': 'ControlModel.Beam1.UseYawOffset', 'value': '0'}
+
+{'name': 'ControlModel.Beam1.YawFineEnabled', 'value': '0'}
+
+{'name': 'ControlModel.Beam1.YawOffset', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam1.YawScan0', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam1.dAlfa', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam1.dBeta', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam2.ANTPitch', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam2.ANTRoll', 'value': '180.000000000000'}
+
+{'name': 'ControlModel.Beam2.ANTYaw', 'value': '90.000000000000'}
+
+{'name': 'ControlModel.Beam2.AntennaSize', 'value': '0.600000000000'}
+
+{'name': 'ControlModel.Beam2.AutoRSSINoiseSamples', 'value': '10.000000000000'}
+
+{'name': 'ControlModel.Beam2.AutoRSSIOffsetMode', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam2.AutoRSSIThreshold', 'value': '12.000000000000'}
+
+{'name': 'ControlModel.Beam2.AutoSearchInitEnabled', 'value': '0'}
+
+{'name': 'ControlModel.Beam2.EarthModelOblate', 'value': '1'}
+
+{'name': 'ControlModel.Beam2.EnableForcedAutoRSSI', 'value': '1'}
+
+{'name': 'ControlModel.Beam2.ExtRSSIEnabled', 'value': '0'}
+
+{'name': 'ControlModel.Beam2.ExtRSSIIn', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam2.FineStepDivider', 'value': '2.000000000000'}
+
+{'name': 'ControlModel.Beam2.GPSPosition', 'value': '1'}
+
+{'name': 'ControlModel.Beam2.GPSPositionTimeout', 'value': '5.000000000000'}
+
+{'name': 'ControlModel.Beam2.GPSTime', 'value': '1'}
+
+{'name': 'ControlModel.Beam2.IMUMode', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam2.IMUPitch', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam2.IMURoll', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam2.IMUTimeout', 'value': '0.300000000000'}
+
+{'name': 'ControlModel.Beam2.IMUYaw', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam2.IgnoreUnityCheck', 'value': '1'}
+
+{'name': 'ControlModel.Beam2.LocalAvgSamples', 'value': '1.000000000000'}
+
+{'name': 'ControlModel.Beam2.LockLevel', 'value': '3.000000000000'}
+
+{'name': 'ControlModel.Beam2.ManualDeltasEnabled', 'value': '0'}
+
+{'name': 'ControlModel.Beam2.MaxFineDelta', 'value': '0.500000000000'}
+
+{'name': 'ControlModel.Beam2.MaxMonopulseStep', 'value': '1.000000000000'}
+
+{'name': 'ControlModel.Beam2.MinimumElevation', 'value': '5.000000000000'}
+
+{'name': 'ControlModel.Beam2.ModeSimulation', 'value': '0'}
+
+{'name': 'ControlModel.Beam2.ModeStop', 'value': '0'}
+
+{'name': 'ControlModel.Beam2.MonopulseAxesSelected1', 'value': '1.000000000000'}
+
+{'name': 'ControlModel.Beam2.MonopulseAxesSelected2', 'value': '2.000000000000'}
+
+{'name': 'ControlModel.Beam2.MonopulseDeltaSign', 'value': '1.000000000000'}
+
+{'name': 'ControlModel.Beam2.MonopulseEnabled', 'value': '0'}
+
+{'name': 'ControlModel.Beam2.MonopulseKsiOffset1', 'value': '77.593000000000'}
+
+{'name': 'ControlModel.Beam2.MonopulseKsiOffset2', 'value': '137.593000000000'}
+
+{'name': 'ControlModel.Beam2.MonopulseKsiOffset3', 'value': '197.593000000000'}
+
+{'name': 'ControlModel.Beam2.MonopulseSensorDistance1', 'value': '0.228840000000'}
+
+{'name': 'ControlModel.Beam2.MonopulseSensorDistance2', 'value': '0.228840000000'}
+
+{'name': 'ControlModel.Beam2.MonopulseSensorDistance3', 'value': '0.228840000000'}
+
+{'name': 'ControlModel.Beam2.MonopulseSign', 'value': '1.000000000000'}
+
+{'name': 'ControlModel.Beam2.MonopulseSwapAxes', 'value': '1'}
+
+{'name': 'ControlModel.Beam2.MuteInSearchMode', 'value': '1'}
+
+{'name': 'ControlModel.Beam2.MuteOffset', 'value': '10.000000000000'}
+
+{'name': 'ControlModel.Beam2.NoiseLevel', 'value': '0.500000000000'}
+
+{'name': 'ControlModel.Beam2.NowUTC', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam2.PeakFineLevel', 'value': '12.500000000000'}
+
+{'name': 'ControlModel.Beam2.PeakNeverReturn', 'value': '0'}
+
+{'name': 'ControlModel.Beam2.PeakStepDivider', 'value': '10.000000000000'}
+
+{'name': 'ControlModel.Beam2.PeakStrategy', 'value': '2.000000000000'}
+
+{'name': 'ControlModel.Beam2.PeakTimeout', 'value': '0.900000000000'}
+
+{'name': 'ControlModel.Beam2.PrintTimeout', 'value': '50.000000000000'}
+
+{'name': 'ControlModel.Beam2.RSSIMode', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam2.RSSIModePSD', 'value': '0'}
+
+{'name': 'ControlModel.Beam2.RSSIOffset', 'value': '14.000000000000'}
+
+{'name': 'ControlModel.Beam2.RSSIScanCompMode', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam2.RSSITimeout', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam2.SatPosTimeout', 'value': '0.900000000000'}
+
+{'name': 'ControlModel.Beam2.Scan0', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam2.Scan1', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam2.Scan2', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam2.Scan3', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam2.Scan4', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam2.Scan5', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam2.Scan6', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam2.Scan7', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam2.SearchRange', 'value': '5.000000000000'}
+
+{'name': 'ControlModel.Beam2.SearchTimeout', 'value': '0.300000000000'}
+
+{'name': 'ControlModel.Beam2.ShowTruePointing', 'value': '1'}
+
+{'name': 'ControlModel.Beam2.SiteAlt', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam2.SiteLat', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam2.SiteLon', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam2.StaticPitch', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam2.StaticRoll', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam2.StaticYaw', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam2.StepsAfterStartToRunAutoRSSI', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam2.TRBandwidth', 'value': '1.000000000000'}
+
+{'name': 'ControlModel.Beam2.TRbAvgTime', 'value': '100.000000000000'}
+
+{'name': 'ControlModel.Beam2.TRmAvgTaps', 'value': '10.000000000000'}
+
+{'name': 'ControlModel.Beam2.TXPitch', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam2.TXRoll', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam2.TXYaw', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam2.TargetAlfa', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam2.TargetBeta', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam2.TargetFrame', 'value': 'SEU'}
+
+{'name': 'ControlModel.Beam2.TargetTimeout', 'value': '0.300000000000'}
+
+{'name': 'ControlModel.Beam2.TestCycle', 'value': '2.000000000000'}
+
+{'name': 'ControlModel.Beam2.TestId', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam2.TimeoutDivider', 'value': '1.000000000000'}
+
+{'name': 'ControlModel.Beam2.UnityCheckThreshold', 'value': '0.001000000000'}
+
+{'name': 'ControlModel.Beam2.UnlockLevel', 'value': '2.000000000000'}
+
+{'name': 'ControlModel.Beam2.UnlockTimeout', 'value': '30.000000000000'}
+
+{'name': 'ControlModel.Beam2.UseLastLock', 'value': '0'}
+
+{'name': 'ControlModel.Beam2.UseYawOffset', 'value': '0'}
+
+{'name': 'ControlModel.Beam2.YawFineEnabled', 'value': '0'}
+
+{'name': 'ControlModel.Beam2.YawOffset', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam2.YawScan0', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam2.dAlfa', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.Beam2.dBeta', 'value': '0.000000000000'}
+
+{'name': 'ControlModel.BeamStepIntervalMs', 'value': '10.000000000000'}
+
+{'name': 'ControlModel.DoConfigUpdates', 'value': '0'}
+
+{'name': 'ControlModel.DoStatusCapture', 'value': '0'}
+
+{'name': 'ControlModel.HandoverReminderInterval', 'value': '5000'}
+
+{'name': 'ControlModel.MonoPulse.NumberAccumulatedSamples', 'value': '0'}
+
+{'name': 'ControlModel.MonoPulse.NumberMovingAverageSamples', 'value': '55'}
+
+{'name': 'ControlModel.MonoPulse.OverrideTracking', 'value': '1'}
+
+{'name': 'Logging.DaysToKeepLogFiles', 'value': '30'}
+
+{'name': 'Logging.DisableBcmLogMessages', 'value': '1'}
+
+{'name': 'Logging.LogToSerialConsole', 'value': '0'}
+
+{'name': 'Logging.MinimumLevel', 'value': 'Debug'}
+
+{'name': 'Logging.SizeToKeepAccessLogs', 'value': '3072'}
+
+{'name': 'Logging.SizeToKeepAlarmLogs', 'value': '1024'}
+
+{'name': 'Logging.SizeToKeepEnvironmentLogging', 'value': '1024'}
+
+{'name': 'Logging.SizeToKeepModemConfigLogs', 'value': '1024'}
+
+{'name': 'Logging.SizeToKeepSatellitePassLogs', 'value': '1024'}
+
+{'name': 'Logging.SizeToKeepSystemLogs', 'value': '4096'}
+
+{'name': 'Logging.StateMachine.ACUTimeSynchroniserState', 'value': '0'}
+
+{'name': 'Logging.StateMachine.CalibrationManagerState', 'value': '0'}
+
+{'name': 'Logging.StateMachine.ClockDriverState', 'value': '0'}
+
+{'name': 'Logging.StateMachine.ConfigurationState', 'value': '0'}
+
+{'name': 'Logging.StateMachine.DataAcqAgentState', 'value': '0'}
+
+{'name': 'Logging.StateMachine.FileTransferAgentState', 'value': '0'}
+
+{'name': 'Logging.StateMachine.TMUTimeSynchroniserState', 'value': '0'}
+
+{'name': 'Logging.StateMachine.Vn300DeviceState', 'value': '0'}
+
+{'name': 'Logging.StateMachine.Vn300PacketDetectorState', 'value': '0'}
+
+{'name': 'Logging.StateMachine.Vn300TimeSourceState', 'value': '0'}
+
+{'name': 'Logging.TraceLogSearchTool', 'value': '0'}
+
+{'name': 'PcsPhaseOffset.ApplyPcsThermalCorrection', 'value': '0'}
+
+{'name': 'PcsPhaseOffset.BackgndCalFitStdErrLim', 'value': '10.000000000000'}
+
+{'name': 'PcsPhaseOffset.BackgndCalMaxCorrPerStep', 'value': '30.000000000000'}
+
+{'name': 'PcsPhaseOffset.BackgndCalSignalPowerAdjust', 'value': '0.000000000000'}
+
+{'name': 'PcsPhaseOffset.EnableBackgroudRawData', 'value': '0'}
+
+{'name': 'PcsPhaseOffset.PcsPllTempThreshold', 'value': '2.000000000000'}
+
+{'name': 'PcsPhaseOffset.PcsThermalCorrectionMode', 'value': '0'}
+
+{'name': 'PcsPhaseOffset.PollPeriodMilliseconds', 'value': '10000'}
+
+{'name': 'S2000BringUp.AutoRunBringUp', 'value': '0'}
+
+{'name': 'S2000BringUp.AutoRunFrequencyUpdate', 'value': '0'}
+
+{'name': 'S2000BringUp.Beam1.RxAttenuation', 'value': '0.000000000000'}
+
+{'name': 'S2000BringUp.Beam1.RxGain.Pcs1', 'value': '0.000000000000'}
+
+{'name': 'S2000BringUp.Beam1.RxGain.Pcs2', 'value': '0.000000000000'}
+
+{'name': 'S2000BringUp.Beam1.RxGain.Pcs3', 'value': '0.000000000000'}
+
+{'name': 'S2000BringUp.Beam1.RxGain.Pcs4', 'value': '0.000000000000'}
+
+{'name': 'S2000BringUp.Beam1.RxGain.Pcs5', 'value': '0.000000000000'}
+
+{'name': 'S2000BringUp.Beam1.RxGain.Pcs6', 'value': '0.000000000000'}
+
+{'name': 'S2000BringUp.Beam1.RxModemIfGain', 'value': '0.000000000000'}
+
+{'name': 'S2000BringUp.Beam1.TxIfGain', 'value': '0.000000000000'}
+
+{'name': 'S2000BringUp.Beam1.TxRfGain', 'value': '1800.000000000000'}
+
+{'name': 'S2000BringUp.Beam2.RxAttenuation', 'value': '0.000000000000'}
+
+{'name': 'S2000BringUp.Beam2.RxGain.Pcs1', 'value': '0.000000000000'}
+
+{'name': 'S2000BringUp.Beam2.RxGain.Pcs2', 'value': '0.000000000000'}
+
+{'name': 'S2000BringUp.Beam2.RxGain.Pcs3', 'value': '0.000000000000'}
+
+{'name': 'S2000BringUp.Beam2.RxGain.Pcs4', 'value': '0.000000000000'}
+
+{'name': 'S2000BringUp.Beam2.RxGain.Pcs5', 'value': '0.000000000000'}
+
+{'name': 'S2000BringUp.Beam2.RxGain.Pcs6', 'value': '0.000000000000'}
+
+{'name': 'S2000BringUp.Beam2.RxModemIfGain', 'value': '0.000000000000'}
+
+{'name': 'S2000BringUp.Beam2.TxIfGain', 'value': '0.000000000000'}
+
+{'name': 'S2000BringUp.Beam2.TxRfGain', 'value': '1800.000000000000'}
+
+{'name': 'Status.Groups.DisplaySystemGroups', 'value': '0'}
+
+{'name': 'Status.Metrics.CoreStatusInterval', 'value': '1'}
+
+{'name': 'Status.Metrics.DetailedReportInterval', 'value': '3'}
+
+{'name': 'Status.Metrics.HealthStatusInterval', 'value': '1'}
+
+{'name': 'Status.Metrics.KeyMetricsInterval', 'value': '3'}
+
+{'name': 'System.Access.DefaultLanguage', 'value': 'en'}
+
+{'name': 'System.Access.DefaultUserRole', 'value': 'Factory'}
+
+{'name': 'System.Access.EnforceLogIn', 'value': '0'}
+
+{'name': 'System.Access.EnforcePasswordChange', 'value': '0'}
+
+{'name': 'System.Access.SessionMaxAgeSeconds', 'value': '86400'}
+
+{'name': 'System.Access.WebInterfacePort', 'value': '8082'}
+
+{'name': 'System.Access.WebInterfaceProtocol', 'value': 'HTTP'}
+
+{'name': 'System.AmipServer.ServerStartDelayMs', 'value': '60000'}
+
+{'name': 'System.AvailableStorageSpace.AlarmTrigger', 'value': '10.000000000000'}
+
+{'name': 'System.AvailableStorageSpace.CheckInterval', 'value': '300'}
+
+{'name': 'System.BannerMessage', 'value': 'MCR3'}
+
+{'name': 'System.BeamFormer.Mode', 'value': '0'}
+
+{'name': 'System.CAL.OCXOVTune', 'value': '0.500000000000'}
+
+{'name': 'System.CombinerCompensation.Rx', 'value': '0'}
+
+{'name': 'System.CombinerCompensation.Tx', 'value': '0'}
+
+{'name': 'System.DataAcq.TLMEnable', 'value': '0'}
+
+{'name': 'System.DisablePhaseGradient', 'value': '0'}
+
+{'name': 'System.ErrorHandling.AutoResetRFDCOverVoltage', 'value': '1'}
+
+{'name': 'System.ErrorHandling.InhibitPCSDisable', 'value': '1'}
+
+{'name': 'System.ErrorHandling.InhibitTLMPowerDown', 'value': '0'}
+
+{'name': 'System.ErrorHandling.InhibitTxDisable', 'value': '1'}
+
+{'name': 'System.ErrorHandling.PLL.TxInhibitTemp', 'value': '90.000000000000'}
+
+{'name': 'System.ErrorHandling.PowerDownRatherThanDisableTLM', 'value': '0'}
+
+{'name': 'System.ErrorHandling.TLM.PowerDownTemp', 'value': '110.000000000000'}
+
+{'name': 'System.ErrorHandling.TLM.ThermalShutdown', 'value': '110.000000000000'}
+
+{'name': 'System.ErrorHandling.TLM.TxInhibitTimeoutPeriod', 'value': '50'}
+
+{'name': 'System.ErrorHandling.TLM.TxInihibitPCSDisableTemp', 'value': '120.000000000000'}
+
+{'name': 'System.ErrorHandling.TLMsToDisable', 'value': ''}
+
+{'name': 'System.EthernetPort0.DHCP', 'value': '1'}
+
+{'name': 'System.EthernetPort0.Gateway', 'value': ''}
+
+{'name': 'System.EthernetPort0.Ip', 'value': ''}
+
+{'name': 'System.EthernetPort0.Netmask', 'value': ''}
+
+{'name': 'System.EthernetPort1.DHCP', 'value': '0'}
+
+{'name': 'System.EthernetPort1.Gateway', 'value': '172.16.4.1'}
+
+{'name': 'System.EthernetPort1.Ip', 'value': '172.16.4.100'}
+
+{'name': 'System.EthernetPort1.Netmask', 'value': '255.255.254.0'}
+
+{'name': 'System.Fan.AutoControl', 'value': '1'}
+
+{'name': 'System.Fan.Differential', 'value': '0.000000000000'}
+
+{'name': 'System.Fan.Integral', 'value': '0.000000000000'}
+
+{'name': 'System.Fan.ManualSpeed', 'value': '80'}
+
+{'name': 'System.Fan.Proportional', 'value': '1.000000000000'}
+
+{'name': 'System.Fan.SetPoint', 'value': '30.000000000000'}
+
+{'name': 'System.GPS.AntennaPitch', 'value': '0.000000000000'}
+
+{'name': 'System.GPS.AntennaRoll', 'value': '180.000000000000'}
+
+{'name': 'System.GPS.AntennaTargetFrame', 'value': 'SEU'}
+
+{'name': 'System.GPS.AntennaYaw', 'value': '90.000000000000'}
+
+{'name': 'System.GPS.BcmHeadingIntervalMs', 'value': '1'}
+
+{'name': 'System.GPS.BcmHeadingMode', 'value': '0'}
+
+{'name': 'System.GPS.BcmUseAverageOrientations', 'value': '1'}
+
+{'name': 'System.GPS.BcmWriteYawToVN', 'value': '1'}
+
+{'name': 'System.GPS.BcmYawCalculateFromExternal', 'value': '0'}
+
+{'name': 'System.GPS.ManualPositionOrientationSource.Altitude', 'value': '0.000000000000'}
+
+{'name': 'System.GPS.ManualPositionOrientationSource.Latitude', 'value': '45.000000000000'}
+
+{'name': 'System.GPS.ManualPositionOrientationSource.Longitude', 'value': '45.000000000000'}
+
+{'name': 'System.GPS.ManualPositionOrientationSource.Pitch', 'value': '0.000000000000'}
+
+{'name': 'System.GPS.ManualPositionOrientationSource.Roll', 'value': '180.000000000000'}
+
+{'name': 'System.GPS.ManualPositionOrientationSource.Yaw', 'value': '90.000000000000'}
+
+{'name': 'System.GPS.OrientationSource', 'value': 'VN300'}
+
+{'name': 'System.GPS.PositionSource', 'value': 'VN300'}
+
+{'name': 'System.GPS.SwitchToExternalPositionSource', 'value': '0'}
+
+{'name': 'System.GPS.Vn300Device.AntennaAOffsetX', 'value': '-0.314000010490'}
+
+{'name': 'System.GPS.Vn300Device.AntennaAOffsetY', 'value': '-0.097000002861'}
+
+{'name': 'System.GPS.Vn300Device.AntennaAOffsetZ', 'value': '0.074000000954'}
+
+{'name': 'System.GPS.Vn300Device.CompassBaselineX', 'value': '0.469000011683'}
+
+{'name': 'System.GPS.Vn300Device.CompassBaselineY', 'value': '0.611000001431'}
+
+{'name': 'System.GPS.Vn300Device.CompassBaselineZ', 'value': '0.000000000000'}
+
+{'name': 'System.GPS.Vn300Device.CompassUncertaintyX', 'value': '0.015499999747'}
+
+{'name': 'System.GPS.Vn300Device.CompassUncertaintyY', 'value': '0.015499999747'}
+
+{'name': 'System.GPS.Vn300Device.CompassUncertaintyZ', 'value': '0.015499999747'}
+
+{'name': 'System.GPS.Vn300Device.DisableHigherBaudRate', 'value': '0'}
+
+{'name': 'System.GPS.Vn300Device.DynamicMode', 'value': '0'}
+
+{'name': 'System.GPS.Vn300Device.GpsOff', 'value': '1'}
+
+{'name': 'System.GPS.Vn300Device.LogBinaryPackets', 'value': '0'}
+
+{'name': 'System.GPS.Vn300Device.LogDateTime', 'value': '0'}
+
+{'name': 'System.GPS.Vn300Device.LogReceiveErrors', 'value': '0'}
+
+{'name': 'System.GPS.Vn300Device.LogResponseTextPackets', 'value': '0'}
+
+{'name': 'System.GPS.Vn300Device.LogTextPackets', 'value': '0'}
+
+{'name': 'System.GPS.Vn300Device.OrientationRate', 'value': '50'}
+
+{'name': 'System.GPS.Vn300Device.PersistSettingsToNV', 'value': '1'}
+
+{'name': 'System.GPS.Vn300Device.PositionRate', 'value': '1'}
+
+{'name': 'System.GPS.Vn300Device.RawCommand', 'value': 'Null'}
+
+{'name': 'System.GPS.Vn300Device.ResetWhenNanValues', 'value': '1'}
+
+{'name': 'System.GPS.Vn300Device.SatInfo', 'value': '0'}
+
+{'name': 'System.GPS.Vn300Device.SatInfoSatellites', 'value': '5'}
+
+{'name': 'System.GPS.Vn300Device.StatusRate', 'value': '1'}
+
+{'name': 'System.GPS.Vn300Device.UseAHRSMode', 'value': '1'}
+
+{'name': 'System.HeapMonitor.Enable', 'value': '0'}
+
+{'name': 'System.HeapMonitor.LogFrequency', 'value': '0'}
+
+{'name': 'System.HeapMonitor.Threshold', 'value': '0'}
+
+{'name': 'System.Heartbeat.SendRate', 'value': '300'}
+
+{'name': 'System.Heartbeat.TLMTimeout', 'value': '5000'}
+
+{'name': 'System.LEDs.BlackoutEnable', 'value': '0'}
+
+{'name': 'System.LiveCalibration.AccumulatorAveraging', 'value': '1'}
+
+{'name': 'System.LiveCalibration.BackgndCalSignalPowerAdjust', 'value': '0.000000000000'}
+
+{'name': 'System.LiveCalibration.EnableRawData', 'value': '0'}
+
+{'name': 'System.LiveCalibration.FirmwareAveraging', 'value': '256'}
+
+{'name': 'System.LiveCalibration.Mode', 'value': '1'}
+
+{'name': 'System.LiveCalibration.ReferencePCS', 'value': '1'}
+
+{'name': 'System.LiveCalibration.SoftwareAveraging', 'value': '1'}
+
+{'name': 'System.NmeaServerPort', 'value': '3330'}
+
+{'name': 'System.Normalisation.AttenuationMode.Rx', 'value': '2'}
+
+{'name': 'System.Normalisation.AttenuationMode.Tx', 'value': '2'}
+
+{'name': 'System.Normalisation.Weightings.Rx', 'value': '0'}
+
+{'name': 'System.Normalisation.Weightings.Tx', 'value': '0'}
+
+{'name': 'System.OperationalLimits.Motion', 'value': '50'}
+
+{'name': 'System.PatchCount.Beam1.Rx', 'value': '4'}
+
+{'name': 'System.PatchCount.Beam1.Tx', 'value': '4'}
+
+{'name': 'System.PatchCount.Beam2.Rx', 'value': '4'}
+
+{'name': 'System.PatchCount.Beam2.Tx', 'value': '4'}
+
+{'name': 'System.PatchMode.Rx', 'value': '4'}
+
+{'name': 'System.PatchMode.Tx', 'value': '4'}
+
+{'name': 'System.Power.Beam1.DRAEnable', 'value': '1'}
+
+{'name': 'System.Power.Beam1.PatchCount', 'value': '3'}
+
+{'name': 'System.Power.Beam2.DRAEnable', 'value': '1'}
+
+{'name': 'System.Power.Beam2.PatchCount', 'value': '3'}
+
+{'name': 'System.Power.DRA.Differential', 'value': '0.000000000000'}
+
+{'name': 'System.Power.DRA.Integral', 'value': '0.000000000000'}
+
+{'name': 'System.Power.DRA.Proportional', 'value': '1.000000000000'}
+
+{'name': 'System.Power.DRAEnable', 'value': '0'}
+
+{'name': 'System.Power.FanPowerConsumption', 'value': '8.000000000000'}
+
+{'name': 'System.Power.TPBEfficiency', 'value': '85.000000000000'}
+
+{'name': 'System.Power.WattLimit', 'value': '1400.000000000000'}
+
+{'name': 'System.PowerMeasurementFrequency', 'value': '50'}
+
+{'name': 'System.PowerMonitoring.Consumer.MaximumPermissiblePower', 'value': '1000.000000000000'}
+
+{'name': 'System.PowerMonitoring.ModerateThreshold', 'value': '1800.000000000000'}
+
+{'name': 'System.PowerMonitoring.NearLimitThreshold', 'value': '3300.000000000000'}
+
+{'name': 'System.PowerMonitoring.OverLimitThreshold', 'value': '3400.000000000000'}
+
+{'name': 'System.Startup.TransmitEnable', 'value': '0'}
+
+{'name': 'System.TLM.AlgoMode', 'value': '0'}
+
+{'name': 'System.TLM.ApplyEquManualPatch', 'value': '0'}
+
+{'name': 'System.TLM.CyleTimeUs', 'value': '5000'}
+
+{'name': 'System.TLM.LensReInitEnable', 'value': '0'}
+
+{'name': 'System.TLM.Mute.Inhibit', 'value': '0'}
+
+{'name': 'System.TLM.PatchPortOffMode', 'value': '0'}
+
+{'name': 'System.TLM.PointingCache.Enable', 'value': '0'}
+
+{'name': 'System.TLM.PointingCache.Prepopulate', 'value': '0'}
+
+{'name': 'System.TLM.RficLogDebug', 'value': '0'}
+
+{'name': 'System.TLM.Rx.1PatchAtten', 'value': '0.000000000000'}
+
+{'name': 'System.TLM.Rx.2PatchAtten', 'value': '0.000000000000'}
+
+{'name': 'System.TLM.Rx.3PatchAtten', 'value': '0.000000000000'}
+
+{'name': 'System.TLM.Rx.4PatchAtten', 'value': '0.000000000000'}
+
+{'name': 'System.TLM.Rx.BaseAtten', 'value': '0.000000000000'}
+
+{'name': 'System.TLM.Rx.InhibitPowerDetectors', 'value': '0'}
+
+{'name': 'System.TLM.Rx.Multibeam.Bias', 'value': '0'}
+
+{'name': 'System.TLM.Rx.Multibeam.CommonAtten', 'value': '0.000000000000'}
+
+{'name': 'System.TLM.Rx.Multibeam.FeAtten', 'value': '0.000000000000'}
+
+{'name': 'System.TLM.Rx.Multibeam.FePhase', 'value': '0.000000000000'}
+
+{'name': 'System.TLM.Rx.PhaseDither', 'value': '0.000000000000'}
+
+{'name': 'System.TLM.Rx.PowerMode', 'value': '2'}
+
+{'name': 'System.TLM.SyncMode', 'value': '0'}
+
+{'name': 'System.TLM.Tx.1PatchAtten', 'value': '0.000000000000'}
+
+{'name': 'System.TLM.Tx.2PatchAtten', 'value': '0.000000000000'}
+
+{'name': 'System.TLM.Tx.3PatchAtten', 'value': '0.000000000000'}
+
+{'name': 'System.TLM.Tx.4PatchAtten', 'value': '0.000000000000'}
+
+{'name': 'System.TLM.Tx.BaseAtten', 'value': '0.000000000000'}
+
+{'name': 'System.TLM.Tx.BiasMode', 'value': '0'}
+
+{'name': 'System.TLM.Tx.BiasOverrideValue', 'value': '7'}
+
+{'name': 'System.TLM.Tx.InhibitPowerDetectors', 'value': '0'}
+
+{'name': 'System.TLM.Tx.Multibeam.Bias', 'value': '0'}
+
+{'name': 'System.TLM.Tx.Multibeam.CommonAtten', 'value': '0.000000000000'}
+
+{'name': 'System.TLM.Tx.Multibeam.FeAtten', 'value': '0.000000000000'}
+
+{'name': 'System.TLM.Tx.Multibeam.FePhase', 'value': '0.000000000000'}
+
+{'name': 'System.TLM.Tx.PhaseDither', 'value': '0.000000000000'}
+
+{'name': 'System.TLM.Tx.PowerMode', 'value': '2'}
+
+{'name': 'System.TLM.Tx.SplitMode', 'value': '1'}
+
+{'name': 'System.TLM.TxCombinerMapping', 'value': ''}
+
+{'name': 'System.TLM.UseCombinerPointingCalibrationLookUpTables', 'value': '0'}
+
+{'name': 'System.TLM.VerifyRFICWrites', 'value': '1'}
+
+{'name': 'System.TPB.Mpb1PowerMode', 'value': '2'}
+
+{'name': 'System.TPB.Mpb2PowerMode', 'value': '2'}
+
+{'name': 'System.TPB.Mpb3PowerMode', 'value': '2'}
+
+{'name': 'System.TemperatureMonitoring.NearLimit', 'value': '80.000000000000'}
+
+{'name': 'System.TemperatureMonitoring.OverLimit', 'value': '100.000000000000'}
+
+{'name': 'System.TerminalType', 'value': '5'}
+
+{'name': 'System.TransportLogger.MessagesTypes', 'value': ''}
+
+{'name': 'System.TransportLogger.ToFile', 'value': '0'}
+
+{'name': 'System.TxFlattening.Beam1.Enabled', 'value': '0'}
+
+{'name': 'System.TxFlattening.Beam1.TargetEirp', 'value': '45.000000000000'}
+
+{'name': 'System.TxFlattening.Beam2.Enabled', 'value': '0'}
+
+{'name': 'System.TxFlattening.Beam2.TargetEirp', 'value': '45.000000000000'}
+
+{'name': 'System.TxFlattening.Enabled', 'value': '0'}
+
+{'name': 'System.Upgrade.DebugModeEnable', 'value': '0'}
+
+{'name': 'System.Upgrade.blfwk.CanFileLoggerEnable', 'value': '0'}
+
+{'name': 'System.Upgrade.blfwk.ForwardLogsEnable', 'value': '1'}
+
+{'name': 'System.WIFI.Apply', 'value': '0'}
+
+{'name': 'System.WIFI.Mode', 'value': 'Off'}
+
+{'name': 'System.WIFI.Passkey', 'value': ''}
+
+{'name': 'System.WIFI.SSID', 'value': ''}
+
+{'name': 'System.Watchdogs.ACUTimers.EnableWatchdog', 'value': '1'}
+
+{'name': 'System.Watchdogs.ACUTimers.StallTimerTest', 'value': '0'}
+
+{'name': 'System.Watchdogs.CALTimeout', 'value': '8'}
+
+{'name': 'System.Watchdogs.MPBTimeout', 'value': '8'}
+
+{'name': 'System.Watchdogs.PSFCTimeout', 'value': '8'}
+
+{'name': 'System.Watchdogs.TLMTimeout', 'value': '20'}
+
+{'name': 'System.Watchdogs.TPBTimeout', 'value': '8'}
+
+weightings:
+
+[]
+
+calibration file upload progress:
+
+[{'name': 'R0_sectionA.cal', 'progress': '0%'}, {'name': 'R0_sectionB.cal', 'progress': '0%'}, {'name': 'R0_sectionC.cal', 'progress': '0%'}, {'name': 'R10_sectionA.cal', 'progress': '0%'}, {'name': 'R10_sectionB.cal', 'progress': '0%'}, {'name': 'R10_sectionC.cal', 'progress': '0%'}, {'name': 'R11_sectionA.cal', 'progress': '0%'}, {'name': 'R11_sectionB.cal', 'progress': '0%'}, {'name': 'R11_sectionC.cal', 'progress': '0%'}, {'name': 'R12_sectionA.cal', 'progress': '0%'}, {'name': 'R12_sectionB.cal', 'progress': '0%'}, {'name': 'R12_sectionC.cal', 'progress': '0%'}, {'name': 'R13_sectionA.cal', 'progress': '0%'}, {'name': 'R13_sectionB.cal', 'progress': '0%'}, {'name': 'R13_sectionC.cal', 'progress': '0%'}, {'name': 'R14_sectionA.cal', 'progress': '0%'}, {'name': 'R14_sectionB.cal', 'progress': '0%'}, {'name': 'R14_sectionC.cal', 'progress': '0%'}, {'name': 'R15_sectionA.cal', 'progress': '0%'}, {'name': 'R15_sectionB.cal', 'progress': '0%'}, {'name': 'R15_sectionC.cal', 'progress': '0%'}, {'name': 'R16_sectionA.cal', 'progress': '0%'}, {'name': 'R16_sectionB.cal', 'progress': '0%'}, {'name': 'R16_sectionC.cal', 'progress': '0%'}, {'name': 'R17_sectionA.cal', 'progress': '0%'}, {'name': 'R17_sectionB.cal', 'progress': '0%'}, {'name': 'R17_sectionC.cal', 'progress': '0%'}, {'name': 'R18_sectionA.cal', 'progress': '0%'}, {'name': 'R18_sectionB.cal', 'progress': '0%'}, {'name': 'R18_sectionC.cal', 'progress': '0%'}, {'name': 'R19_sectionA.cal', 'progress': '0%'}, {'name': 'R19_sectionB.cal', 'progress': '0%'}, {'name': 'R19_sectionC.cal', 'progress': '0%'}, {'name': 'R1_sectionA.cal', 'progress': '0%'}, {'name': 'R1_sectionB.cal', 'progress': '0%'}, {'name': 'R1_sectionC.cal', 'progress': '0%'}, {'name': 'R20_sectionA.cal', 'progress': '0%'}, {'name': 'R20_sectionB.cal', 'progress': '0%'}, {'name': 'R20_sectionC.cal', 'progress': '0%'}, {'name': 'R21_sectionA.cal', 'progress': '0%'}, {'name': 'R21_sectionB.cal', 'progress': '0%'}, {'name': 'R21_sectionC.cal', 'progress': '0%'}, {'name': 'R22_sectionA.cal', 'progress': '0%'}, {'name': 'R22_sectionB.cal', 'progress': '0%'}, {'name': 'R22_sectionC.cal', 'progress': '0%'}, {'name': 'R23_sectionA.cal', 'progress': '0%'}, {'name': 'R23_sectionB.cal', 'progress': '0%'}, {'name': 'R23_sectionC.cal', 'progress': '0%'}, {'name': 'R24_sectionA.cal', 'progress': '0%'}, {'name': 'R24_sectionB.cal', 'progress': '0%'}, {'name': 'R24_sectionC.cal', 'progress': '0%'}, {'name': 'R25_sectionA.cal', 'progress': '0%'}, {'name': 'R25_sectionB.cal', 'progress': '0%'}, {'name': 'R25_sectionC.cal', 'progress': '0%'}, {'name': 'R26_sectionA.cal', 'progress': '0%'}, {'name': 'R26_sectionB.cal', 'progress': '0%'}, {'name': 'R26_sectionC.cal', 'progress': '0%'}, {'name': 'R27_sectionA.cal', 'progress': '0%'}, {'name': 'R27_sectionB.cal', 'progress': '0%'}, {'name': 'R27_sectionC.cal', 'progress': '0%'}, {'name': 'R28_sectionA.cal', 'progress': '0%'}, {'name': 'R28_sectionB.cal', 'progress': '0%'}, {'name': 'R28_sectionC.cal', 'progress': '0%'}, {'name': 'R29_sectionA.cal', 'progress': '0%'}, {'name': 'R29_sectionB.cal', 'progress': '0%'}, {'name': 'R29_sectionC.cal', 'progress': '0%'}, {'name': 'R2_sectionA.cal', 'progress': '0%'}, {'name': 'R2_sectionB.cal', 'progress': '0%'}, {'name': 'R2_sectionC.cal', 'progress': '0%'}, {'name': 'R30_sectionA.cal', 'progress': '0%'}, {'name': 'R30_sectionB.cal', 'progress': '0%'}, {'name': 'R30_sectionC.cal', 'progress': '0%'}, {'name': 'R31_sectionA.cal', 'progress': '0%'}, {'name': 'R31_sectionB.cal', 'progress': '0%'}, {'name': 'R31_sectionC.cal', 'progress': '0%'}, {'name': 'R32_sectionA.cal', 'progress': '0%'}, {'name': 'R32_sectionB.cal', 'progress': '0%'}, {'name': 'R32_sectionC.cal', 'progress': '0%'}, {'name': 'R33_sectionA.cal', 'progress': '0%'}, {'name': 'R33_sectionB.cal', 'progress': '0%'}, {'name': 'R33_sectionC.cal', 'progress': '0%'}, {'name': 'R34_sectionA.cal', 'progress': '0%'}, {'name': 'R34_sectionB.cal', 'progress': '0%'}, {'name': 'R34_sectionC.cal', 'progress': '0%'}, {'name': 'R35_sectionA.cal', 'progress': '0%'}, {'name': 'R35_sectionB.cal', 'progress': '0%'}, {'name': 'R35_sectionC.cal', 'progress': '0%'}, {'name': 'R36_sectionA.cal', 'progress': '0%'}, {'name': 'R36_sectionB.cal', 'progress': '0%'}, {'name': 'R36_sectionC.cal', 'progress': '0%'}, {'name': 'R37_sectionA.cal', 'progress': '0%'}, {'name': 'R37_sectionB.cal', 'progress': '0%'}, {'name': 'R37_sectionC.cal', 'progress': '0%'}, {'name': 'R38_sectionA.cal', 'progress': '0%'}, {'name': 'R38_sectionB.cal', 'progress': '0%'}, {'name': 'R38_sectionC.cal', 'progress': '0%'}, {'name': 'R39_sectionA.cal', 'progress': '0%'}, {'name': 'R39_sectionB.cal', 'progress': '0%'}, {'name': 'R39_sectionC.cal', 'progress': '0%'}, {'name': 'R3_sectionA.cal', 'progress': '0%'}, {'name': 'R3_sectionB.cal', 'progress': '0%'}, {'name': 'R3_sectionC.cal', 'progress': '0%'}, {'name': 'R40_sectionA.cal', 'progress': '0%'}, {'name': 'R40_sectionB.cal', 'progress': '0%'}, {'name': 'R40_sectionC.cal', 'progress': '0%'}, {'name': 'R41_sectionA.cal', 'progress': '0%'}, {'name': 'R41_sectionB.cal', 'progress': '0%'}, {'name': 'R41_sectionC.cal', 'progress': '0%'}, {'name': 'R42_sectionA.cal', 'progress': '0%'}, {'name': 'R42_sectionB.cal', 'progress': '0%'}, {'name': 'R42_sectionC.cal', 'progress': '0%'}, {'name': 'R43_sectionA.cal', 'progress': '0%'}, {'name': 'R43_sectionB.cal', 'progress': '0%'}, {'name': 'R43_sectionC.cal', 'progress': '0%'}, {'name': 'R44_sectionA.cal', 'progress': '0%'}, {'name': 'R44_sectionB.cal', 'progress': '0%'}, {'name': 'R44_sectionC.cal', 'progress': '0%'}, {'name': 'R45_sectionA.cal', 'progress': '0%'}, {'name': 'R45_sectionB.cal', 'progress': '0%'}, {'name': 'R45_sectionC.cal', 'progress': '0%'}, {'name': 'R46_sectionA.cal', 'progress': '0%'}, {'name': 'R46_sectionB.cal', 'progress': '0%'}, {'name': 'R46_sectionC.cal', 'progress': '0%'}, {'name': 'R47_sectionA.cal', 'progress': '0%'}, {'name': 'R47_sectionB.cal', 'progress': '0%'}, {'name': 'R47_sectionC.cal', 'progress': '0%'}, {'name': 'R48_sectionA.cal', 'progress': '0%'}, {'name': 'R48_sectionB.cal', 'progress': '0%'}, {'name': 'R48_sectionC.cal', 'progress': '0%'}, {'name': 'R49_sectionA.cal', 'progress': '0%'}, {'name': 'R49_sectionB.cal', 'progress': '0%'}, {'name': 'R49_sectionC.cal', 'progress': '0%'}, {'name': 'R4_sectionA.cal', 'progress': '0%'}, {'name': 'R4_sectionB.cal', 'progress': '0%'}, {'name': 'R4_sectionC.cal', 'progress': '0%'}, {'name': 'R50_sectionA.cal', 'progress': '0%'}, {'name': 'R50_sectionB.cal', 'progress': '0%'}, {'name': 'R50_sectionC.cal', 'progress': '0%'}, {'name': 'R51_sectionA.cal', 'progress': '0%'}, {'name': 'R51_sectionB.cal', 'progress': '0%'}, {'name': 'R51_sectionC.cal', 'progress': '0%'}, {'name': 'R52_sectionA.cal', 'progress': '0%'}, {'name': 'R52_sectionB.cal', 'progress': '0%'}, {'name': 'R52_sectionC.cal', 'progress': '0%'}, {'name': 'R53_sectionA.cal', 'progress': '0%'}, {'name': 'R53_sectionB.cal', 'progress': '0%'}, {'name': 'R53_sectionC.cal', 'progress': '0%'}, {'name': 'R5_sectionA.cal', 'progress': '0%'}, {'name': 'R5_sectionB.cal', 'progress': '0%'}, {'name': 'R5_sectionC.cal', 'progress': '0%'}, {'name': 'R6_sectionA.cal', 'progress': '0%'}, {'name': 'R6_sectionB.cal', 'progress': '0%'}, {'name': 'R6_sectionC.cal', 'progress': '0%'}, {'name': 'R7_sectionA.cal', 'progress': '0%'}, {'name': 'R7_sectionB.cal', 'progress': '0%'}, {'name': 'R7_sectionC.cal', 'progress': '0%'}, {'name': 'R8_sectionA.cal', 'progress': '0%'}, {'name': 'R8_sectionB.cal', 'progress': '0%'}, {'name': 'R8_sectionC.cal', 'progress': '0%'}, {'name': 'R9_sectionA.cal', 'progress': '0%'}, {'name': 'R9_sectionB.cal', 'progress': '0%'}, {'name': 'R9_sectionC.cal', 'progress': '0%'}, {'name': 'RFICRx.cal', 'progress': '0%'}, {'name': 'RFICTx.cal', 'progress': '100%'}, {'name': 'T0_sectionA.cal', 'progress': '100%'}, {'name': 'T0_sectionB.cal', 'progress': '100%'}, {'name': 'T0_sectionC.cal', 'progress': '100%'}, {'name': 'T10_sectionA.cal', 'progress': '0%'}, {'name': 'T10_sectionB.cal', 'progress': '0%'}, {'name': 'T10_sectionC.cal', 'progress': '0%'}, {'name': 'T11_sectionA.cal', 'progress': '0%'}, {'name': 'T11_sectionB.cal', 'progress': '0%'}, {'name': 'T11_sectionC.cal', 'progress': '0%'}, {'name': 'T12_sectionA.cal', 'progress': '0%'}, {'name': 'T12_sectionB.cal', 'progress': '0%'}, {'name': 'T12_sectionC.cal', 'progress': '0%'}, {'name': 'T13_sectionA.cal', 'progress': '0%'}, {'name': 'T13_sectionB.cal', 'progress': '0%'}, {'name': 'T13_sectionC.cal', 'progress': '0%'}, {'name': 'T14_sectionA.cal', 'progress': '0%'}, {'name': 'T14_sectionB.cal', 'progress': '0%'}, {'name': 'T14_sectionC.cal', 'progress': '0%'}, {'name': 'T15_sectionA.cal', 'progress': '0%'}, {'name': 'T15_sectionB.cal', 'progress': '0%'}, {'name': 'T15_sectionC.cal', 'progress': '0%'}, {'name': 'T16_sectionA.cal', 'progress': '0%'}, {'name': 'T16_sectionB.cal', 'progress': '0%'}, {'name': 'T16_sectionC.cal', 'progress': '0%'}, {'name': 'T17_sectionA.cal', 'progress': '0%'}, {'name': 'T17_sectionB.cal', 'progress': '0%'}, {'name': 'T17_sectionC.cal', 'progress': '0%'}, {'name': 'T18_sectionA.cal', 'progress': '0%'}, {'name': 'T18_sectionB.cal', 'progress': '0%'}, {'name': 'T18_sectionC.cal', 'progress': '0%'}, {'name': 'T19_sectionA.cal', 'progress': '0%'}, {'name': 'T19_sectionB.cal', 'progress': '0%'}, {'name': 'T19_sectionC.cal', 'progress': '0%'}, {'name': 'T1_sectionA.cal', 'progress': '100%'}, {'name': 'T1_sectionB.cal', 'progress': '100%'}, {'name': 'T1_sectionC.cal', 'progress': '100%'}, {'name': 'T20_sectionA.cal', 'progress': '0%'}, {'name': 'T20_sectionB.cal', 'progress': '0%'}, {'name': 'T20_sectionC.cal', 'progress': '0%'}, {'name': 'T21_sectionA.cal', 'progress': '0%'}, {'name': 'T21_sectionB.cal', 'progress': '0%'}, {'name': 'T21_sectionC.cal', 'progress': '0%'}, {'name': 'T22_sectionA.cal', 'progress': '0%'}, {'name': 'T22_sectionB.cal', 'progress': '0%'}, {'name': 'T22_sectionC.cal', 'progress': '0%'}, {'name': 'T23_sectionA.cal', 'progress': '0%'}, {'name': 'T23_sectionB.cal', 'progress': '0%'}, {'name': 'T23_sectionC.cal', 'progress': '0%'}, {'name': 'T24_sectionA.cal', 'progress': '0%'}, {'name': 'T24_sectionB.cal', 'progress': '0%'}, {'name': 'T24_sectionC.cal', 'progress': '0%'}, {'name': 'T25_sectionA.cal', 'progress': '0%'}, {'name': 'T25_sectionB.cal', 'progress': '0%'}, {'name': 'T25_sectionC.cal', 'progress': '0%'}, {'name': 'T26_sectionA.cal', 'progress': '0%'}, {'name': 'T26_sectionB.cal', 'progress': '0%'}, {'name': 'T26_sectionC.cal', 'progress': '0%'}, {'name': 'T27_sectionA.cal', 'progress': '0%'}, {'name': 'T27_sectionB.cal', 'progress': '0%'}, {'name': 'T27_sectionC.cal', 'progress': '0%'}, {'name': 'T28_sectionA.cal', 'progress': '0%'}, {'name': 'T28_sectionB.cal', 'progress': '0%'}, {'name': 'T28_sectionC.cal', 'progress': '0%'}, {'name': 'T29_sectionA.cal', 'progress': '0%'}, {'name': 'T29_sectionB.cal', 'progress': '0%'}, {'name': 'T29_sectionC.cal', 'progress': '0%'}, {'name': 'T2_sectionA.cal', 'progress': '100%'}, {'name': 'T2_sectionB.cal', 'progress': '100%'}, {'name': 'T2_sectionC.cal', 'progress': '100%'}, {'name': 'T30_sectionA.cal', 'progress': '0%'}, {'name': 'T30_sectionB.cal', 'progress': '0%'}, {'name': 'T30_sectionC.cal', 'progress': '0%'}, {'name': 'T31_sectionA.cal', 'progress': '0%'}, {'name': 'T31_sectionB.cal', 'progress': '0%'}, {'name': 'T31_sectionC.cal', 'progress': '0%'}, {'name': 'T32_sectionA.cal', 'progress': '0%'}, {'name': 'T32_sectionB.cal', 'progress': '0%'}, {'name': 'T32_sectionC.cal', 'progress': '0%'}, {'name': 'T33_sectionA.cal', 'progress': '0%'}, {'name': 'T33_sectionB.cal', 'progress': '0%'}, {'name': 'T33_sectionC.cal', 'progress': '0%'}, {'name': 'T34_sectionA.cal', 'progress': '0%'}, {'name': 'T34_sectionB.cal', 'progress': '0%'}, {'name': 'T34_sectionC.cal', 'progress': '0%'}, {'name': 'T35_sectionA.cal', 'progress': '0%'}, {'name': 'T35_sectionB.cal', 'progress': '0%'}, {'name': 'T35_sectionC.cal', 'progress': '0%'}, {'name': 'T36_sectionA.cal', 'progress': '0%'}, {'name': 'T36_sectionB.cal', 'progress': '0%'}, {'name': 'T36_sectionC.cal', 'progress': '0%'}, {'name': 'T37_sectionA.cal', 'progress': '0%'}, {'name': 'T37_sectionB.cal', 'progress': '0%'}, {'name': 'T37_sectionC.cal', 'progress': '0%'}, {'name': 'T38_sectionA.cal', 'progress': '0%'}, {'name': 'T38_sectionB.cal', 'progress': '0%'}, {'name': 'T38_sectionC.cal', 'progress': '0%'}, {'name': 'T39_sectionA.cal', 'progress': '0%'}, {'name': 'T39_sectionB.cal', 'progress': '0%'}, {'name': 'T39_sectionC.cal', 'progress': '0%'}, {'name': 'T3_sectionA.cal', 'progress': '100%'}, {'name': 'T3_sectionB.cal', 'progress': '100%'}, {'name': 'T3_sectionC.cal', 'progress': '100%'}, {'name': 'T40_sectionA.cal', 'progress': '0%'}, {'name': 'T40_sectionB.cal', 'progress': '0%'}, {'name': 'T40_sectionC.cal', 'progress': '0%'}, {'name': 'T41_sectionA.cal', 'progress': '0%'}, {'name': 'T41_sectionB.cal', 'progress': '0%'}, {'name': 'T41_sectionC.cal', 'progress': '0%'}, {'name': 'T42_sectionA.cal', 'progress': '0%'}, {'name': 'T42_sectionB.cal', 'progress': '0%'}, {'name': 'T42_sectionC.cal', 'progress': '0%'}, {'name': 'T43_sectionA.cal', 'progress': '0%'}, {'name': 'T43_sectionB.cal', 'progress': '0%'}, {'name': 'T43_sectionC.cal', 'progress': '0%'}, {'name': 'T44_sectionA.cal', 'progress': '0%'}, {'name': 'T44_sectionB.cal', 'progress': '0%'}, {'name': 'T44_sectionC.cal', 'progress': '0%'}, {'name': 'T45_sectionA.cal', 'progress': '0%'}, {'name': 'T45_sectionB.cal', 'progress': '0%'}, {'name': 'T45_sectionC.cal', 'progress': '0%'}, {'name': 'T46_sectionA.cal', 'progress': '0%'}, {'name': 'T46_sectionB.cal', 'progress': '0%'}, {'name': 'T46_sectionC.cal', 'progress': '0%'}, {'name': 'T47_sectionA.cal', 'progress': '0%'}, {'name': 'T47_sectionB.cal', 'progress': '0%'}, {'name': 'T47_sectionC.cal', 'progress': '0%'}, {'name': 'T48_sectionA.cal', 'progress': '0%'}, {'name': 'T48_sectionB.cal', 'progress': '0%'}, {'name': 'T48_sectionC.cal', 'progress': '0%'}, {'name': 'T49_sectionA.cal', 'progress': '0%'}, {'name': 'T49_sectionB.cal', 'progress': '0%'}, {'name': 'T49_sectionC.cal', 'progress': '0%'}, {'name': 'T4_sectionA.cal', 'progress': '100%'}, {'name': 'T4_sectionB.cal', 'progress': '100%'}, {'name': 'T4_sectionC.cal', 'progress': '100%'}, {'name': 'T50_sectionA.cal', 'progress': '0%'}, {'name': 'T50_sectionB.cal', 'progress': '0%'}, {'name': 'T50_sectionC.cal', 'progress': '0%'}, {'name': 'T51_sectionA.cal', 'progress': '0%'}, {'name': 'T51_sectionB.cal', 'progress': '0%'}, {'name': 'T51_sectionC.cal', 'progress': '0%'}, {'name': 'T52_sectionA.cal', 'progress': '0%'}, {'name': 'T52_sectionB.cal', 'progress': '0%'}, {'name': 'T52_sectionC.cal', 'progress': '0%'}, {'name': 'T53_sectionA.cal', 'progress': '0%'}, {'name': 'T53_sectionB.cal', 'progress': '0%'}, {'name': 'T53_sectionC.cal', 'progress': '0%'}, {'name': 'T5_sectionA.cal', 'progress': '100%'}, {'name': 'T5_sectionB.cal', 'progress': '100%'}, {'name': 'T5_sectionC.cal', 'progress': '100%'}, {'name': 'T6_sectionA.cal', 'progress': '0%'}, {'name': 'T6_sectionB.cal', 'progress': '0%'}, {'name': 'T6_sectionC.cal', 'progress': '0%'}, {'name': 'T7_sectionA.cal', 'progress': '0%'}, {'name': 'T7_sectionB.cal', 'progress': '0%'}, {'name': 'T7_sectionC.cal', 'progress': '0%'}, {'name': 'T8_sectionA.cal', 'progress': '0%'}, {'name': 'T8_sectionB.cal', 'progress': '0%'}, {'name': 'T8_sectionC.cal', 'progress': '0%'}, {'name': 'T9_sectionA.cal', 'progress': '0%'}, {'name': 'T9_sectionB.cal', 'progress': '0%'}, {'name': 'T9_sectionC.cal', 'progress': '0%'}]
+
+calibration file info:
+
+[{'name': 'rficTable_TA_27500_s2000_ES2_0p5dB', 'kind': 'RFIC'}, {'name': 'rficTable_TA_28000_s2000_ES2_0p5dB', 'kind': 'RFIC'}, {'name': 'rficTable_TA_28500_s2000_ES2_0p5dB', 'kind': 'RFIC'}, {'name': 'rficTable_TA_29000_s2000_ES2_0p5dB', 'kind': 'RFIC'}, {'name': 'rficTable_TA_29500_s2000_ES2_0p5dB_Fill_in_New_LUT', 'kind': 'RFIC'}, {'name': 'rficTable_TA_30000_s2000_ES2_0p5dB', 'kind': 'RFIC'}, {'name': 'rficTable_TA_30500_s2000_ES2_0p5dB', 'kind': 'RFIC'}, {'name': 'rficTable_TA_31000_s2000_ES2_0p5dB', 'kind': 'RFIC'}, {'name': 'rficTable_TP_27500_s2000_ES2_0p5dB', 'kind': 'RFIC'}, {'name': 'rficTable_TP_28000_s2000_ES2_0p5dB', 'kind': 'RFIC'}, {'name': 'rficTable_TP_28500_s2000_ES2_0p5dB', 'kind': 'RFIC'}, {'name': 'rficTable_TP_29000_s2000_ES2_0p5dB', 'kind': 'RFIC'}, {'name': 'rficTable_TP_29500_s2000_ES2_0p5dB_Fill_in_New_LUT', 'kind': 'RFIC'}, {'name': 'rficTable_TP_30000_s2000_ES2_0p5dB', 'kind': 'RFIC'}, {'name': 'rficTable_TP_30500_s2000_ES2_0p5dB', 'kind': 'RFIC'}, {'name': 'rficTable_TP_31000_s2000_ES2_0p5dB', 'kind': 'RFIC'}]
+
+calibration status:
+
+{'nameInUse': 'Tx_0.5dB_Lens1_240529_LUT_1_20_38_v2.tar', 'nameUploaded': '', 'activeStatus': 'Present', 'uploadStatus': 'Not present', 'supportedVersion': '7', 'activeValid': '1', 'uploadValid': '0'}
+
+07/01/2024, 17:23:18
+32 ERROR LOGS for time range 07/01/2024, 17:17:54 to 07/01/2024, 17:23:18
+
+2024-07-01T16:18:01.407Z,Error,MCP960X,ACU,Thermocouple not found. Addr: 0x64
+
+2024-07-01T16:18:11.407Z,Error,MCP960X,ACU,Thermocouple not found. Addr: 0x64
+
+2024-07-01T16:18:21.407Z,Error,MCP960X,ACU,Thermocouple not found. Addr: 0x64
+
+2024-07-01T16:18:31.408Z,Error,MCP960X,ACU,Thermocouple not found. Addr: 0x64
+
+2024-07-01T16:18:41.408Z,Error,MCP960X,ACU,Thermocouple not found. Addr: 0x64
+
+2024-07-01T16:18:51.409Z,Error,MCP960X,ACU,Thermocouple not found. Addr: 0x64
+
+2024-07-01T16:19:01.409Z,Error,MCP960X,ACU,Thermocouple not found. Addr: 0x64
+
+2024-07-01T16:19:11.409Z,Error,MCP960X,ACU,Thermocouple not found. Addr: 0x64
+
+2024-07-01T16:19:21.410Z,Error,MCP960X,ACU,Thermocouple not found. Addr: 0x64
+
+2024-07-01T16:19:31.410Z,Error,MCP960X,ACU,Thermocouple not found. Addr: 0x64
+
+2024-07-01T16:19:41.411Z,Error,MCP960X,ACU,Thermocouple not found. Addr: 0x64
+
+2024-07-01T16:19:51.411Z,Error,MCP960X,ACU,Thermocouple not found. Addr: 0x64
+
+2024-07-01T16:20:01.411Z,Error,MCP960X,ACU,Thermocouple not found. Addr: 0x64
+
+2024-07-01T16:20:11.412Z,Error,MCP960X,ACU,Thermocouple not found. Addr: 0x64
+
+2024-07-01T16:20:21.412Z,Error,MCP960X,ACU,Thermocouple not found. Addr: 0x64
+
+2024-07-01T16:20:31.413Z,Error,MCP960X,ACU,Thermocouple not found. Addr: 0x64
+
+2024-07-01T16:20:41.413Z,Error,MCP960X,ACU,Thermocouple not found. Addr: 0x64
+
+2024-07-01T16:20:51.413Z,Error,MCP960X,ACU,Thermocouple not found. Addr: 0x64
+
+2024-07-01T16:21:01.414Z,Error,MCP960X,ACU,Thermocouple not found. Addr: 0x64
+
+2024-07-01T16:21:11.414Z,Error,MCP960X,ACU,Thermocouple not found. Addr: 0x64
+
+2024-07-01T16:21:21.415Z,Error,MCP960X,ACU,Thermocouple not found. Addr: 0x64
+
+2024-07-01T16:21:31.415Z,Error,MCP960X,ACU,Thermocouple not found. Addr: 0x64
+
+2024-07-01T16:21:41.416Z,Error,MCP960X,ACU,Thermocouple not found. Addr: 0x64
+
+2024-07-01T16:21:51.416Z,Error,MCP960X,ACU,Thermocouple not found. Addr: 0x64
+
+2024-07-01T16:22:01.416Z,Error,MCP960X,ACU,Thermocouple not found. Addr: 0x64
+
+2024-07-01T16:22:11.417Z,Error,MCP960X,ACU,Thermocouple not found. Addr: 0x64
+
+2024-07-01T16:22:21.417Z,Error,MCP960X,ACU,Thermocouple not found. Addr: 0x64
+
+2024-07-01T16:22:31.418Z,Error,MCP960X,ACU,Thermocouple not found. Addr: 0x64
+
+2024-07-01T16:22:41.418Z,Error,MCP960X,ACU,Thermocouple not found. Addr: 0x64
+
+2024-07-01T16:22:51.418Z,Error,MCP960X,ACU,Thermocouple not found. Addr: 0x64
+
+2024-07-01T16:23:01.419Z,Error,MCP960X,ACU,Thermocouple not found. Addr: 0x64
+
+2024-07-01T16:23:11.419Z,Error,MCP960X,ACU,Thermocouple not found. Addr: 0x64
