@@ -25,6 +25,8 @@ from matplotlib.markers import MarkerStyle
 
 plt.close('all')
 
+TLM_Type = 'Tx' #'Rx'
+
 
 # definitions
 def find_measFiles(path, fileString, beam, freq_set, it):
@@ -36,8 +38,7 @@ def find_measFiles(path, fileString, beam, freq_set, it):
                 files.append(os.path.join(root, file))
     measFiles = []
     for i in range(len(files)):
-        if fileString in files[i] and 'eam' + str(beam) in files[i] and f'{freq_set}_GHz_4' in files[
-            i] and f'teration_{it}' in files[i]:
+        if fileString in files[i] and 'eam' + str(beam) in files[i] and f'{freq_set}_GHz_4' in files[i] and f'teration_{it}' in files[i]:
             measFiles.append(files[i])
 
 
@@ -74,64 +75,33 @@ def load__measFiles(file_path):
 def plot_tlm_map(array_in, title, cmin, cmax, cstp, f_set, plot_no, tick_step, delta_pol, align=False, col_map='jet'):
     global Z, Y, temp, Z_trim, map_tlm_df
 
-    # get x and y positions (this still uses the map_tlm rather than the dataframe)
-    x = []
-    y = []
-    rot = []
-    for i in range(len(map_tlm)):
-        x.append(map_tlm[i, 4])
-        y.append(map_tlm[i, 5])
-        rot.append(map_tlm[i, 8])
-    x = np.array(x)
-    y = np.array(y)
-
-    # lens specific coordinate rotation (this still uses the map_tlm rather than the dataframe)
-    if align == True:
-        x_shift = map_tlm[:, 4] - map_tlm[:, 2]
-        y_shift = map_tlm[:, 5] - map_tlm[:, 3]
-        angle = x_shift * 0.0
-        for i in range(len(map_tlm)):
-            if map_tlm[i, 0] == 1:
-                angle[i] = 0.0
-            if map_tlm[i, 0] == 2:
-                angle[i] = -77.25
-            if map_tlm[i, 0] == 3:
-                angle[i] = -154.5
-        x_rot = x_shift * cos(angle * np.pi / 180.0) - y_shift * sin(angle * np.pi / 180.0)
-        y_rot = y_shift * cos(angle * np.pi / 180.0) + x_shift * sin(angle * np.pi / 180.0)
-        x_new = x_rot + map_tlm[:, 2]
-        y_new = y_rot + map_tlm[:, 3]
-        x = x_new.copy()
-        y = y_new.copy()
-
-    # select the column of data
-    col = np.argmin((meas_frequencies - f_set) ** 2)
-    Z = array_in[:, col]
-
-    # odd ports
-    Z_trim = Z[::2]
-    Z_trim_pol1 = Z_trim.copy()
-    #print(Z_trim_pol1)
-    # marker for odd ports
-    m = MarkerStyle('D', fillstyle='left')
-    m._transform.rotate_deg(float(rot[i] + 45))
-
     # map tlm as a df (and roated if needed)
-    map_tlm_df = pd.read_csv(
-        r'C:\Users\RyanFairclough\PycharmProjects\Post-Processing\20231218_TLMPortMapPlot\20240227_tlm_map_plotter\20221019_TLMCalInputs\Mrk1_S2000_TLM_RX_ArrayGeometry_V20062022_CalInfo_Orig.csv',
-        header=1)
+    if TLM_Type == 'Rx':
+        map_tlm_df = pd.read_csv(r'C:\Users\RyanFairclough\PycharmProjects\Post-Processing\20231218_TLMPortMapPlot\20240227_tlm_map_plotter\20221019_TLMCalInputs\Mrk1_S2000_TLM_RX_ArrayGeometry_V20062022_CalInfo_Orig.csv',header=1)
+    elif TLM_Type == 'Tx':
+        map_tlm_df = pd.read_csv(r'C:\Users\RyanFairclough\PycharmProjects\Post-Processing\20231218_TLMPortMapPlot\20240227_tlm_map_plotter\20221019_TLMCalInputs\Mrk1_S2000_TLM_TX_ArrayGeometry_V20062022_CalInfo.csv',header=1)
 
     if align == True:
         map_tlm_df[' Feed x [mm] shift'] = map_tlm_df[' Feed x [mm]'] - map_tlm_df[' Lens x [mm]']
         map_tlm_df[' Feed y [mm] shift'] = map_tlm_df[' Feed y [mm]'] - map_tlm_df[' Lens y [mm]']
+        map_tlm_df[' Dual-Pol Probe rotation [deg]']
         angle = np.array(map_tlm_df[' Feed x [mm] shift']) * 0.0
-        for i in range(len(map_tlm_df[' Feed x [mm] shift'])):
-            if map_tlm_df['Lens no.'][i] == 1:
-                angle[i] = 0.0
-            if map_tlm_df['Lens no.'][i] == 2:
-                angle[i] = -77.25
-            if map_tlm_df['Lens no.'][i] == 3:
-                angle[i] = -154.5
+        if TLM_Type == 'Rx':
+            for i in range(len(map_tlm_df[' Feed x [mm] shift'])):
+                if map_tlm_df['Lens no.'][i] == 1:
+                    angle[i] = 0.0
+                    if map_tlm_df['Lens no.'][i] == 2:
+                        angle[i] = -77.25
+                        if map_tlm_df['Lens no.'][i] == 3:
+                            angle[i] = -154.5
+        if TLM_Type == 'Tx':
+            for i in range(len(map_tlm_df[' Feed x [mm] shift'])):
+                if map_tlm_df['Lens no.'][i] == 1:
+                    angle[i] = 0.0
+                    if map_tlm_df['Lens no.'][i] == 2:
+                        angle[i] = -102.5
+                        if map_tlm_df['Lens no.'][i] == 3:
+                            angle[i] = -205
         map_tlm_df['angle'] = angle
         map_tlm_df['x_rot'] = map_tlm_df[' Feed x [mm] shift'] * cos(map_tlm_df['angle'] * np.pi / 180.0) - map_tlm_df[
             ' Feed y [mm] shift'] * sin(map_tlm_df['angle'] * np.pi / 180.0)
@@ -139,16 +109,19 @@ def plot_tlm_map(array_in, title, cmin, cmax, cstp, f_set, plot_no, tick_step, d
             ' Feed x [mm] shift'] * sin(map_tlm_df['angle'] * np.pi / 180.0)
         map_tlm_df['x_new'] = map_tlm_df['x_rot'] + map_tlm_df[' Lens x [mm]']
         map_tlm_df['y_new'] = map_tlm_df['y_rot'] + map_tlm_df[' Lens y [mm]']
+        print(map_tlm_df)
 
     # plot rfics
-    map_rfic = pd.read_csv(
-        r'C:\Users\RyanFairclough\PycharmProjects\Post-Processing\20231218_TLMPortMapPlot\20240227_tlm_map_plotter\20221019_TLMCalInputs\MK1_RX_TLM_RFIC_Patch_Feed_mapping_RF.csv')
+    if TLM_Type == 'Rx':
+        map_rfic = pd.read_csv(r'C:\Users\RyanFairclough\PycharmProjects\Post-Processing\20231218_TLMPortMapPlot\20240227_tlm_map_plotter\20221019_TLMCalInputs\MK1_RX_TLM_RFIC_Patch_Feed_mapping_RF.csv')
+    elif TLM_Type == 'Tx':
+        map_rfic = pd.read_csv(r'C:\Users\RyanFairclough\PycharmProjects\Post-Processing\20231218_TLMPortMapPlot\20240227_tlm_map_plotter\20221019_TLMCalInputs\MK1_TX_TLM_RFIC_Patch_Feed_Mapping.csv')
     rfics = list(set(list(map_rfic['RFIC Number'])))
     print(rfics)
     for rfic in rfics:
         map_rfic_cut = map_rfic[map_rfic['RFIC Number'] == rfic]
         print(map_rfic_cut)
-        patches = map_rfic_cut['Patch Number ']
+        patches = map_rfic_cut['Patch Number']
         for lens in [0, 1, 2]:
             x_rfic = [];
             y_rfic = []
@@ -167,32 +140,41 @@ def plot_tlm_map(array_in, title, cmin, cmax, cstp, f_set, plot_no, tick_step, d
                                       patch, fontsize=3)
             axs[plot_no].plot(x_rfic, y_rfic, 'm-', linewidth=1.0, alpha=0.7)
 
+    # select the column of data
+    col = np.argmin((meas_frequencies - f_set) ** 2)
+    Z = array_in[:, col]
+    np.median(Z)
+    # odd ports
+    Z_trim = Z[::2]
+    Z_trim_pol1 = Z_trim.copy()
+
+    # marker for odd ports
+    m = MarkerStyle('D', fillstyle='left')
+    m._transform.rotate_deg(map_tlm_df[' Dual-Pol Probe rotation [deg]'][i] + 45)
+    #print('QQQQQqqqq',rot[i])
     # scatter plot for odd pol
     v = np.linspace(cmin, cmax, int((cmax - cmin) / cstp), endpoint=True)
     cmap_chosen = cm.get_cmap(col_map, int((cmax - cmin) / cstp))
     #print(v)
-    cntr = axs[plot_no].scatter(x, y, c=Z_trim, marker=m, s=200, edgecolors='black', linewidths=0.5, cmap=cmap_chosen,
-                                vmin=min(v), vmax=max(v), alpha=1.0)
+    cntr = axs[plot_no].scatter(map_tlm_df[' Feed x [mm]'],map_tlm_df[' Feed y [mm]'], c=Z_trim, marker=m, s=200, edgecolors='black', linewidths=0.5, cmap=cmap_chosen,vmin=min(v), vmax=max(v), alpha=1.0)
 
-    # even pol
     # even pol
     Z_trim = Z[1::2]
     Z_trim_pol2 = Z_trim.copy()
-    print(Z_trim_pol2)
+
     # marker for even ports
     m = MarkerStyle('D', fillstyle='right')
-    m._transform.rotate_deg(float(rot[i] + 45))
+    m._transform.rotate_deg(map_tlm_df[' Dual-Pol Probe rotation [deg]'][i] + 45)
 
     # scatter plot for even pol
-    cntr = axs[plot_no].scatter(x, y, c=Z_trim, marker=m, s=200, edgecolors='black', linewidths=0.5, cmap=cmap_chosen,
-                                vmin=min(v), vmax=max(v), alpha=1.0)
+    cntr = axs[plot_no].scatter(map_tlm_df[' Feed x [mm]'],map_tlm_df[' Feed y [mm]'] , c=Z_trim, marker=m, s=200, edgecolors='black', linewidths=0.5, cmap=cmap_chosen,vmin=min(v), vmax=max(v), alpha=1.0)
 
     # scatter plot (on-top) for delta pol
     if delta_pol == True:
         m = MarkerStyle('s')
-        m._transform.rotate_deg(float(rot[i]))
-        cntr = axs[plot_no].scatter(x, y, c=(Z_trim_pol1 - Z_trim_pol2), marker=m, s=200, edgecolors='black',
-                                    linewidths=0.5, vmin=min(v), vmax=max(v), cmap=cmap_chosen, alpha=1.0)
+        m._transform.rotate_deg(map_tlm_df[' Dual-Pol Probe rotation [deg]'][i])
+        cntr = axs[plot_no].scatter(map_tlm_df[' Feed x [mm]'],map_tlm_df[' Feed y [mm]'] , c=(Z_trim_pol1 - Z_trim_pol2), marker=m, s=200, edgecolors='black',linewidths=0.5, vmin=min(v), vmax=max(v), cmap=cmap_chosen, alpha=1.0)
+
     cbar = plt.colorbar(cntr)
     cbar.set_ticks(np.arange(min(v), max(v) + tick_step, tick_step))
     axs[plot_no].set_xlabel('X [mm]');
@@ -201,13 +183,13 @@ def plot_tlm_map(array_in, title, cmin, cmax, cstp, f_set, plot_no, tick_step, d
 
 
 # set-up
-file_path = r'C:\Users\RyanFairclough\Downloads\Test_rx_lensPLOT'
-map_tlm = np.genfromtxt(
-    r'C:\Users\RyanFairclough\PycharmProjects\Post-Processing\20231218_TLMPortMapPlot\20240227_tlm_map_plotter\20221019_TLMCalInputs\Mrk1_S2000_TLM_RX_ArrayGeometry_V20062022_CalInfo_Orig.csv',
-    skip_header=2, dtype=float, delimiter=',')
-
-# freq_list = ['27.50', '28.00', '28.50', '29.00', '29.50', '30.00', '30.50', '31.00']
-freq_list = ['18.20']
+file_path = r'C:\Users\RyanFairclough\Downloads\1-20-3820\2024-07-01_17-16-37_MCR1_Rig1_cal_QR00169_1_20_3820_Bias_0_Override_7_29.50_45C'
+if TLM_Type == 'Rx':
+    map_tlm_df = pd.read_csv(r'C:\Users\RyanFairclough\PycharmProjects\Post-Processing\20231218_TLMPortMapPlot\20240227_tlm_map_plotter\20221019_TLMCalInputs\Mrk1_S2000_TLM_RX_ArrayGeometry_V20062022_CalInfo_Orig.csv',header=1)
+    freq_list = ['19.20']
+elif TLM_Type == 'Tx':
+    map_tlm_df = pd.read_csv(r'C:\Users\RyanFairclough\PycharmProjects\Post-Processing\20231218_TLMPortMapPlot\20240227_tlm_map_plotter\20221019_TLMCalInputs\Mrk1_S2000_TLM_TX_ArrayGeometry_V20062022_CalInfo.csv',header=1)
+    freq_list = ['29.50']#['27.50', '28.00', '28.50', '29.00', '29.50', '30.00', '30.50', '31.00']
 align = True
 beam_list = [2]
 it = 1
@@ -257,7 +239,8 @@ for gain_phase in ['gain', 'phase']:
 
             # initialise out_array
             count = 0
-            out_array = np.zeros([len(map_tlm) * 2, len(freq_list) * 2 * len(beam_list)])
+            out_array = np.zeros([len(map_tlm_df) * 2, len(freq_list) * 2 * len(beam_list)])
+
 
             for beam in beam_list:
 
@@ -349,7 +332,7 @@ for gain_phase in ['gain', 'phase']:
             col = df.pop("Lens no.")
             df.insert(0, col.name, col)
             pol = []
-            for i in range(len(map_tlm)):
+            for i in range(len(map_tlm_df)):
                 pol.append('Odd')
                 pol.append('Even')
             df['pol'] = pol.copy()
