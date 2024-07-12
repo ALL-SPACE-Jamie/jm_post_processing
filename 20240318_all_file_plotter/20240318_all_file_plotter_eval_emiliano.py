@@ -66,7 +66,7 @@ def load__measFiles(file_path):
                     meas_params[paramName] = meas_params[paramName][1:]
 
 
-file_path = r'C:\Users\jmitchell\Downloads\BB_Cal_1iteration_all_freq'
+file_path = r'C:\Users\jmitchell\Downloads\P1\AllFiles'
 f_set_list = ['29.50']
 fig, axs = plt.subplots(nrows=2, ncols=3, figsize=(30, 20))
 it=1

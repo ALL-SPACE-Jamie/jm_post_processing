@@ -210,7 +210,7 @@ def tlm_wafermap(tlm_log):
 ## code
 
 # load
-file_path = r'C:\Users\jmitchell\Downloads'
+file_path = r'C:\Users\jmitchell\Downloads\20240530'
 map_tlm_df = pd.read_csv(r'C:\GitHub\jm_post_processing\20240227_tlm_map_plotter\20221019_TLMCalInputs\Mrk1_S2000_TLM_TX_ArrayGeometry_V20062022_CalInfo.csv', header=1)
 map_rfic = pd.read_csv(r'C:\GitHub\jm_post_processing\20240227_tlm_map_plotter\20221019_TLMCalInputs\MK1_TX_TLM_RFIC_Patch_Feed_Mapping.csv')
 
