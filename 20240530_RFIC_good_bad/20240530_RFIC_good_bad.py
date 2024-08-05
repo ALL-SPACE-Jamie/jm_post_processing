@@ -100,7 +100,7 @@ def rfic_passfail(pass_thresh, beam, freq_set, file_path, map_tlm_df, map_rfic):
         out_array_file = np.concatenate((tlm_SN.reshape(456,1), lens.reshape(456,1), ports.reshape(456,1), gain.reshape(456,1), deviation.reshape(456,1), zipped_arr), axis=1)
         out_array = np.concatenate((out_array, out_array_file), axis=0)    
     
-    headers = ['TLM S/N', 'lens', 'port', 'gain (beam{beam}) [dB]', 'deviation (beam{beam}) [dB]', 'RFIC', 'channel_H', 'channel_V', 'patch']
+    headers = ['TLM S/N', 'lens', 'port', f'gain (beam{beam}) [dB]', f'deviation (beam{beam}) [dB]', 'RFIC', 'channel_H', 'channel_V', 'patch']
     df = pd.DataFrame(out_array, columns=headers)
     
     # flag rfics, output df and plot
@@ -114,9 +114,11 @@ def rfic_passfail(pass_thresh, beam, freq_set, file_path, map_tlm_df, map_rfic):
     lens_log = []
     rfic_log = []
     max_dev_log = []
+    chanel_dev_fromIC_log = []
     av_dev_log = []
     fail_flag_log = []
     pass_flag_log = []
+    max_channel_dev_log = []
     
     for tlm in tlms:
         df_tlm = df[df['TLM S/N'] == tlm]
@@ -124,10 +126,15 @@ def rfic_passfail(pass_thresh, beam, freq_set, file_path, map_tlm_df, map_rfic):
             df_tlm_lens = df_tlm[df_tlm['lens'] == lens]
             for RFIC in RFICs:
                 df_tlm_lens_rfic = df_tlm_lens[df_tlm_lens['RFIC'] == RFIC]
-                devs = np.array(df_tlm_lens_rfic['deviation (beam{beam}) [dB]'])
-                max_dev = np.max(devs)
+                devs = np.array(df_tlm_lens_rfic[f'deviation (beam{beam}) [dB]'])
+                gains = np.array(df_tlm_lens_rfic[f'gain (beam{beam}) [dB]'])
+                max_dev_abs = np.max(abs(devs))
                 av_dev = np.median(devs)
+                loc = np.argmax(abs(devs))
+                max_dev = devs[loc]
                 std_dev = np.std(devs)
+                loc_furthest_channel = np.argmax((gains-np.median(gains))**2)
+                max_channel_dev = gains[loc_furthest_channel]
                 if av_dev < pass_thresh and max_dev < 2.0:
                     flag = 1
                 else:
@@ -138,6 +145,7 @@ def rfic_passfail(pass_thresh, beam, freq_set, file_path, map_tlm_df, map_rfic):
                 rfic_log.append(RFIC)
                 max_dev_log.append(max_dev)
                 av_dev_log.append(av_dev)
+                max_channel_dev_log.append(max_channel_dev)
                 fail_flag_log.append(flag)
                 pass_flag_log.append((flag-1)*-1)
                 
@@ -146,8 +154,9 @@ def rfic_passfail(pass_thresh, beam, freq_set, file_path, map_tlm_df, map_rfic):
         'TLM No': tlm_number_log,
         'lens': lens_log,
         'RFIC': rfic_log,
-        f'max dev (beam{beam}) [dB]': max_dev_log,
-        f'av dev (beam{beam}) [dB]': av_dev_log,
+        f'Max deviation of the worst channel on an RFIC from typical RFIC behaviour (beam{beam}) [dB]': max_dev_log,
+        f'Average deviation of RFIC from typical RFIC behaviour (beam{beam}) [dB]': av_dev_log,
+        f'Max deviation of the worst channel on an RFIC from the average response of that RFIC (beam{beam}) [dB]': max_channel_dev_log,
         f'fail flag (beam{beam}, pass_thresh={pass_thresh}dB)': fail_flag_log,
         f'pass flag (beam{beam}, pass_thresh={pass_thresh}dB)': pass_flag_log
         })
@@ -210,13 +219,13 @@ def tlm_wafermap(tlm_log):
 ## code
 
 # load
-file_path = r'C:\Users\jmitchell\Downloads\20240530'
+file_path = r'C:\Users\jmitchell\Downloads\P3Tx____'
 map_tlm_df = pd.read_csv(r'C:\GitHub\jm_post_processing\20240227_tlm_map_plotter\20221019_TLMCalInputs\Mrk1_S2000_TLM_TX_ArrayGeometry_V20062022_CalInfo.csv', header=1)
 map_rfic = pd.read_csv(r'C:\GitHub\jm_post_processing\20240227_tlm_map_plotter\20221019_TLMCalInputs\MK1_TX_TLM_RFIC_Patch_Feed_Mapping.csv')
 
 # params
 freq_set = '29.50'
-pass_thresh = -7.5
+pass_thresh = -5.0
 
 # run
 beam_log = {}
@@ -295,10 +304,3 @@ for beam in [1,2]:
         plt.xlim([20,80])
         plt.ylim([-10,60])
     plt.legend()
-                
-            
-            
-            
-            
-            
-            

@@ -112,7 +112,7 @@ def plot_tlm_map(array_in, title, cmin, cmax, cstp, f_set, plot_no, tick_step, d
     m._transform.rotate_deg(float(rot[i]+45))
     
     # map tlm as a df (and roated if needed)
-    map_tlm_df = pd.read_csv(r'C:\Users\jmitchell\Documents\GitHub\jm_post_processing\20240227_tlm_map_plotter\20221019_TLMCalInputs\Mrk1_S2000_TLM_TX_ArrayGeometry_V20062022_CalInfo.csv', header=1)
+    map_tlm_df = pd.read_csv(r'C:\GitHub\jm_post_processing\20240227_tlm_map_plotter\20221019_TLMCalInputs\Mrk1_S2000_TLM_TX_ArrayGeometry_V20062022_CalInfo.csv', header=1)
         
     if align == True:
         map_tlm_df[' Feed x [mm] shift'] =   map_tlm_df[' Feed x [mm]'] -  map_tlm_df[' Lens x [mm]']
@@ -132,7 +132,7 @@ def plot_tlm_map(array_in, title, cmin, cmax, cstp, f_set, plot_no, tick_step, d
         map_tlm_df['y_new'] = map_tlm_df['y_rot'] + map_tlm_df[' Lens y [mm]']
     
     # plot rfics
-    map_rfic = pd.read_csv(r'C:\Users\jmitchell\Documents\GitHub\jm_post_processing\20240227_tlm_map_plotter\20221019_TLMCalInputs\MK1_TX_TLM_RFIC_Patch_Feed_Mapping.csv')
+    map_rfic = pd.read_csv(r'C:\GitHub\jm_post_processing\20240227_tlm_map_plotter\20221019_TLMCalInputs\MK1_TX_TLM_RFIC_Patch_Feed_Mapping.csv')
     rfics = list(set(list(map_rfic['RFIC Number'])))
     for rfic in rfics:
         map_rfic_cut = map_rfic[map_rfic['RFIC Number'] == rfic]
@@ -181,16 +181,16 @@ def plot_tlm_map(array_in, title, cmin, cmax, cstp, f_set, plot_no, tick_step, d
     axs[plot_no].set_title(title)
 
 # set-up
-file_path = r'C:\Scratch\20240312\iterations_delta\2024-03-12_12-45-24_MCR3_Rig1_cal_QR420-0230-00924_3iter_29.00_45C\investigation\delta_OP_iteration_3-2'
+file_path = r'C:\Users\jmitchell\Downloads\P4'
 map_tlm = np.genfromtxt(
-    r'C:\Users\jmitchell\Documents\GitHub\jm_post_processing\20240227_tlm_map_plotter\20221019_TLMCalInputs\Mrk1_S2000_TLM_TX_ArrayGeometry_V20062022_CalInfo.csv', 
+    r'C:\GitHub\jm_post_processing\20240227_tlm_map_plotter\20221019_TLMCalInputs\Mrk1_S2000_TLM_TX_ArrayGeometry_V20062022_CalInfo.csv', 
     skip_header=2, dtype=float, delimiter=',')
 
 freq_list = ['27.50', '28.00', '28.50', '29.00', '29.50', '30.00', '30.50', '31.00']
-freq_list = ['29.00']
+# freq_list = ['29.50']
 align = True
-beam_list = [1]
-it = 3
+beam_list = [1,2]
+it = 1
 
 # run
 for gain_phase in ['gain']:
@@ -199,13 +199,15 @@ for gain_phase in ['gain']:
         
         if delta_pol == True:
             if gain_phase == 'gain':
-                vmax_std = 6.0
-                v_OP = 8.0
-                v_RFA = v_OP*1.0
-                v_OP_step = 0.01
+                vmax_std = 4.0
+                v_OP_max = 5.0
+                v_OP_min = -5.0
+                v_RFA_min = v_OP_min*1.0
+                v_RFA_max = v_OP_max*1.0
+                v_OP_step = 1.0
                 v_RFA_step = v_OP_step*1.0
                 v_spread_step = 0.01
-                tick_step = 1
+                tick_step = 1.0
             if gain_phase == 'phase':
                 vmax_std = 90
                 v_OP = 360
@@ -217,13 +219,15 @@ for gain_phase in ['gain']:
                 
         if delta_pol == False:
             if gain_phase == 'gain':
-                vmax_std = 6.0
-                v_OP = 10.0
-                v_RFA = v_OP*1.0
+                vmax_std = 4.0
+                v_OP_max = 10.0
+                v_OP_min = -5.0
+                v_RFA_min = 0.0
+                v_RFA_max = 10.0
                 v_OP_step = 0.01
                 v_RFA_step = v_OP_step*1.0
                 v_spread_step = 0.01
-                tick_step = 2
+                tick_step = 1.0
             if gain_phase == 'phase':
                 vmax_std = 90
                 v_OP = 360
@@ -233,7 +237,7 @@ for gain_phase in ['gain']:
                 v_spread_step = 0.01
                 tick_step = 45.0
         
-        for f_type in ['OP']:#, 'RFA']:
+        for f_type in ['RFA']:
             
             # initialise out_array
             count = 0
@@ -264,10 +268,10 @@ for gain_phase in ['gain']:
                     # make plots for OP or RFA
                     if 'OP' in f_type:
                         plot_tlm_map(meas_array_av, f'({f_type}) {gain_phase} (average), N = {len(measFiles)} \n Freq = {freq_set} GHz, Beam {beam}, Delta Pol={delta_pol}, Lens Align={align}',
-                                     -v_OP, v_OP, v_OP_step, float(meas_params['f_c']),0,tick_step=tick_step,delta_pol=delta_pol, align=align)
+                                     v_OP_min, v_OP_max, v_OP_step, float(meas_params['f_c']),0,tick_step=tick_step,delta_pol=delta_pol, align=align)
                     elif 'RFA' in f_type:
                         plot_tlm_map(meas_array_av, f'({f_type}) {gain_phase} (average), N = {len(measFiles)} \n Freq = {freq_set} GHz, Beam {beam}, Delta Pol={delta_pol}, Lens Align={align}',
-                                     -v_RFA, v_RFA, v_RFA_step, float(meas_params['f_c']),0, tick_step=tick_step,delta_pol=delta_pol, align=align)
+                                     v_RFA_min, v_RFA_max, v_RFA_step, float(meas_params['f_c']),0, tick_step=tick_step,delta_pol=delta_pol, align=align)
                     
                     # add to out_array
                     out_array[:,count] = Z
@@ -286,9 +290,10 @@ for gain_phase in ['gain']:
                     axs[2].plot(np.linspace(1,len(meas_array),num = len(meas_array)), meas_array_av[:,col])
                     axs[2].set_xlabel('port')
                     axs[2].set_ylabel(f'{gain_phase}')
-                    axs[2].set_xlim([0, 500])
-                    axs[2].set_ylim([-5, 5])
+                    ylim_int = int(np.median(meas_array_av[:,col]))
+                    axs[2].set_ylim([ylim_int-8, ylim_int+8])
                     axs[2].set_xticks(np.linspace(0, 500, num=int(500/50)+1))
+                    axs[2].set_xlim([0, 456])
                     axs[2].set_title(f'({f_type}) {gain_phase} (average), N = {len(measFiles)} \n Freq = {freq_set} GHz, Beam {beam}, Lens Align={align}')
                     axs[2].grid('on')
                         

@@ -6,17 +6,18 @@ import csv
 import pickle
 
 # set-up
-make_plots = True
+make_plots = False
 setUp = {}
-setUp['filePath'] = r'C:\Scratch\20240405\Tx_I5'
+setUp['filePath'] = r'C:\scratch\20240712_I12_TemperatureInterpolation\I13\Rx'
 setUp['pathCreate'] = ['figures', 'figuresBAD', 'files', 'pickles', 'overviews']
 setUp['filePath_forGradGen'] = setUp['filePath'] + r'\_data_forGradGen'
 setUp['filePath_forInterp'] = setUp['filePath'] + r'\_data_forInterp'
 setUp['picklePath'] = setUp['filePath'] + r'\pickles'
 setUp['fileOutPath'] = setUp['filePath'] + r'\files'
-# freq_list = ['17.70', '18.20', '18.70', '19.20', '19.70', '20.20', '20.70', '21.20']
-freq_list = ['27.50', '28.00', '28.50', '29.00', '29.50', '30.00', '30.50', '31.00']
+freq_list = ['17.70', '18.20', '18.70', '19.20', '19.70', '20.20', '20.70', '21.20']
+# freq_list = ['29.50', '28.00', '28.50', '29.00', '27.50', '30.00', '30.50', '31.00']
 # freqChoice = '17.70'
+RFA_offset = 0.0
 
 # create directories
 for subDirectory in setUp['pathCreate']:
@@ -219,8 +220,8 @@ for freqChoice in freq_list:
                 plt.plot(x, y, 'bo-')
                 temperatureGrads[str(port)][beam][f_c]['gain'] = np.mean([(-calcArrays[beam][f_c]['Averages']['TdiffMin']
                                                                            ['gain'][port, freqCol]/20.0), (calcArrays[beam][f_c]['Averages']['TdiffMax']['gain'][port, freqCol]/20.0)])
-                print(-calcArrays[beam][f_c]['Averages']['TdiffMin']['gain'][0, 0]/20.0)
-                print(calcArrays[beam][f_c]['Averages']['TdiffMax']['gain'][0, 0]/20.0)
+                # print(-calcArrays[beam][f_c]['Averages']['TdiffMin']['gain'][0, 0]/20.0)
+                # print(calcArrays[beam][f_c]['Averages']['TdiffMax']['gain'][0, 0]/20.0)
                 plt.title('Frequency = ' + str(frequency) + ' GHz, Port = ' +
                           str(port) + ', Beam' + str(beam)[-1])
                 plt.xlabel('Temperature [degC]')
@@ -246,8 +247,8 @@ for freqChoice in freq_list:
                 plt.plot(x, y, 'ro-')
                 temperatureGrads[str(port)][beam][f_c]['phase'] = np.mean([(-calcArrays[beam][f_c]['Averages']['TdiffMin']
                                                                             ['phase'][port, freqCol]/20.0), (calcArrays[beam][f_c]['Averages']['TdiffMax']['phase'][port, freqCol]/20.0)])
-                print(-calcArrays[beam][f_c]['Averages']['TdiffMin']['phase'][0, 0]/20.0)
-                print(calcArrays[beam][f_c]['Averages']['TdiffMax']['phase'][0, 0]/20.0)
+                # print(-calcArrays[beam][f_c]['Averages']['TdiffMin']['phase'][0, 0]/20.0)
+                # print(calcArrays[beam][f_c]['Averages']['TdiffMax']['phase'][0, 0]/20.0)
                 plt.title('Frequency = ' + str(frequency) + ' GHz, Port = ' +
                           str(port) + ', Beam' + str(beam)[-1])
                 plt.xlabel('Temperature [degC]')
@@ -266,8 +267,8 @@ for freqChoice in freq_list:
                 plt.close('all')
     
                 count = count + 1
-                print('Fig ' + str(count) + ' / ' +
-                      str(int(phaseArray.shape[0])*2*len(calcArrays[beam])))
+                # print('Fig ' + str(count) + ' / ' +
+                      # str(int(phaseArray.shape[0])*2*len(calcArrays[beam])))
     
     # plot grads
     if make_plots == True:
@@ -338,6 +339,10 @@ for freqChoice in freq_list:
                 calcArrays[beam][f_c]['Averages']['TdiffMin']['gain']
             meas_array_phase_25 = meas_array_phase + \
                 calcArrays[beam][f_c]['Averages']['TdiffMin']['phase']
+                
+            # replace negative gains with 0.0 and apply offset
+            meas_array_gain_25 = meas_array_gain_25 + RFA_offset
+            meas_array_gain_25[meas_array_gain_25 < 0.0] = 0.0
             for j in range(meas_array_phase_25.shape[0]):
                 for k in range(meas_array_phase_25.shape[1]):
                     if meas_array_phase_25[j, k] > 359.9999999999:
@@ -366,9 +371,13 @@ for freqChoice in freq_list:
         if meas_params['Temp. [°C]'] == '45':
             meas_array_65 = np.zeros_like(meas_array)
             meas_array_gain_65 = meas_array_gain + \
-                calcArrays[beam][f_c]['Averages']['TdiffMax']['gain']
+                calcArrays[beam][f_c]['Averages']['TdiffMax']['gain']            
             meas_array_phase_65 = meas_array_phase + \
                 calcArrays[beam][f_c]['Averages']['TdiffMax']['phase']
+                
+            # replace negative gains with 0.0 and apply offset
+            meas_array_gain_65 = meas_array_gain_65 + RFA_offset
+            meas_array_gain_65[meas_array_gain_65 < 0.0] = 0.0
             for j in range(meas_array_phase_65.shape[0]):
                 for k in range(meas_array_phase_65.shape[1]):
                     if meas_array_phase_65[j, k] > 359.9999999999:
@@ -391,3 +400,36 @@ for freqChoice in freq_list:
             with file:
                 write = csv.writer(file)
                 write.writerows(meas_array_65_list)
+                
+    for filePath in measFiles:
+        find__fileDetails(filePath)
+        if meas_params['Temp. [°C]'] == '45':
+            meas_array_45 = np.zeros_like(meas_array)
+            meas_array_gain_45 = meas_array_gain*1.0
+            meas_array_phase_45 = meas_array_phase*1.0
+            
+            # replace negative gains with 0.0 and apply offset
+            meas_array_gain_45 = meas_array_gain_45 + RFA_offset
+            meas_array_gain_45[meas_array_gain_45 < 0.0] = 0.0
+            for j in range(meas_array_phase_45.shape[0]):
+                for k in range(meas_array_phase_45.shape[1]):
+                    if meas_array_phase_45[j, k] > 359.9999999999:
+                        meas_array_phase_45[j, k] = meas_array_phase_45[j, k] - 360.0
+                    if meas_array_phase_45[j, k] < 0.0:
+                        meas_array_phase_45[j, k] = meas_array_phase_45[j, k] + 360.0
+            for j in range(meas_array_gain_45.shape[1]):
+                meas_array_45[:, 2*j] = meas_array_gain_45[:, j]
+                meas_array_45[:, 2*j+1] = meas_array_phase_45[:, j]
+            meas_array_45_list = meas_info.copy()
+            for k in range(len(meas_array_45)):
+                meas_array_45_list.append(list(meas_array_45[k, :]))
+            temperature_index = [index for index in range(
+                len(meas_info)) if 'Temp. [°C]' in meas_info[index]][0]
+            meas_array_45_list[temperature_index][1] = str(45)
+            # write new file
+            file_path_save = setUp['filePath'] + '\\files' + \
+                '\\' + filePath.split('\\')[-1][0:-4] + '.csv'
+            file = open(file_path_save.replace('_45C_', '_45C_interp_'), 'w+', newline='')
+            with file:
+                write = csv.writer(file)
+                write.writerows(meas_array_45_list)

@@ -68,27 +68,47 @@ def load__measFiles(file_path):
 ## code
 
 # files
-file_path = r'C:\scratch\20240710'
+file_path = r'C:\Users\jmitchell\Downloads\Raw_Data'
 map_tlm_df = pd.read_csv(r'C:\GitHub\jm_post_processing\20240227_tlm_map_plotter\20221019_TLMCalInputs\Mrk1_S2000_TLM_TX_ArrayGeometry_V20062022_CalInfo.csv', header=1)
 map_rfic = pd.read_csv(r'C:\GitHub\jm_post_processing\20240227_tlm_map_plotter\20221019_TLMCalInputs\MK1_TX_TLM_RFIC_Patch_Feed_Mapping.csv')
 
 # params
 freq_set = '29.50'
-normalise = True
-board = '00143'
-for board in ['00143', '00172', '00169']:
+normalise = False
+file_search = 'RFA_2'
+
+# find boards
+boards = []
+find_measFiles(file_path, file_search, 1, freq_set, '-')
+for meas_file in measFiles:
+    load__measFiles(meas_file)
+    boards.append(meas_params['barcodes'])
+
+
+
+for board in boards:
     # boards
-    find_measFiles(file_path, 'OP_2', 1, freq_set, board)
-    
-        
-    rfics = list(set(map_rfic['RFIC Number']))
-    
+    find_measFiles(file_path, file_search, 2, freq_set, board)
     meas_file_overview_dict = {}
     for meas_file in measFiles:
         meas_file_overview_dict[meas_file] = {}
-        fig, axs = plt.subplots(nrows=3, ncols=2, figsize=(20,15))
-        for beam in [1,2]:
-            find_measFiles(file_path, 'OP_2', beam, freq_set, board)
+    find_measFiles(file_path, file_search, 1, freq_set, '-')
+    for meas_file in measFiles:
+        meas_file_overview_dict[meas_file] = {}
+        
+    rfics = list(set(map_rfic['RFIC Number']))
+    
+    # meas_file_overview_dict = {}
+    fig, axs = plt.subplots(nrows=3, ncols=2, figsize=(20,15))
+    for beam in [1, 2]:
+        find_measFiles(file_path, 'RFA_2', beam, freq_set, board)
+        
+        
+        
+        for meas_file in measFiles:
+            # meas_file_overview_dict[meas_file] = {}
+            
+                
             for lens in [0,1,2]:
                 load__measFiles(meas_file)
                 col = np.argmin((meas_frequencies-float(freq_set))**2)
@@ -121,11 +141,11 @@ for board in ['00143', '00172', '00169']:
                     else:
                         offset = 0.0
                                  
-                    axs[lens, beam-1].plot(rfic, np.median(port_gain_log)-offset, 'k^', markersize=15)
+                    axs[lens, beam-1].plot(rfic, np.median(port_gain_log)-offset, 'k^', markerfacecolor='none', markersize=15)
                     axs[lens, beam-1].plot([rfic, rfic], [np.median(port_gain_log)-np.std(port_gain_log)-offset, np.median(port_gain_log)+np.std(port_gain_log)-offset] , 'k-', markersize=15)
                     # axs[lens, beam-1].plot([rfic, rfic], [np.min(port_gain_log)-offset, np.max(port_gain_log)-offset] , 'k-', markersize=15)
                     axs[lens, beam-1].set_xlim([0,20])
-                    axs[lens, beam-1].set_ylim([-10, 10])
+                    axs[lens, beam-1].set_ylim([-10, 30])
                     axs[lens, beam-1].set_ylabel('dB')
                     axs[lens, beam-1].set_xlabel('rfic')
                     axs[lens, beam-1].set_title(f'Lens {lens+1}, beam {beam}: std_av = {round(np.median(rfic_std_log),1)} dB')
@@ -136,7 +156,7 @@ for board in ['00143', '00172', '00169']:
                     
                     board = meas_params['barcodes'].split('_')[0]
                     for idx in range(len(meas_params['barcodes'].split('_'))):
-                        if 'ias' in meas_params['barcodes'].split('_')[idx]:
+                        if '' in meas_params['barcodes'].split('_')[idx]:
                             start_val = idx
                     settings = meas_params['barcodes'].split('_')[start_val:]
                     
@@ -144,33 +164,42 @@ for board in ['00143', '00172', '00169']:
                     meas_file_overview_dict[meas_file]['settings'] = settings
                     meas_file_overview_dict[meas_file]['board'] = board
                     meas_file_overview_dict[meas_file]['category'] = meas_file.split('\\')[-4][2:]
+                    meas_file_overview_dict[meas_file]['beam'] = beam
         
-        fig.suptitle(f'board-{board}, settings: {settings}')
+        fig.suptitle(f'board-{board}')#)', settings: {settings}')
         plt.tight_layout()
-        plt.savefig(f'board-{board}_settings{str(settings)}.png', dpi=400)
-        
+        plt.savefig(f'board-{board}.png', dpi=400)
         
     fig, axs = plt.subplots(nrows=1, ncols=2, figsize=(20,15))
+    x_ticks = []
     for meas_file in list(meas_file_overview_dict.keys()):
         gain = []
         std = []
-        x_ticks = []
-        for beam in [1,2]:
-            for lens in [0,1,2]:
-                gain.append(meas_file_overview_dict[meas_file][f'beam{beam}lens{lens}'][1])
-                std.append(meas_file_overview_dict[meas_file][f'beam{beam}lens{lens}'][0])
-                x_ticks.append(f'beam{beam}lens{lens+1}')
-        label = meas_file_overview_dict[meas_file]['board'] + ': ' +  meas_file_overview_dict[meas_file]['category']#+ str(meas_file_overview_dict[meas_file]['settings'])
-        axs[0].plot(x_ticks, gain, 'o-', label=label)
-        axs[0].grid('on')
-        axs[0].legend(loc='upper left')
-        axs[0].set_ylim([10,30])
-        axs[0].set_ylabel('average rfic gain [dB]')
-        axs[1].plot(x_ticks, std, 'o-', label=label)
-        axs[1].grid('on')
-        axs[1].legend(loc='upper left')
-        axs[1].set_ylim([1,4])
-        axs[1].set_ylabel('average rfic channel spread [dB]')
+        
+        lens_list = [0,1,2]
+        
+        
+        for beam_filter in [1,2]:
+            if f'eam{beam_filter}' in meas_file and f'{freq_set}_GHz_4' in meas_file and board in meas_file:
+                beam = str(meas_file_overview_dict[meas_file]['beam'])
+                for lens in lens_list:
+                    gain.append(meas_file_overview_dict[meas_file][f'beam{beam}lens{lens}'][1])
+                    std.append(meas_file_overview_dict[meas_file][f'beam{beam}lens{lens}'][0])
+                    x_ticks.append(f'beam{beam}lens{lens+1}')
+                
+                label = meas_file_overview_dict[meas_file]['board'] + ': beam ' +  str(meas_file_overview_dict[meas_file]['beam'])#+ str(meas_file_overview_dict[meas_file]['settings'])
+                axs[0].plot(np.array(lens_list)+3*(beam_filter-1), gain, 'o-', label=label)
+                axs[0].grid('on')
+                axs[0].legend(loc='upper left')
+                axs[0].set_ylim([-10,30])
+                axs[0].set_ylabel('average rfic gain [dB]')
+                axs[1].plot(np.array(lens_list)+3*(beam_filter-1), std, 'o-', label=label)
+                axs[1].grid('on')
+                axs[1].legend(loc='upper left')
+                axs[1].set_ylim([1,4])
+                axs[1].set_ylabel('average rfic channel spread [dB]')
+    axs[0].set_xticks([0,1,2,3,4,5], x_ticks)
+    axs[1].set_xticks([0,1,2,3,4,5], x_ticks)
     fig.suptitle(f'board-{board}')
     plt.savefig(f'overview_board-{board}.png', dpi=400)
             

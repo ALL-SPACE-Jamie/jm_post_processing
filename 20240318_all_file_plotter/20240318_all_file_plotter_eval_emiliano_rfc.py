@@ -68,7 +68,7 @@ def load__measFiles(file_path):
 
 file_path = r'C:\Users\jmitchell\Downloads\P2'
 f_set_list = ['29.50']
-fig, axs = plt.subplots(nrows=2, ncols=2, figsize=(30, 20))
+
 it=1
 for beam in [1,2]:
     for fig_no in [0]:
