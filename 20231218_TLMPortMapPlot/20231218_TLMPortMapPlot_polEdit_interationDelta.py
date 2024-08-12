@@ -181,14 +181,14 @@ def plot_tlm_map(array_in, title, cmin, cmax, cstp, f_set, plot_no, tick_step, d
     axs[plot_no].set_title(title)
 
 # set-up
-file_path = r'C:\Users\jmitchell\Downloads\P4'
+file_path = r'C:\Users\jmitchell\Downloads\P3Tx_all\P3Tx_all\rest'
 map_tlm = np.genfromtxt(
     r'C:\GitHub\jm_post_processing\20240227_tlm_map_plotter\20221019_TLMCalInputs\Mrk1_S2000_TLM_TX_ArrayGeometry_V20062022_CalInfo.csv', 
     skip_header=2, dtype=float, delimiter=',')
 
 freq_list = ['27.50', '28.00', '28.50', '29.00', '29.50', '30.00', '30.50', '31.00']
 # freq_list = ['29.50']
-align = True
+align = False
 beam_list = [1,2]
 it = 1
 
@@ -219,7 +219,7 @@ for gain_phase in ['gain']:
                 
         if delta_pol == False:
             if gain_phase == 'gain':
-                vmax_std = 4.0
+                vmax_std = 5.0
                 v_OP_max = 10.0
                 v_OP_min = -5.0
                 v_RFA_min = 0.0
@@ -237,7 +237,7 @@ for gain_phase in ['gain']:
                 v_spread_step = 0.01
                 tick_step = 45.0
         
-        for f_type in ['RFA']:
+        for f_type in ['OP_2']:
             
             # initialise out_array
             count = 0
