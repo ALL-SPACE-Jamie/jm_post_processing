@@ -86,17 +86,33 @@ def gain_to_rfic_metrics(gain_col):
             rfic_std_log.append(np.std(port_gain_log))
             rfic_minmax_log.append(np.max(port_gain_log)-np.min(port_gain_log))
             
-    return np.array(rfic_offset_log), np.array(rfic_std_log), np.array(rfic_minmax_log)
+    return np.array(rfic_offset_log), np.array(rfic_std_log), np.array(rfic_minmax_log), rfics
 
+def pass_rate(df):
+    boards = list(set(df['board']))
+    board_pass = []
+    for board in boards:
+        df_board = df[df['board']==board]
+        if False in list(df_board['pass']):
+            board_pass.append(False)
+        else:
+            board_pass.append(True)          
 
+    pass_rate = 100.0*float(board_pass.count(True))/(float(len(board_pass))); print(round(pass_rate,2))
 
-
-
-
+    return boards, board_pass, pass_rate
 ## code
 
 # files
-file_path = r'C:\Users\jmitchell\Downloads\P3Tx_all\P3Tx_all\rest'
+# file_path = r'C:\scratch\20240903\TLM Results\P3\P3_TLMs_New_TX\P3_TLMs_New\Raw_Data\p3_bb'
+# file_path = r'C:\scratch\20240903\TLM Results\P4\P4_TLMs TX updated\P4_TLMs TX\P4_TLMs\BB\Raw_Data'
+# file_path = r'C:\scratch\20240903\TLM Results\P5\P5_TLMs tx\P5_TLMs\BB'
+# file_path = r'C:\scratch\20240903\TLM Results\P6\P6_TX_TLMs\P6_TLMs'
+file_path = r'C:\scratch\20240903\TLM Results\All_TLMs'
+file_path = r'C:\Users\jmitchell\Downloads\Pass TX TLMS 11-09-24\Pass TX TLMS 11-09-24\All TLMS'
+# file_path = r'C:\Users\jmitchell\Downloads\P1_Tx_Raw_Data'
+# file_path = r'C:\Users\jmitchell\Downloads\OneDrive_1_05-09-2024\Fails\Fails'
+file_path = r'C:\scratch\20240903\TLM Results\All_TLMs\Pass and Fail'
 map_tlm_df = pd.read_csv(r'C:\GitHub\jm_post_processing\20240227_tlm_map_plotter\20221019_TLMCalInputs\Mrk1_S2000_TLM_TX_ArrayGeometry_V20062022_CalInfo.csv', header=1)
 map_rfic = pd.read_csv(r'C:\GitHub\jm_post_processing\20240227_tlm_map_plotter\20221019_TLMCalInputs\MK1_TX_TLM_RFIC_Patch_Feed_Mapping.csv')
 df_tlmic = pd.read_excel(r'C:\Users\jmitchell\Downloads\es2i_wafer_map_master_GF.xlsx', sheet_name='es2i_wafer_map_master_GF', header=1)
@@ -105,14 +121,13 @@ df_tlmic = pd.read_excel(r'C:\Users\jmitchell\Downloads\es2i_wafer_map_master_GF
 freq_set = '29.50'
 beam = 1
 delta_board = False
-freq_list = ['29.50', '28.00', '28.50', '29.00', '27.50', '30.00', '30.50', '31.00']
+freq_list = ['27.50', '28.00', '28.50', '29.00', '29.50', '30.00', '30.50', '31.00']
 # freq_list = ['29.50']
 # freq_list = ['17.70', '18.20', '18.70', '19.20', '19.70', '20.20', '20.70', '21.20']
 
 # run
 
 df = pd.DataFrame()
-
 for beam in [1,2]:
     for freq_set in freq_list:        
         find_measFiles(file_path, 'OP_2', beam, freq_set)
@@ -127,10 +142,11 @@ for beam in [1,2]:
             for lens in [1,2,3]:
                 lens_medians.append(float(np.median(gain[int((lens-1)*len(gain)/3):int((lens)*len(gain)/3)])))
             lens_delta_max = max(lens_medians)-min(lens_medians)
-            rfic_offset_log, rfic_std_log, rfic_minmax_log = gain_to_rfic_metrics(gain)
+            rfic_offset_log, rfic_std_log, rfic_minmax_log, rficsrfica = gain_to_rfic_metrics(gain)
             rfic_offset_max = rfic_offset_log[np.argmax(abs(rfic_offset_log))]
             rfic_spread_max = rfic_std_log[np.argmax(abs(rfic_std_log))]
             rfic_minmax_max = rfic_minmax_log[np.argmax(abs(rfic_minmax_log))]
+            rfic_minmax_idx = np.argmax(abs(rfic_minmax_log))+1
             
             board = meas_params['barcodes']
             uid = meas_params['ER Id']
@@ -151,104 +167,181 @@ for beam in [1,2]:
                          'lens2_median [dB]': lens_medians[1], 'lens3_median [dB]': lens_medians[2], 'lens_delta_max': lens_delta_max,
                          'rfic_offset_max [dB]': rfic_offset_max, 'rfic_spread_max [dB]': rfic_spread_max, 'rfic_minmax_max [dB]': rfic_minmax_max,
                          'lens_delta_max [dB]': lens_delta_max, 'uid': uid, 'wafer_id_num': wafer_id_num,
-                         'lot': lot
+                         'lot': lot, 'rfic_minmax_maxidx': rfic_minmax_idx
                          }
             df = pd.concat([df, pd.DataFrame([new_entry])], ignore_index=True)
 
-
-
 limits = {}
-limits['27.50'] = {}
-limits['27.50']['gain_median [dB]'] = 6.0
+limits['median_gain'] = {}
+limits['median_gain']['27.50'] = [1.37, 2.03]
+limits['median_gain']['28.00'] = [5.82, 1.44]
+limits['median_gain']['28.50'] = [6.06, 1.57]
+limits['median_gain']['29.00'] = [5.13, 1.82]
+limits['median_gain']['29.50'] = [6.11, 1.60]
+limits['median_gain']['30.00'] = [6.46, 1.63]
+limits['median_gain']['30.50'] = [6.58, 1.93]
+limits['median_gain']['31.00'] = [5.51, 1.55]
+limits['tlm_spread'] = 3.50
+limits['lens_delta'] = 5.00
+limits['rfic_offset'] = 8.00
+limits['rfic_spread'] = 10.00
+limits['rfic_minmax'] = 24.00
+spread_factor = 2.0
 
+# pass fail
+df['pass'] = True
+pass_rate_log = []
 
+for idx in range(len(df)):
+    freq_set = df.iloc[idx]['frequency [GHz]']; freq_set = str(freq_set) + '0'
+    lower_lim = limits['median_gain'][freq_set][0]-spread_factor*limits['median_gain'][freq_set][1]
+    upper_lim = limits['median_gain'][freq_set][0]+spread_factor*limits['median_gain'][freq_set][1]
+    if not lower_lim < df.iloc[idx]['gain_median [dB]'] < upper_lim:
+        df.at[idx, 'pass'] = False     
+for idx in range(len(df)):
+    freq_set = df.iloc[idx]['frequency [GHz]']; freq_set = str(freq_set) + '0'
+    if df.iloc[idx]['min_port [dB]'] < limits['median_gain'][freq_set][0] - 20.0:
+        df.at[idx, 'pass'] = False
 
+for idx in range(len(df)):
+    if df.iloc[idx]['gain_spread [dB]'] > limits['tlm_spread']:
+        df.at[idx, 'pass'] = False
+
+for idx in range(len(df)):
+    if df.iloc[idx]['lens_delta_max [dB]'] > limits['lens_delta']:
+        df.at[idx, 'pass'] = False
+        
+for idx in range(len(df)):
+    if abs(df.iloc[idx]['rfic_offset_max [dB]']) > limits['rfic_offset']:
+        df.at[idx, 'pass'] = False
+        
+for idx in range(len(df)):
+    if abs(df.iloc[idx]['rfic_spread_max [dB]']) > limits['rfic_spread']:
+        df.at[idx, 'pass'] = False
+        
+for idx in range(len(df)):
+    if abs(df.iloc[idx]['rfic_minmax_max [dB]']) > limits['rfic_minmax']:
+        df.at[idx, 'pass'] = False
+
+diffs = []
+for idx in range(len(df)):
+    entry = df.iloc[idx]
+    board = df.iloc[idx]['board']
+    f = df.iloc[idx]['frequency [GHz]']
+    beam = df.iloc[idx]['beam']
+    if beam == 1:
+        other_beam = 2 
+    else:
+        other_beam = 1
+    df_other_beam = df[df['board']==board]
+    df_other_beam = df_other_beam[df_other_beam['frequency [GHz]']==f]
+    df_other_beam = df_other_beam[df_other_beam['beam']==other_beam]
+    diffs.append(abs(entry['gain_median [dB]'] - list(dict(df_other_beam)['gain_median [dB]'])[0]))
+    if abs(entry['gain_median [dB]'] - list(dict(df_other_beam)['gain_median [dB]'])[0]) > 3.0:
+        df.at[idx, 'pass'] = False
+
+boards, board_pass, pass_rate = pass_rate(df)
+print(pass_rate)
+
+# plots
 for freq_set in freq_list:
     fig, axs = plt.subplots(nrows=4, ncols=4, figsize=(40,25))
     df_freq = df[df['frequency [GHz]'] == float(freq_set)]
     for beam in [1,2]:
         df_plot = df_freq[df_freq['beam']==beam]
         
+        # median tlm gain
         sns.histplot(data=df_plot, x='gain_median [dB]', kde=True, ax=axs[0+(2*(beam-1)),0])
         axs[0+(2*(beam-1)),0].set_title(f'Median TLM gain [dB] (beam{beam})')
         axs[0+(2*(beam-1)),0].set_xlim([-6,12])
         
+        gain_median_terminal = np.median(df_plot['gain_median [dB]'])
+        gain_spread_terminal = np.std(df_plot['gain_median [dB]'])
+        axs[0+(2*(beam-1)),0].axvline(x=gain_median_terminal, color = 'k', linestyle='--', linewidth=2.0)
+        axs[0+(2*(beam-1)),0].axvline(x=limits['median_gain'][freq_set][0]-spread_factor*limits['median_gain'][freq_set][1], color='r')
+        axs[0+(2*(beam-1)),0].axvline(x=limits['median_gain'][freq_set][0]+spread_factor*limits['median_gain'][freq_set][1], color='r')
+        axs[0+(2*(beam-1)),0].axvspan(limits['median_gain'][freq_set][0]-10*limits['median_gain'][freq_set][1], limits['median_gain'][freq_set][0]-spread_factor*limits['median_gain'][freq_set][1], alpha=0.25, color='red')
+        axs[0+(2*(beam-1)),0].axvspan(limits['median_gain'][freq_set][0]+spread_factor*limits['median_gain'][freq_set][1], limits['median_gain'][freq_set][0]+10*limits['median_gain'][freq_set][1], alpha=0.25, color='red')
+        # axs[0+(2*(beam-1)),0].annotate('', xy=(limits['median_gain'][freq_set][0]-spread_factor*limits['median_gain'][freq_set][1], 3.0), xytext=(limits['median_gain'][freq_set][0]+spread_factor*limits['median_gain'][freq_set][1], 3.0), arrowprops=dict(arrowstyle='<->', color='red', lw=2))
+        # axs[0+(2*(beam-1)),0].text(gain_median_terminal-4.0*gain_spread_terminal, 3.0, f' 4std = 4 * {np.round(gain_spread_terminal,2)}', ha='center', va='center', color='red')
+        # print(f'{freq_set}')
+        # print(round(gain_median_terminal,2))
+        # print(round(gain_spread_terminal,2))
+        
+        # tlm spread
         sns.histplot(data=df_plot, x='gain_spread [dB]', kde=True, ax=axs[0+(2*(beam-1)),1])
         axs[0+(2*(beam-1)),1].set_title(f'TLM spread [dB] (beam{beam})')
         axs[0+(2*(beam-1)),1].set_xlim([2,4])
         
+        axs[0+(2*(beam-1)),1].axvline(x=limits['tlm_spread'], color='r')
+        axs[0+(2*(beam-1)),1].axvspan(limits['tlm_spread'], 1e6, alpha=0.25, color='red')
+        
+        # lens gain
         sns.histplot(data=df_plot, x='lens1_median [dB]', kde=True, ax=axs[0+(2*(beam-1)),2], label='lens1')
-        sns.histplot(data=df_plot, x='lens2_median [dB]', kde=True, ax=axs[0+(2*(beam-1)),2], label='lens1')
-        sns.histplot(data=df_plot, x='lens3_median [dB]', kde=True, ax=axs[0+(2*(beam-1)),2], label='lens1')
+        sns.histplot(data=df_plot, x='lens2_median [dB]', kde=True, ax=axs[0+(2*(beam-1)),2], label='lens2')
+        sns.histplot(data=df_plot, x='lens3_median [dB]', kde=True, ax=axs[0+(2*(beam-1)),2], label='lens3')
         axs[0+(2*(beam-1)),2].set_title(f'Lens gain [dB] (beam{beam})')
         axs[0+(2*(beam-1)),2].set_xlim([-6,12])
         axs[0+(2*(beam-1)),2].set_xlabel('lens_median [dB]')
         axs[0+(2*(beam-1)),2].legend()
         
+        # lens delta
         sns.histplot(data=df_plot, x='lens_delta_max [dB]', kde=True, ax=axs[0+(2*(beam-1)),3])
         axs[0+(2*(beam-1)),3].set_title(f'Largest lens delta [dB] (beam{beam})')
-        axs[0+(2*(beam-1)),3].set_xlim([0,6])
+        axs[0+(2*(beam-1)),3].set_xlim([0,12])
         
+        axs[0+(2*(beam-1)),3].axvline(x=limits['lens_delta'], color='r')
+        axs[0+(2*(beam-1)),3].axvspan(limits['lens_delta'], 1e6, alpha=0.25, color='red')
         
+        # largest RFIC delta
         sns.histplot(data=df_plot, x='rfic_offset_max [dB]', kde=True, binwidth=1, ax=axs[1+(2*(beam-1)),0])
         axs[1+(2*(beam-1)),0].set_title(f'Largest deviation of RFIC \n from 57 RFICs [dB] (beam{beam})')
         axs[1+(2*(beam-1)),0].set_xlim([-12,12])
         
+        axs[1+(2*(beam-1)),0].axvline(x=-limits['rfic_offset'], color='r')
+        axs[1+(2*(beam-1)),0].axvspan(-1e6, -limits['rfic_offset'], alpha=0.25, color='red')
+        axs[1+(2*(beam-1)),0].axvline(x=limits['rfic_offset'], color='r')
+        axs[1+(2*(beam-1)),0].axvspan(limits['rfic_offset'], 1e6, alpha=0.25, color='red')
         
+        # channel spread
         sns.histplot(data=df_plot, x='rfic_spread_max [dB]', kde=True, ax=axs[1+(2*(beam-1)),1])
         axs[1+(2*(beam-1)),1].set_title(f'Spread of 8 channels on RFIC [dB] (beam{beam})')
-        axs[1+(2*(beam-1)),1].set_xlim([-6,12])
+        axs[1+(2*(beam-1)),1].set_xlim([0,18])
+        # for_print = np.median(df_plot['rfic_spread_max [dB]'])
+        # print(f'{freq_set}GHz, beam{beam}, {for_print}')
         
+        axs[1+(2*(beam-1)),1].axvline(x=limits['rfic_spread'], color='r')
+        axs[1+(2*(beam-1)),1].axvspan(limits['rfic_spread'], 1e6, alpha=0.25, color='red')
+        
+        # max deviation of channels on RFIC
         sns.histplot(data=df_plot, x='rfic_minmax_max [dB]', kde=True, ax=axs[1+(2*(beam-1)),2])
         axs[1+(2*(beam-1)),2].set_title(f'Maximum deviation of channels on an RFIC [dB] (beam{beam})')
-        axs[1+(2*(beam-1)),2].set_xlim([0,24])
+        axs[1+(2*(beam-1)),2].set_xlim([0,30])
         
-        sns.histplot(data=df_plot, x='gain_median [dB]', kde=True, ax=axs[1+(2*(beam-1)),3], hue='lot')
-        axs[1+(2*(beam-1)),3].set_title(f'Gain Median with Wafer Lots [dB]')
-        axs[1+(2*(beam-1)),3].set_xlim([-6,12])
-        axs[1+(2*(beam-1)),3].set_ylim([0,8])
+        axs[1+(2*(beam-1)),2].axvline(x=limits['rfic_minmax'], color='r')
+        axs[1+(2*(beam-1)),2].axvspan(limits['rfic_minmax'], 1e6, alpha=0.25, color='red')      
+        
+        # wafers
+        # sns.histplot(data=df_plot, x='gain_median [dB]', kde=True, ax=axs[1+(2*(beam-1)),3], hue='lot')
+        # axs[1+(2*(beam-1)),3].set_title(f'Gain Median with Wafer Lots [dB]')
+        # axs[1+(2*(beam-1)),3].set_xlim([-6,12])
+        # axs[1+(2*(beam-1)),3].set_ylim([0,8])
+        
+        # RFICs with max deviation
+        sns.histplot(df_plot['rfic_minmax_maxidx'], binwidth=1, ax=axs[1+(2*(beam-1)),3])
+        axs[1+(2*(beam-1)),3].set_title(f'RFIC with the largest channel deviation (beam{beam})')
+        axs[1+(2*(beam-1)),3].set_xlim([0,60])
         
     N = len(df_plot)
-    plt.suptitle(f'{freq_set} GHz, N={N}')
+    plt.suptitle(f'{freq_set} GHz \n {file_path}, N={N}')
     plt.tight_layout()
     
     freq_save = freq_set.replace('.', 'g')
     plt.savefig(f'{freq_save}.png', dpi=400)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-        
-        
-        
-
-
-plot = False
-if plot == True:
+# From this point on it is the initial 'simplified' ranking system. Generally I do not use this.        
+rank_run = True
+if rank_run == True:
     
     df_ranked = pd.DataFrame()
     for beam in [1, 2]:
@@ -302,20 +395,19 @@ if plot == True:
     df_scores = df_scores.sort_values(by='scores', ascending=False)
     
     boards_ranked = list(df_scores['board'])
-    plt.close('all')
     for freq_set in freq_list:
         fig, axs = plt.subplots(nrows=2, ncols=1, figsize=(15, 10))
         for board in boards_ranked:
             df_board = df_ranked[df_ranked['board'] == board]
-            df_board = df_board[df_board['frequency'] == float(freq_set)]
-            axs[0].plot(board, list(df_board['gain_median'])[0], 'ko')
-            axs[0].plot(board, list(df_board['gain_median'])[1], 'r^')
-            axs[1].plot(board, list(df_board['gain_spread'])[0], 'ko')
-            axs[1].plot(board, list(df_board['gain_spread'])[1], 'r^')
-        axs[0].plot(board, list(df_board['gain_median'])[0], 'ko', label='beam1')
-        axs[0].plot(board, list(df_board['gain_median'])[1], 'r^', label='beam2')
-        axs[1].plot(board, list(df_board['gain_spread'])[0], 'ko', label='beam1')
-        axs[1].plot(board, list(df_board['gain_spread'])[1], 'r^', label='beam2')
+            df_board = df_board[df_board['frequency [GHz]'] == float(freq_set)]
+            axs[0].plot(board, list(df_board['gain_median [dB]'])[0], 'ko')
+            axs[0].plot(board, list(df_board['gain_median [dB]'])[1], 'r^')
+            axs[1].plot(board, list(df_board['gain_spread [dB]'])[0], 'ko')
+            axs[1].plot(board, list(df_board['gain_spread [dB]'])[1], 'r^')
+        axs[0].plot(board, list(df_board['gain_median [dB]'])[0], 'ko', label='beam1')
+        axs[0].plot(board, list(df_board['gain_median [dB]'])[1], 'r^', label='beam2')
+        axs[1].plot(board, list(df_board['gain_spread [dB]'])[0], 'ko', label='beam1')
+        axs[1].plot(board, list(df_board['gain_spread [dB]'])[1], 'r^', label='beam2')
         axs[0].set_ylabel('median gain [dB]')
         axs[1].set_ylabel('spread [dB]')
         axs[0].grid('on')

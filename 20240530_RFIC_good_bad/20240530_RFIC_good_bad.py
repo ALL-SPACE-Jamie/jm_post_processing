@@ -225,7 +225,7 @@ map_rfic = pd.read_csv(r'C:\GitHub\jm_post_processing\20240227_tlm_map_plotter\2
 
 # params
 freq_set = '29.50'
-pass_thresh = -5.0
+pass_thresh = -7.5
 
 # run
 beam_log = {}
