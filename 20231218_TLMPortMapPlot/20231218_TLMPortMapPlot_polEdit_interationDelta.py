@@ -311,6 +311,13 @@ for gain_phase in ['gain']:
                     # save the figure
                     plt.savefig(f'{file_path}\\analysis\\{f_type}_{freq_str}_beam{beam}_delta{delta_pol}_{gain_phase}.png', dpi=200)
                     
+                    # output the arrays
+                    header_list = meas_frequencies
+                    df_gain_freq = pd.DataFrame(meas_array_av, columns=header_list); df_gain_freq.index += 1
+                    df_std_freq = pd.DataFrame(meas_array_std, columns=header_list); df_std_freq.index += 1
+                    df_gain_freq.to_csv(f'{file_path}\\analysis\\average gain vs freq {f_type} {gain_phase} {freq_set}GHz, N = {len(measFiles)}.csv', index=True)
+                    df_std_freq.to_csv(f'{file_path}\\analysis\\average stdev vs freq {f_type} {gain_phase} {freq_set}GHz, N = {len(measFiles)}.csv', index=True)
+                    
             # make the output excel
             freq_list_av = [s + '_av' for s in freq_list]
             freq_list_std = [s + '_std' for s in freq_list]

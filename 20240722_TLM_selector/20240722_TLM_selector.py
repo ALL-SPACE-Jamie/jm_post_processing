@@ -110,8 +110,6 @@ def pass_rate(df):
 # file_path = r'C:\scratch\20240903\TLM Results\P6\P6_TX_TLMs\P6_TLMs'
 file_path = r'C:\scratch\20240903\TLM Results\All_TLMs'
 file_path = r'C:\Users\jmitchell\Downloads\Pass TX TLMS 11-09-24\Pass TX TLMS 11-09-24\All TLMS'
-# file_path = r'C:\Users\jmitchell\Downloads\P1_Tx_Raw_Data'
-# file_path = r'C:\Users\jmitchell\Downloads\OneDrive_1_05-09-2024\Fails\Fails'
 file_path = r'C:\scratch\20240903\TLM Results\All_TLMs\Pass and Fail'
 map_tlm_df = pd.read_csv(r'C:\GitHub\jm_post_processing\20240227_tlm_map_plotter\20221019_TLMCalInputs\Mrk1_S2000_TLM_TX_ArrayGeometry_V20062022_CalInfo.csv', header=1)
 map_rfic = pd.read_csv(r'C:\GitHub\jm_post_processing\20240227_tlm_map_plotter\20221019_TLMCalInputs\MK1_TX_TLM_RFIC_Patch_Feed_Mapping.csv')
