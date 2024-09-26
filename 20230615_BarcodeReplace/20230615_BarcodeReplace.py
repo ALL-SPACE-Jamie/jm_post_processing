@@ -6,7 +6,7 @@ import csv
 import pickle
 
 # inputs
-filePath = r'C:\Scratch\orig_forChange'
+filePath = r'C:/Users/RyanFairclough/Downloads/F2_18_Tx_Batch_2'
 bc1_Replace = '440'
 bc2_Replace = '0238'
 
@@ -50,6 +50,7 @@ def find__fileDetails(filePath):
             if meas_params[paramName][0] == ' ':
                 meas_params[paramName] = meas_params[paramName][1:]
             
+            
 ## run ##
 
 # check barcode
@@ -70,7 +71,7 @@ for fileType in fileTypes:
         # change barcode
         if barcodeNEW != barcodeOLD:
             meas_infoNEW = meas_info
-            meas_infoNEW[27][1] = barcodeNEW
+            meas_infoNEW[25][1] = barcodeNEW
             
             meas_array_list = meas_infoNEW.copy()
             for k in range(len(meas_array)):
