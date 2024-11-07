@@ -1,4 +1,4 @@
-RFIC Number,H-Feed (Odd),V-Feed (Even),Patch Number
+RFIC Number,H-Feed (Odd),V-Feed (Even),Patch_Number
 10,CH1_H,CH1_V,1
 10,CH3_H,CH3_V,2
 10,CH2_H,CH2_V,3

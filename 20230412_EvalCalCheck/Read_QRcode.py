@@ -1,0 +1,53 @@
+import os
+tlm_type = 'Rx'
+Enter_Terminal = 'P18'
+List= []
+repeated = {}
+def find_files_with_qr(directory):
+
+    qr_files = []
+
+
+    for file in os.listdir(directory):
+
+        if "QR" in file:
+
+            qr_index = file.find("QR")
+
+            qr_and_next_chars = file[qr_index:qr_index + 16]
+            qr_files.append(qr_and_next_chars)
+
+    return qr_files
+
+# Example usage
+directory = r'C:\Users\RyanFairclough\Downloads\P18_Assembly'
+qr_files = find_files_with_qr(directory)
+print("Files with 'QR' and the next 14 characters:")
+
+unique_nums = set()
+print(tlm_type, '-',Enter_Terminal)
+for file in qr_files:
+    if file in repeated:
+        repeated[file] += 1
+    else:
+        repeated[file] = 1
+for file, count in repeated.items():
+    if count > 8:
+        print('****Repeated******',file)
+    start_index = file.find('QR')
+    if start_index != -1:
+        num = file[start_index + 2:start_index + 16]
+        if num not in unique_nums:
+            unique_nums.add(num)
+            print(file[:start_index] + file[start_index + 2:])
+            List.append(file)
+        if tlm_type == 'Rx':
+            if '420' in file:
+                print('----------------Wrong QR Code Detected----------------')
+        if tlm_type == 'Tx':
+            if '440' in file:
+                print('----------------Wrong QR Code Detected----------------')
+else:
+    print('All QR Codes are correct')
+    print('Number_of_TLMs:',len(List))
+

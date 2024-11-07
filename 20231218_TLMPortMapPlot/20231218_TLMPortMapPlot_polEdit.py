@@ -19,7 +19,11 @@ import csv
 import json
 import time
 from pylab import *
+<<<<<<< HEAD
 import seaborn as sns
+=======
+# import seaborn as sns
+>>>>>>> main
 from matplotlib.markers import MarkerStyle
 plt.close('all')
 
@@ -67,7 +71,11 @@ def load__measFiles(file_path):
 
 
 def plot_tlm_map(array_in, title, cmin, cmax, cstp, f_set, plot_no, tick_step, delta_pol, align=False, col_map = 'jet'):
+<<<<<<< HEAD
     global Z, Y, temp, Z_trim, map_tlm_df, map_rfic
+=======
+    global Z, Y, temp, Z_trim, map_tlm_df
+>>>>>>> main
     
     # get x and y positions (this still uses the map_tlm rather than the dataframe)
     x = []
@@ -98,7 +106,10 @@ def plot_tlm_map(array_in, title, cmin, cmax, cstp, f_set, plot_no, tick_step, d
         y_new = y_rot + map_tlm[:,3]
         x = x_new.copy()
         y = y_new.copy()
+<<<<<<< HEAD
 
+=======
+>>>>>>> main
     
     # select the column of data
     col = np.argmin((meas_frequencies-f_set)**2)
@@ -113,7 +124,11 @@ def plot_tlm_map(array_in, title, cmin, cmax, cstp, f_set, plot_no, tick_step, d
     m._transform.rotate_deg(float(rot[i]+45))
     
     # map tlm as a df (and roated if needed)
+<<<<<<< HEAD
     map_tlm_df = pd.read_csv(r'C:\Users\RyanFairclough\PycharmProjects\Post-Processing\20231218_TLMPortMapPlot\20240227_tlm_map_plotter\20221019_TLMCalInputs\Mrk1_S2000_TLM_TX_ArrayGeometry_V20062022_CalInfo.csv', header=1)
+=======
+    map_tlm_df = pd.read_csv(r'C:\Users\jmitchell\Documents\GitHub\jm_post_processing\20240227_tlm_map_plotter\20221019_TLMCalInputs\Mrk1_S2000_TLM_TX_ArrayGeometry_V20062022_CalInfo.csv', header=1)
+>>>>>>> main
         
     if align == True:
         map_tlm_df[' Feed x [mm] shift'] =   map_tlm_df[' Feed x [mm]'] -  map_tlm_df[' Lens x [mm]']
@@ -131,6 +146,7 @@ def plot_tlm_map(array_in, title, cmin, cmax, cstp, f_set, plot_no, tick_step, d
         map_tlm_df['y_rot'] = map_tlm_df[' Feed y [mm] shift']*cos(map_tlm_df['angle']*np.pi/180.0)+map_tlm_df[' Feed x [mm] shift']*sin(map_tlm_df['angle']*np.pi/180.0)
         map_tlm_df['x_new'] = map_tlm_df['x_rot'] + map_tlm_df[' Lens x [mm]']
         map_tlm_df['y_new'] = map_tlm_df['y_rot'] + map_tlm_df[' Lens y [mm]']
+<<<<<<< HEAD
 
     # plot rfics
     map_rfic = pd.read_csv(r'C:\Users\RyanFairclough\PycharmProjects\Post-Processing\20231218_TLMPortMapPlot\20240227_tlm_map_plotter\20221019_TLMCalInputs\MK1_TX_TLM_RFIC_Patch_Feed_Mapping.csv')
@@ -140,6 +156,14 @@ def plot_tlm_map(array_in, title, cmin, cmax, cstp, f_set, plot_no, tick_step, d
     for rfic in rfics:
         map_rfic_cut = map_rfic[map_rfic['RFIC Number'] == rfic]
         #print(map_rfic_cut)
+=======
+    
+    # plot rfics
+    map_rfic = pd.read_csv(r'C:\Users\jmitchell\Documents\GitHub\jm_post_processing\20240227_tlm_map_plotter\20221019_TLMCalInputs\MK1_TX_TLM_RFIC_Patch_Feed_Mapping.csv')
+    rfics = list(set(list(map_rfic['RFIC Number'])))
+    for rfic in rfics:
+        map_rfic_cut = map_rfic[map_rfic['RFIC Number'] == rfic]
+>>>>>>> main
         patches = map_rfic_cut['Patch Number']
         for lens in [0,1,2]:
             x_rfic = []; y_rfic = []
@@ -147,9 +171,15 @@ def plot_tlm_map(array_in, title, cmin, cmax, cstp, f_set, plot_no, tick_step, d
                 if align == True:
                     x_rfic.append(map_tlm_df['x_new'][patch-1+lens*float(len(map_tlm_df))/3])
                     y_rfic.append(map_tlm_df['y_new'][patch-1+lens*float(len(map_tlm_df))/3])
+<<<<<<< HEAD
                     axs[plot_no].text(map_tlm_df['x_new'][patch-1+lens*float(len(map_tlm_df))/3], map_tlm_df['y_new'][patch-1+lens*float(len(map_tlm_df))/3], patch, fontsize=3)
                     #RFIC_Number = map_tlm_df['RFIC Number']
                     #print(RFIC_Number)
+=======
+                    axs[plot_no].text(map_tlm_df['x_new'][patch-1+lens*float(len(map_tlm_df))/3], 
+                                      map_tlm_df['y_new'][patch-1+lens*float(len(map_tlm_df))/3], 
+                                      patch, fontsize=3)
+>>>>>>> main
                 else:
                     x_rfic.append(map_tlm_df[' Feed x [mm]'][patch-1+lens*float(len(map_tlm_df))/3])
                     y_rfic.append(map_tlm_df[' Feed y [mm]'][patch-1+lens*float(len(map_tlm_df))/3])
@@ -157,8 +187,12 @@ def plot_tlm_map(array_in, title, cmin, cmax, cstp, f_set, plot_no, tick_step, d
                                       map_tlm_df[' Feed y [mm]'][patch-1+lens*float(len(map_tlm_df))/3], 
                                       patch, fontsize=3)
             axs[plot_no].plot(x_rfic, y_rfic, 'm-', linewidth=1.0, alpha=0.7)
+<<<<<<< HEAD
     print(rfic_raw)
     print(patch1)
+=======
+    
+>>>>>>> main
     # scatter plot for odd pol
     v = np.linspace(cmin, cmax, int((cmax-cmin)/cstp), endpoint=True)
     cmap_chosen = cm.get_cmap(col_map, int((cmax-cmin)/cstp))
@@ -186,6 +220,7 @@ def plot_tlm_map(array_in, title, cmin, cmax, cstp, f_set, plot_no, tick_step, d
     axs[plot_no].set_title(title)
 
 # set-up
+<<<<<<< HEAD
 file_path = r'C:\Users\RyanFairclough\Downloads\A\172\22\2024-07-05_10-18-07_MCR1_Rig1_cal_QR00172_1_203820_bias0_algo0_29.50_45C'
 map_tlm = np.genfromtxt(r'C:\Users\RyanFairclough\PycharmProjects\Post-Processing\20231218_TLMPortMapPlot\20240227_tlm_map_plotter\20221019_TLMCalInputs\Mrk1_S2000_TLM_TX_ArrayGeometry_V20062022_CalInfo.csv',skip_header=2, dtype=float, delimiter=',')
 
@@ -194,6 +229,18 @@ freq_list = ['29.50']
 align = True
 beam_list = [1,2]
 it = 1
+=======
+file_path = r'C:\Scratch\20240312\bare_board'
+map_tlm = np.genfromtxt(
+    r'C:\Users\jmitchell\Documents\GitHub\jm_post_processing\20240227_tlm_map_plotter\20221019_TLMCalInputs\Mrk1_S2000_TLM_TX_ArrayGeometry_V20062022_CalInfo.csv', 
+    skip_header=2, dtype=float, delimiter=',')
+
+freq_list = ['27.50', '28.00', '28.50', '29.00', '29.50', '30.00', '30.50', '31.00']
+# freq_list = ['29.00']
+align = True
+beam_list = [1, 2]
+it = 2
+>>>>>>> main
 
 # run
 for gain_phase in ['gain', 'phase']:
@@ -221,7 +268,11 @@ for gain_phase in ['gain', 'phase']:
         if delta_pol == False:
             if gain_phase == 'gain':
                 vmax_std = 6.0
+<<<<<<< HEAD
                 v_OP = 35.0
+=======
+                v_OP = 40.0
+>>>>>>> main
                 v_RFA = v_OP*1.0
                 v_OP_step = 0.01
                 v_RFA_step = v_OP_step*1.0
@@ -241,7 +292,11 @@ for gain_phase in ['gain', 'phase']:
             # initialise out_array
             count = 0
             out_array = np.zeros([len(map_tlm)*2,len(freq_list)*2*len(beam_list)])
+<<<<<<< HEAD
             #print(map_tlm)
+=======
+            
+>>>>>>> main
             for beam in beam_list:
                 
                 for freq_set in freq_list:
@@ -267,7 +322,11 @@ for gain_phase in ['gain', 'phase']:
                     # make plots for OP or RFA
                     if 'OP' in f_type:
                         plot_tlm_map(meas_array_av, f'({f_type}) {gain_phase} (average), N = {len(measFiles)} \n Freq = {freq_set} GHz, Beam {beam}, Delta Pol={delta_pol}, Lens Align={align}',
+<<<<<<< HEAD
                                      0, v_OP, v_OP_step, float(meas_params['f_c']),0,tick_step=tick_step,delta_pol=delta_pol, align=align)
+=======
+                                     -v_OP, v_OP, v_OP_step, float(meas_params['f_c']),0,tick_step=tick_step,delta_pol=delta_pol, align=align)
+>>>>>>> main
                     elif 'RFA' in f_type:
                         plot_tlm_map(meas_array_av, f'({f_type}) {gain_phase} (average), N = {len(measFiles)} \n Freq = {freq_set} GHz, Beam {beam}, Delta Pol={delta_pol}, Lens Align={align}',
                                      -v_RFA, v_RFA, v_RFA_step, float(meas_params['f_c']),0, tick_step=tick_step,delta_pol=delta_pol, align=align)
@@ -281,7 +340,11 @@ for gain_phase in ['gain', 'phase']:
                     # plot the stdev
                     plot_tlm_map(meas_array_std, f'({f_type}) {gain_phase} (stdev), N = {len(measFiles)} \n Freq = {freq_set} GHz, Beam {beam}, Delta Pol={delta_pol}, Lens Align={align}',
                                  0.0, vmax_std, v_spread_step, float(meas_params['f_c']),1, tick_step=tick_step,delta_pol=delta_pol, align=align)
+<<<<<<< HEAD
 
+=======
+                    
+>>>>>>> main
                     # plot the cartesian
                     # for measFile in measFiles:
                     load__measFiles(measFile)

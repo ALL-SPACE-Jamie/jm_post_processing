@@ -25,7 +25,7 @@ temperature = '45' ##
 tlmType = 'Tx'
 measType = 'Evaluation' #'Calibration'  # 'Calibration' or 'Evaluation'
 # filePath = r'C:\Users\JamieMitchell\OneDrive - ALL.SPACE\S-Type\Rx_TLM\ES2c-Laser_Cut\Test\MCR2\20230717 - 21\sw_test'
-filePath = r'C:\Users\RyanFairclough\Downloads\F1_tx_Eval_Batch_1'
+filePath = r'C:\Users\RyanFairclough\Downloads\304_1'
 SaveFileName = '\Post_Processed_Data'
 BoardFont = '8'
 counter = 0
@@ -39,7 +39,7 @@ colourPlots = True
 if measType == 'Evaluation' and tlmType == 'Tx':
     f_set_list = [29.5]
 elif measType == 'Calibration' and tlmType == 'Tx':
-    f_set_list = [27.5,29.5,31.0]#[27.5, 28.0, 28.5, 29.0, 29.5, 30.0, 30.5, 31.0]
+    f_set_list = [27.5]#[27.5, 28.0, 28.5, 29.0, 29.5, 30.0, 30.5, 31.0]
 elif measType == 'Evaluation' and tlmType == 'Rx':
     f_set_list = [19.2]
 elif measType == 'Calibration' and tlmType == 'Rx':
@@ -220,7 +220,7 @@ for p in range(2):
         f_set = f_set_list[l]
 
         # find all meas files
-        find_measFiles(filePath, 'OP', beam)
+        find_measFiles(filePath, 'RFA', beam)
         plt.close('all')
         fig, axs = plt.subplots(3, 2, figsize=(25, 15))
         stat_TLM_median_log = []

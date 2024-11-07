@@ -1,5 +1,5 @@
 import os
-
+tlm_type = 'Tx'
 def find_files_with_qr(directory):
     # List to store file names with "QR" and the next 14 characters
     qr_files = []
@@ -17,7 +17,7 @@ def find_files_with_qr(directory):
     return qr_files
 
 # Example usage
-directory = r'C:\Users\RyanFairclough\Downloads\Newest_PP'
+directory = r'C:\Users\RyanFairclough\Downloads\P18_TLMs'
 qr_files = find_files_with_qr(directory)
 print("Files with 'QR' and the next 14 characters:")
 
@@ -31,3 +31,13 @@ for file in qr_files:
         if num not in unique_nums:
             unique_nums.add(num)
             print(file)
+        if tlm_type == 'Rx':
+            if '420' in file:
+                print('----------------Wrong QR Code Detected----------------')
+        if tlm_type == 'Tx':
+            if '440' in file:
+                print('----------------Wrong QR Code Detected----------------')
+        else:
+            print('All QR Codes are correct')
+
+

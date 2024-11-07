@@ -25,7 +25,7 @@ from matplotlib.markers import MarkerStyle
 
 plt.close('all')
 
-TLM_Type = 'Tx' #'Rx'
+TLM_Type = 'Rx' #'Rx'
 Add_stdev = 'OFF'
 
 # definitions
@@ -120,8 +120,8 @@ def plot_tlm_map(array_in, title, cmin, cmax, cstp, f_set, plot_no, tick_step,de
     #(rfics)
     for rfic in rfics:
         map_rfic_cut = map_rfic[map_rfic['RFIC Number'] == rfic]
-
-        patches = map_rfic_cut['Patch Number']
+        print(map_rfic_cut.columns.tolist())
+        patches = map_rfic_cut[ 'Patch Number ']
         for lens in [0, 1, 2]:
             x_rfic = [];
             y_rfic = []
@@ -220,13 +220,13 @@ def plot_tlm_map(array_in, title, cmin, cmax, cstp, f_set, plot_no, tick_step,de
 
 
 # set-up
-file_path = r'C:\Users\RyanFairclough\Downloads\160,167,166 1\166\Override'
+file_path = r'C:\Users\RyanFairclough\Downloads\compare_after_cable_cal'
 if TLM_Type == 'Rx':
     map_tlm_df = pd.read_csv(r'C:\Users\RyanFairclough\PycharmProjects\Post-Processing\20231218_TLMPortMapPlot\20240227_tlm_map_plotter\20221019_TLMCalInputs\Mrk1_S2000_TLM_RX_ArrayGeometry_V20062022_CalInfo_Orig.csv',header=1)
     freq_list = ['19.20']
 elif TLM_Type == 'Tx':
     map_tlm_df = pd.read_csv(r'C:\Users\RyanFairclough\PycharmProjects\Post-Processing\20231218_TLMPortMapPlot\20240227_tlm_map_plotter\20221019_TLMCalInputs\Mrk1_S2000_TLM_TX_ArrayGeometry_V20062022_CalInfo.csv',header=1)
-    freq_list = ['29.50']#['27.50', '28.00', '28.50', '29.00', '29.50', '30.00', '30.50', '31.00']
+    freq_list = ['27.50', '28.00', '28.50', '29.00', '29.50', '30.00', '30.50', '31.00']
 align = True
 beam_list = [1,2]
 it = 1
@@ -357,7 +357,10 @@ for gain_phase in ['gain', 'phase']:
                     Z_trim_v_colored = []
 
                     for i in range(len(Z_trim_h)):
-                        color_index = (i // 76) % 3  # This will cycle through 0, 1, 2
+                        if TLM_Type == 'Tx':
+                            color_index = (i // 76) % 3  # This will cycle through 0, 1, 2
+                        if TLM_Type == 'Rx':
+                            color_index = (i // 48) % 3
                         Z_trim_h_colored.append((Z_trim_h[i], colors[color_index]))
                         Z_trim_v_colored.append((Z_trim_v[i], colors[color_index]))
 
@@ -440,4 +443,4 @@ for gain_phase in ['gain', 'phase']:
             col = df.pop("pol")
             df.insert(0, col.name, col)
             df.index += 1
-            df.to_excel(f'{file_path}\\analysis\\{f_type} {gain_phase}, N = {len(measFiles)}.xlsx', index=True)
+            df.to_excel(f'{file_path}\\analysis_rfic\\{f_type} {gain_phase}, N = {len(measFiles)}.xlsx', index=True)

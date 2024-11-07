@@ -15,7 +15,7 @@ plt.close('all')
 dirScript = os.getcwd()
 
 # parmas
-filePath = r'C:\codeRun\_data\Rx\ES2c_powerSweep'
+filePath = r'C:\Users\RyanFairclough\Downloads\P_sweep_I_rx\2023-10-25_11-03-33_MCR2_Rig2_pwr_sweep_QR420-0254-00001_Lens_1_45C'
 
 beamTab = [1,2]
 lensTab = [1,2,3]
@@ -101,7 +101,7 @@ for beam in beamTab:
     title = 'Board ' + qr + ', Lens ' + str(lens) + ', Beam' + str(beam) + ', f$_{set}$=' + str(f_c) + ', f$_{meas}$=' + str(f_meas) + ' GHz'
     fig.suptitle(title, fontsize=25)
     plt.tight_layout()
-    plt.savefig('C:\\codeRun\\powerSweepFigures\\'+title+'.png',dpi=400)
+    plt.savefig('C:\\Users\\RyanFairclough\\Downloads\\P_sweep_I_rx'+title + 'NEW'+'.png',dpi=400)
     time.sleep(2)
     plt.close('all')
 
