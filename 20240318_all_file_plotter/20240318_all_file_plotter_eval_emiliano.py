@@ -66,15 +66,17 @@ def load__measFiles(file_path):
                     meas_params[paramName] = meas_params[paramName][1:]
 
 
-file_path = r'C:\Users\jmitchell\Downloads\2-11-2_2-7-1001_regression_rerun'
-f_set_list = ['27.50', '28.00', '28.50', '29.00', '29.50', '30.00', '30.50', '31.00']
+file_path = r'C:\Users\jmitchell\Downloads\P7_Assembly_OP'
+f_set_list = ['17.70', '18.20', '18.70', '19.20', '19.70', '20.20', '20.70', '21.20']
+port_no = 288
+file_type = 'OP_2'
 for f_set in f_set_list:
     fig, axs = plt.subplots(nrows=2, ncols=3, figsize=(30, 20))
     it=1
     for beam in [1,2]:
         for fig_no in [0]:
-            find_measFiles(file_path, 'RFA', beam, f_set, it=it)
-            all_array = np.zeros((len(measFiles), 456))
+            find_measFiles(file_path, file_type, beam, f_set, it=it)
+            all_array = np.zeros((len(measFiles), port_no))
             min_gain = []
             for idx in range(len(measFiles)):
                 measFile = measFiles[idx]
@@ -109,33 +111,40 @@ for f_set in f_set_list:
             axs[beam-1, fig_no+1].plot(median_array-2*stdev_array, 'r', linewidth=1.0, label=f'median-2stdev')
             axs[beam-1, fig_no+1].legend(loc='upper right')
             
-            # filter and plot top boards
-            indexes = sorted(range(len(min_gain)), key=lambda i: min_gain[i], reverse=True)[:18]
-            measFiles_top = [measFiles[i] for i in indexes]
-            all_array_top = np.zeros((len(measFiles_top), 456))
-            for idx in range(len(measFiles_top)):
-                measFile = measFiles_top[idx]
-                load__measFiles(measFile)
-                col = np.argmin((meas_frequencies-float(f_set))**2)
-                power = meas_params['Source power [dBm]']
-                CCG = meas_params['combiners_common_setting']
-                PaCG =  meas_params['common_settings'].split('.')[2][1:-1]
-                all_array_top[idx, :] = meas_array_gain[:,col]*1.0
-                # axs[beam-1, fig_no+2].plot(meas_array_gain[:,col], 'k', alpha=0.2)
-                datetime = meas_params['date time']
-                SWV = meas_params['acu_version']
-                axs[beam-1, fig_no+2].plot(median_array-meas_array_gain[:,col], linewidth=1.0, label=f'stdev {datetime}, {SWV}')
-            median_array_top = np.median(all_array_top, axis=0)
-            stdev_array_top = np.std(all_array_top, axis=0)
-            min_array_top = np.min(all_array_top, axis=0)
-            axs[beam-1, fig_no+2].set_title(f'{f_set} GHz, beam {beam}')
+            axs[beam-1, fig_no+2].plot(median_array-2*stdev_array, 'k', linewidth=1.0, label=f'stdev')
             axs[beam-1, fig_no+2].set_xlabel('port')
             axs[beam-1, fig_no+2].set_ylabel('gain')
+            axs[beam-1, fig_no+2].set_ylim([0,20])
             axs[beam-1, fig_no+2].legend(loc='upper right')
-            # axs[beam-1, fig_no+2].plot(delta_array, 'g', linewidth=1.0, label=f'stdev')
-            axs[beam-1, fig_no+2].set_ylim([-3,3])
             axs[beam-1, fig_no+2].grid()
-            axs[beam-1, fig_no+2].legend(loc='upper right')
+            
+            # # filter and plot top boards
+            # indexes = sorted(range(len(min_gain)), key=lambda i: min_gain[i], reverse=True)[:18]
+            # measFiles_top = [measFiles[i] for i in indexes]
+            # all_array_top = np.zeros((len(measFiles_top), port_no))
+            # for idx in range(len(measFiles_top)):
+            #     measFile = measFiles_top[idx]
+            #     load__measFiles(measFile)
+            #     col = np.argmin((meas_frequencies-float(f_set))**2)
+            #     power = meas_params['Source power [dBm]']
+            #     CCG = meas_params['combiners_common_setting']
+            #     PaCG =  meas_params['common_settings'].split('.')[2][1:-1]
+            #     all_array_top[idx, :] = meas_array_gain[:,col]*1.0
+            #     # axs[beam-1, fig_no+2].plot(meas_array_gain[:,col], 'k', alpha=0.2)
+            #     datetime = meas_params['date time']
+            #     SWV = meas_params['acu_version']
+            #     axs[beam-1, fig_no+2].plot(median_array-meas_array_gain[:,col], linewidth=1.0, label=f'stdev {datetime}, {SWV}')
+            # median_array_top = np.median(all_array_top, axis=0)
+            # stdev_array_top = np.std(all_array_top, axis=0)
+            # min_array_top = np.min(all_array_top, axis=0)
+            # axs[beam-1, fig_no+2].set_title(f'{f_set} GHz, beam {beam}')
+            # axs[beam-1, fig_no+2].set_xlabel('port')
+            # axs[beam-1, fig_no+2].set_ylabel('gain')
+            # axs[beam-1, fig_no+2].legend(loc='upper right')
+            # # axs[beam-1, fig_no+2].plot(delta_array, 'g', linewidth=1.0, label=f'stdev')
+            # axs[beam-1, fig_no+2].set_ylim([-3,3])
+            # axs[beam-1, fig_no+2].grid()
+            # axs[beam-1, fig_no+2].legend(loc='upper right')
             
     plt.tight_layout()
-    plt.savefig('all_tlm_evals_Itype.pdf')
+    plt.savefig(f'{f_set}_{file_type}.pdf')

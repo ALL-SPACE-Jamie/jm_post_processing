@@ -195,7 +195,11 @@ for idx in range(len(df)):
     lower_lim = limits['median_gain'][freq_set][0]-spread_factor*limits['median_gain'][freq_set][1]
     upper_lim = limits['median_gain'][freq_set][0]+spread_factor*limits['median_gain'][freq_set][1]
     if not lower_lim < df.iloc[idx]['gain_median [dB]'] < upper_lim:
-        df.at[idx, 'pass'] = False     
+        df.at[idx, 'pass'] = False
+passed = len(df[df['pass']==True])
+pass_rate_log.append(round(float(passed)/float(len(df))*100,2))
+df['pass'] = True
+    
 for idx in range(len(df)):
     freq_set = df.iloc[idx]['frequency [GHz]']; freq_set = str(freq_set) + '0'
     if df.iloc[idx]['min_port [dB]'] < limits['median_gain'][freq_set][0] - 20.0:
@@ -228,7 +232,7 @@ for idx in range(len(df)):
     f = df.iloc[idx]['frequency [GHz]']
     beam = df.iloc[idx]['beam']
     if beam == 1:
-        other_beam = 2 
+        other_beam = 2
     else:
         other_beam = 1
     df_other_beam = df[df['board']==board]
@@ -338,7 +342,7 @@ for freq_set in freq_list:
     plt.savefig(f'{freq_save}.png', dpi=400)
 
 # From this point on it is the initial 'simplified' ranking system. Generally I do not use this.        
-rank_run = True
+rank_run = False
 if rank_run == True:
     
     df_ranked = pd.DataFrame()
