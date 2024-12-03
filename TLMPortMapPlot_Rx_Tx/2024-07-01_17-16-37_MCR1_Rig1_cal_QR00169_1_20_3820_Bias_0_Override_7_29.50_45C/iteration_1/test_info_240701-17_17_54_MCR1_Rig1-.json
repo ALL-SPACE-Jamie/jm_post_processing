@@ -1,0 +1,177 @@
+{
+    "lookup_tables": [
+        "rficTable_TA_27500_s2000_ES2_0p5dB",
+        "rficTable_TA_28000_s2000_ES2_0p5dB",
+        "rficTable_TA_28500_s2000_ES2_0p5dB",
+        "rficTable_TA_29000_s2000_ES2_0p5dB",
+        "rficTable_TA_29500_s2000_ES2_0p5dB_Fill_in_New_LUT",
+        "rficTable_TA_30000_s2000_ES2_0p5dB",
+        "rficTable_TA_30500_s2000_ES2_0p5dB",
+        "rficTable_TA_31000_s2000_ES2_0p5dB",
+        "rficTable_TP_27500_s2000_ES2_0p5dB",
+        "rficTable_TP_28000_s2000_ES2_0p5dB",
+        "rficTable_TP_28500_s2000_ES2_0p5dB",
+        "rficTable_TP_29000_s2000_ES2_0p5dB",
+        "rficTable_TP_29500_s2000_ES2_0p5dB_Fill_in_New_LUT",
+        "rficTable_TP_30000_s2000_ES2_0p5dB",
+        "rficTable_TP_30500_s2000_ES2_0p5dB",
+        "rficTable_TP_31000_s2000_ES2_0p5dB"
+    ],
+    "acu_version": "1.20.3820",
+    "tmu_version": "1.20.3820",
+    "tlm_software_versions": [
+        "1.20.3820",
+        "1.20.3820"
+    ],
+    "start_time": "01-07-24 17:17:54",
+    "end_time": "01-07-24 17:23:18",
+    "test_duration": "0:05:23.559715",
+    "itcc_runner_version": "1.2.7059",
+    "array_geometry": "Mrk1_S2000_TLM_TX_V09062022_arrayCalGeomInfo_V20062022",
+    "antenna_unit": "None",
+    "lens_type": "tx",
+    "number_of_lenses": 3,
+    "number_of_ports": 152,
+    "number_of_measured_frequencies": 36,
+    "centre_frequency": 29.5,
+    "source_power": -15,
+    "ifbw": 2000,
+    "probe_orientation": "VH",
+    "barcodes_row": "00169_1_20_3820_Bias_0_Override_7",
+    "beam_number": 2,
+    "set_temperature": 45,
+    "start_frequency": 27.5,
+    "stop_frequency": 31,
+    "hfss_absolute": true,
+    "initial_attenuation": 5,
+    "score_frequency_range": null,
+    "rig_id": "MCR1_Rig1",
+    "common_settings": [
+        [
+            1,
+            1,
+            6
+        ],
+        [
+            1,
+            2,
+            6
+        ],
+        [
+            2,
+            1,
+            6
+        ],
+        [
+            2,
+            2,
+            6
+        ],
+        [
+            3,
+            1,
+            6
+        ],
+        [
+            3,
+            2,
+            6
+        ]
+    ],
+    "combiners_common_setting": 36,
+    "hfss_mask": "Mask_TLM00004_A0_ThinL_vEM_Lens1.csv",
+    "hfss_offset_data": "TX_hfss_offset_13mm_Cal_ES2_42_split.csv",
+    "probe_rotational_offset": null,
+    "reverse_relative_rotation": null,
+    "lens_version": null,
+    "tlm_hw_version_tx": "175-0080 REV. 2.0",
+    "tlm_hw_version_rx": null,
+    "combiner_initial_attenuation": 5,
+    "combiner_calibration_port": 1,
+    "chip_version": null,
+    "efuse_data": "None",
+    "bias_settings": {
+        "0x1038": 3109,
+        "0x1039": 2597,
+        "0x103a": 2594,
+        "0x103b": 2340,
+        "0x103c": 572,
+        "0x103d": 562,
+        "0x103e": 564,
+        "0x103f": 569,
+        "0x1040": 2594,
+        "0x1041": 3620,
+        "0x1042": 2339,
+        "0x1043": 2602,
+        "0x1044": 563,
+        "0x1045": 569,
+        "0x1046": 564,
+        "0x1047": 570,
+        "0x1048": 0,
+        "0x1049": 0,
+        "0x104a": 0,
+        "0x104b": 0,
+        "0x104c": 1569,
+        "0x104d": 1734,
+        "0x104e": 1576,
+        "0x104f": 1734,
+        "0x1050": 1569,
+        "0x1051": 1733
+    },
+    "alarms": [
+        {
+            "description": "A Lens Module has failed",
+            "severity": "critical",
+            "timestamp": "2024-07-01T14:29:15.191Z",
+            "title": "Lens Module Failure"
+        },
+        {
+            "description": "GPS compass is not locked",
+            "severity": "critical",
+            "timestamp": "2024-07-01T14:28:01.999Z",
+            "title": "GPS compass not locked"
+        },
+        {
+            "description": "Default value for \"System.LiveCalibration.Mode\" is \"18\". ",
+            "severity": "warning",
+            "timestamp": "2024-07-01T14:27:43.385Z",
+            "title": "Default value for \"System.LiveCalibration.Mode\" should be \"18\"."
+        },
+        {
+            "description": "Default value for \"Beam1.RealBeamLock\" is \"1\". Transmitting before a confirmed receive",
+            "severity": "warning",
+            "timestamp": "2024-07-01T14:27:43.385Z",
+            "title": "Default value for \"Beam1.RealBeamLock\" should be \"1\"."
+        },
+        {
+            "description": "Default value for \"Beam2.RealBeamLock\" is \"1\". Transmitting before a confirmed receive",
+            "severity": "warning",
+            "timestamp": "2024-07-01T14:27:43.385Z",
+            "title": "Default value for \"Beam2.RealBeamLock\" should be \"1\"."
+        },
+        {
+            "description": "Default value for \"System.Normalisation.Weightings.Rx\" is \"1\". Bad beam performance",
+            "severity": "warning",
+            "timestamp": "2024-07-01T14:27:43.385Z",
+            "title": "Default value for \"System.Normalisation.Weightings.Rx\" should be \"1\"."
+        },
+        {
+            "description": "Default value for \"System.Normalisation.Weightings.Tx\" is \"1\". Bad beam performance",
+            "severity": "warning",
+            "timestamp": "2024-07-01T14:27:43.385Z",
+            "title": "Default value for \"System.Normalisation.Weightings.Tx\" should be \"1\"."
+        },
+        {
+            "description": "Default value for \"Beam1.WeightingGroup.Rx\" is \"Default\". Weight is empty.",
+            "severity": "warning",
+            "timestamp": "2024-07-01T14:27:43.385Z",
+            "title": "\"Beam1.WeightingGroup.Rx\" should not have an empty weight."
+        },
+        {
+            "description": "Default value for \"Beam2.WeightingGroup.Rx\" is \"Default\". Weight is empty.",
+            "severity": "warning",
+            "timestamp": "2024-07-01T14:27:43.385Z",
+            "title": "\"Beam2.WeightingGroup.Rx\" should not have an empty weight."
+        }
+    ]
+}
