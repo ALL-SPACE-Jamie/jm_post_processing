@@ -13,7 +13,7 @@ from datetime import datetime, timedelta
 
 # inputs
 customer = False
-file_path = r"C:\scratch\20250722\input11.csv"
+file_path = r"C:\scratch\20250722\input14.csv"
 
 # inputs that are less likely to change
 open_list = ['DONE', 'REMOVED', 'COMP', 'PASS']

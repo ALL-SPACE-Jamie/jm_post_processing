@@ -1,0 +1,455 @@
+
+    <html>
+    <head>
+      <script src="https://unpkg.com/tablesort@5.2.1/dist/tablesort.min.js"></script>
+      <style>
+        th {
+          background-color: navy;
+          color: white;
+          cursor: pointer;
+          position: relative;
+          padding-right: 20px;
+          text-align: left;
+        }
+        th::after {
+          content: '\25B4\25BE';  /* ▲▼ */
+          position: absolute;
+          right: 5px;
+          font-size: 0.8em;
+          color: #ccc;
+        }
+        table {
+          border-collapse: collapse;
+          width: 100%;
+        }
+        td, th {
+          padding: 8px;
+          border: 1px solid #ddd;
+        }
+      </style>
+    </head>
+    <body>
+      <table border="1" class="dataframe" id="sortable">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Issue Type</th>
+      <th>Issue key</th>
+      <th>ï»¿Summary</th>
+      <th>Assignee</th>
+      <th>Labels</th>
+      <th>Priority</th>
+      <th>Status</th>
+      <th>XF Work package</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Customer NC</td>
+      <td>NC-1120</td>
+      <td>P8 // Terminal no longer powers up // Internal demo terminal</td>
+      <td>Peter Braidwood</td>
+      <td>GEN1</td>
+      <td>Highest</td>
+      <td>In Investigation</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>Engineering NC</td>
+      <td>NC-1108</td>
+      <td>MTP in error state and failing to move to stowed mode or perform under beam tracking mode</td>
+      <td>Sebastian Hall</td>
+      <td>GEN1;GEN2</td>
+      <td>Highest</td>
+      <td>Initial NC Review</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>Customer NC</td>
+      <td>NC-1102</td>
+      <td>F150 // MPB 1 no longer being detected following a trial fit of the modified LTE  module. // Internal demo terminal</td>
+      <td>Kevin Savage</td>
+      <td>Customer;GEN1</td>
+      <td>High</td>
+      <td>Initial NC Review</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>Customer NC</td>
+      <td>NC-1101</td>
+      <td>F150 // 'lens module failed' alarms.</td>
+      <td>Kevin Savage</td>
+      <td>Customer;GEN1</td>
+      <td>High</td>
+      <td>Initial NC Review</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>Engineering NC</td>
+      <td>NC-1098</td>
+      <td>Sanmina factory password generator does not produce the serial number txt file</td>
+      <td>Sebastian Hall</td>
+      <td>GEN1</td>
+      <td>Highest</td>
+      <td>Initial NC Review</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>Engineering NC</td>
+      <td>NC-1087</td>
+      <td>T3 Storage Temperature Failure</td>
+      <td>Ahmed Kenawy</td>
+      <td>Gen2_EVT</td>
+      <td>Highest</td>
+      <td>Initial NC Review</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>Engineering NC</td>
+      <td>NC-1079</td>
+      <td>DEFECTIVE TPB PCBA 420-0242 - NR2 - Mistake with Mods</td>
+      <td>Peter Braidwood</td>
+      <td>GEN1;GEN2</td>
+      <td>High</td>
+      <td>Initial NC Review</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>Sanmina NC</td>
+      <td>NC-1063</td>
+      <td>P56 low Tx performance on Beam 2 both polarisations at the bottom of the band</td>
+      <td>Kevin Savage</td>
+      <td>GEN1</td>
+      <td>High</td>
+      <td>In Progress</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>Engineering NC</td>
+      <td>NC-1048</td>
+      <td>Defective TPB Software - GEN1 and GEN2</td>
+      <td>Sebastian Hall</td>
+      <td>GEN1;gen1&amp;2</td>
+      <td>Highest</td>
+      <td>Initial NC Review</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>Customer NC</td>
+      <td>NC-1036</td>
+      <td>Internal // Hydra4 Cowling Separation near Starlink // GA3</td>
+      <td>Bipin Sharma</td>
+      <td>Customer;Hydra4</td>
+      <td>High</td>
+      <td>In Investigation</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>Engineering NC</td>
+      <td>NC-1028</td>
+      <td>P10 Tx issue and failure to close the RTN link on AMC-15 satellite in Sanmina</td>
+      <td>Peter Tappin</td>
+      <td>GEN1</td>
+      <td>High</td>
+      <td>Initial NC Review</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>Software NC</td>
+      <td>NC-1027</td>
+      <td>Multiple default routes via dhcp with same metric \\ VLAN \\ Hydra4 \\</td>
+      <td>Sebastian Hall</td>
+      <td>GEN1;Hydra4;VLAN</td>
+      <td>Highest</td>
+      <td>NC Second Review</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>Software NC</td>
+      <td>NC-996</td>
+      <td>Not able to turn on Iridium beam from GUI</td>
+      <td>Sebastian Hall</td>
+      <td>GEN1;GUI</td>
+      <td>High</td>
+      <td>Initial NC Review</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>Customer NC</td>
+      <td>NC-989</td>
+      <td>Corrosion on Hydra 4 fixings // GA3/P52</td>
+      <td>Bipin Sharma</td>
+      <td>Customer;GEN1;Hydra4;SANMINA</td>
+      <td>High</td>
+      <td>In Investigation</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>Engineering NC</td>
+      <td>NC-987</td>
+      <td>Terminal get assigned VLAN 14 to TPB without a PDM present // VLAN//</td>
+      <td>Sebastian Hall</td>
+      <td>GEN1;VLAN</td>
+      <td>High</td>
+      <td>In Investigation</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>Engineering NC</td>
+      <td>NC-944</td>
+      <td>TPB isolated to VLAN14 even though no PDM present //VLAN//</td>
+      <td>Sebastian Hall</td>
+      <td>GEN1;VLAN</td>
+      <td>Highest</td>
+      <td>In Investigation</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>Sanmina NC</td>
+      <td>NC-934</td>
+      <td>P26 Sanmina Rebuild - Low Tx performance at the bottom of the Band</td>
+      <td>Peter Tappin</td>
+      <td>GEN1;SANMINA</td>
+      <td>High</td>
+      <td>In Progress</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>Engineering NC</td>
+      <td>NC-931</td>
+      <td>P4 Humidity Test TLM Issues</td>
+      <td>Ahmed Kenawy</td>
+      <td>GEN1;XF_TLMENV</td>
+      <td>High</td>
+      <td>In Investigation</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>Engineering NC</td>
+      <td>NC-924</td>
+      <td>Believe default Tx Bias mode set in SW is wrong for P type in R2.21.2</td>
+      <td>Andy Crosher</td>
+      <td>GEN1</td>
+      <td>High</td>
+      <td>In Investigation</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>Engineering NC</td>
+      <td>NC-921</td>
+      <td>P26 had Silver bullet release config active, not preCATR config when installed in CATR</td>
+      <td>Ben Newbrook</td>
+      <td>GEN1</td>
+      <td>High</td>
+      <td>In Investigation</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>Engineering NC</td>
+      <td>NC-910</td>
+      <td>Set Combiner timingout on TLMs that report Poll Mismatch</td>
+      <td>Sebastian Hall</td>
+      <td>GEN1</td>
+      <td>High</td>
+      <td>Initial NC Review</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>Customer NC</td>
+      <td>NC-866</td>
+      <td>Internal // Hydra 4 VLAN not compatible with some professional networking equipment</td>
+      <td>Danish Vallanchira</td>
+      <td>Customer;GEN1;VLAN</td>
+      <td>High</td>
+      <td>In Investigation</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>Engineering NC</td>
+      <td>NC-862</td>
+      <td>P4 Low Temperature TLM Failure</td>
+      <td>James Mitchell</td>
+      <td>ENV_Tests;GEN1;Low_Temperaure_Operational;TEST_FAILURE;TLM;XF_TLMENV</td>
+      <td>High</td>
+      <td>Verification</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>Customer NC</td>
+      <td>NC-820</td>
+      <td>Internal // Issues seen on the Hydra4 cowling LED's // I5</td>
+      <td>Bipin Sharma</td>
+      <td>Customer;GEN1;Hydra4</td>
+      <td>High</td>
+      <td>In Progress</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>Software NC</td>
+      <td>NC-816</td>
+      <td>UNCI // Turning off a Skydra module wipes VLAN configuration // P14</td>
+      <td>Sebastian Hall</td>
+      <td>Customer;GEN1;VLAN</td>
+      <td>Highest</td>
+      <td>NC Second Review</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>Software NC</td>
+      <td>NC-815</td>
+      <td>UNCI // Hydra4 VLAN manual configuration in GUI removed TMU local IP address, breaking comms to device // P20</td>
+      <td>Sebastian Hall</td>
+      <td>Customer;GEN1;VLAN</td>
+      <td>Highest</td>
+      <td>In Progress</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>Software NC</td>
+      <td>NC-814</td>
+      <td>Beam is not getting muted when the mute option is enabled from the dashboard while the terminal is operating in OpenAMIP mode</td>
+      <td>Sebastian Hall</td>
+      <td>GEN1;OpenAMIP;XF_GTCT3</td>
+      <td>Highest</td>
+      <td>In Investigation</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>Engineering NC</td>
+      <td>NC-802</td>
+      <td>P1 Upgrade to C2.21.1 - 2 TLM uprocessors fail to be recognised</td>
+      <td>Taj Randhawa</td>
+      <td>GEN1;software</td>
+      <td>Highest</td>
+      <td>In Investigation</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>Customer NC</td>
+      <td>NC-797</td>
+      <td>US Army Demo // AMC-15 ASI // P8 Hydra - request #2: product susceptibility to ASI</td>
+      <td>Kevin Savage</td>
+      <td>Customer;frontdoor;GEN1;GEN2;Tracking;XF_ASI</td>
+      <td>High</td>
+      <td>In Investigation</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>Production NC</td>
+      <td>NC-763</td>
+      <td>P48 - Fail in CATR</td>
+      <td>Kevin Savage</td>
+      <td>CATR;GEN1</td>
+      <td>High</td>
+      <td>In Investigation</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>Production NC</td>
+      <td>NC-746</td>
+      <td>P48 - Power Supply Failure</td>
+      <td>NaN</td>
+      <td>GEN1;Lowerhousing;Power_Cycle;PSU;Soft_Start</td>
+      <td>High</td>
+      <td>In Investigation</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>Engineering NC</td>
+      <td>NC-728</td>
+      <td>Lower Housing 440-0388-00069/00055 Vn300 Failure</td>
+      <td>Sebastian Hall</td>
+      <td>GEN1;TEST_FAILURE</td>
+      <td>High</td>
+      <td>Verification</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>Customer NC</td>
+      <td>NC-725</td>
+      <td>US Army Demo // Hydra VLAN Configuration // P8</td>
+      <td>Cameron Foster</td>
+      <td>Customer;GEN1;VLAN</td>
+      <td>High</td>
+      <td>In Progress</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>Customer NC</td>
+      <td>NC-692</td>
+      <td>US Army Demo // Skylink DHCP Issues // P8 Hydra</td>
+      <td>Sebastian Hall</td>
+      <td>Customer;GEN1;VLAN</td>
+      <td>High</td>
+      <td>In Progress</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>Customer NC</td>
+      <td>NC-671</td>
+      <td>US Army Demo // AMC-15 ASI // P8 Hydra - request #1: Monopulse Tracking Filter</td>
+      <td>Danish Vallanchira</td>
+      <td>Customer;frontdoor;GEN1;Tracking;XF_ASI</td>
+      <td>High</td>
+      <td>Verification</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>Engineering NC</td>
+      <td>NC-514</td>
+      <td>TPB CAN failure</td>
+      <td>Hugh Griffiths</td>
+      <td>GEN1;TEST_FAILURE;TPB</td>
+      <td>High</td>
+      <td>In Investigation</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>Software NC</td>
+      <td>NC-502</td>
+      <td>SetPointing Command ignores selected weightings Group</td>
+      <td>Sebastian Hall</td>
+      <td>GEN1;software</td>
+      <td>High</td>
+      <td>Initial NC Review</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>Customer NC</td>
+      <td>NC-452</td>
+      <td>S2000 OTA performance degrades with temp &amp; Solar</td>
+      <td>Richard Keeton</td>
+      <td>Customer;GEN1;XF_OTA</td>
+      <td>Highest</td>
+      <td>In Investigation</td>
+      <td>Yes</td>
+    </tr>
+    <tr>
+      <td>Engineering NC</td>
+      <td>NC-353</td>
+      <td>CE EMC Surge AC Mains Failure (P2)</td>
+      <td>Ahmed Kenawy</td>
+      <td>GEN1;Mains</td>
+      <td>High</td>
+      <td>In Progress</td>
+      <td>No</td>
+    </tr>
+    <tr>
+      <td>Engineering NC</td>
+      <td>NC-276</td>
+      <td>P7 LO Breakthrough Much higher than expected</td>
+      <td>Peter Townsend</td>
+      <td>GEN1;LO_Breakthrough;XF_LOBT</td>
+      <td>High</td>
+      <td>In Investigation</td>
+      <td>Yes</td>
+    </tr>
+  </tbody>
+</table>
+      <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          new Tablesort(document.getElementById('sortable'));
+        });
+      </script>
+    </body>
+    </html>
+    
