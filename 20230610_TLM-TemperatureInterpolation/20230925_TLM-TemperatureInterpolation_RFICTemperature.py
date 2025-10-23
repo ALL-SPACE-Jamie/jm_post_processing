@@ -313,7 +313,7 @@ for rx_tx in ['tx', 'rx']:
 
 # save pickle
 today = str(datetime.datetime.today())[0:19].replace(':','-').replace(' ', '_')
-with open(f'{today}_gradients.pkl', 'wb') as file:
+with open(f'{today}_gradients_temp.pkl', 'wb') as file:
     pickle.dump(dict_gradients, file)
     
 # # import pickle

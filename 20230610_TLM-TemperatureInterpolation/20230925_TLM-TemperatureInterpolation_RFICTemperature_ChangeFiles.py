@@ -110,7 +110,7 @@ def phase_wrap(arr):
 ##### CODE #####
 
 # working directory
-file_path = r'C:\Users\jmitchell\OneDrive - ALL.SPACE\RF Testing\6 Investigations\20241005_P-Type_TermperatureInterpolation\TxTLM_00733'
+file_path = r'C:\scratch\20251010\T7_TxLenses\T7_Rx_TLM_Tx_Lens'
 
 # import pickle
 with open(r'C:\Users\jmitchell\OneDrive - ALL.SPACE\RF Testing\6 Investigations\20241005_P-Type_TermperatureInterpolation\Gradient_Generation\2024-10-07_17-57-25_gradients.pkl', 'rb') as file:
@@ -137,7 +137,6 @@ for rfa_file in rfa_files:
         sec_files_ordered[rfa_file] = sec_files_for_comp[0]
     else:
         print('Number of SEC files that correspond to the RFA does not equal 1!')
-        stop
 
 # open the rfas and edit the tables to 45 degrees
 for temperature in [25.0, 45.0, 65.0]:
@@ -166,7 +165,7 @@ for temperature in [25.0, 45.0, 65.0]:
         file_path_save = file_path + r'\rfa_files_interpolated'
         if not os.path.exists(file_path_save):
             os.makedirs(file_path_save)   
-        file_path_save_fname = file_path_save + '\\' + rfa_file.split('\\')[-1].replace('_45C_', f'_{temperature_int}C_interp_')
+        file_path_save_fname = file_path_save + '\\' + rfa_file.split('\\')[-1].replace('_45C', f'_{temperature_int}C_interp_')
         file = open(file_path_save_fname, 'w+', newline='')
         with file:
             write = csv.writer(file)
