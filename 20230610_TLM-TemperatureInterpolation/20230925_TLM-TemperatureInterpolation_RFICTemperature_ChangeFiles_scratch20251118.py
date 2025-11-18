@@ -110,7 +110,7 @@ def phase_wrap(arr):
 ##### CODE #####
 
 # working directory
-file_path = r'C:\scratch\20251028\Rx'
+file_path = r'C:\scratch\20251118\Rx'
 
 # import pickle
 with open(r'C:\Users\jmitchell\OneDrive - ALL.SPACE\RF Testing\6 Investigations\20241005_P-Type_TermperatureInterpolation\Gradient_Generation\2024-10-07_17-57-25_gradients.pkl', 'rb') as file:
@@ -118,7 +118,6 @@ with open(r'C:\Users\jmitchell\OneDrive - ALL.SPACE\RF Testing\6 Investigations\
     
 # import rfa files
 rfa_files = find_measFiles(file_path + r'\rfa_files_for_interpolation', 'RFA')
-# rfa_files = rfa_files[0:4]
 sec_files = find_measFiles(file_path + r'\rfa_files_for_interpolation', 'SEC')
 
 # open the rfas and create a list of sec files ordered in the same fashion
@@ -151,7 +150,7 @@ for temperature in [25.0, 45.0, 65.0]:
         phase_deltas = np.tile(np.array(phase_deltas)[:, np.newaxis], meas_array_phase.shape[1])
         meas_array_gain_corrected = meas_array_gain - gain_deltas
         meas_array_gain_corrected[meas_array_gain_corrected < 0.0] = 0.0
-        meas_array_phase_corrected = meas_array_phase + phase_deltas
+        meas_array_phase_corrected = meas_array_phase*1.0# + phase_deltas
         meas_array_phase_corrected_wrapped = phase_wrap(meas_array_phase_corrected.copy())
         meas_array_corrected = np.stack((meas_array_gain_corrected, meas_array_phase_corrected_wrapped), axis=2)
         meas_array_corrected = meas_array_corrected.reshape(meas_array.shape[0], meas_array.shape[1])
