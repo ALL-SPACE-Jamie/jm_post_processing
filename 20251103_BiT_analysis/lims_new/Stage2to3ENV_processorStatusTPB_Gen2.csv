@@ -1,0 +1,11 @@
+Parameter_Level_1,Parameter_Level_2,Parameter_Level_3,Parameter_Level_4,Parameter_Level_5,Parameter_Level_6,Parameter_Level_7,Parameter_Level_8,Parameter_Level_9,Parameter_Level_10,Parameter_Level_11,Parameter_Level_12,Parameter_Level_13,Parameter_Level_14
+TPB,.FanBay,1-2,.fan,1-4,.RPM," ",NaN,NaN
+TPB,.PsuMeasurements,.MPB,1-3,I,.Amps,.Now,NaN,NaN
+TPB,.PsuMeasurements,.CCUI,.Amps,.Now," "," ",3.0,3.9
+TPB,.PsuMeasurements,.PCS,1-6,I,.Amps,.Now,0.9,1.5
+TPB,.PsuMeasurements,.MPB,1-3,V,.Volts,.Now,NaN,NaN
+TPB,.PsuMeasurements,.CCUV,.Volts,.Now," "," ",NaN,NaN
+TPB,.PsuMeasurements,.PCS,1-6,V,.Volts,.Now,NaN,NaN
+TPB,.TempSensors,.Combined," "," "," "," ",15,90
+TPB,.TempSensors,.OnBoardTemp," "," "," "," ",15,90
+TPB,.TempSensors,.TranspowerTemp," "," "," "," ",NaN,NaN

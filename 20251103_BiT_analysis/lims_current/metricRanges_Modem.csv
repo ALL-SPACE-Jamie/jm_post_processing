@@ -1,0 +1,6 @@
+metric,lowerRange,upperRange
+RX Bit Rate,NaN,NaN
+RX Dropped Packet Rate,0,0
+RX Errored Packet Rate,0,0
+RX EB NO,NaN,NaN
+DEMOD LOCKED,1,1

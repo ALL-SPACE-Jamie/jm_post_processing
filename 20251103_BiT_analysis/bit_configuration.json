@@ -1,0 +1,636 @@
+{
+    "TEST_CONTEXT": "EMC",
+    "RPI_IP_ADDRESS_1": "192.168.10.104",
+    "RPI_IP_ADDRESS_2": "192.168.10.103",
+    "MODEM_IP_ADDRESS": "192.168.10.5",
+    "SERIAL_NUMBERS_REQUIRED": true,
+    "RESULTS_DIRECTORY": {
+        "EMC": "C:\\EMC DATA",
+        "ENV": "C:\\ENV DATA",
+        "ESS": "C:\\ESS DATA",
+        "NPI": "C:\\NPI TESTING DATA"
+    },
+    "SAMPLING_RATE": {
+        "EMC": 3000,
+        "ENV": {
+            "Low Temperature": 30000,
+            "High Temperature": 30000,
+            "Low Pressure": 30000,
+            "IPX6": 30000,
+            "Blowing Rain": 30000,
+            "Bench Handling": 30000,
+            "Transit Drop": 30000,
+            "Shipboard Vibration": 10000,
+            "Random Vibration": 10000,
+            "Mechanical Shock": 3000,
+            "Humidity": 30000,
+            "Salt Fog": 30000,
+            "HALT": 10000,
+            "Crash Hazard Shock": 3000,
+            "Sand & Dust": 30000,
+            "Solar Radiation": 30000,
+            "IP6X": 30000,
+            "Icing Freezing Rain": 30000
+        },
+        "ESS": {
+            "Temperature (ESS)": 30000,
+            "Vibration X-Axis": 10000,
+            "Vibration Y-Axis": 10000,
+            "Vibration Z-Axis": 10000
+        },
+        "NPI": 3000
+    },
+    "DATA_TIMEOUT": 1.5,
+    "TERMINAL_ALARMS_TO_IGNORE": {
+        "EMC": [
+            "Loopback Mode Active",
+            "GPS Lock Status",
+			"Tx Input Power",
+			"PLL Manual"
+        ],
+        "ENV": [
+            "Loopback Mode Active",
+            "GPS Lock Status",
+			"Tx Input Power",
+			"PLL Manual"
+        ],
+        "ESS": [
+            "Loopback Mode Active",
+            "GPS Lock Status",
+			"Tx Input Power",
+			"PLL Manual"
+        ],
+        "NPI": [
+            "Loopback Mode Active",
+            "GPS Lock Status",
+			"Tx Input Power",
+			"PLL Manual"
+        ]
+    },
+    "RECORDING_DURATION": {
+        "PRE BIT": {
+            "EMC": 90,
+            "ENV": 90,
+            "ESS": 120,
+            "NPI": 30
+        },
+        "DURING BIT": {
+            "EMC": 40000,
+            "ENV": 86400,
+            "ESS": 86400,
+            "NPI": 30
+        },
+        "POST BIT": {
+            "EMC": 90,
+            "ENV": 90,
+            "ESS": 90,
+            "NPI": 30
+        }
+    },
+    "RFIC": {
+        "GROUP_NAME": "bit",
+        "ENABLE_MONITORING": {
+            "EMC": true,
+            "ENV": true,
+            "ESS": true,
+            "NPI": {
+                "NPI Pre Check NO TLMs": false,
+                "NPI Pre Check TLMs Fitted": false,
+                "NPI Pre Check CATR Full": true,
+                "Prod PSU": false,
+                "Prod FANS": false,
+                "Prod PSU and FANS": false,
+                "Prod Lower House NO CCU": false,
+                "Prod Lower House CCU": false
+            }
+        },
+        "INPUT_FILE": {
+            "GEN1": {
+                "EMC": "inputParameterToQueryNPI_RFIC",
+                "ENV": "inputParameterToQueryNPI_RFIC",
+                "ESS": "inputParameterToQueryNPI_RFIC",
+                "NPI": "inputParameterToQueryNPI_RFIC"
+            },
+            "GEN2": {
+                "EMC": "inputParameterToQueryNPI_RFIC",
+                "ENV": "inputParameterToQueryNPI_RFIC",
+                "ESS": "inputParameterToQueryNPI_RFIC",
+                "NPI": "inputParameterToQueryNPI_RFIC"
+            }
+        },
+        "PATCH_TEST": {
+            "ENABLE_TEST": false,
+            "PATCH_PARAM": [
+                "Channels.Atten",
+                "127"
+            ],
+            "PATCH_LIMITS": [
+                4,
+                4
+            ]
+        }
+    },
+    "COMBINER_RFIC": {
+        "GROUP_NAME": "bit",
+        "ENABLE_MONITORING": {
+            "EMC": true,
+            "ENV": true,
+            "ESS": true,
+            "NPI": {
+                "NPI Pre Check NO TLMs": false,
+                "NPI Pre Check TLMs Fitted": true,
+                "NPI Pre Check CATR Full": true,
+                "Prod PSU": false,
+                "Prod FANS": false,
+                "Prod PSU and FANS": false,
+                "Prod Lower House NO CCU": false,
+                "Prod Lower House CCU": false
+            }
+        },
+        "INPUT_FILE": {
+            "GEN1": {
+                "EMC": "inputParameterToQueryReducedVersion_CombinerRFIC",
+                "ENV": "inputParameterToQueryReducedVersion_CombinerRFIC",
+                "ESS": "inputParameterToQueryReducedVersion_CombinerRFIC",
+                "NPI": "inputParameterToQueryReducedVersion_CombinerRFIC"
+            },
+            "GEN2": {
+                "EMC": "inputParameterToQueryReducedVersion_CombinerRFIC",
+                "ENV": "inputParameterToQueryReducedVersion_CombinerRFIC",
+                "ESS": "inputParameterToQueryReducedVersion_CombinerRFIC",
+                "NPI": "inputParameterToQueryReducedVersion_CombinerRFIC"
+            }
+        }
+    },
+    "TLM": {
+        "GROUP_NAME": "bit",
+        "ENABLE_MONITORING": {
+            "EMC": true,
+            "ENV": true,
+            "ESS": true,
+            "NPI": {
+                "NPI Pre Check NO TLMs": false,
+                "NPI Pre Check TLMs Fitted": true,
+                "NPI Pre Check CATR Full": true,
+                "Prod PSU": false,
+                "Prod FANS": false,
+                "Prod PSU and FANS": false,
+                "Prod Lower House NO CCU": false,
+                "Prod Lower House CCU": false
+            }
+        },
+        "INPUT_FILE": {
+            "GEN1": {
+                "EMC": "genericENV_TLM_Gen1",
+                "ENV": "genericENV_TLM_Gen1",
+                "ESS": "genericENV_TLM_Gen1",
+                "NPI": "genericENV_TLM_Gen1"
+            },
+            "GEN2": {
+                "EMC": "genericENV_TLM_Gen2",
+                "ENV": "genericENV_TLM_Gen2",
+                "ESS": "genericENV_TLM_Gen2",
+                "NPI": "genericENV_TLM_Gen2"
+            }
+        }
+    },
+    "TMU": {
+        "GROUP_NAME": "bit",
+        "ENABLE_MONITORING": {
+            "EMC": false,
+            "ENV": false,
+            "ESS": false,
+            "NPI": {
+                "NPI Pre Check NO TLMs": true,
+                "NPI Pre Check TLMs Fitted": true,
+                "NPI Pre Check CATR Full": true,
+                "Prod PSU": false,
+                "Prod FANS": false,
+                "Prod PSU and FANS": false,
+                "Prod Lower House NO CCU": false,
+                "Prod Lower House CCU": false
+            }
+        },
+        "INPUT_FILE": {
+            "GEN1": {
+                "EMC": "inputParameterToQueryReducedVersion_TMU",
+                "ENV": "genericENV_TMU",
+                "ESS": "genericENV_TMU",
+                "NPI": "inputParameterToQueryReducedVersion_TMU"
+            },
+            "GEN2": {
+                "EMC": "inputParameterToQueryReducedVersion_TMU",
+                "ENV": "genericENV_TMU",
+                "ESS": "genericENV_TMU",
+                "NPI": "inputParameterToQueryReducedVersion_TMU"
+            }
+        }
+    },
+    "ACU": {
+        "GROUP_NAME": "bit",
+        "ENABLE_MONITORING": {
+            "EMC": true,
+            "ENV": true,
+            "ESS": true,
+            "NPI": {
+                "NPI Pre Check NO TLMs": true,
+                "NPI Pre Check TLMs Fitted": true,
+                "NPI Pre Check CATR Full": true,
+                "Prod PSU": true,
+                "Prod FANS": true,
+                "Prod PSU and FANS": true,
+                "Prod Lower House NO CCU": false,
+                "Prod Lower House CCU": false
+            }
+        },
+        "INPUT_FILE": {
+            "GEN1": {
+                "EMC": "genericENV_ACU",
+                "ENV": "genericENV_ACU",
+                "ESS": "genericENV_ACU",
+                "NPI": "genericENV_ACU"
+            },
+            "GEN2": {
+                "EMC": "genericENV_ACU",
+                "ENV": "genericENV_ACU",
+                "ESS": "genericENV_ACU",
+                "NPI": "genericENV_ACU"
+            }
+        }
+    },
+    "TLM_PROCESSOR_STATUS": {
+        "GROUP_NAME": "bit",
+        "ENABLE_MONITORING": {
+            "EMC": true,
+            "ENV": true,
+            "ESS": true,
+            "NPI": {
+                "NPI Pre Check NO TLMs": false,
+                "NPI Pre Check TLMs Fitted": true,
+                "NPI Pre Check CATR Full": true,
+                "Prod PSU": false,
+                "Prod FANS": false,
+                "Prod PSU and FANS": false,
+                "Prod Lower House NO CCU": false,
+                "Prod Lower House CCU": false
+            }
+        },
+        "INPUT_FILE": {
+            "GEN1": {
+                "EMC": "inputParameterToQuery_processorStatusTLM",
+                "ENV": "genericENV_processorStatusTLM",
+                "ESS": "genericENV_processorStatusTLM",
+                "NPI": "inputParameterToQuery_processorStatusTLM"
+            },
+			"GEN2": {
+                "EMC": "inputParameterToQuery_processorStatusTLM",
+                "ENV": "genericENV_processorStatusTLM",
+                "ESS": "genericENV_processorStatusTLM",
+                "NPI": "inputParameterToQuery_processorStatusTLM"
+            }
+        }
+    },
+    "TMU_PROCESSOR_STATUS": {
+        "GROUP_NAME": "bit",
+        "ENABLE_MONITORING": {
+            "EMC": true,
+            "ENV": true,
+            "ESS": true,
+            "NPI": {
+                "NPI Pre Check NO TLMs": true,
+                "NPI Pre Check TLMs Fitted": true,
+                "NPI Pre Check CATR Full": true,
+                "Prod PSU": false,
+                "Prod FANS": false,
+                "Prod PSU and FANS": false,
+                "Prod Lower House NO CCU": false,
+                "Prod Lower House CCU": true
+            }
+        },
+        "INPUT_FILE": {
+            "GEN1": {
+                "EMC": "inputParameterToQuery_processorStatusTMU",
+                "ENV": "genericENV_processorStatusTMU",
+                "ESS": "genericENV_processorStatusTMU",
+                "NPI": "inputParameterToQuery_processorStatusTMU"
+            },
+            "GEN2": {
+                "EMC": "inputParameterToQuery_processorStatusTMU",
+                "ENV": "genericENV_processorStatusTMU",
+                "ESS": "genericENV_processorStatusTMU",
+                "NPI": "inputParameterToQuery_processorStatusTMU"
+            }
+        }
+    },
+    "ACU_PROCESSOR_STATUS": {
+        "GROUP_NAME": "bit",
+        "ENABLE_MONITORING": {
+            "EMC": true,
+            "ENV": true,
+            "ESS": true,
+            "NPI": {
+                "NPI Pre Check NO TLMs": true,
+                "NPI Pre Check TLMs Fitted": true,
+                "NPI Pre Check CATR Full": true,
+                "Prod PSU": false,
+                "Prod FANS": false,
+                "Prod PSU and FANS": false,
+                "Prod Lower House NO CCU": false,
+                "Prod Lower House CCU": true
+            }
+        },
+        "INPUT_FILE": {
+            "GEN1": {
+                "EMC": "inputParameterToQuery_processorStatusACU",
+                "ENV": "genericENV_processorStatusACU",
+                "ESS": "genericENV_processorStatusACU",
+                "NPI": "inputParameterToQuery_processorStatusACU"
+            },
+            "GEN2": {
+                "EMC": "inputParameterToQuery_processorStatusACU",
+                "ENV": "genericENV_processorStatusACU",
+                "ESS": "genericENV_processorStatusACU",
+                "NPI": "inputParameterToQuery_processorStatusACU"
+            }
+        }
+    },
+    "CAL_PROCESSOR_STATUS": {
+        "GROUP_NAME": "bit",
+        "ENABLE_MONITORING": {
+            "EMC": true,
+            "ENV": true,
+            "ESS": true,
+            "NPI": {
+                "NPI Pre Check NO TLMs": true,
+                "NPI Pre Check TLMs Fitted": true,
+                "NPI Pre Check CATR Full": true,
+                "Prod PSU": false,
+                "Prod FANS": false,
+                "Prod PSU and FANS": false,
+                "Prod Lower House NO CCU": false,
+                "Prod Lower House CCU": false
+            }
+        },
+        "INPUT_FILE": {
+            "GEN1": {
+                "EMC": "inputParameterToQuery_processorStatusCAL",
+                "ENV": "genericENV_processorStatusCAL",
+                "ESS": "genericENV_processorStatusCAL",
+                "NPI": "inputParameterToQuery_processorStatusCAL"
+            },
+            "GEN2": {
+                "EMC": "inputParameterToQuery_processorStatusCAL_Gen2",
+                "ENV": "genericENV_processorStatusCAL_Gen2",
+                "ESS": "genericENV_processorStatusCAL_Gen2",
+                "NPI": "inputParameterToQuery_processorStatusCAL_Gen2"
+            }
+        }
+    },
+    "TOP_LEVEL_PROCESSOR_STATUS": {
+        "GROUP_NAME": "bit",
+        "ENABLE_MONITORING": {
+            "EMC": true,
+            "ENV": false,
+            "ESS": false,
+            "NPI": {
+                "NPI Pre Check NO TLMs": false,
+                "NPI Pre Check TLMs Fitted": false,
+                "NPI Pre Check CATR Full": true,
+                "Prod PSU": false,
+                "Prod FANS": false,
+                "Prod PSU and FANS": false,
+                "Prod Lower House NO CCU": false,
+                "Prod Lower House CCU": false
+            }
+        },
+        "INPUT_FILE": {
+            "GEN1": {
+                "EMC": "inputParameterToQuery_processorStatusTopLevelStatus",
+                "ENV": "genericENV_processorStatusTopLevelStatus",
+                "ESS": "genericENV_processorStatusTopLevelStatus",
+                "NPI": "inputParameterToQuery_processorStatusTopLevelStatus"
+            },
+            "GEN2": {
+                "EMC": "inputParameterToQuery_processorStatusTopLevelStatus",
+                "ENV": "genericENV_processorStatusTopLevelStatus",
+                "ESS": "genericENV_processorStatusTopLevelStatus",
+                "NPI": "inputParameterToQuery_processorStatusTopLevelStatus"
+            }
+        }
+    },
+    "PCS_PROCESSOR_STATUS": {
+        "GROUP_NAME": "bit",
+        "ENABLE_MONITORING": {
+            "EMC": true,
+            "ENV": true,
+            "ESS": true,
+            "NPI": {
+                "NPI Pre Check NO TLMs": true,
+                "NPI Pre Check TLMs Fitted": true,
+                "NPI Pre Check CATR Full": true,
+                "Prod PSU": false,
+                "Prod FANS": false,
+                "Prod PSU and FANS": false,
+                "Prod Lower House NO CCU": false,
+                "Prod Lower House CCU": false
+            }
+        },
+        "INPUT_FILE": {
+            "GEN1": {
+                "EMC": "inputParameterToQuery_processorStatusPCS",
+                "ENV": "genericENV_processorStatusPCS",
+                "ESS": "genericENV_processorStatusPCS",
+                "NPI": "inputParameterToQuery_processorStatusPCS"
+            },
+            "GEN2": {
+                "EMC": "inputParameterToQuery_processorStatusPCS_Gen2",
+                "ENV": "genericENV_processorStatusPCS_Gen2",
+                "ESS": "genericENV_processorStatusPCS_Gen2",
+                "NPI": "inputParameterToQuery_processorStatusPCS_Gen2"
+            }
+        }
+    },
+	"TPB_PROCESSOR_STATUS": {
+		"GROUP_NAME": "bit",
+		"ENABLE_MONITORING": {
+			"EMC": true,
+			"ENV": true,
+			"ESS": true,
+			"NPI": {
+				"NPI Pre Check NO TLMs": true,
+				"NPI Pre Check TLMs Fitted": true,
+				"NPI Pre Check CATR Full": true,
+				"Prod PSU": true,
+				"Prod FANS": true,
+				"Prod PSU and FANS": false,
+				"Prod Lower House NO CCU": false,
+				"Prod Lower House CCU": true
+			}
+		},
+		"INPUT_FILE": {
+			"GEN1": {
+				"EMC": "inputParameterToQuery_processorStatusTPB",
+				"ENV": "genericENV_processorStatusTPB",
+				"ESS": "genericENV_processorStatusTPB",
+				"NPI": {
+					"NPI Pre Check NO TLMs": "Stage2ENV_processorStatusTPB_Gen1",
+					"NPI Pre Check TLMs Fitted": "Stage3ENV_processorStatusTPB_Gen1",
+					"NPI Pre Check CATR Full": "Stage3ENV_processorStatusTPB_Gen1",
+					"Prod PSU": "SubassemblyENV_processorStatusTPB",
+					"Prod FANS": "SubassemblyENV_processorStatusTPB",
+					"Prod PSU and FANS": "SubassemblyENV_processorStatusTPB",
+					"Prod Lower House NO CCU": "Stage2to3ENV_processorStatusTPB_Gen1",
+					"Prod Lower House CCU": "Stage2to3ENV_processorStatusTPB_Gen1"
+				}
+			},
+			"GEN2": {
+				"EMC": "inputParameterToQuery_processorStatusTPB",
+				"ENV": "genericENV_processorStatusTPB",
+				"ESS": "genericENV_processorStatusTPB",
+				"NPI": {
+					"NPI Pre Check NO TLMs": "Stage2to3ENV_processorStatusTPB_Gen2",
+					"NPI Pre Check TLMs Fitted": "Stage2to3ENV_TPB_Gen2",
+					"NPI Pre Check CATR Full": "Stage2to3ENV_processorStatusTPB_Gen2",
+					"Prod PSU": "SubassemblyENV_processorStatusTPB",
+					"Prod FANS": "SubassemblyENV_processorStatusTPB",
+					"Prod PSU and FANS": "SubassemblyENV_processorStatusTPB",
+					"Prod Lower House NO CCU": "Stage2to3ENV_processorStatusTPB_Gen1",
+					"Prod Lower House CCU": "Stage2to3ENV_processorStatusTPB_Gen1"
+				}
+			}
+		}
+	},
+    "FAN_PROCESSOR_STATUS": {
+        "GROUP_NAME": "bit",
+        "ENABLE_MONITORING": {
+            "EMC": true,
+            "ENV": true,
+            "ESS": true,
+            "NPI": {
+                "NPI Pre Check NO TLMs": true,
+                "NPI Pre Check TLMs Fitted": true,
+                "NPI Pre Check CATR Full": true,
+                "Prod PSU": false,
+                "Prod FANS": true,
+                "Prod PSU and FANS": true,
+                "Prod Lower House NO CCU": false,
+                "Prod Lower House CCU": false
+            }
+        },
+        "INPUT_FILE": {
+            "GEN1": {
+                "EMC": "inputParameterToQuery_processorStatusFAN",
+                "ENV": "genericENV_processorStatusFAN",
+                "ESS": "genericENV_processorStatusFAN",
+                "NPI": "inputParameterToQuery_processorStatusFAN"
+            },
+            "GEN2": {
+                "EMC": "inputParameterToQuery_processorStatusFAN",
+                "ENV": "genericENV_processorStatusFAN",
+                "ESS": "genericENV_processorStatusFAN",
+                "NPI": "inputParameterToQuery_processorStatusFAN"
+            }
+        }
+    },
+    "VN300": {
+        "GROUP_NAME": "bit",
+        "ENABLE_MONITORING": {
+            "EMC": true,
+            "ENV": true,
+            "ESS": true,
+            "NPI": {
+                "NPI Pre Check NO TLMs": true,
+                "NPI Pre Check TLMs Fitted": true,
+                "NPI Pre Check CATR Full": true,
+                "Prod PSU": false,
+                "Prod FANS": false,
+                "Prod PSU and FANS": false,
+                "Prod Lower House NO CCU": false,
+                "Prod Lower House CCU": true
+            }
+        },
+        "INPUT_FILE": {
+            "GEN1": {
+                "EMC": "inputParameterToQueryNPI_VN300",
+                "ENV": "inputParameterToQueryNPI_VN300",
+                "ESS": "inputParameterToQueryNPI_VN300",
+                "NPI": "inputParameterToQueryNPI_VN300"
+            },
+            "GEN2": {
+                "EMC": "inputParameterToQueryNPI_VN300",
+                "ENV": "inputParameterToQueryNPI_VN300",
+                "ESS": "inputParameterToQueryNPI_VN300",
+                "NPI": "inputParameterToQueryNPI_VN300"
+            }
+        }
+    },
+    "TERMINAL_ALARMS": {
+        "GROUP_NAME": "",
+        "ENABLE_MONITORING": {
+            "EMC": true,
+            "ENV": true,
+            "ESS": true,
+            "NPI": false
+        },
+        "INPUT_FILE": {
+            "EMC": "",
+            "ENV": "",
+            "NPI": ""
+        }
+    },
+    "PING": {
+        "ENABLE_MONITORING": {
+            "EMC": true,
+            "ENV": true,
+            "ESS": true,
+            "NPI": false
+        }
+    },
+    "MODEM": {
+        "GROUP_NAME": "",
+        "ENABLE_MONITORING": {
+            "EMC": true,
+            "ENV": true,
+            "ESS": true,
+            "NPI": false
+        },
+        "INPUT_FILE": {
+            "EMC": "genericAXIOM_Modem",
+            "ENV": "genericAXIOM_Modem",
+            "ESS": "genericAXIOM_Modem",
+            "NPI": "genericAXIOM_Modem"
+        }
+    },
+    "MPB": {
+        "GROUP_NAME": "bit",
+        "ENABLE_MONITORING": {
+            "EMC": true,
+            "ENV": true,
+            "ESS": true,
+            "NPI": {
+                "NPI Pre Check NO TLMs": false,
+                "NPI Pre Check TLMs Fitted": true,
+                "NPI Pre Check CATR Full": true,
+                "Prod PSU": false,
+                "Prod FANS": false,
+                "Prod PSU and FANS": false,
+                "Prod Lower House NO CCU": false,
+                "Prod Lower House CCU": false
+            }
+        },
+        "INPUT_FILE": {
+            "GEN1": {
+                "EMC": "genericEMCENV_MPB",
+                "ENV": "genericEMCENV_MPB",
+                "ESS": "genericEMCENV_MPB",
+                "NPI": "genericEMCENV_MPB"
+            },
+            "GEN2": {
+                "EMC": "genericEMCENV_MPB",
+                "ENV": "genericEMCENV_MPB",
+                "ESS": "genericEMCENV_MPB",
+                "NPI": "genericEMCENV_MPB"
+            }
+        }
+    }
+}

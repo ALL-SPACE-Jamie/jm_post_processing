@@ -1,0 +1,11 @@
+metric,lowerRange,upperRange
+acu_errors,NaN,NaN
+acu_state,NaN,NaN
+acu_lmkPll1,1,1
+acu_lmkPll2,1,1
+acu_lmx1,1,1
+acu_lmx2,1,1
+acu_lmx3,1,1
+acu_lmx4,1,1
+acu_mmcm,1,1
+acu_psTemp,20,90

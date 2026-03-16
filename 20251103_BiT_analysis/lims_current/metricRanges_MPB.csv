@@ -1,0 +1,7 @@
+metric,lowerRange,upperRange
+bayPower,1,1
+bayState,NaN,NaN
+devicePower,1,1
+id,NaN,NaN
+present,1,1
+temp,-55,85

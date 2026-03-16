@@ -1,0 +1,6 @@
+metric,lowerRange,upperRange
+ACU.Vn300Device.ImuTemperature,20,45
+ACU.Vn300Device.FirmwareVersion,NaN,NaN
+ACU.Vn300Device.InsStatusMode,NaN,NaN
+ACU.Vn300Device.SerialNumber,NaN,NaN
+ACU.Vn300Device.ModelNumber,NaN,NaN

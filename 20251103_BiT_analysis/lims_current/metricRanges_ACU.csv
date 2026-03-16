@@ -1,0 +1,19 @@
+metric,lowerRange,upperRange
+ACU.Monitor.CCU.Pl Temperature,-50,90
+ACU.Monitor.CCU.Ps Temperature,-50,90
+ACU.LoopbackMode.Status,NaN,NaN
+ACU.Position.Latitude,NaN,NaN
+ACU.Position.Latitude,NaN,NaN
+ACU.Position.Longitude,NaN,NaN
+ACU.Position.Altitude,NaN,NaN
+ACU.Orientation.Pitch,NaN,NaN
+ACU.Orientation.Roll,NaN,NaN
+ACU.Orientation.Yaw,NaN,NaN
+ACU.Beam1.Rx.PhiTheta.Theta,NaN,NaN
+ACU.Beam2.Rx.PhiTheta.Theta,NaN,NaN
+ACU.Beam1.Rx.PhiTheta.Phi,NaN,NaN
+ACU.Beam2.Rx.PhiTheta.Phi,NaN,NaN
+ACU.Beam1.Tx.PhiTheta.Theta,NaN,NaN
+ACU.Beam2.Tx.PhiTheta.Theta,NaN,NaN
+ACU.Beam1.Tx.PhiTheta.Phi,NaN,NaN
+ACU.Beam2.Tx.PhiTheta.Phi,NaN,NaN

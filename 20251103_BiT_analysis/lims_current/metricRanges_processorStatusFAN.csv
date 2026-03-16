@@ -1,0 +1,5 @@
+metric,lowerRange,upperRange
+fanStatus_allTemp,10,90
+fanStatus_fanSpeed,0,100
+fanStatus_rxTemp,10,90
+fanStatus_txTemp,10,90

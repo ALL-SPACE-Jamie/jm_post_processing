@@ -1,0 +1,7 @@
+metric,lowerRange,upperRange
+cal_0_errors,NaN,NaN
+cal_0_state,NaN,NaN
+cal_0_temp_lmk,20,90
+cal_0_temp_ocxo,20,90
+cal_0_pll_down,1,1
+cal_0_pll_up,1,1

@@ -110,7 +110,7 @@ def phase_wrap(arr):
 ##### CODE #####
 
 # working directory
-file_path = r'C:\scratch\20251028\Rx'
+file_path = r'C:\scratch\20251208\Tx'
 
 # import pickle
 with open(r'C:\Users\jmitchell\OneDrive - ALL.SPACE\RF Testing\6 Investigations\20241005_P-Type_TermperatureInterpolation\Gradient_Generation\2024-10-07_17-57-25_gradients.pkl', 'rb') as file:

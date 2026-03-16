@@ -1,0 +1,11 @@
+Parameter_Level_1,Parameter_Level_2,Parameter_Level_3,Parameter_Level_4,Parameter_Level_5,Parameter_Level_6,Parameter_Level_7,Parameter_Level_8,Parameter_Level_9,Parameter_Level_10,Parameter_Level_11,Parameter_Level_12,Parameter_Level_13,Parameter_Level_14
+TPB,.FanBay,1-2,.fan,1-4,.RPM," ",7300,8000
+TPB,.FanBay,1-2,.fan,1-4,.Status," ",1,1
+TPB,.PsuMeasurements,.MPB,1-2,I,.Amps,.Now,0,0.500
+TPB,.PsuMeasurements,.MPB,3,I,.Amps,.Now,0,0.500
+TPB,.PsuMeasurements,.CCUI,.Amps,.Now," "," ",2.30000,5.65000
+TPB,.PsuMeasurements,.PCS,1-6,I,.Amps,.Now,0.00300,4.100000
+TPB,.PsuMeasurements,.MPB,1-2,V,.Volts,.Now,23.200000,24.500000
+TPB,.PsuMeasurements,.MPB,3,V,.Volts,.Now,23.000000,25.000000
+TPB,.PsuMeasurements,.CCUV,.Volts,.Now," "," ",23.000000,25.000000
+TPB,.PsuMeasurements,.PCS,1-6,V,.Volts,.Now,35.30000,36.300000

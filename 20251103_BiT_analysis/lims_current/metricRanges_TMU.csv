@@ -1,0 +1,5 @@
+metric,lowerRange,upperRange
+TMU.Beam1.CarrierToNoiseRatio.ReceiverStatus.FaultStatus,NaN,NaN
+TMU.Beam2.CarrierToNoiseRatio.ReceiverStatus.FaultStatus,NaN,NaN
+TMU.Beam1.CarrierToNoiseRatio.ReceiverStatus.NetworkStatus,NaN,NaN
+TMU.Beam2.CarrierToNoiseRatio.ReceiverStatus.NetworkStatus,NaN,NaN
