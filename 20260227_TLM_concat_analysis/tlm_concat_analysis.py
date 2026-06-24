@@ -13,8 +13,8 @@ import matplotlib.pyplot as plt; plt.close('all')
 freq = 27.5
 beam = 1
 array_start = 4
-second_df = True
-df_path = r"C:\scratch\20260227\Sanmina-Gen1\dataframes\gain_table.csv"
+second_df = False
+df_path = r"C:\scratch\20260408\gain_table.csv"
 df2_path = r"C:\scratch\20260227\Sanmina-Gen2\dataframes\gain_table.csv"
 
 # load df
@@ -80,10 +80,10 @@ for beam in [1,2]:
         # output df
         df_sorted = pd.concat([df_sorted, df_beam_freq], axis=0, ignore_index=True)
 
-# remove dodgy boards
-for idx in range(len(df_sorted)):
-    if df_sorted.iloc[idx]['furthest'] < 0.0:
-        df_sorted.loc[df_sorted.index[idx], 'rank'] += 1.0e12
+# # remove dodgy boards
+# for idx in range(len(df_sorted)):
+#     if df_sorted.iloc[idx]['furthest'] < 0.0:
+#         df_sorted.loc[df_sorted.index[idx], 'rank'] += 1.0e12
 
 # average ranks and establish order
 mean_ranks = df_sorted.groupby('qr')['rank'].mean()
@@ -104,8 +104,8 @@ for beam in [1,2]:
     devs[f'beam{beam}'] = {}
     for freq in np.linspace(27.5, 31.0, num=8):
         devs[f'beam{beam}'][f'freq{freq}'] = []
-        for qr in qr_order[0:200]:
-        # for qr in qr_second[-20:]:
+        for qr in qr_order:
+        # for qr in qr_second[-20:]: #####
             df_sorted_qr = df_sorted[df_sorted['qr']==qr]
             df_sorted_qr_beam = df_sorted_qr[df_sorted_qr['beam']==beam]
             df_sorted_qr_beam_freq = df_sorted_qr_beam[df_sorted_qr_beam['frequency']==freq]

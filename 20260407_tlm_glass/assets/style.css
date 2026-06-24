@@ -1,0 +1,140 @@
+/* TLM Glass - Custom dark theme overrides */
+
+/* dcc.Dropdown dark styling (React Select v1 classes used by Dash) */
+.Select-control {
+    background-color: #131C31 !important;
+    border-color: #1E2D45 !important;
+    color: #E8E8E8 !important;
+}
+
+.Select-value-label,
+.Select-placeholder {
+    color: #E8E8E8 !important;
+}
+
+.Select-input > input {
+    color: #E8E8E8 !important;
+}
+
+.Select-menu-outer {
+    background-color: #131C31 !important;
+    border-color: #1E2D45 !important;
+}
+
+.Select-option {
+    background-color: #131C31 !important;
+    color: #E8E8E8 !important;
+}
+
+.Select-option.is-focused {
+    background-color: #1E2D45 !important;
+}
+
+.Select-option.is-selected {
+    background-color: #00A3E0 !important;
+    color: #FFFFFF !important;
+}
+
+.Select-multi-value-wrapper .Select-value {
+    background-color: #00A3E0 !important;
+    border-color: #0077B6 !important;
+    color: #FFFFFF !important;
+}
+
+.Select-value-icon:hover {
+    background-color: #0077B6 !important;
+    color: #FFFFFF !important;
+}
+
+.Select-clear-zone {
+    color: #8899AA !important;
+}
+
+.Select-arrow-zone .Select-arrow {
+    border-color: #8899AA transparent transparent !important;
+}
+
+.is-open > .Select-control .Select-arrow {
+    border-color: transparent transparent #8899AA !important;
+}
+
+/* Input placeholder contrast - make visible on dark backgrounds */
+input.bg-dark::placeholder,
+.bg-dark input::placeholder {
+    color: #6688AA !important;
+    opacity: 1 !important;
+}
+
+input.bg-dark:-ms-input-placeholder,
+.bg-dark input:-ms-input-placeholder {
+    color: #6688AA !important;
+}
+
+input.bg-dark::-ms-input-placeholder,
+.bg-dark input::-ms-input-placeholder {
+    color: #6688AA !important;
+}
+
+/* Ensure input text is fully white on dark backgrounds */
+input.form-control.bg-dark,
+input.bg-dark.text-light {
+    color: #FFFFFF !important;
+}
+
+/* Dark text in light/white input boxes for contrast */
+input.form-control:not(.bg-dark),
+.form-control:not(.bg-dark),
+textarea.form-control:not(.bg-dark),
+select.form-control:not(.bg-dark) {
+    color: #0d1117 !important;
+    background-color: #f0f4f8 !important;
+    border-color: #c5d0dc !important;
+}
+input.form-control:not(.bg-dark)::placeholder,
+.form-control:not(.bg-dark)::placeholder,
+textarea.form-control:not(.bg-dark)::placeholder {
+    color: #3d4f5f !important;
+    opacity: 1 !important;
+}
+
+/* Bootstrap alert / light panels on dark pages */
+.alert-light {
+    color: #0d1117 !important;
+    background-color: #e8eef4 !important;
+    border-color: #c5d0dc !important;
+}
+
+/* Number input spinner arrows - visible on dark backgrounds */
+input[type="number"].bg-dark::-webkit-inner-spin-button,
+input[type="number"].bg-dark::-webkit-outer-spin-button {
+    filter: invert(1);
+}
+
+/* Scrollbar styling for dark theme */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0B1120;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #1E2D45;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #2A3D5C;
+}
+
+/* Loading spinner overlay fix */
+.dash-loading {
+    background-color: transparent !important;
+}
+
+/* dbc.Checklist / RadioItems label spacing */
+.form-check-label {
+    color: #E8E8E8 !important;
+}
