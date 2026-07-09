@@ -435,18 +435,18 @@ def plot_verification(df: pd.DataFrame, beam: int, freq_shift_ghz: float,
 # ---------------------------------------------------------------------------
 # Per-mode configuration. Flip MODE between 'TX' and 'RX'.
 # ---------------------------------------------------------------------------
-MODE = 'TX'   # <-- toggle: 'TX' or 'RX'
+MODE = 'RX'   # <-- toggle: 'TX' or 'RX'
 
 CONFIG = {
     'TX': {
-        'terminal': 'T15',
+        'terminal': 'T16',
         'combiner_file':
-            r'C:\scratch\20260529\T15-KevsDataCorrupt\T-15_29052026_113328.csv',
+            r"C:\scratch\20260703\T16\FAIL_f999__T16_03072026_132121\tx_data_T16_03072026_132128\T16_03072026_132128.csv",
         'kev_files': {
-            1: r'C:\scratch\20260529\T15-KevsDataCorrupt\BF_DSP_SN2000_TX_B1.csv',
-            2: r'C:\scratch\20260529\T15-KevsDataCorrupt\BF_DSP_SN2000_TX_B2.csv',
+            1: r"C:\scratch\20260703\T16\BF_DSP_SN2000_TX_B1.csv",#r'C:\scratch\20260529\T15-KevsDataCorrupt\BF_DSP_SN2000_TX_B1.csv',
+            2: r"C:\scratch\20260703\T16\BF_DSP_SN2000_TX_B2.csv", #r'C:\scratch\20260529\T15-KevsDataCorrupt\BF_DSP_SN2000_TX_B2.csv',
         },
-        'output_dir': r'C:\scratch\20260529',
+        'output_dir': r'C:\scratch\20260703\T16',
         'combiner_fmt': 'tx',
         'freq_shift_ghz': 3.9375,
         'serial_number': 2000,
@@ -455,19 +455,19 @@ CONFIG = {
         'ylim': (-10, 10),
     },
     'RX': {
-        'terminal': 'T9',
+        'terminal': 'T16',
         'combiner_file':
-            r'C:\scratch\20260529\T9\T9_RXDOWNPWR.csv',
+            r"C:\scratch\20260703\T16\long_form\FAIL_f999__T16_03072026_150020\rx_data_T16_03072026_150032\T16-ITCC-2125_RXDOWNPWR.csv",
         'kev_files': {
-            1: r'C:\scratch\20260529\T9\BF_DSP_SN2000_RX_B1.csv',
-            2: r'C:\scratch\20260529\T9\BF_DSP_SN2000_RX_B2.csv',
+            1: r"C:\scratch\20260703\T16\BF_DSP_SN2000_RX_B1.csv",#r'C:\scratch\20260529\T9\BF_DSP_SN2000_RX_B1.csv',
+            2: r"C:\scratch\20260703\T16\BF_DSP_SN2000_RX_B2.csv",#r'C:\scratch\20260529\T9\BF_DSP_SN2000_RX_B2.csv',
         },
-        'output_dir': r'C:\scratch\20260529\T9',
+        'output_dir': r'C:\scratch\20260703\T16',
         'combiner_fmt': 'rx',
         # NB: combiner RX freqs are 17.7-21.2 GHz, Kev's grid is 20.6-24.0 GHz.
         # 2.9 GHz lines the low edges up (17.7 -> 20.6). CONFIRM this is the
         # correct RX LO/IF offset for your setup before trusting the output.
-        'freq_shift_ghz': 2.9,
+        'freq_shift_ghz': 2.8125,
         'serial_number': 2000,
         'beam_id_by_beam': {1: 0, 2: 1},  # combiner beam -> Kev's Beam ID
         'value_label': 'SNR (dB)',
