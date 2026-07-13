@@ -439,14 +439,14 @@ MODE = 'RX'   # <-- toggle: 'TX' or 'RX'
 
 CONFIG = {
     'TX': {
-        'terminal': 'T16',
+        'terminal': 'T21',
         'combiner_file':
-            r"C:\scratch\20260703\T16\FAIL_f999__T16_03072026_132121\tx_data_T16_03072026_132128\T16_03072026_132128.csv",
+            r"C:\Users\jmitchell\OneDrive - ALL.SPACE\Engineering - T21\Combiner_Data\FAIL_f167__T21-SWAPOVER_09072026_095903\FAIL_f167__T21-SWAPOVER_09072026_095903\tx_data_T21-SWAPOVER_09072026_095910\T21-SWAPOVER_09072026_095910.csv",
         'kev_files': {
-            1: r"C:\scratch\20260703\T16\BF_DSP_SN2000_TX_B1.csv",#r'C:\scratch\20260529\T15-KevsDataCorrupt\BF_DSP_SN2000_TX_B1.csv',
-            2: r"C:\scratch\20260703\T16\BF_DSP_SN2000_TX_B2.csv", #r'C:\scratch\20260529\T15-KevsDataCorrupt\BF_DSP_SN2000_TX_B2.csv',
+            1: r"C:\Users\jmitchell\OneDrive - ALL.SPACE\Engineering - T21\Delay_Files_LC2BF\BF_DSP_SN2000_TX_B1.csv",
+            2: r"C:\Users\jmitchell\OneDrive - ALL.SPACE\Engineering - T21\Delay_Files_LC2BF\BF_DSP_SN2000_TX_B2.csv",
         },
-        'output_dir': r'C:\scratch\20260703\T16',
+        'output_dir': r'C:\Users\jmitchell\OneDrive - ALL.SPACE\Engineering - T21\Delay_Files_LC2BF_with_Combiner_Gains',
         'combiner_fmt': 'tx',
         'freq_shift_ghz': 3.9375,
         'serial_number': 2000,
@@ -457,12 +457,12 @@ CONFIG = {
     'RX': {
         'terminal': 'T16',
         'combiner_file':
-            r"C:\scratch\20260703\T16\long_form\FAIL_f999__T16_03072026_150020\rx_data_T16_03072026_150032\T16-ITCC-2125_RXDOWNPWR.csv",
+            r"C:\scratch\20260710\rx_data_T20-SWAPOVER-ITCC2135-APP4886_09072026_114328_rxdown_pwr.csv",
         'kev_files': {
-            1: r"C:\scratch\20260703\T16\BF_DSP_SN2000_RX_B1.csv",#r'C:\scratch\20260529\T9\BF_DSP_SN2000_RX_B1.csv',
-            2: r"C:\scratch\20260703\T16\BF_DSP_SN2000_RX_B2.csv",#r'C:\scratch\20260529\T9\BF_DSP_SN2000_RX_B2.csv',
+            1: r"C:\Users\jmitchell\OneDrive - ALL.SPACE\Engineering - T21\Delay_Files_LC2BF\BF_DSP_SN2000_RX_B1.csv",
+            2: r"C:\Users\jmitchell\OneDrive - ALL.SPACE\Engineering - T21\Delay_Files_LC2BF\BF_DSP_SN2000_RX_B2.csv",
         },
-        'output_dir': r'C:\scratch\20260703\T16',
+        'output_dir': r'C:\Users\jmitchell\OneDrive - ALL.SPACE\Engineering - T21\Delay_Files_LC2BF_with_Combiner_Gains',
         'combiner_fmt': 'rx',
         # NB: combiner RX freqs are 17.7-21.2 GHz, Kev's grid is 20.6-24.0 GHz.
         # 2.9 GHz lines the low edges up (17.7 -> 20.6). CONFIRM this is the
@@ -501,9 +501,8 @@ if __name__ == '__main__':
         gains = result['curves']
 
         # write the calibration CSV
-        out_csv = os.path.join(
-            cfg['output_dir'],
-            f"{cfg['terminal']}_combiner_{MODE}_B{beam}.csv")
+        stem, ext = os.path.splitext(os.path.basename(cfg['kev_files'][beam]))
+        out_csv = os.path.join(cfg['output_dir'], f'{stem}_withComb{ext}')
         write_tx_format(path=out_csv, freqs=kev_freqs, gains=gains,
                         col_c=kev_col_c,
                         serial_number=cfg['serial_number'],
