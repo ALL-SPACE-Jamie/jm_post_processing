@@ -31,3 +31,5 @@ theta = np.arccos(np.cos(el)*np.cos(az))*180.0/np.pi
 phi = ((np.arctan2(np.tan(el), np.sin(az))) + 2 * np.pi) % (2 * np.pi) * 180.0/np.pi
 
 print(theta, phi)
+print(theta, phi)
+

@@ -15,9 +15,7 @@ plt.close('all')
 dirScript = os.getcwd()
 
 # parmas
-filePath = r'C:\Users\JamieMitchell\Downloads\OneDrive_4_03-10-2023\2023-10-02_21-35-24_MCR3_Rig2_pwr_sweep_QR00004_G-type_45C'
-filePath = r'C:\Users\JamieMitchell\Downloads\OneDrive_4_03-10-2023\2023-10-03_10-10-22_MCR3_Rig2_pwr_sweep_QR00002_G-type_BC_CA12_45C'
-filePath = r'C:\Users\JamieMitchell\Downloads\2023-10-03_12-24-10_MCR3_Rig2_pwr_sweep_QR00003_F-type_FBC_CA20_45C'
+filePath = r'C:\codeRun\_data\Rx\ES2c_powerSweep'
 
 beamTab = [1,2]
 lensTab = [1,2,3]
@@ -72,60 +70,28 @@ for beam in beamTab:
         f_meas = float(f_c)*1.0
         f_col = np.argmin((meas_frequencies-float(f_meas))**2)
         if S2000_TX_RFIC_CHANNEL_MAP[str(port)] == [0, 'V']:
-            axs[0,0].plot(meas_powers, meas_array_gain[:,f_col], '-', label = '(' + str(rfic) + ')' + ' ' + str(port))
-            avGain = np.median(meas_array_gain[:,f_col][0:int(len(meas_array_gain[:,f_col])/2)])
-            loc = np.argmin((meas_array_gain[:,f_col][int(len(meas_array_gain[:,f_col])/2):]-(avGain-1.0))**2) + int(len(meas_array_gain[:,f_col])/2)
-            if avGain - meas_array_gain[:,f_col][loc] > 0.5: 
-                axs[0,0].plot(meas_powers[loc], meas_array_gain[:,f_col][loc], 'kx', markersize=10)
+            axs[0,0].plot(meas_powers, meas_array_gain[:,f_col], 'o-', label = '(' + str(rfic) + ')' + ' ' + str(port))
         if S2000_TX_RFIC_CHANNEL_MAP[str(port)] == [0, 'H']:
-            axs[0,1].plot(meas_powers, meas_array_gain[:,f_col], '-', label = '(' + str(rfic) + ')' + ' ' + str(port))
-            avGain = np.median(meas_array_gain[:,f_col][0:int(len(meas_array_gain[:,f_col])/2)])
-            loc = np.argmin((meas_array_gain[:,f_col][int(len(meas_array_gain[:,f_col])/2):]-(avGain-1.0))**2) + int(len(meas_array_gain[:,f_col])/2)
-            if avGain - meas_array_gain[:,f_col][loc] > 0.5: 
-                axs[0,1].plot(meas_powers[loc], meas_array_gain[:,f_col][loc], 'kx', markersize=10)
+            axs[0,1].plot(meas_powers, meas_array_gain[:,f_col], 'o-', label = '(' + str(rfic) + ')' + ' ' + str(port))
         if S2000_TX_RFIC_CHANNEL_MAP[str(port)] == [1, 'V']:
-            axs[1,0].plot(meas_powers, meas_array_gain[:,f_col], '-', label = '(' + str(rfic) + ')' + ' ' + str(port))
-            avGain = np.median(meas_array_gain[:,f_col][0:int(len(meas_array_gain[:,f_col])/2)])
-            loc = np.argmin((meas_array_gain[:,f_col][int(len(meas_array_gain[:,f_col])/2):]-(avGain-1.0))**2) + int(len(meas_array_gain[:,f_col])/2)
-            if avGain - meas_array_gain[:,f_col][loc] > 0.5: 
-                axs[1,0].plot(meas_powers[loc], meas_array_gain[:,f_col][loc], 'kx', markersize=10)
+            axs[1,0].plot(meas_powers, meas_array_gain[:,f_col], 'o-', label = '(' + str(rfic) + ')' + ' ' + str(port))
         if S2000_TX_RFIC_CHANNEL_MAP[str(port)] == [1, 'H']:
-            axs[1,1].plot(meas_powers, meas_array_gain[:,f_col], '-', label = '(' + str(rfic) + ')' + ' ' + str(port))
-            avGain = np.median(meas_array_gain[:,f_col][0:int(len(meas_array_gain[:,f_col])/2)])
-            loc = np.argmin((meas_array_gain[:,f_col][int(len(meas_array_gain[:,f_col])/2):]-(avGain-1.0))**2) + int(len(meas_array_gain[:,f_col])/2)
-            if avGain - meas_array_gain[:,f_col][loc] > 0.5: 
-                axs[1,1].plot(meas_powers[loc], meas_array_gain[:,f_col][loc], 'kx', markersize=10)
+            axs[1,1].plot(meas_powers, meas_array_gain[:,f_col], 'o-', label = '(' + str(rfic) + ')' + ' ' + str(port))
         if S2000_TX_RFIC_CHANNEL_MAP[str(port)] == [2, 'V']:
-            axs[2,0].plot(meas_powers, meas_array_gain[:,f_col], '-', label = '(' + str(rfic) + ')' + ' ' + str(port))
-            avGain = np.median(meas_array_gain[:,f_col][0:int(len(meas_array_gain[:,f_col])/2)])
-            loc = np.argmin((meas_array_gain[:,f_col][int(len(meas_array_gain[:,f_col])/2):]-(avGain-1.0))**2) + int(len(meas_array_gain[:,f_col])/2)
-            if avGain - meas_array_gain[:,f_col][loc] > 0.5: 
-                axs[2,0].plot(meas_powers[loc], meas_array_gain[:,f_col][loc], 'kx', markersize=10)
+            axs[2,0].plot(meas_powers, meas_array_gain[:,f_col], 'o-', label = '(' + str(rfic) + ')' + ' ' + str(port))
         if S2000_TX_RFIC_CHANNEL_MAP[str(port)] == [2, 'H']:
-            axs[2,1].plot(meas_powers, meas_array_gain[:,f_col], '-', label = '(' + str(rfic) + ')' + ' ' + str(port))
-            avGain = np.median(meas_array_gain[:,f_col][0:int(len(meas_array_gain[:,f_col])/2)])
-            loc = np.argmin((meas_array_gain[:,f_col][int(len(meas_array_gain[:,f_col])/2):]-(avGain-1.0))**2) + int(len(meas_array_gain[:,f_col])/2)
-            if avGain - meas_array_gain[:,f_col][loc] > 0.5: 
-                axs[2,1].plot(meas_powers[loc], meas_array_gain[:,f_col][loc], 'kx', markersize=10)
+            axs[2,1].plot(meas_powers, meas_array_gain[:,f_col], 'o-', label = '(' + str(rfic) + ')' + ' ' + str(port))
         if S2000_TX_RFIC_CHANNEL_MAP[str(port)] == [3, 'V']:
-            axs[3,0].plot(meas_powers, meas_array_gain[:,f_col], '-', label = '(' + str(rfic) + ')' + ' ' + str(port))
-            avGain = np.median(meas_array_gain[:,f_col][0:int(len(meas_array_gain[:,f_col])/2)])
-            loc = np.argmin((meas_array_gain[:,f_col][int(len(meas_array_gain[:,f_col])/2):]-(avGain-1.0))**2) + int(len(meas_array_gain[:,f_col])/2)
-            if avGain - meas_array_gain[:,f_col][loc] > 0.5: 
-                axs[3,0].plot(meas_powers[loc], meas_array_gain[:,f_col][loc], 'kx', markersize=10)
+            axs[3,0].plot(meas_powers, meas_array_gain[:,f_col], 'o-', label = '(' + str(rfic) + ')' + ' ' + str(port))
         if S2000_TX_RFIC_CHANNEL_MAP[str(port)] == [3, 'H']:
-            axs[3,1].plot(meas_powers, meas_array_gain[:,f_col], '-', label = '(' + str(rfic) + ')' + ' ' + str(port))
-            avGain = np.median(meas_array_gain[:,f_col][0:int(len(meas_array_gain[:,f_col])/2)])
-            loc = np.argmin((meas_array_gain[:,f_col][int(len(meas_array_gain[:,f_col])/2):]-(avGain-1.0))**2) + int(len(meas_array_gain[:,f_col])/2)
-            if avGain - meas_array_gain[:,f_col][loc] > 0.5: 
-                axs[3,1].plot(meas_powers[loc], meas_array_gain[:,f_col][loc], 'kx', markersize=10)
+            axs[3,1].plot(meas_powers, meas_array_gain[:,f_col], 'o-', label = '(' + str(rfic) + ')' + ' ' + str(port))
         chanCycle = [0,1,2,3]
         linCycle = ['V', 'H']
         for row in range(4):
             for col in range(2):
                 axs[row,col].legend(); axs[row,col].set_xlabel('Power [dBm]'); axs[row,col].set_ylabel('S$_{21}$ [dB]')
-                axs[row,col].set_ylim([0,30]); axs[row,col].set_xlim([-50, 10.0])
-                axs[row,col].set_yticks(np.linspace(0, 30, num=int(30/5)+1))
+                axs[row,col].set_ylim([0,40]); axs[row,col].set_xlim([-50, 0.0])
+                axs[row,col].set_yticks(np.linspace(-0, 40, num=int(40/5)+1))
                 axs[row,col].grid('on')
                 axs[row,col].legend(fontsize=8, ncol=5, loc='lower right')
                 axs[row,col].set_title('C'+str(chanCycle[row])+'-'+linCycle[col])
@@ -135,8 +101,8 @@ for beam in beamTab:
     title = 'Board ' + qr + ', Lens ' + str(lens) + ', Beam' + str(beam) + ', f$_{set}$=' + str(f_c) + ', f$_{meas}$=' + str(f_meas) + ' GHz'
     fig.suptitle(title, fontsize=25)
     plt.tight_layout()
-    # plt.savefig(r'C:\Users\JamieMitchell\Downloads\2023-09-28_10-18-00_MCR2_Rig2_pwr_sweep_QR420-0231-00001_45C\2023-09-28_10-18-00_MCR2_Rig2_pwr_sweep_QR420-0231-00001_45C\figures\\'+title+'.png',dpi=400)
-    # time.sleep(2)
-    # plt.close('all')
+    plt.savefig('C:\\codeRun\\powerSweepFigures\\'+title+'.png',dpi=400)
+    time.sleep(2)
+    plt.close('all')
 
     print('fin.')
