@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>combiner_to_txrx_calibration.py — documentation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F2F5F7;
+    --grid:#DCE4EA;
+    --panel:#FFFFFF;
+    --ink:#1B2733;
+    --ink-soft:#5A6B7A;
+    --line:#C7D2DB;
+    --trace-orange:#E8823A;  /* combiner raw            */
+    --trace-red:#C94F3D;     /* combiner shifted (-B)   */
+    --trace-purple:#8A63B8;  /* file: shifted + interp  */
+    --trace-blue:#4A7FB5;    /* reference rig (Kev)     */
+    --ok:#3E8E5A;
+    --mono:'IBM Plex Mono',ui-monospace,Consolas,monospace;
+    --sans:'IBM Plex Sans',system-ui,Segoe UI,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font-family:var(--sans);
+    font-size:15px;
+    line-height:1.55;
+    color:var(--ink);
+    background-color:var(--paper);
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size:28px 28px;
+  }
+  .wrap{max-width:860px;margin:0 auto;padding:40px 20px 80px}
+
+  /* ---------- header ---------- */
+  header h1{
+    font-family:var(--mono);
+    font-size:21px;
+    font-weight:600;
+    margin:0 0 6px;
+    letter-spacing:-0.01em;
+  }
+  header .meta{
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--ink-soft);
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+    align-items:center;
+  }
+  .badge{
+    display:inline-block;
+    font-family:var(--mono);
+    font-size:11px;
+    font-weight:600;
+    padding:1px 8px;
+    border:1px solid var(--ink);
+    border-radius:3px;
+    background:var(--panel);
+  }
+
+  /* ---------- tabs ---------- */
+  .tabs{
+    display:flex;
+    gap:0;
+    margin:28px 0 0;
+    border-bottom:2px solid var(--ink);
+  }
+  .tab-btn{
+    font-family:var(--mono);
+    font-size:13px;
+    font-weight:500;
+    padding:9px 18px;
+    background:transparent;
+    border:2px solid transparent;
+    border-bottom:none;
+    color:var(--ink-soft);
+    cursor:pointer;
+    border-radius:6px 6px 0 0;
+  }
+  .tab-btn[aria-selected="true"]{
+    background:var(--panel);
+    border-color:var(--ink);
+    color:var(--ink);
+    position:relative;
+    top:2px;
+  }
+  .tab-btn:focus-visible{outline:2px solid var(--trace-blue);outline-offset:2px}
+  .panel{
+    background:var(--panel);
+    border:2px solid var(--ink);
+    border-top:none;
+    border-radius:0 0 8px 8px;
+    padding:32px 30px 36px;
+  }
+  [hidden]{display:none !important}
+
+  /* ---------- overview / flowchart ---------- */
+  .io-card{
+    border:1.5px solid var(--line);
+    border-radius:6px;
+    padding:14px 18px;
+    font-size:13.5px;
+    background:#FAFCFD;
+  }
+  .io-card .io-label{
+    font-family:var(--mono);
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    margin-bottom:6px;
+  }
+  .io-card ul{margin:0;padding-left:18px}
+  .io-card li{margin:2px 0}
+  .io-card code{font-family:var(--mono);font-size:12.5px}
+
+  .flow{display:flex;flex-direction:column;align-items:stretch;margin:0}
+  .connector{
+    width:2px;height:26px;background:var(--ink);
+    margin:0 auto;position:relative;
+  }
+  .connector::after{
+    content:"";position:absolute;bottom:-1px;left:50%;
+    transform:translateX(-50%);
+    border:5px solid transparent;border-top:7px solid var(--ink);
+  }
+  .step{
+    border:1.5px solid var(--ink);
+    border-radius:6px;
+    padding:12px 16px 12px 14px;
+    background:var(--panel);
+    display:flex;
+    gap:12px;
+    align-items:flex-start;
+  }
+  .step .n{
+    font-family:var(--mono);
+    font-size:12px;
+    font-weight:600;
+    color:var(--ink-soft);
+    padding-top:2px;
+    min-width:14px;
+  }
+  .step .chip{
+    width:10px;height:10px;border-radius:2px;
+    margin-top:6px;flex:none;
+  }
+  .step h3{
+    font-size:14.5px;font-weight:600;margin:0 0 2px;
+  }
+  .step p{margin:0;font-size:13px;color:var(--ink-soft)}
+  .step code{font-family:var(--mono);font-size:12px;color:var(--ink)}
+  .mode-note{
+    font-family:var(--mono);
+    font-size:11.5px;
+    color:var(--ink-soft);
+    margin-top:3px;
+  }
+  .per-beam{
+    border-left:2px dashed var(--line);
+    margin-left:10px;
+    padding-left:16px;
+  }
+  .per-beam-label{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    margin:4px 0 8px 26px;
+  }
+
+  .legend{
+    display:flex;flex-wrap:wrap;gap:14px 22px;
+    margin-top:26px;padding-top:16px;
+    border-top:1.5px solid var(--line);
+    font-family:var(--mono);font-size:12px;color:var(--ink-soft);
+  }
+  .legend span{display:flex;align-items:center;gap:7px}
+  .legend i{width:11px;height:11px;border-radius:2px;display:inline-block}
+
+  /* ---------- versions ---------- */
+  .ver{margin-bottom:8px}
+  .ver-head{
+    display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;
+    margin-bottom:14px;
+  }
+  .ver-head h2{
+    font-family:var(--mono);font-size:17px;font-weight:600;margin:0;
+  }
+  .ver-head .date{font-family:var(--mono);font-size:12px;color:var(--ink-soft)}
+  .group-label{
+    font-family:var(--mono);font-size:11px;font-weight:600;
+    letter-spacing:0.08em;text-transform:uppercase;
+    margin:18px 0 8px;
+  }
+  .group-label.fixed{color:var(--trace-red)}
+  .group-label.added{color:var(--ok)}
+  .group-label.notes{color:var(--trace-blue)}
+  .change{
+    display:flex;gap:10px;align-items:flex-start;
+    padding:7px 0;font-size:14px;
+    border-bottom:1px solid #EDF1F4;
+  }
+  .change:last-of-type{border-bottom:none}
+  .change .txt{flex:1}
+  .change code{font-family:var(--mono);font-size:12.5px;background:#F2F5F7;padding:1px 5px;border-radius:3px}
+  .code-btn{
+    font-family:var(--mono);font-size:11.5px;font-weight:500;
+    padding:3px 10px;border:1.5px solid var(--ink);
+    border-radius:4px;background:var(--panel);color:var(--ink);
+    cursor:pointer;white-space:nowrap;flex:none;
+  }
+  .code-btn:hover{background:var(--ink);color:var(--panel)}
+  .code-btn:focus-visible{outline:2px solid var(--trace-blue);outline-offset:2px}
+  .code-btn[aria-expanded="true"]{background:var(--ink);color:var(--panel)}
+  .snippet{
+    margin:6px 0 10px 0;
+    background:#202A33;
+    color:#DCE4EA;
+    border-radius:6px;
+    padding:14px 16px;
+    overflow-x:auto;
+  }
+  .snippet pre{
+    margin:0;font-family:var(--mono);font-size:12.5px;line-height:1.6;
+  }
+  .snippet .del{color:#E8938A}
+  .snippet .add{color:#8FD4A8}
+  .snippet .cm{color:#8296A6}
+  .prever{
+    margin-top:28px;padding-top:16px;
+    border-top:1.5px solid var(--line);
+    font-size:13px;color:var(--ink-soft);
+  }
+  .prever b{font-family:var(--mono);font-size:12px;color:var(--ink)}
+
+  @media (max-width:560px){
+    .panel{padding:22px 16px 28px}
+    .change{flex-wrap:wrap}
+  }
+  @media (prefers-reduced-motion:no-preference){
+    .snippet{transition:opacity .15s ease}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <h1>combiner_to_txrx_calibration.py</h1>
+    <div class="meta">
+      <span class="badge">v1</span>
+      <span>jmitchell</span>
+      <span>modes: TX / RX</span>
+      <span>python 3.12 · numpy · pandas · matplotlib</span>
+      <a href="REPLACE_WITH_REPO_URL/blob/combiner-cal-v1/20260526_pcs_equilisation_file/20260619_combiner_to_txrx_calibration.py"
+         style="color:var(--trace-blue)">source @ v1</a>
+    </div>
+  </header>
+
+  <div class="tabs" role="tablist" aria-label="Documentation sections">
+    <button class="tab-btn" role="tab" id="tab-overview" aria-controls="panel-overview" aria-selected="true">Overview</button>
+    <button class="tab-btn" role="tab" id="tab-versions" aria-controls="panel-versions" aria-selected="false">Versions</button>
+  </div>
+
+  <!-- ================= OVERVIEW ================= -->
+  <section class="panel" id="panel-overview" role="tabpanel" aria-labelledby="tab-overview">
+
+    <div class="flow">
+
+      <div class="io-card">
+        <div class="io-label">Inputs — 3 files</div>
+        <ul>
+          <li>1 × combiner CSV — headerless (TX: 9-col, freq in MHz · RX: 6-col, freq in GHz)</li>
+          <li>2 × reference calibration CSVs — Kev's rig, block format, one per beam</li>
+        </ul>
+      </div>
+
+      <div class="connector" aria-hidden="true"></div>
+
+      <div class="step">
+        <span class="n">1</span>
+        <span class="chip" style="background:var(--ink-soft)"></span>
+        <div>
+          <h3>Load &amp; normalise combiner data</h3>
+          <p>Both formats reduce to one schema: <code>PCS · TLM · beam · freq_GHz · gain</code>. Null markers (−100.1) dropped.</p>
+          <p class="mode-note">TX: gain split across two beam columns &nbsp;·&nbsp; RX: single value column (SNR)</p>
+        </div>
+      </div>
+
+      <div class="connector" aria-hidden="true"></div>
+      <div class="per-beam-label">runs per beam (1, 2)</div>
+      <div class="per-beam">
+
+        <div class="step">
+          <span class="n">2</span>
+          <span class="chip" style="background:var(--trace-orange)"></span>
+          <div>
+            <h3>Aggregate repeats</h3>
+            <p>Median per (PCS × frequency) across the repeat axis.</p>
+            <p class="mode-note">TX: TLM × test &nbsp;·&nbsp; RX: TLM only</p>
+          </div>
+        </div>
+
+        <div class="connector" aria-hidden="true"></div>
+
+        <div class="step">
+          <span class="n">3</span>
+          <span class="chip" style="background:var(--ink)"></span>
+          <div>
+            <h3>Baseline B</h3>
+            <p><code>B = mean</code> of all combiner points for the beam. Computed from combiner data only — the reference rig is never used here.</p>
+          </div>
+        </div>
+
+        <div class="connector" aria-hidden="true"></div>
+
+        <div class="step">
+          <span class="n">4</span>
+          <span class="chip" style="background:var(--trace-red)"></span>
+          <div>
+            <h3>Attenuation</h3>
+            <p><code>attenuation = median − B</code> per PCS. Positive = above baseline (attenuate down); negative = below.</p>
+          </div>
+        </div>
+
+        <div class="connector" aria-hidden="true"></div>
+
+        <div class="step">
+          <span class="n">5</span>
+          <span class="chip" style="background:var(--trace-purple)"></span>
+          <div>
+            <h3>Shift &amp; interpolate</h3>
+            <p>Frequency-shift, then linear interpolation onto the reference rig's grid (<code>np.interp</code>; clips at grid edges).</p>
+            <p class="mode-note">TX: +3937.5 MHz &nbsp;·&nbsp; RX: +2812.5 MHz</p>
+          </div>
+        </div>
+
+        <div class="connector" aria-hidden="true"></div>
+
+        <div class="step">
+          <span class="n">6</span>
+          <span class="chip" style="background:var(--trace-blue)"></span>
+          <div>
+            <h3>Write file + verification plot</h3>
+            <p>Calibration CSV in the reference block format — column C copied verbatim from Kev's file, RX/TX tag and Beam ID set per mode. Four-trace plot for visual sign-off.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="connector" aria-hidden="true"></div>
+
+      <div class="io-card">
+        <div class="io-label">Outputs — 4 files</div>
+        <ul>
+          <li>2 × calibration CSVs — same filename as the reference input, written to <code>output_dir</code>, one per beam</li>
+          <li>2 × verification PNGs — one per beam, timestamped</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="legend" aria-label="Verification plot trace key">
+      <span><i style="background:var(--trace-orange)"></i>combiner raw</span>
+      <span><i style="background:var(--trace-red)"></i>combiner −B shift</span>
+      <span><i style="background:var(--trace-purple)"></i>file (shift + interp)</span>
+      <span><i style="background:var(--trace-blue)"></i>reference rig, unaltered</span>
+    </div>
+
+  </section>
+
+  <!-- ================= VERSIONS ================= -->
+  <section class="panel" id="panel-versions" role="tabpanel" aria-labelledby="tab-versions" hidden>
+
+    <div class="ver">
+      <div class="ver-head">
+        <h2>Version 1</h2>
+        <span class="date">2026-07-17 · current</span>
+      </div>
+
+      <div class="group-label added">Changed</div>
+
+      <div class="change">
+        <div class="txt">Output calibration CSV keeps the reference input's exact filename (drops the <code>_withComb</code> suffix), written to <code>output_dir</code>.</div>
+        <button class="code-btn" aria-expanded="false" aria-controls="snip-name-v1">view code</button>
+      </div>
+      <div class="snippet" id="snip-name-v1" hidden>
+<pre>out_csv = os.path.join(cfg['output_dir'],
+                       os.path.basename(cfg['kev_files'][beam]))</pre>
+      </div>
+
+      <div class="group-label added">Added</div>
+
+      <div class="change">
+        <div class="txt">Overwrite guard: aborts before writing if the output path resolves to the reference input file.</div>
+        <button class="code-btn" aria-expanded="false" aria-controls="snip-guard">view code</button>
+      </div>
+      <div class="snippet" id="snip-guard" hidden>
+<pre><span class="cm"># guard: never overwrite the reference input</span>
+if (os.path.normcase(os.path.abspath(out_csv))
+        == os.path.normcase(os.path.abspath(cfg['kev_files'][beam]))):
+    raise RuntimeError('output_dir must differ from the reference folder')</pre>
+      </div>
+
+      <div class="change">
+        <div class="txt"><code>__version__</code> and <code>@docs</code> reference in the module header for doc/code cross-linking.</div>
+      </div>
+
+      <div class="group-label notes">Known issues / notes</div>
+
+      <div class="change">
+        <div class="txt">Identical filenames: folder location (and the gain values) are now the only distinction from the reference originals — be deliberate when copying outputs around.</div>
+      </div>
+      <div class="change">
+        <div class="txt">Docs corrected: RX combiner format is 6 columns (marker named) in the header NOTE and loader docstring.</div>
+      </div>
+    </div>
+
+    <div class="ver">
+      <div class="ver-head">
+        <h2>Version 0</h2>
+        <span class="date">2026-07-17</span>
+      </div>
+
+      <div class="group-label fixed">Fixed</div>
+
+      <div class="change">
+        <div class="txt">Interpolation off-by-one: file values were displaced one grid step (+0.1&nbsp;GHz) right of the shifted combiner line. Now interpolates at <code>target_grid</code> directly — purple sits on the red trace exactly.</div>
+        <button class="code-btn" aria-expanded="false" aria-controls="snip-interp">view code</button>
+      </div>
+      <div class="snippet" id="snip-interp" hidden>
+<pre><span class="cm"># build_attenuation_curves — before</span>
+<span class="del">- target_for_interp = [f - grid_step for f in target_grid]</span>
+<span class="del">- curves[pcs] = np.interp(target_for_interp, f_src, atten_src)</span>
+<span class="cm"># after</span>
+<span class="add">+ curves[pcs] = np.interp(target_grid, f_src, atten_src)</span></pre>
+      </div>
+
+      <div class="change">
+        <div class="txt">RX loader column misalignment: 5 names passed for a 6-column file made pandas promote frequency to the index, shifting every column left by one (<code>ValueError: array of sample points is empty</code>).</div>
+        <button class="code-btn" aria-expanded="false" aria-controls="snip-rxload">view code</button>
+      </div>
+      <div class="snippet" id="snip-rxload" hidden>
+<pre><span class="cm"># load_combiner_rx_csv — before</span>
+<span class="del">- cols = ['freq_GHz', 'beam', 'PCS', 'TLM', 'gain']</span>
+<span class="cm"># after: name all 6 columns</span>
+<span class="add">+ cols = ['freq_GHz', 'beam', 'PCS', 'TLM', 'gain', 'marker']</span></pre>
+      </div>
+
+      <div class="group-label added">Added</div>
+
+      <div class="change">
+        <div class="txt">RX mode: <code>MODE</code> toggle with per-mode <code>CONFIG</code> (paths, combiner format, frequency shift, beam-ID map, y-label).</div>
+        <button class="code-btn" aria-expanded="false" aria-controls="snip-mode">view code</button>
+      </div>
+      <div class="snippet" id="snip-mode" hidden>
+<pre>MODE = 'TX'   <span class="cm"># toggle: 'TX' or 'RX'</span>
+cfg = CONFIG[MODE]
+df = load_combiner(cfg['combiner_file'], cfg['combiner_fmt'])</pre>
+      </div>
+
+      <div class="change">
+        <div class="txt">Output naming mirrors the reference input: <code>&lt;kev_stem&gt;_withComb.csv</code>, written to <code>output_dir</code>. (Superseded in v1.)</div>
+        <button class="code-btn" aria-expanded="false" aria-controls="snip-name">view code</button>
+      </div>
+      <div class="snippet" id="snip-name" hidden>
+<pre>stem, ext = os.path.splitext(os.path.basename(cfg['kev_files'][beam]))
+out_csv = os.path.join(cfg['output_dir'], f'{stem}_withComb{ext}')</pre>
+      </div>
+
+      <div class="group-label notes">Known issues / notes</div>
+
+      <div class="change">
+        <div class="txt">RX frequency shift is <code>2.8125&nbsp;GHz</code>; the edge-alignment derivation in the config comment gives 2.9&nbsp;GHz (17.7&nbsp;→&nbsp;20.6). Confirm the LO/IF offset before trusting RX outputs.</div>
+      </div>
+      <div class="change">
+        <div class="txt"><code>np.interp</code> clips outside the shifted source range — grid points beyond the last combiner sample hold the edge value.</div>
+      </div>
+      <div class="change">
+        <div class="txt">Outputs produced before v0 carry the +0.1&nbsp;GHz displacement (both modes) — regenerate any previously written calibration files (including older <code>*_withComb</code> outputs).</div>
+      </div>
+    </div>
+
+    <div class="prever">
+      <b>pre-v0</b> — unversioned TX-only iterations: block-format parser/writer, median repeat aggregation, per-beam baseline B, attenuation convention, four-trace verification plot.
+    </div>
+
+  </section>
+
+</div>
+
+<script>
+  // tabs
+  const tabs = document.querySelectorAll('.tab-btn');
+  tabs.forEach(btn => btn.addEventListener('click', () => {
+    tabs.forEach(b => {
+      const on = b === btn;
+      b.setAttribute('aria-selected', on);
+      document.getElementById(b.getAttribute('aria-controls')).hidden = !on;
+    });
+  }));
+  // code toggles
+  document.querySelectorAll('.code-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const snip = document.getElementById(btn.getAttribute('aria-controls'));
+      const open = snip.hidden;
+      snip.hidden = !open;
+      btn.setAttribute('aria-expanded', open);
+      btn.textContent = open ? 'hide code' : 'view code';
+    });
+  });
+</script>
+</body>
+</html>

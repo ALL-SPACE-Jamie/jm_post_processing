@@ -4,6 +4,9 @@ Created on Wed May 20 2026.
 
 @author: jmitchell
 
+@version: 1
+@docs: docs/combiner_calibration_docs.html
+
 @desc: Convert combiner TLM measurements into TX/RX-format calibration files
        and produce a per-PCS verification plot. Supports two modes via the
        MODE toggle ('TX' or 'RX'); each mode has its own input paths,
@@ -29,9 +32,10 @@ Created on Wed May 20 2026.
        NOTE on combiner formats:
          TX combiner CSV  -> headerless, 9 cols, freq in MHz, gain split
                              across two beam columns, -100.1 null markers.
-         RX combiner CSV  -> headerless, 5 cols
-                             (freq_GHz, beam, PCS, TLM, SNR_dB), freq already
-                             in GHz, single value column, no null markers.
+         RX combiner CSV  -> headerless, 6 cols
+                             (freq_GHz, beam, PCS, TLM, SNR_dB, marker), freq
+                             already in GHz, single value column, no null
+                             markers.
 """
 
 
@@ -41,6 +45,8 @@ import os
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+
+__version__ = '1'
 
 
 def current_time_string() -> str:
@@ -84,10 +90,12 @@ def load_combiner_rx_csv(path: str) -> pd.DataFrame:
     Load an RX combiner measurement CSV.
 
     The RX combiner CSV has no header row. Columns are:
-    freq (GHz), beam, PCS, TLM, SNR (dB).
+    freq (GHz), beam, PCS, TLM, SNR (dB), marker.
     Unlike the TX file the frequency is already in GHz, there is a single
     value column (SNR), there is no 'test' axis (only TLM repeats), and
-    there are no -100.1 null markers.
+    there are no -100.1 null markers. All 6 columns must be named when
+    reading, otherwise pandas promotes the first column to the index and
+    every column shifts left by one.
 
     Parameters
     ----------
@@ -101,7 +109,7 @@ def load_combiner_rx_csv(path: str) -> pd.DataFrame:
         column (the SNR value), matching the schema the downstream
         functions expect. Any stray non-numeric/header row is dropped.
     """
-    cols = ['freq_GHz', 'beam', 'PCS', 'TLM', 'gain']  # gain = SNR (dB)
+    cols = ['freq_GHz', 'beam', 'PCS', 'TLM', 'gain', 'marker']  # gain = SNR (dB)
     df = pd.read_csv(path, header=None, names=cols)
     # drop a stray header row if one is present
     df = df[pd.to_numeric(df['freq_GHz'], errors='coerce').notna()].copy()
@@ -264,8 +272,7 @@ def build_attenuation_curves(df: pd.DataFrame, beam: int,
         3. For each PCS, compute attenuation = median - B at the
            original combiner frequencies.
         4. Frequency-shift by freq_shift_ghz and linearly interpolate
-           onto (target_grid - grid_step) so the resulting values land
-           one grid step to the right when indexed at target_grid.
+           onto target_grid.
 
     Parameters
     ----------
@@ -289,13 +296,11 @@ def build_attenuation_curves(df: pd.DataFrame, beam: int,
     B = float(med['gain'].mean())
 
     curves = {}
-    grid_step = target_grid[1] - target_grid[0]
-    target_for_interp = [f - grid_step for f in target_grid]
     for pcs in range(1, 7):
         s = med[med['PCS'] == pcs].sort_values('freq_GHz')
         f_src = s['freq_GHz'].to_numpy() + freq_shift_ghz
         atten_src = s['gain'].to_numpy() - B
-        curves[pcs] = np.interp(target_for_interp, f_src, atten_src)
+        curves[pcs] = np.interp(target_grid, f_src, atten_src)
 
     return {'B': B, 'curves': curves}
 
@@ -439,14 +444,14 @@ MODE = 'RX'   # <-- toggle: 'TX' or 'RX'
 
 CONFIG = {
     'TX': {
-        'terminal': 'T21',
+        'terminal': 'T10',
         'combiner_file':
-            r"C:\Users\jmitchell\OneDrive - ALL.SPACE\Engineering - T21\Combiner_Data\FAIL_f167__T21-SWAPOVER_09072026_095903\FAIL_f167__T21-SWAPOVER_09072026_095903\tx_data_T21-SWAPOVER_09072026_095910\T21-SWAPOVER_09072026_095910.csv",
+            r"C:\Users\jmitchell\OneDrive - ALL.SPACE\Engineering - T10\Combiner_Data\FAIL_f104__T10_16072026_164924\tx_data_T10_16072026_164931\T10_16072026_164931.csv",
         'kev_files': {
-            1: r"C:\Users\jmitchell\OneDrive - ALL.SPACE\Engineering - T21\Delay_Files_LC2BF\BF_DSP_SN2000_TX_B1.csv",
-            2: r"C:\Users\jmitchell\OneDrive - ALL.SPACE\Engineering - T21\Delay_Files_LC2BF\BF_DSP_SN2000_TX_B2.csv",
+            1: r"C:\Users\jmitchell\OneDrive - ALL.SPACE\Engineering - T10\Delay_Files_LC2BF\T10_dspCal_fromLiveCal\T10_dspCal_fromLiveCal\BF_DSP_SN2000_TX_B1.csv",
+            2: r"C:\Users\jmitchell\OneDrive - ALL.SPACE\Engineering - T10\Delay_Files_LC2BF\T10_dspCal_fromLiveCal\T10_dspCal_fromLiveCal\BF_DSP_SN2000_TX_B2.csv",
         },
-        'output_dir': r'C:\Users\jmitchell\OneDrive - ALL.SPACE\Engineering - T21\Delay_Files_LC2BF_with_Combiner_Gains',
+        'output_dir': r'C:\Users\jmitchell\OneDrive - ALL.SPACE\Engineering - T10\Delay_Files_LC2BF_with_Combiner_Gains',
         'combiner_fmt': 'tx',
         'freq_shift_ghz': 3.9375,
         'serial_number': 2000,
@@ -455,14 +460,14 @@ CONFIG = {
         'ylim': (-10, 10),
     },
     'RX': {
-        'terminal': 'T16',
+        'terminal': 'T10',
         'combiner_file':
-            r"C:\scratch\20260710\rx_data_T20-SWAPOVER-ITCC2135-APP4886_09072026_114328_rxdown_pwr.csv",
+            r"C:\Users\jmitchell\OneDrive - ALL.SPACE\Engineering - T10\Combiner_Data\FAIL_f104__T10_16072026_164924\rx_data_T10_16072026_164931\rx_data_T10_16072026_164931_rxdown_pwr.csv",
         'kev_files': {
-            1: r"C:\Users\jmitchell\OneDrive - ALL.SPACE\Engineering - T21\Delay_Files_LC2BF\BF_DSP_SN2000_RX_B1.csv",
-            2: r"C:\Users\jmitchell\OneDrive - ALL.SPACE\Engineering - T21\Delay_Files_LC2BF\BF_DSP_SN2000_RX_B2.csv",
+            1: r"C:\Users\jmitchell\OneDrive - ALL.SPACE\Engineering - T10\Delay_Files_LC2BF\T10_dspCal_fromLiveCal\T10_dspCal_fromLiveCal\BF_DSP_SN2000_RX_B1.csv",
+            2: r"C:\Users\jmitchell\OneDrive - ALL.SPACE\Engineering - T10\Delay_Files_LC2BF\T10_dspCal_fromLiveCal\T10_dspCal_fromLiveCal\BF_DSP_SN2000_RX_B2.csv",
         },
-        'output_dir': r'C:\Users\jmitchell\OneDrive - ALL.SPACE\Engineering - T21\Delay_Files_LC2BF_with_Combiner_Gains',
+        'output_dir': r'C:\Users\jmitchell\OneDrive - ALL.SPACE\Engineering - T10\Delay_Files_LC2BF_with_Combiner_Gains',
         'combiner_fmt': 'rx',
         # NB: combiner RX freqs are 17.7-21.2 GHz, Kev's grid is 20.6-24.0 GHz.
         # 2.9 GHz lines the low edges up (17.7 -> 20.6). CONFIRM this is the
@@ -500,9 +505,14 @@ if __name__ == '__main__':
         B = result['B']
         gains = result['curves']
 
-        # write the calibration CSV
-        stem, ext = os.path.splitext(os.path.basename(cfg['kev_files'][beam]))
-        out_csv = os.path.join(cfg['output_dir'], f'{stem}_withComb{ext}')
+        # write the calibration CSV (same filename as the reference input)
+        out_csv = os.path.join(cfg['output_dir'],
+                               os.path.basename(cfg['kev_files'][beam]))
+        if (os.path.normcase(os.path.abspath(out_csv))
+                == os.path.normcase(os.path.abspath(cfg['kev_files'][beam]))):
+            raise RuntimeError(
+                'output would overwrite the reference input file: '
+                f'{out_csv}\nSet output_dir to a different folder.')
         write_tx_format(path=out_csv, freqs=kev_freqs, gains=gains,
                         col_c=kev_col_c,
                         serial_number=cfg['serial_number'],
